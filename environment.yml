@@ -1,0 +1,20 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pyyaml
+  - tqdm
+  - h5py
+  - zarr
+  - pyarrow
+  - pip
+  - pip:
+      - scanpy
+      - anndata

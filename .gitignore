@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+venv/
+conda/
+
+# Raw genomics data
+data/raw/
+*.zip
+*.gz
+*.h5
+*.h5ad
+*.parquet
+*.tif
+*.ome.tif
+
+# Outputs
+outputs/
+results/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
