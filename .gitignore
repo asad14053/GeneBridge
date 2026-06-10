@@ -12,7 +12,7 @@ venv/
 conda/
 
 # Raw genomics data
-data/raw/
+data/
 *.zip
 *.gz
 *.h5
