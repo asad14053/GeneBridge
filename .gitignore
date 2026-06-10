@@ -22,7 +22,7 @@ data/raw/
 *.ome.tif
 
 # Outputs
-outputs/
+#outputs/
 results/
 
 # VS Code
