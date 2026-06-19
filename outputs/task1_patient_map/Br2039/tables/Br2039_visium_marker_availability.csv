@@ -1,0 +1,9 @@
+technology,celltype,requested_markers,available_markers,n_available_markers
+Visium,Excitatory_neuron,"SLC17A7,SATB2,RORB,PCP4","SLC17A7,SATB2,RORB,PCP4",4
+Visium,Inhibitory_neuron,"GAD1,GAD2,PVALB,SST,VIP","GAD1,GAD2,PVALB,SST,VIP",5
+Visium,Astrocyte,"AQP4,GFAP,SLC1A2","AQP4,GFAP,SLC1A2",3
+Visium,Oligodendrocyte,"MBP,PLP1,MOG","MBP,PLP1,MOG",3
+Visium,OPC,"PDGFRA,CSPG4","PDGFRA,CSPG4",2
+Visium,Microglia,"CX3CR1,P2RY12,C3","CX3CR1,P2RY12,C3",3
+Visium,Endothelial,"CLDN5,FLT1,VWF","CLDN5,FLT1,VWF",3
+Visium,Mural,"PDGFRB,RGS5","PDGFRB,RGS5",2
