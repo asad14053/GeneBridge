@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-XENIUM_DIR = PROJECT_ROOT / "data" / "raw" / "xenium"
+XENIUM_DIR = PROJECT_ROOT / "data" / "raw" / "xenium" / "Br2039"
 TABLE_DIR = PROJECT_ROOT / "outputs" / "tables"
 FIGURE_DIR = PROJECT_ROOT / "outputs" / "figures"
 

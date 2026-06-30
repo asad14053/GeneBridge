@@ -22,7 +22,7 @@ data/
 *.ome.tif
 
 # Outputs
-#outputs/
+outputs/
 results/
 
 # VS Code
@@ -31,3 +31,60 @@ results/
 # OS
 .DS_Store
 Thumbs.db
+
+
+data/
+outputs/
+models/
+checkpoints/
+processed-data/
+*.h5
+*.h5ad
+*.rds
+*.RDS
+*.mtx
+*.mtx.gz
+*.zarr
+*.zarr.zip
+*.tif
+*.tiff
+*.ome.tif
+*.parquet
+*.parquet.gz
+
+# Python/cache
+__pycache__/
+*.pyc
+.cache/
+pip_cache/
+conda_pkgs/
+tmp/
+
+
+# Scratch symlinks / large folders
+data
+data/
+outputs
+outputs/
+outputs_HOME_BACKUP/
+data_HOME_BACKUP/
+
+# VISTA generated install/build artifacts
+src/imputation/VISTA/build/
+src/imputation/VISTA/*.egg-info/
+src/imputation/VISTA/.history/
+
+# Large data formats
+*.h5
+*.h5ad
+*.rds
+*.RDS
+*.zarr
+*.zarr.zip
+*.tif
+*.tiff
+*.ome.tif
+*.parquet
+*.parquet.gz
+*.mtx
+*.mtx.gz

@@ -1,7 +1,0 @@
-technology,class,requested_markers,available_markers,n_available_markers
-Visium cortical layer,L1,"RELN,LAMP5,CXCL14","RELN,LAMP5,CXCL14",3
-Visium cortical layer,L2_3,"CUX2,CALB1,LINC00507,SATB2","CUX2,CALB1,LINC00507,SATB2",4
-Visium cortical layer,L4,"RORB,SCNN1A","RORB,SCNN1A",2
-Visium cortical layer,L5,"BCL11B,FEZF2,ETV1","BCL11B,FEZF2,ETV1",3
-Visium cortical layer,L6,"FOXP2,TLE4,THEMIS,PCP4","FOXP2,TLE4,THEMIS,PCP4",4
-Visium cortical layer,WM,"MBP,PLP1,MOG,MOBP","MBP,PLP1,MOG,MOBP",4

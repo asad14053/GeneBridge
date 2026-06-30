@@ -1,9 +1,0 @@
-technology,class,requested_markers,available_markers,n_available_markers
-Xenium cell type,Excitatory_neuron,"SLC17A7,SATB2,RORB,PCP4","RORB,PCP4",2
-Xenium cell type,Inhibitory_neuron,"GAD1,GAD2,PVALB,SST,VIP","GAD1,GAD2,PVALB,SST,VIP",5
-Xenium cell type,Astrocyte,"AQP4,GFAP,SLC1A2","AQP4,GFAP",2
-Xenium cell type,Oligodendrocyte,"MBP,PLP1,MOG","MBP,PLP1,MOG",3
-Xenium cell type,OPC,"PDGFRA,CSPG4",,0
-Xenium cell type,Microglia,"CX3CR1,P2RY12,C3","CX3CR1,P2RY12,C3",3
-Xenium cell type,Endothelial,"CLDN5,FLT1,VWF","CLDN5,FLT1",2
-Xenium cell type,Mural,"PDGFRB,RGS5",,0
