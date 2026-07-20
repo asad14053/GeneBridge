@@ -1,0 +1,93 @@
+
+====================================================================================================
+Xenium QC pipeline for imputation preparation
+====================================================================================================
+Input: /users/mjabin/projects/GeneBridge/data/processed/xenium/xenium_N24_raw.h5ad
+AnnData object with n_obs × n_vars = 1297886 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'counts_layer', 'description', 'object_name', 'spatial_key', 'stage'
+    obsm: 'spatial'
+    layers: 'counts'
+  feature_group  n_features
+gene_expression         300
+      neg_probe          20
+   neg_codeword          41
+     unassigned         180
+  mitochondrial           7
+
+====================================================================================================
+Calculating QC metrics
+====================================================================================================
+
+====================================================================================================
+Plotting raw QC metrics before filtering
+====================================================================================================
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+
+====================================================================================================
+Calling QC outliers per BrNum
+====================================================================================================
+
+====================================================================================================
+Saving QC summary tables
+====================================================================================================
+
+====================================================================================================
+Creating supplemental QC plots
+====================================================================================================
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+/users/mjabin/projects/GeneBridge/src/xenium_branch/02_qc/01_xenium_qc.py:352: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=brnums, showfliers=False)
+
+====================================================================================================
+Saving QC and imputation-ready h5ad objects
+====================================================================================================
+Saved: /users/mjabin/projects/GeneBridge/data/processed/xenium/xenium_N24_qc_all_features.h5ad
+Saved: /users/mjabin/projects/GeneBridge/data/processed/xenium/xenium_N24_imputation_ready.h5ad
+
+====================================================================================================
+Running donor-level pseudobulk PCA after QC
+====================================================================================================
+
+====================================================================================================
+Final summary
+====================================================================================================
+Cells before QC:         1297886
+Cells removed:           73431
+Cells after QC:          1224455
+Features all QC object:  541
+Features imputation obj: 300
+Donors:                  24
+
+Main files:
+  /users/mjabin/projects/GeneBridge/data/processed/xenium/xenium_N24_qc_all_features.h5ad
+  /users/mjabin/projects/GeneBridge/data/processed/xenium/xenium_N24_imputation_ready.h5ad
+  /users/mjabin/projects/GeneBridge/outputs/xenium_branch/02_qc/tables/xenium_N24_outlier_ids.csv
+  /users/mjabin/projects/GeneBridge/outputs/xenium_branch/02_qc/tables/xenium_N24_qc_summary_by_sample.csv
+  /users/mjabin/projects/GeneBridge/outputs/xenium_branch/02_qc/tables/xenium_N24_pseudobulk_pca_coordinates.csv
+  /users/mjabin/projects/GeneBridge/outputs/xenium_branch/02_qc/figures

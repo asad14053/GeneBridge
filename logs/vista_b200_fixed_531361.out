@@ -1,0 +1,27 @@
+========================================
+Job started on: hyper-01-prod-comp-di-0241-6.ec2.internal
+Job ID: 531361
+Date: Mon Jul 20 17:34:08 UTC 2026
+CUDA_VISIBLE_DEVICES=7
+========================================
+
+===== ENVIRONMENT DEBUG =====
+ENV_PATH=/scratch/mjabin/conda_envs/Imputation
+PYTHON=/scratch/mjabin/conda_envs/Imputation/bin/python3.9
+
+Python files:
+lrwxrwxrwx. 1 mjabin HyPER-LG-PROD-Sec        9 Jul  2 19:25 /scratch/mjabin/conda_envs/Imputation/bin/python -> python3.9
+lrwxrwxrwx. 1 mjabin HyPER-LG-PROD-Sec        9 Jul  2 19:25 /scratch/mjabin/conda_envs/Imputation/bin/python3 -> python3.9
+lrwxrwxrwx. 1 mjabin HyPER-LG-PROD-Sec       16 Jul  2 19:25 /scratch/mjabin/conda_envs/Imputation/bin/python3-config -> python3.9-config
+-rwxr-xr-x. 1 mjabin HyPER-LG-PROD-Sec 16439752 Jul  2 19:24 /scratch/mjabin/conda_envs/Imputation/bin/python3.9
+-rwxr-xr-x. 1 mjabin HyPER-LG-PROD-Sec     3560 Jul  2 19:24 /scratch/mjabin/conda_envs/Imputation/bin/python3.9-config
+f: /scratch/mjabin/conda_envs/Imputation/bin/python3.9
+dr-xr-xr-x root   root                 /
+drwxr-x--- root   HyPER-01-PROD-Common scratch
+drwxr-s--- mjabin HyPER-LG-PROD-Sec    mjabin
+drwxr-sr-x mjabin HyPER-LG-PROD-Sec    conda_envs
+drwxr-sr-x mjabin HyPER-LG-PROD-Sec    Imputation
+drwxr-sr-x mjabin HyPER-LG-PROD-Sec    bin
+-rwxr-xr-x mjabin HyPER-LG-PROD-Sec    python3.9
+
+Python executable:

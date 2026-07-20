@@ -228,9 +228,8 @@ class GIMVI_GCN(VAEMixin, BaseModelClass):
             train_dls.append(ds.train_dataloader())
             test_dls.append(ds.test_dataloader())
             val = ds.val_dataloader()
-            if val is not None:
-                val_dls.append(val)
-                val.mode = i
+            val_dls.append(val)
+            val.mode = i
             self.train_indices_.append(ds.train_idx)
             self.test_indices_.append(ds.test_idx)
             self.validation_indices_.append(ds.val_idx)
