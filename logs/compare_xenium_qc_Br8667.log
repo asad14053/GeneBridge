@@ -1,0 +1,15 @@
+
+==========================================================================================
+INPUT FILES
+==========================================================================================
+Raw Xenium file:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista.h5ad
+
+QC Xenium file:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista_qc.h5ad
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation_beta/00_compare_xenium_qc.py", line 607, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation_beta/00_compare_xenium_qc.py", line 157, in main
+    raise FileNotFoundError(f"Raw file not found: {RAW_FILE}")
+FileNotFoundError: Raw file not found: data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista.h5ad

@@ -1,0 +1,11 @@
+========================================
+Job ID: 3826381
+Node: node08.hgcc.emory.edu
+Started: Thu Jul 23 18:21:49 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/imputation/05_inspect_xenium_Br8667.py
+========================================
+Python 3.10.20
+====================================================================================================
+Task-02: Inspect Xenium Br8667 and snRNA overlap
+====================================================================================================

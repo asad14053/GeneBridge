@@ -1,0 +1,125 @@
+========================================
+Job ID: 3826148
+Node: node03.hgcc.emory.edu
+Started: Thu Jul 23 15:40:27 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/snrnaseq_branch/merge_huuki_chunks_batch_safe.py
+========================================
+Python 3.10.20
+
+Starting Python script...
+
+======================================================================
+Huuki H5AD chunk merge
+======================================================================
+Chunk directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_h5ad_chunks_allgenes_full_maxcells0_chunk200
+Final output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Temporary directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_merge_batches_tmp
+Expected chunks: 389
+Expected cells: 77604
+Expected genes: 36601
+
+Found chunks: 389
+First chunk: huuki_allgenes_chunk_0001.h5ad
+Last chunk: huuki_allgenes_chunk_0389.h5ad
+
+============================================================
+Step 1: Verifying source chunks
+============================================================
+Reference genes: 36601
+First chunk shape: (200, 36601)
+Checked 50/389 chunks | cumulative cells: 10000
+Checked 100/389 chunks | cumulative cells: 20000
+Checked 150/389 chunks | cumulative cells: 30000
+Checked 200/389 chunks | cumulative cells: 40000
+Checked 250/389 chunks | cumulative cells: 50000
+Checked 300/389 chunks | cumulative cells: 60000
+Checked 350/389 chunks | cumulative cells: 70000
+Checked 389/389 chunks | cumulative cells: 77604
+
+PASS: All source chunks are valid.
+Total cells: 77604
+Genes: 36601
+
+============================================================
+Step 2: Preparing merge directories
+============================================================
+
+============================================================
+Step 3: Creating batch H5AD files
+============================================================
+
+Batch 1
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_001.tmp.h5ad
+huuki_batch_001.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 2
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_002.tmp.h5ad
+huuki_batch_002.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 3
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_003.tmp.h5ad
+huuki_batch_003.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 4
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_004.tmp.h5ad
+huuki_batch_004.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 5
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_005.tmp.h5ad
+huuki_batch_005.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 6
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_006.tmp.h5ad
+huuki_batch_006.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 7
+Chunks: 50
+Expected cells: 10000
+Verifying batch: huuki_batch_007.tmp.h5ad
+huuki_batch_007.tmp.h5ad: 10000 cells x 36601 genes
+
+Batch 8
+Chunks: 39
+Expected cells: 7604
+Verifying batch: huuki_batch_008.tmp.h5ad
+huuki_batch_008.tmp.h5ad: 7604 cells x 36601 genes
+
+Created batch files: 8
+
+============================================================
+Step 4: Merging batch H5AD files into final H5AD
+============================================================
+
+============================================================
+Step 5: Verifying final merged H5AD
+============================================================
+huuki_snrna_reference_full_allgenes.tmp.h5ad: 77604 cells x 36601 genes
+
+============================================================
+MERGE SUCCESSFUL
+============================================================
+Final H5AD: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Cells: 77604
+Genes: 36601
+Source chunks: 389
+Batch files: 8
+Temporary batch folder: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_merge_batches_tmp
+============================================================
+
+========================================
+Completed successfully
+Finished: Thu Jul 23 16:05:06 EDT 2026
+========================================

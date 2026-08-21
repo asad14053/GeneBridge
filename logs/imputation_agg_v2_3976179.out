@@ -1,0 +1,19 @@
+====================================================================================================
+Shared three-fold imputation aggregation v2
+====================================================================================================
+Job ID: 3976179
+Node: node03.hgcc.emory.edu
+Started: Fri Aug  7 02:59:09 EDT 2026
+
+Memory: 160G
+CPUs: 16
+Experiment: ex5
+Experiment label: Experiment 5
+Model: tangram
+Model label: Tangram
+Combined directory: combined_v2
+Aggregator: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/aggregate_three_folds_v2.py
+Common directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common
+====================================================================================================
+ERROR: Required fold output not found:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/tangram/fold_1/run_complete.flag

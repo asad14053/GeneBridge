@@ -1,0 +1,70 @@
+============================================================
+Raw metric distributions across experiments
+Method: envi
+Job: 4027690_4
+Started: Wed Aug 12 18:11:30 EDT 2026
+============================================================
+====================================================================================================
+RAW GENE-LEVEL METRIC DISTRIBUTIONS
+====================================================================================================
+Method: ENVI
+
+Loading Experiment 5:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.1:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/envi/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.3:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/envi/combined_v2/gene_level_metrics_300genes.csv
+
+====================================================================================================
+VALIDATION
+====================================================================================================
+SCC          missing=0     finite=900
+SSIM         missing=0     finite=900
+RMSE         missing=0     finite=900
+MAE          missing=0     finite=900
+JSD          missing=0     finite=900
+Moran_error  missing=0     finite=900
+
+Unique genes by experiment:
+experiment
+ex5      300
+ex5_1    300
+ex5_3    300
+Name: gene, dtype: int64
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+     metric experiment_label      mean   median       std
+        SCC     Experiment 5  0.462856 0.474324  0.216395
+        SCC   Experiment 5.1  0.451682 0.471048  0.214664
+        SCC   Experiment 5.3  0.451778 0.456193  0.210200
+       SSIM     Experiment 5  0.484385 0.522851  0.220673
+       SSIM   Experiment 5.1  0.475560 0.518139  0.222406
+       SSIM   Experiment 5.3  0.469942 0.499543  0.222347
+       RMSE     Experiment 5  8.842040 2.480203 22.626285
+       RMSE   Experiment 5.1  9.107311 2.710085 22.688878
+       RMSE   Experiment 5.3 10.013553 2.519298 32.507615
+        MAE     Experiment 5  3.444289 1.223178  7.717464
+        MAE   Experiment 5.1  3.779909 1.167420  8.992606
+        MAE   Experiment 5.3  3.911965 1.177290  9.548227
+        JSD     Experiment 5  0.317916 0.263368  0.204486
+        JSD   Experiment 5.1  0.320367 0.267391  0.200686
+        JSD   Experiment 5.3  0.321682 0.269153  0.200922
+Moran_error     Experiment 5  0.103337 0.080075  0.092161
+Moran_error   Experiment 5.1  0.097574 0.075293  0.090198
+Moran_error   Experiment 5.3  0.101521 0.073016  0.092666
+
+====================================================================================================
+DONE
+====================================================================================================
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/envi/envi_raw_metric_distributions.png
+Summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/envi/metric_summary.csv
+
+============================================================
+Completed: Wed Aug 12 18:11:36 EDT 2026
+Method: envi
+============================================================

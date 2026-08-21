@@ -1,0 +1,85 @@
+============================================================
+FAST Ex1 + Ex2 Xenium target preparation
+Job ID: 4187796
+Host: node02.hgcc.emory.edu
+Started: Wed Aug 19 19:53:21 EDT 2026
+Memory: 200G
+CPUs: 16
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/imputation/production/00_prepare_ex1_ex2_targets_fast.py
+============================================================
+==============================================================================================================
+FAST PRODUCTION TARGET PREPARATION
+Ex1 = NTC
+Ex2 = SCZ
+Reference later = all 10 Huuki snRNA
+==============================================================================================================
+
+Ex1 NTC donors:
+patient_index patient_id  Dx
+           P2     Br2719 NTC
+           P3     Br6432 NTC
+           P4     Br1113 NTC
+           P7     Br5400 NTC
+           P8     Br5622 NTC
+          P10     Br5314 NTC
+          P13     Br5639 NTC
+          P14     Br8433 NTC
+          P18     Br8667 NTC
+          P19     Br5436 NTC
+          P20     Br5931 NTC
+          P24     Br6389 NTC
+
+Ex2 SCZ donors:
+patient_index patient_id  Dx
+           P1     Br2039 SCZ
+           P5     Br5373 SCZ
+           P6     Br5590 SCZ
+           P9     Br6437 SCZ
+          P11     Br5588 SCZ
+          P12     Br5746 SCZ
+          P15     Br8772 SCZ
+          P16     Br1139 SCZ
+          P17     Br5973 SCZ
+          P21     Br6496 SCZ
+          P22     Br2421 SCZ
+          P23     Br6032 SCZ
+
+==============================================================================================================
+OPENING N24 IN BACKED MODE
+==============================================================================================================
+Opened in 6.98 seconds
+Shape : (1224455, 300)
+Layers: ['counts', 'log1p_norm']
+obsm  : ['spatial']
+Donor metadata indexed.
+Br2719: 57,949 cells | contiguous=True
+Br6432: 1 cells | contiguous=True
+Br1113: 54,585 cells | contiguous=True
+Br5400: 44,283 cells | contiguous=True
+Br5622: 68,236 cells | contiguous=True
+Br5314: 45,585 cells | contiguous=True
+Br5639: 58,976 cells | contiguous=True
+Br8433: 58,195 cells | contiguous=True
+Br8667: 66,164 cells | contiguous=True
+Br5436: 44,430 cells | contiguous=True
+Br5931: 43,522 cells | contiguous=True
+Br6389: 49,542 cells | contiguous=True
+Br2039: 41,101 cells | contiguous=True
+Br5373: 63,894 cells | contiguous=True
+Br5590: 53,577 cells | contiguous=True
+Br6437: 55,773 cells | contiguous=True
+Br5588: 59,694 cells | contiguous=True
+Br5746: 43,025 cells | contiguous=True
+Br8772: 54,456 cells | contiguous=True
+Br1139: 56,617 cells | contiguous=True
+Br5973: 41,895 cells | contiguous=True
+Br6496: 56,213 cells | contiguous=True
+Br2421: 62,073 cells | contiguous=True
+Br6032: 44,669 cells | contiguous=True
+
+==============================================================================================================
+EX1_NTC | NTC
+==============================================================================================================
+
+[01/12] Br2719 | cells=57,949

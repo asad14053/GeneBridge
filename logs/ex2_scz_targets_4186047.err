@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/production/01_extract_ex2_scz_targets.py", line 174, in <module>
+    raise RuntimeError(
+RuntimeError: Br2039: unexpected Dx values: ['UNKNOWN']

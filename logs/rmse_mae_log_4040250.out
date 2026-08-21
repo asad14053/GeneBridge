@@ -1,0 +1,138 @@
+============================================================
+RMSE / MAE log-scale cross-method comparison
+Job: 4040250
+Started: Thu Aug 13 12:10:27 EDT 2026
+============================================================
+====================================================================================================
+RMSE / MAE LOG-SCALE CROSS-METHOD COMPARISON
+====================================================================================================
+Input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/across_methods_by_expression/all_methods_all_experiments_gene_metrics.csv
+
+Plotting: Experiment 5
+
+Plotting: Experiment 5.1
+
+Plotting: Experiment 5.3
+
+====================================================================================================
+TAIL SUMMARY
+====================================================================================================
+experiment expression_stratum method_label metric    median          q95           q99      maximum
+       ex5                Low        VISTA   RMSE  0.707813     3.157035      6.381658 7.693244e+00
+       ex5                Low        VISTA    MAE  0.399934     2.359187      3.741147 5.012061e+00
+       ex5                Low        gimVI   RMSE  0.695854     3.292934      4.766737 7.819841e+00
+       ex5                Low        gimVI    MAE  0.397711     2.057862      3.478685 5.186006e+00
+       ex5                Low      Tangram   RMSE  0.771103     4.017332      6.048814 9.832276e+00
+       ex5                Low      Tangram    MAE  0.391239     3.424505      4.844119 7.581890e+00
+       ex5                Low         ENVI   RMSE  0.989457    12.560224     17.776765 1.798435e+01
+       ex5                Low         ENVI    MAE  0.392053     2.768647      4.702642 6.292577e+00
+       ex5                Low        SpaGE   RMSE  0.728619     6.050875     12.329770 2.303548e+01
+       ex5                Low        SpaGE    MAE  0.188862     1.660233      3.972580 5.007452e+00
+       ex5                Low  TransImpSpa   RMSE  0.706225     2.670023     12.005598 1.402355e+01
+       ex5                Low  TransImpSpa    MAE  0.196693     1.209713      3.964291 6.904071e+00
+       ex5             Medium        VISTA   RMSE  1.737224     8.059792     17.426393 2.561658e+01
+       ex5             Medium        VISTA    MAE  0.964739     5.805157     11.350343 1.619463e+01
+       ex5             Medium        gimVI   RMSE  1.681151     8.866984     17.800594 2.620737e+01
+       ex5             Medium        gimVI    MAE  0.896964     6.084398     11.666396 1.648185e+01
+       ex5             Medium      Tangram   RMSE  2.235442     8.182153     15.418966 1.965049e+01
+       ex5             Medium      Tangram    MAE  1.241508     6.509777     12.455092 1.559361e+01
+       ex5             Medium         ENVI   RMSE  1.921520    30.814792    153.564037 1.730099e+02
+       ex5             Medium         ENVI    MAE  1.033500     8.041129     18.344818 2.915708e+01
+       ex5             Medium        SpaGE   RMSE  1.955754    24.490830     53.326854 7.546531e+01
+       ex5             Medium        SpaGE    MAE  0.848904     6.938414     23.256841 2.893315e+01
+       ex5             Medium  TransImpSpa   RMSE  2.031925    24.177714    486.698123 5.057564e+02
+       ex5             Medium  TransImpSpa    MAE  0.800480     7.669746    118.064154 1.504789e+02
+       ex5               High        VISTA   RMSE  5.158714    49.583641     61.971935 6.897472e+01
+       ex5               High        VISTA    MAE  2.906020    38.258904     47.647553 5.864646e+01
+       ex5               High        gimVI   RMSE  5.034972    48.596247     65.503756 6.902070e+01
+       ex5               High        gimVI    MAE  2.858370    36.002190     47.086286 5.870464e+01
+       ex5               High      Tangram   RMSE  5.794774    46.033291     58.021001 6.905729e+01
+       ex5               High      Tangram    MAE  3.891721    34.501674     47.269782 5.875677e+01
+       ex5               High         ENVI   RMSE  5.030620    50.034665    117.322316 2.365167e+02
+       ex5               High         ENVI    MAE  2.925512    36.427384     55.316532 5.888646e+01
+       ex5               High        SpaGE   RMSE  6.112625    66.229815    170.059279 2.731725e+02
+       ex5               High        SpaGE    MAE  3.330847    50.658658     80.604743 1.320632e+02
+       ex5               High  TransImpSpa   RMSE 10.765807  2235.265466  34102.615977 1.063806e+05
+       ex5               High  TransImpSpa    MAE  4.541364   693.707523   9115.286475 3.784736e+04
+     ex5_1                Low        VISTA   RMSE  0.724393     3.027126      6.218178 8.510021e+00
+     ex5_1                Low        VISTA    MAE  0.403716     2.383546      4.000420 4.809714e+00
+     ex5_1                Low        gimVI   RMSE  0.708546     2.829124      4.178788 6.711432e+00
+     ex5_1                Low        gimVI    MAE  0.399392     1.824205      2.945399 4.338903e+00
+     ex5_1                Low      Tangram   RMSE  0.798964     4.446426      7.295423 1.066432e+01
+     ex5_1                Low      Tangram    MAE  0.369299     3.762692      5.947994 7.958368e+00
+     ex5_1                Low         ENVI   RMSE  0.976871    10.771172     30.423028 3.067356e+01
+     ex5_1                Low         ENVI    MAE  0.422210     3.178592      6.401493 7.066065e+00
+     ex5_1                Low        SpaGE   RMSE  0.698727     4.904205     18.578729 2.903031e+01
+     ex5_1                Low        SpaGE    MAE  0.190698     1.536836      6.254955 6.502595e+00
+     ex5_1                Low  TransImpSpa   RMSE  0.702206     3.899713     15.471347 6.094278e+01
+     ex5_1                Low  TransImpSpa    MAE  0.211433     1.500601      7.639932 1.042528e+01
+     ex5_1             Medium        VISTA   RMSE  1.701105     6.171519     18.669127 2.494377e+01
+     ex5_1             Medium        VISTA    MAE  0.969031     5.090197     11.221524 1.522453e+01
+     ex5_1             Medium        gimVI   RMSE  1.652834     7.316163     15.502991 1.866085e+01
+     ex5_1             Medium        gimVI    MAE  0.913364     5.364735     10.001912 1.260036e+01
+     ex5_1             Medium      Tangram   RMSE  2.242542     9.967379     17.042772 2.063063e+01
+     ex5_1             Medium      Tangram    MAE  1.347342     8.333001     13.480451 1.649310e+01
+     ex5_1             Medium         ENVI   RMSE  2.062963    30.690639     92.068752 2.158508e+02
+     ex5_1             Medium         ENVI    MAE  1.012384     8.642059     17.851913 3.740329e+01
+     ex5_1             Medium        SpaGE   RMSE  2.207097    23.921026     88.528705 9.201473e+01
+     ex5_1             Medium        SpaGE    MAE  0.931644     6.483000     24.848774 3.081973e+01
+     ex5_1             Medium  TransImpSpa   RMSE  2.157608    44.276454    440.180547 2.132683e+03
+     ex5_1             Medium  TransImpSpa    MAE  0.841221    12.526905    154.517301 4.366722e+02
+     ex5_1               High        VISTA   RMSE  4.993978    55.760757     66.689631 6.884632e+01
+     ex5_1               High        VISTA    MAE  2.863534    42.682932     54.003147 5.848813e+01
+     ex5_1               High        gimVI   RMSE  5.009559    53.348326     62.329526 6.872180e+01
+     ex5_1               High        gimVI    MAE  2.815477    41.181029     51.275233 5.834517e+01
+     ex5_1               High      Tangram   RMSE  5.853542    48.524102     63.542197 6.863704e+01
+     ex5_1               High      Tangram    MAE  3.920280    38.357784     51.652143 5.830957e+01
+     ex5_1               High         ENVI   RMSE  5.590098    62.048620    142.582502 1.610012e+02
+     ex5_1               High         ENVI    MAE  3.120696    44.142037     59.114815 6.787002e+01
+     ex5_1               High        SpaGE   RMSE  6.729095    69.430805    210.964593 3.141967e+02
+     ex5_1               High        SpaGE    MAE  3.866321    53.835015    102.400904 1.489682e+02
+     ex5_1               High  TransImpSpa   RMSE 12.877868 13792.213770 100100.713438 1.593509e+06
+     ex5_1               High  TransImpSpa    MAE  4.902719  4374.585596  43079.363594 3.983568e+05
+     ex5_3                Low        VISTA   RMSE  0.707608     2.913911      7.228959 7.462662e+00
+     ex5_3                Low        VISTA    MAE  0.405637     2.329951      4.306708 4.557976e+00
+     ex5_3                Low        gimVI   RMSE  0.720828     2.697182      3.843789 5.733644e+00
+     ex5_3                Low        gimVI    MAE  0.413461     2.060069      2.740637 4.000086e+00
+     ex5_3                Low      Tangram   RMSE  0.794448     4.523876      7.478046 1.078616e+01
+     ex5_3                Low      Tangram    MAE  0.366190     3.827008      6.126848 8.021611e+00
+     ex5_3                Low         ENVI   RMSE  1.018617    11.932966     19.825655 2.527335e+01
+     ex5_3                Low         ENVI    MAE  0.411987     2.582321      5.498994 6.705630e+00
+     ex5_3                Low        SpaGE   RMSE  0.715500     4.512882     19.478618 3.205522e+01
+     ex5_3                Low        SpaGE    MAE  0.191629     1.502966      6.853381 6.881942e+00
+     ex5_3                Low  TransImpSpa   RMSE  0.699706     3.914360     17.258244 8.973843e+01
+     ex5_3                Low  TransImpSpa    MAE  0.215137     1.664980      8.441947 1.346421e+01
+     ex5_3             Medium        VISTA   RMSE  1.755530     6.390751     20.612619 2.081554e+01
+     ex5_3             Medium        VISTA    MAE  0.965139     4.876948     11.767560 1.358650e+01
+     ex5_3             Medium        gimVI   RMSE  1.674126     6.179282     16.124932 1.647736e+01
+     ex5_3             Medium        gimVI    MAE  0.915802     4.543635      9.364340 1.157854e+01
+     ex5_3             Medium      Tangram   RMSE  2.231566    10.025131     17.234854 2.076218e+01
+     ex5_3             Medium      Tangram    MAE  1.377431     8.400700     13.747868 1.664150e+01
+     ex5_3             Medium         ENVI   RMSE  2.101604    26.777842    159.076612 3.470867e+02
+     ex5_3             Medium         ENVI    MAE  0.982210     8.828857     29.155784 4.847651e+01
+     ex5_3             Medium        SpaGE   RMSE  2.216782    25.476587     89.764391 9.084545e+01
+     ex5_3             Medium        SpaGE    MAE  0.958826     6.725785     25.120997 2.985668e+01
+     ex5_3             Medium  TransImpSpa   RMSE  2.122809    48.561095    506.749814 2.595109e+03
+     ex5_3             Medium  TransImpSpa    MAE  0.849909    15.918694    179.062549 6.060834e+02
+     ex5_3               High        VISTA   RMSE  5.116504    54.993814     67.460869 6.880386e+01
+     ex5_3               High        VISTA    MAE  2.878838    42.100463     54.800026 5.843235e+01
+     ex5_3               High        gimVI   RMSE  4.930414    51.166941     65.218444 6.878120e+01
+     ex5_3               High        gimVI    MAE  2.759657    42.205062     53.487431 5.841247e+01
+     ex5_3               High      Tangram   RMSE  5.885113    48.978412     64.637531 6.856775e+01
+     ex5_3               High      Tangram    MAE  3.861842    38.980412     52.357215 5.823679e+01
+     ex5_3               High         ENVI   RMSE  5.347298    65.369542    161.064331 3.279757e+02
+     ex5_3               High         ENVI    MAE  2.974787    46.173143     58.850482 7.414349e+01
+     ex5_3               High        SpaGE   RMSE  6.741805    71.011266    218.181627 3.285764e+02
+     ex5_3               High        SpaGE    MAE  3.980274    54.478057    106.432153 1.538597e+02
+     ex5_3               High  TransImpSpa   RMSE 12.005178 15924.678467 107576.257734 2.687219e+06
+     ex5_3               High  TransImpSpa    MAE  4.811996  4670.512231  41132.329844 6.336722e+05
+
+====================================================================================================
+DONE
+====================================================================================================
+Tail summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/rmse_mae_logscale/rmse_mae_tail_summary.csv
+
+============================================================
+Completed: Thu Aug 13 12:10:59 EDT 2026
+============================================================

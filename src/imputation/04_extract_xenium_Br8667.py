@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 INPUT_H5AD = (
     PROJECT_ROOT

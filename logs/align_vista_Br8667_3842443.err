@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/03_align_vista_Br8667_genes.py", line 460, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/03_align_vista_Br8667_genes.py", line 284, in main
+    raise FileNotFoundError(f"Missing spatial_data file: {spatial_path}")
+FileNotFoundError: Missing spatial_data file: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_huuki_visium_Br8667.h5ad

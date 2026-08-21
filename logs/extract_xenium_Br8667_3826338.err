@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/04_extract_xenium_Br8667.py", line 351, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/04_extract_xenium_Br8667.py", line 144, in main
+    raise FileNotFoundError(
+FileNotFoundError: Missing Xenium N24 input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad

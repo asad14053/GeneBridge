@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/verify_merged_huuki_full_h5ad.py", line 46, in <module>
+    print("First chunk:", chunk_files[0].name)
+IndexError: list index out of range

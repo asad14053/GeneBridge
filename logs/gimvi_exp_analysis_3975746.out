@@ -1,0 +1,71 @@
+====================================================================================================
+gimVI experiment analysis
+====================================================================================================
+Host: node03.hgcc.emory.edu
+Started: Fri Aug  7 00:34:47 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi
+
+====================================================================================================
+STEPS 1-3: paired t-test + TOST + uncertainty plots
+====================================================================================================
+====================================================================================================
+PAIRED EXPERIMENT COMPARISON
+====================================================================================================
+Model: gimVI
+Model key: gimvi
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/paired_experiment_tests
+Ex-5: loaded 300 genes from /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/gimvi/combined_v2/gene_level_metrics_300genes.csv
+Ex-5.1: loaded 300 genes from /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/gimvi/combined_v2/gene_level_metrics_300genes.csv
+Ex-5.3: loaded 300 genes from /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/gimvi/combined_v2/gene_level_metrics_300genes.csv
+
+Ex-5.1 vs Ex-5: 300 paired genes
+
+Ex-5.3 vs Ex-5: 300 paired genes
+
+Ex-5.3 vs Ex-5.1: 300 paired genes
+
+GENE-LEVEL RESULTS
+      comparison      metric   n  baseline_mean  candidate_mean  direction_adjusted_improvement_pct  ci90_low_pct  ci90_high_pct  paired_t_pvalue  paired_t_pvalue_holm  tost_pvalue  tost_pvalue_holm  equivalent_holm_0.05
+  Ex-5.1 vs Ex-5         SCC 300       0.485947        0.490548                            0.946797      0.322883       1.570711     1.281795e-02          1.281795e-01 3.351554e-23      5.027331e-22                  True
+  Ex-5.1 vs Ex-5        SSIM 300       0.407765        0.417329                            2.345347      1.174949       3.515745     1.060438e-03          1.272526e-02 1.092681e-04      8.741450e-04                  True
+  Ex-5.1 vs Ex-5        RMSE 300       4.614870        4.646633                           -0.688281     -5.212234       3.835671     8.019645e-01          1.000000e+00 5.843913e-02      3.506348e-01                 False
+  Ex-5.1 vs Ex-5         MAE 300       2.966597        3.028597                           -2.089940     -7.917933       3.738052     5.545093e-01          1.000000e+00 2.053355e-01      8.213421e-01                 False
+  Ex-5.1 vs Ex-5         JSD 300       0.378621        0.368749                            2.607380      1.976239       3.238520     5.156805e-11          9.282249e-10 6.863786e-10      8.236543e-09                  True
+  Ex-5.1 vs Ex-5 Moran_error 300       0.153508        0.146088                            4.833863      2.103789       7.563936     3.749810e-03          4.124791e-02 4.600439e-01      8.213421e-01                 False
+  Ex-5.3 vs Ex-5         SCC 300       0.485947        0.486096                            0.030775     -0.619975       0.681524     9.378577e-01          1.000000e+00 8.702779e-30      1.392445e-28                  True
+  Ex-5.3 vs Ex-5        SSIM 300       0.407765        0.410446                            0.657452     -0.676314       1.991218     4.166840e-01          1.000000e+00 7.838052e-08      7.054247e-07                  True
+  Ex-5.3 vs Ex-5        RMSE 300       4.614870        4.624470                           -0.208040     -5.831678       5.415597     9.513692e-01          1.000000e+00 8.038821e-02      4.019411e-01                 False
+  Ex-5.3 vs Ex-5         MAE 300       2.966597        3.023995                           -1.934826     -9.034415       5.164762     6.532818e-01          1.000000e+00 2.384000e-01      8.213421e-01                 False
+  Ex-5.3 vs Ex-5         JSD 300       0.378621        0.373682                            1.304507      0.691771       1.917243     5.119846e-04          6.655800e-03 1.220875e-20      1.587137e-19                  True
+  Ex-5.3 vs Ex-5 Moran_error 300       0.153508        0.152458                            0.684058     -2.261841       3.629957     7.018931e-01          1.000000e+00 8.116867e-03      5.681807e-02                 False
+Ex-5.3 vs Ex-5.1         SCC 300       0.490548        0.486096                           -0.907431     -1.224191      -0.590671     3.518712e-06          5.278068e-05 2.918255e-62      5.252859e-61                  True
+Ex-5.3 vs Ex-5.1        SSIM 300       0.417329        0.410446                           -1.649215     -2.200331      -1.098099     1.317664e-06          2.108262e-05 6.635094e-21      9.289132e-20                  True
+Ex-5.3 vs Ex-5.1        RMSE 300       4.646633        4.624470                            0.476958     -0.775259       1.729176     5.301843e-01          1.000000e+00 3.551227e-09      3.906350e-08                  True
+Ex-5.3 vs Ex-5.1         MAE 300       3.028597        3.023995                            0.151939     -1.201420       1.505297     8.531679e-01          1.000000e+00 4.642169e-09      4.642169e-08                  True
+Ex-5.3 vs Ex-5.1         JSD 300       0.368749        0.373682                           -1.337753     -1.712724      -0.962781     1.058413e-08          1.799302e-07 8.682929e-43      1.476098e-41                  True
+Ex-5.3 vs Ex-5.1 Moran_error 300       0.146088        0.152458                           -4.360590     -6.020705      -2.700475     2.003135e-05          2.804390e-04 2.627938e-01      8.213421e-01                 False
+
+FOLD-LEVEL EXPLORATORY RESULTS
+      comparison candidate baseline metric  higher_is_better  exploratory_fold_level  n  baseline_mean  candidate_mean  raw_mean_difference  direction_adjusted_mean_difference  direction_adjusted_improvement_pct  ci90_low_pct  ci90_high_pct   se_pct  equivalence_margin_abs  equivalence_margin_pct  paired_t_statistic  paired_t_pvalue  tost_pvalue  equivalent_at_5pct  paired_t_pvalue_holm  tost_pvalue_holm
+  Ex-5.1 vs Ex-5    Ex-5.1     Ex-5    NMI              True                    True  3       0.605397        0.625259             0.019861                            0.019861                            3.280692     -0.739032       7.300417 1.376625                0.030270                     5.0            2.383142         0.140022     0.169026               False              0.700111          0.676105
+  Ex-5.1 vs Ex-5    Ex-5.1     Ex-5    ARI              True                    True  3       0.463840        0.474795             0.010955                            0.010955                            2.361852    -15.358312      20.082017 6.068579                0.023192                     5.0            0.389194         0.734663     0.353087               False              1.000000          0.706174
+  Ex-5.3 vs Ex-5    Ex-5.3     Ex-5    NMI              True                    True  3       0.605397        0.619638             0.014241                            0.014241                            2.352317     -1.690457       6.395091 1.384519                0.030270                     5.0            1.699015         0.231416     0.097986               False              0.925663          0.489931
+  Ex-5.3 vs Ex-5    Ex-5.3     Ex-5    ARI              True                    True  3       0.463840        0.476485             0.012645                            0.012645                            2.726169    -12.675498      18.127835 5.274569                0.023192                     5.0            0.516851         0.656737     0.354209               False              1.000000          0.706174
+Ex-5.3 vs Ex-5.1    Ex-5.3   Ex-5.1    NMI              True                    True  3       0.625259        0.619638            -0.005620                           -0.005620                           -0.898885     -1.451650      -0.346121 0.189304                0.031263                     5.0           -4.748373         0.041604     0.001062                True              0.249621          0.006372
+Ex-5.3 vs Ex-5.1    Ex-5.3   Ex-5.1    ARI              True                    True  3       0.474795        0.476485             0.001690                            0.001690                            0.355910    -12.903731      13.615551 4.540995                0.023740                     5.0            0.078377         0.944664     0.207005               False              1.000000          0.676105
+
+Saved:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/paired_experiment_tests/paired_gene_level_tests.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/paired_experiment_tests/paired_fold_level_tests_exploratory.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/paired_experiment_tests/figures
+
+SUCCESS
+
+====================================================================================================
+STEP 4: advisor 11-gene panel
+====================================================================================================
+====================================================================================================
+ADVISOR 11-GENE COMPARISON
+====================================================================================================
+Model: gimVI

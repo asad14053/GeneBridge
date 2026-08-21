@@ -63,7 +63,7 @@ cat("Gene mode:  ", gene_mode, "\n")
 # Paths
 ####################################################################################################
 
-project_root <- "/users/mjabin/projects/GeneBridge"
+project_root <- "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
 
 sce_dir <- file.path(
   project_root,

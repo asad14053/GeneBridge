@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/ENVI/run_envi_fold.py", line 2655, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/ENVI/run_envi_fold.py", line 1259, in main
+    raise RuntimeError(
+RuntimeError: Installed ENVI version is incompatible with template. Missing arguments: ['covet_batch_size']

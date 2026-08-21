@@ -1,0 +1,63 @@
+====================================================================================================
+Tangram three-fold benchmark
+====================================================================================================
+Job: 3976164
+Array job: 3976159
+Task/fold: 1
+Node: node06.hgcc.emory.edu
+Started: Fri Aug  7 02:48:21 EDT 2026
+
+Experiment: ex5_3
+Experiment label: Experiment 5.3
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+Tangram mode: clusters
+Epochs: 500
+Device: cpu
+Memory: 200G
+CPUs: 16
+Array policy: 1-3%3
+====================================================================================================
+Reference cluster label: cellType_broad_k
+Reference clusters: 8
+Removed small-cluster cells: 0
+====================================================================================================
+STANDARD Tangram 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5_3
+Experiment label: Experiment 5.3
+Fold: 1
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+Tangram reference input: (67707, 300)
+Tangram spatial input: (66148, 200)
+Held-out truth: (66148, 100)
+Tangram mode: clusters
+Cluster label: cellType_broad_k
+Density prior: uniform
+Normalization target: 10000.0
+Epochs: 500
+Device: cpu
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/tangram/fold_1
+====================================================================================================
+Score: 0.435, KL reg: 0.165
+Score: 0.663, KL reg: 0.006
+Score: 0.665, KL reg: 0.005
+Score: 0.665, KL reg: 0.005
+Score: 0.665, KL reg: 0.005
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/tangram/fold_1/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['ALDH1A1', 'NORAD', 'APOLD1', 'SOX2-OT', 'MYL9', 'CARTPT', 'FGFR3', 'PLEC', 'NDUFB2', 'ACY3']
+====================================================================================================
+SUCCESS
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/tangram/fold_1/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/tangram/fold_1/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/tangram/fold_1/fold_level_metrics.csv
+Training minutes: 0.66
+Projection minutes: 0.00
+Scale factor min/median/max: 0.0227441 9.38853 28.0056
+====================================================================================================
+
+====================================================================================================
+SUCCESS
+Experiment: ex5_3
+Fold: 1
+Completed: Fri Aug  7 02:54:18 EDT 2026
+====================================================================================================

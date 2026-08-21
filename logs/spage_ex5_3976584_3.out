@@ -1,0 +1,66 @@
+====================================================================================================
+SpaGE three-fold benchmark
+====================================================================================================
+Job: 3976584
+Array job: 3976584
+Task/fold: 3
+Node: node10.hgcc.emory.edu
+Started: Fri Aug  7 10:44:32 EDT 2026
+
+Experiment: ex5
+Experiment label: Experiment 5
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+
+Requested n_pv: 50
+Minimum reference detected cells: 10
+SpaGE internal nearest neighbors: 50
+
+Memory: 200G
+CPUs: 16
+Array policy: 1-3%3
+====================================================================================================
+====================================================================================================
+STANDARD SpaGE 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5
+Experiment label: Experiment 5
+Fold: 3
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Reference raw shape: (9897, 28907)
+Reference 300-gene cells retained: (9897, 300)
+Reference zero-library cells removed: 0
+Spatial observed input: (66148, 200)
+Held-out truth: (66148, 100)
+Alignment genes retained: 200 / 200
+Requested n_pv: 50
+n_pv passed to SpaGE: 50
+SpaGE genes_to_predict: 300
+Spatial normalization median library: 623.0
+Seed: 8670
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/fold_3
+====================================================================================================
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/fold_3/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['RASGRF2', 'CORT', 'ATP2B4', 'GAD2', 'TYROBP', 'CNDP1', 'MTURN', 'HMGB2', 'ACTA2', 'NRG1']
+
+====================================================================================================
+SUCCESS
+Model: SpaGE
+Experiment: ex5
+Fold: 3
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/fold_3/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/fold_3/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/fold_3/fold_level_metrics.csv
+Alignment genes: 200
+SpaGE prediction minutes: 0.33
+Count scale min/median/max: 7.61354e-05 0.00229436 0.0800747
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/fold_3/run_complete.flag
+====================================================================================================
+
+====================================================================================================
+SUCCESS
+Model: SpaGE
+Experiment: ex5
+Fold: 3
+Completed: Fri Aug  7 10:45:39 EDT 2026
+====================================================================================================

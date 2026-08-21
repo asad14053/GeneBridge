@@ -1,0 +1,4 @@
+Error: unexpected '[' in:
+"        x <- results[
+            ["
+Execution halted

@@ -1,0 +1,16 @@
+============================================================
+Huuki Visium Br8667 H5AD
+============================================================
+Job ID: 3840836
+Node: node07.hgcc.emory.edu
+Started: Mon Jul 27 13:29:44 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/02_make_huuki_visium_Br8667_h5ad.py
+============================================================
+Python 3.10.20
+Python executable: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+
+Starting script...
+Loading Huuki Visium:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad

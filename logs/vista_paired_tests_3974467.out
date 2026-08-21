@@ -1,0 +1,74 @@
+====================================================================================================
+VISTA paired t-tests and 5% TOST equivalence tests
+====================================================================================================
+Job ID: 3974467
+Node: node09.hgcc.emory.edu
+Started: Thu Aug  6 16:16:40 EDT 2026
+Memory: 160G
+CPUs: 16
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/paired_tests_vista_experiments.py
+====================================================================================================
+Python 3.9.23
+Python syntax check: PASSED
+
+==============================================================================================================
+LOADING VISTA METRICS
+==============================================================================================================
+Experiment 5 gene-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined/gene_level_metrics_300genes.csv
+Experiment 5: 300 unique genes; metrics=['SCC', 'SSIM', 'RMSE', 'MAE', 'JSD', 'Moran_error']
+Experiment 5 fold-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined/fold_level_metrics_3folds.csv
+Experiment 5: 3 fold rows; metrics=['NMI', 'ARI']
+Experiment 5.1 gene-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined/gene_level_metrics_300genes.csv
+Experiment 5.1: 300 unique genes; metrics=['SCC', 'SSIM', 'RMSE', 'MAE', 'JSD', 'Moran_error']
+Experiment 5.1 fold-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined/fold_level_metrics_3folds.csv
+Experiment 5.1: 3 fold rows; metrics=['NMI', 'ARI']
+Experiment 5.3 gene-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined/gene_level_metrics_300genes.csv
+Experiment 5.3: 300 unique genes; metrics=['SCC', 'SSIM', 'RMSE', 'MAE', 'JSD', 'Moran_error']
+Experiment 5.3 fold-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined/fold_level_metrics_3folds.csv
+Experiment 5.3: 3 fold rows; metrics=['NMI', 'ARI']
+
+==============================================================================================================
+GENE-LEVEL PAIRED TESTS
+==============================================================================================================
+
+==============================================================================================================
+FOLD-LEVEL NMI/ARI PAIRED TESTS
+==============================================================================================================
+
+==============================================================================================================
+GENE-LEVEL SUMMARY
+==============================================================================================================
+                comparison_label      metric  n_pairs  baseline_mean  comparison_mean  direction_adjusted_improvement_percent  paired_p_two_sided  paired_p_holm       tost_p  tost_p_holm  equivalent_within_5pct_holm
+  Experiment 5.1 vs Experiment 5         SCC      300       0.459905         0.469479                                2.081730        5.323964e-05   6.921153e-04 1.113674e-08 1.113674e-07                         True
+  Experiment 5.1 vs Experiment 5        SSIM      300       0.377575         0.387354                                2.589749        1.219487e-03   1.463385e-02 1.290805e-03 9.035633e-03                         True
+  Experiment 5.1 vs Experiment 5        RMSE      300       4.696265         4.906365                               -4.473777        6.486932e-02   5.189545e-01 4.138063e-01 1.000000e+00                        False
+  Experiment 5.1 vs Experiment 5         MAE      300       3.029412         3.202609                               -5.717199        9.087653e-02   6.361357e-01 5.841819e-01 1.000000e+00                        False
+  Experiment 5.1 vs Experiment 5         JSD      300       0.401842         0.391034                                2.689615        3.884598e-11   6.992276e-10 5.035659e-09 6.042791e-08                         True
+  Experiment 5.1 vs Experiment 5 Moran_error      300       0.154453         0.160958                               -4.211981        1.698931e-02   1.529038e-01 3.268475e-01 1.000000e+00                        False
+  Experiment 5.3 vs Experiment 5         SCC      300       0.459905         0.465659                                1.251226        1.494340e-02   1.494340e-01 1.053549e-12 1.369613e-11                         True
+  Experiment 5.3 vs Experiment 5        SSIM      300       0.377575         0.382482                                1.299552        1.168344e-01   6.361357e-01 5.357417e-06 4.285934e-05                         True
+  Experiment 5.3 vs Experiment 5        RMSE      300       4.696265         4.903864                               -4.420519        1.056805e-01   6.361357e-01 4.158395e-01 1.000000e+00                        False
+  Experiment 5.3 vs Experiment 5         MAE      300       3.029412         3.209139                               -5.932744        1.129853e-01   6.361357e-01 5.985872e-01 1.000000e+00                        False
+  Experiment 5.3 vs Experiment 5         JSD      300       0.401842         0.394167                                1.910030        1.621182e-06   2.468420e-05 2.404669e-14 3.366536e-13                         True
+  Experiment 5.3 vs Experiment 5 Moran_error      300       0.154453         0.162192                               -5.010754        5.178193e-03   5.696012e-02 5.024093e-01 1.000000e+00                        False
+Experiment 5.3 vs Experiment 5.1         SCC      300       0.469479         0.465659                               -0.813568        3.288969e-05   4.604556e-04 1.167923e-63 1.985469e-62                         True
+Experiment 5.3 vs Experiment 5.1        SSIM      300       0.387354         0.382482                               -1.257627        1.542763e-06   2.468420e-05 4.285257e-37 6.856411e-36                         True
+Experiment 5.3 vs Experiment 5.1        RMSE      300       4.906365         4.903864                                0.050978        9.518174e-01   1.000000e+00 5.752221e-09 6.327443e-08                         True
+Experiment 5.3 vs Experiment 5.1         MAE      300       3.202609         3.209139                               -0.203888        7.320018e-01   1.000000e+00 9.021688e-15 1.353253e-13                         True
+Experiment 5.3 vs Experiment 5.1         JSD      300       0.391034         0.394167                               -0.801133        6.978236e-07   1.186300e-05 5.198066e-81 9.356518e-80                         True
+Experiment 5.3 vs Experiment 5.1 Moran_error      300       0.160958         0.162192                               -0.766488        3.209804e-01   9.629413e-01 4.280594e-08 3.852534e-07                         True
+
+==============================================================================================================
+SAVED OUTPUTS
+==============================================================================================================
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/vista_experiments/vista_gene_level_paired_ttest_tost.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/vista_experiments/vista_fold_level_nmi_ari_paired_ttest_tost.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/vista_experiments/vista_pairing_audit.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/vista_experiments/vista_statistical_test_source_manifest.json
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/vista_experiments/vista_paired_test_report.txt
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/vista_experiments/vista_gene_level_relative_difference_forest.png
+
+Completed successfully.
+
+Completed: Thu Aug  6 16:17:04 EDT 2026

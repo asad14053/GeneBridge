@@ -1,0 +1,533 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import re
+import time
+
+import anndata as ad
+import numpy as np
+import pandas as pd
+from scipy import sparse
+
+
+ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
+
+METADATA = ROOT / "data/metadata/patient_xenium_visium_24_common_with_dx.csv"
+
+N24_H5AD = (
+    ROOT
+    / "data/processed/xenium/xenium_N24_imputation_ready.h5ad"
+)
+
+EX1_MANIFEST = ROOT / "data/metadata/imputation_ex1_ntc_samples.csv"
+EX2_MANIFEST = ROOT / "data/metadata/imputation_ex2_scz_samples.csv"
+
+EX1_DIR = ROOT / "data/processed/imputation_full/ex1_ntc/targets"
+EX2_DIR = ROOT / "data/processed/imputation_full/ex2_scz/targets"
+
+SUMMARY_CSV = (
+    ROOT
+    / "data/metadata/imputation_ex1_ex2_target_summary.csv"
+)
+
+EX1_DIR.mkdir(parents=True, exist_ok=True)
+EX2_DIR.mkdir(parents=True, exist_ok=True)
+
+MIN_EXPECTED_CELLS = 10000
+
+
+def patient_number(x):
+    m = re.search(r"(\d+)", str(x))
+    return int(m.group(1)) if m else 999999
+
+
+print("=" * 100, flush=True)
+print("ULTRAFAST Ex1 + Ex2 TARGET PREPARATION", flush=True)
+print("=" * 100, flush=True)
+
+
+# ============================================================
+# 1. Metadata
+# ============================================================
+
+meta = pd.read_csv(METADATA)
+
+meta["patient_id"] = (
+    meta["patient_id"]
+    .astype(str)
+    .str.strip()
+)
+
+meta["Dx"] = (
+    meta["Dx"]
+    .astype(str)
+    .str.strip()
+    .str.upper()
+)
+
+# Br6432 Xenium is corrupted; intentionally excluded.
+meta = meta.loc[
+    meta["patient_id"].astype(str) != "Br6432"
+].copy()
+
+ntc = meta.loc[meta["Dx"] == "NTC"].copy()
+scz = meta.loc[meta["Dx"] == "SCZ"].copy()
+
+ntc["_order"] = ntc["patient_index"].map(patient_number)
+scz["_order"] = scz["patient_index"].map(patient_number)
+
+ntc = ntc.sort_values("_order").drop(columns="_order")
+scz = scz.sort_values("_order").drop(columns="_order")
+
+if len(ntc) != 11:
+    raise RuntimeError(
+        f"Expected 11 usable NTC donors after excluding Br6432; found {len(ntc)}"
+    )
+
+if len(scz) != 12:
+    raise RuntimeError(f"Expected 12 SCZ; found {len(scz)}")
+
+ntc.to_csv(EX1_MANIFEST, index=False)
+scz.to_csv(EX2_MANIFEST, index=False)
+
+print("\nEx1 NTC donors:")
+print(ntc[["patient_index", "patient_id"]].to_string(index=False))
+
+print("\nEx2 SCZ donors:")
+print(scz[["patient_index", "patient_id"]].to_string(index=False))
+
+
+# ============================================================
+# 2. Open H5AD WITHOUT loading full object
+# ============================================================
+
+print("\n" + "=" * 100, flush=True)
+print("OPENING N24 H5AD IN BACKED MODE", flush=True)
+print("=" * 100, flush=True)
+
+t = time.time()
+
+adata = ad.read_h5ad(
+    N24_H5AD,
+    backed="r",
+)
+
+print(
+    f"Opened metadata in {time.time() - t:.2f} sec",
+    flush=True,
+)
+
+print("Shape :", adata.shape, flush=True)
+print("Layers:", list(adata.layers.keys()), flush=True)
+
+if "counts" not in adata.layers:
+    raise RuntimeError("layers['counts'] missing")
+
+if "spatial" not in adata.obsm:
+    raise RuntimeError("obsm['spatial'] missing")
+
+if adata.n_vars != 300:
+    raise RuntimeError(
+        f"Expected 300 genes, found {adata.n_vars}"
+    )
+
+
+# ============================================================
+# 3. LOAD ONLY COUNTS ONCE
+# ============================================================
+
+print("\n" + "=" * 100, flush=True)
+print("LOADING ONLY layers['counts'] INTO RAM", flush=True)
+print("This is one sequential read, not 24 disk slices.", flush=True)
+print("=" * 100, flush=True)
+
+t = time.time()
+
+backed_counts = adata.layers["counts"]
+
+if hasattr(backed_counts, "to_memory"):
+    counts_all = backed_counts.to_memory()
+else:
+    counts_all = backed_counts[:]
+
+if sparse.issparse(counts_all):
+    counts_all = counts_all.tocsr()
+
+print(
+    f"Counts loaded in {time.time() - t:.2f} sec",
+    flush=True,
+)
+
+print(
+    "Counts type:",
+    type(counts_all),
+    flush=True,
+)
+
+print(
+    "Counts shape:",
+    counts_all.shape,
+    flush=True,
+)
+
+if sparse.issparse(counts_all):
+    print(
+        f"Counts nnz: {counts_all.nnz:,}",
+        flush=True,
+    )
+
+
+# ============================================================
+# 4. Load small metadata/spatial arrays
+# ============================================================
+
+print("\nLoading spatial coordinates...", flush=True)
+
+t = time.time()
+
+spatial_all = np.asarray(
+    adata.obsm["spatial"]
+).copy()
+
+print(
+    f"Spatial loaded in {time.time() - t:.2f} sec",
+    flush=True,
+)
+
+brnum = (
+    adata.obs["BrNum"]
+    .astype(str)
+    .to_numpy()
+)
+
+dx_all = (
+    adata.obs["Dx"]
+    .astype(str)
+    .str.upper()
+    .to_numpy()
+)
+
+obs_all = adata.obs.copy()
+var_all = adata.var.copy()
+
+print("Metadata ready.", flush=True)
+
+# We no longer need the backed file.
+adata.file.close()
+del adata
+del backed_counts
+
+
+# ============================================================
+# 5. Precompute donor indices ONCE
+# ============================================================
+
+print("\n" + "=" * 100, flush=True)
+print("DONOR CELL INDEX", flush=True)
+print("=" * 100, flush=True)
+
+donor_indices = {}
+
+for donor in meta["patient_id"].astype(str):
+
+    idx = np.flatnonzero(brnum == donor)
+
+    donor_indices[donor] = idx
+
+    print(
+        f"{donor}: {len(idx):,} cells",
+        flush=True,
+    )
+
+
+# ============================================================
+# 6. Extract targets entirely from RAM
+# ============================================================
+
+summary_rows = []
+
+
+def extract_group(experiment, diagnosis, df, out_dir):
+
+    ready = 0
+    blocked = 0
+
+    print("\n" + "=" * 100, flush=True)
+    print(f"{experiment.upper()} | {diagnosis}", flush=True)
+    print("=" * 100, flush=True)
+
+    for i, row in enumerate(
+        df.itertuples(index=False),
+        start=1,
+    ):
+
+        donor = str(row.patient_id)
+        gsm = str(row.xenium_gsm)
+
+        idx = donor_indices[donor]
+        n_cells = len(idx)
+
+        print(
+            f"\n[{i:02d}/12] {donor} | "
+            f"cells={n_cells:,}",
+            flush=True,
+        )
+
+        # --------------------------------------------------------
+        # Protect against broken Br6432 NTC object
+        # --------------------------------------------------------
+
+        if n_cells < MIN_EXPECTED_CELLS:
+
+            print(
+                "  BLOCKED_LOW_CELLS",
+                flush=True,
+            )
+
+            summary_rows.append({
+                "experiment": experiment,
+                "patient_id": donor,
+                "Dx": diagnosis,
+                "xenium_gsm": gsm,
+                "status": "BLOCKED_LOW_CELLS",
+                "n_cells": n_cells,
+                "n_genes": 300,
+                "target_h5ad": "",
+            })
+
+            blocked += 1
+            continue
+
+        # Diagnosis in the original N24 object is "unknown"
+        # for all donors. The authoritative diagnosis comes from
+        # patient_xenium_visium_24_common_with_dx.csv.
+        donor_dx_original = sorted(
+            set(dx_all[idx])
+        )
+
+        print(
+            f"  Original N24 Dx: {donor_dx_original} "
+            f"| assigned Dx: {diagnosis}",
+            flush=True,
+        )
+
+        # --------------------------------------------------------
+        # FAST: this is now an in-memory sparse slice
+        # --------------------------------------------------------
+
+        t = time.time()
+
+        counts = counts_all[idx, :].copy()
+
+        coords = spatial_all[idx, :].copy()
+
+        obs = obs_all.iloc[idx].copy()
+
+        # Preserve original N24 diagnosis label.
+        if "Dx" in obs.columns:
+            obs["Dx_original"] = obs["Dx"].astype(str)
+
+        # Assign authoritative diagnosis from the validated
+        # 24-donor metadata used to define Ex1 and Ex2.
+        obs["Dx"] = diagnosis
+
+        print(
+            f"  RAM extraction: "
+            f"{time.time() - t:.2f} sec",
+            flush=True,
+        )
+
+        # --------------------------------------------------------
+        # Production AnnData
+        # --------------------------------------------------------
+
+        target = ad.AnnData(
+            X=counts,
+            obs=obs,
+            var=var_all.copy(),
+        )
+
+        target.layers["counts"] = counts.copy()
+
+        target.obsm["spatial"] = coords
+
+        target.uns["production_imputation"] = {
+            "experiment": experiment,
+            "diagnosis": diagnosis,
+            "reference": "all_10_Huuki_snRNA",
+            "target_donor": donor,
+            "gene_holdout": False,
+            "n_xenium_input_genes": 300,
+            "X_scale": "raw_counts",
+            "spatial_key": "spatial",
+        }
+
+        if sparse.issparse(counts):
+
+            min_val = (
+                min(0.0, float(counts.data.min()))
+                if counts.nnz
+                else 0.0
+            )
+
+            max_val = (
+                float(counts.data.max())
+                if counts.nnz
+                else 0.0
+            )
+
+        else:
+
+            min_val = float(np.min(counts))
+            max_val = float(np.max(counts))
+
+        if min_val < 0:
+            raise RuntimeError(
+                f"{donor}: negative counts detected"
+            )
+
+        if not np.isfinite(coords).all():
+            raise RuntimeError(
+                f"{donor}: invalid spatial coordinates"
+            )
+
+        print(
+            f"  Shape: {target.shape}",
+            flush=True,
+        )
+
+        print(
+            f"  Counts range: {min_val} – {max_val}",
+            flush=True,
+        )
+
+        # --------------------------------------------------------
+        # Write
+        # --------------------------------------------------------
+
+        out_file = (
+            out_dir
+            / f"spatial_data_xenium_{donor}_{experiment}.h5ad"
+        )
+
+        print(
+            f"  Writing: {out_file.name}",
+            flush=True,
+        )
+
+        t = time.time()
+
+        target.write_h5ad(
+            out_file,
+            compression="lzf",
+        )
+
+        print(
+            f"  Write time: "
+            f"{time.time() - t:.2f} sec",
+            flush=True,
+        )
+
+        print(
+            f"  DONE {donor}",
+            flush=True,
+        )
+
+        summary_rows.append({
+            "experiment": experiment,
+            "patient_id": donor,
+            "Dx": diagnosis,
+            "xenium_gsm": gsm,
+            "status": "READY",
+            "n_cells": n_cells,
+            "n_genes": 300,
+            "x_scale": "raw_counts",
+            "spatial_available": True,
+            "target_h5ad": str(out_file),
+        })
+
+        ready += 1
+
+        del target
+        del counts
+        del coords
+        del obs
+
+    print(
+        f"\n{experiment}: "
+        f"READY={ready}/12 | BLOCKED={blocked}/12",
+        flush=True,
+    )
+
+    return ready, blocked
+
+
+# ============================================================
+# 7. Ex1 NTC
+# ============================================================
+
+ex1_ready, ex1_blocked = extract_group(
+    experiment="ex1_ntc",
+    diagnosis="NTC",
+    df=ntc,
+    out_dir=EX1_DIR,
+)
+
+
+# ============================================================
+# 8. Ex2 SCZ
+# ============================================================
+
+ex2_ready, ex2_blocked = extract_group(
+    experiment="ex2_scz",
+    diagnosis="SCZ",
+    df=scz,
+    out_dir=EX2_DIR,
+)
+
+
+# ============================================================
+# 9. Summary
+# ============================================================
+
+summary = pd.DataFrame(summary_rows)
+
+summary.to_csv(
+    SUMMARY_CSV,
+    index=False,
+)
+
+print("\n" + "=" * 100, flush=True)
+print("FINAL SUMMARY", flush=True)
+print("=" * 100, flush=True)
+
+print(
+    summary[
+        [
+            "experiment",
+            "patient_id",
+            "Dx",
+            "status",
+            "n_cells",
+            "n_genes",
+        ]
+    ].to_string(index=False),
+    flush=True,
+)
+
+print(
+    f"\nEx1 NTC: READY={ex1_ready}/12 "
+    f"| BLOCKED={ex1_blocked}/12",
+    flush=True,
+)
+
+print(
+    f"Ex2 SCZ: READY={ex2_ready}/12 "
+    f"| BLOCKED={ex2_blocked}/12",
+    flush=True,
+)
+
+print("\nSummary CSV:")
+print(SUMMARY_CSV)
+
+print("\nDONE", flush=True)

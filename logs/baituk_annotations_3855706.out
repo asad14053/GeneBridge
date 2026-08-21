@@ -1,0 +1,10 @@
+============================================================
+Extract Baituk published cell annotations
+============================================================
+Job ID: 3855706
+Node: node01.hgcc.emory.edu
+Started: Fri Jul 31 10:01:54 EDT 2026
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/04_baituk_celltype_annotation/01_extract_conos_annotations.R
+============================================================
+Rscript (R) version 4.5.3 (2026-03-11)

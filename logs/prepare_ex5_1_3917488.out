@@ -1,0 +1,76 @@
+====================================================================================================
+Experiment 5.1 preflight and manifest
+====================================================================================================
+Job ID: 3917488
+Node: node06.hgcc.emory.edu
+Started: Mon Aug  3 13:32:12 EDT 2026
+Memory: 120G
+CPUs: 8
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/prepare_ex5_1_manifest.py
+====================================================================================================
+Python 3.10.20
+Python syntax check: PASSED
+
+====================================================================================================
+EXPERIMENT 5.1 PREFLIGHT
+====================================================================================================
+Reference:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+
+Target:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista_qc.h5ad
+
+Fold directory:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100
+
+====================================================================================================
+REFERENCE VALIDATION
+====================================================================================================
+Reference shape [cells x genes]: (77604, 36601)
+Reference obs columns: ['Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch']
+Reference layers: ['logcounts']
+Unique cell IDs: True
+Unique gene names: True
+Reference X classification: likely_raw_counts
+Unique brains: 10
+Unique samples: 19
+Includes Br8667: True
+
+====================================================================================================
+TARGET VALIDATION
+====================================================================================================
+Target shape [cells x genes]: (66164, 300)
+Target layers: []
+Target obsm keys: ['spatial']
+Unique cell IDs: True
+Unique gene names: True
+Target X classification: likely_raw_counts
+
+====================================================================================================
+FOLD VALIDATION
+====================================================================================================
+Fold 1: observed=200, heldout=100, overlap=0, pass=True
+Fold 2: observed=200, heldout=100, overlap=0, pass=True
+Fold 3: observed=200, heldout=100, overlap=0, pass=True
+
+====================================================================================================
+FINAL RESULT
+====================================================================================================
+Reference X: likely_raw_counts
+Target X: likely_raw_counts
+Reference brains: 10
+Reference samples: 19
+Includes Br8667: True
+Target genes: 300
+Target genes missing from reference: 0
+All fold checks pass: True
+OVERALL PASS: True
+
+Saved:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/experiment_5_1/input_validation/experiment_5_1_manifest.json
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/experiment_5_1/input_validation/fold_validation.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/experiment_5_1/input_validation/reference_cohort_summary.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/experiment_5_1/input_validation/experiment_5_1_preflight_report.txt
+
+Completed: Mon Aug  3 13:32:33 EDT 2026

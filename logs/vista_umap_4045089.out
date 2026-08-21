@@ -1,0 +1,24 @@
+============================================================
+VISTA shared-basis UMAP
+Job: 4045089
+Started: Thu Aug 13 18:39:01 EDT 2026
+============================================================
+====================================================================================================
+VISTA SHARED-BASIS UMAP
+====================================================================================================
+
+Experiment 5
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Experiment 5.1
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Experiment 5.3
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  shape: (66148, 300)
+  layers: []

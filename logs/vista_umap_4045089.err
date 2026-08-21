@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/09_umap_vista_across_experiments.py", line 1567, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/09_umap_vista_across_experiments.py", line 1011, in main
+    ) = load_count_matrix(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/09_umap_vista_across_experiments.py", line 429, in load_count_matrix
+    raise KeyError(
+KeyError: "'count_scale' layer missing from:\n/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad"

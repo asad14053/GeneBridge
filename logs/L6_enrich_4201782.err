@@ -1,0 +1,8 @@
+Downloading gene sets (first use only, may take a few minutes)...
+Warning message:
+In file.rename(tmp_path, zip_path) :
+  cannot rename file '/tmp/RtmpYlYVkp/filed466c7c50c389.zip' to '/beegfs/home/mjabin/.cache/R/msigdbr/msigdb.2026.1.zip', reason 'Invalid cross-device link'
+Error: unexpected '[' in:
+"        x <- results[
+            ["
+Execution halted

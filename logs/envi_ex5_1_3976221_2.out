@@ -1,0 +1,33 @@
+====================================================================================================
+ENVI three-fold benchmark
+====================================================================================================
+Job: 3976226
+Array job: 3976221
+Task/fold: 2
+Node: node02.hgcc.emory.edu
+Started: Fri Aug  7 04:10:59 EDT 2026
+
+Experiment: ex5_1
+Experiment label: Experiment 5.1
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+
+Training steps: 16000
+Batch size: 128
+num_HVG: 2048
+num_cov_genes: 64
+k_nearest: 8
+covet_batch_size: 256
+spatial_dist: pois
+sc_dist: nb
+stable_eps: 1e-6
+
+JAX backend: cpu
+Memory: 200G
+CPUs: 16
+Array policy: 1-3%3
+====================================================================================================
+scenvi: version-not-exposed
+JAX: 0.4.30
+JAX backend: cpu
+JAX devices: [CpuDevice(id=0)]

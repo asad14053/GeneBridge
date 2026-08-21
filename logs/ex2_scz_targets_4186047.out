@@ -1,0 +1,22 @@
+============================================================
+Experiment 2 — Extract SCZ Xenium targets
+Job ID: 4186047
+Host: node03.hgcc.emory.edu
+Started: Wed Aug 19 19:07:30 EDT 2026
+============================================================
+====================================================================================================
+EXPERIMENT 2 — EXTRACT 12 SCZ XENIUM TARGETS
+====================================================================================================
+Input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_imputation_ready.h5ad
+
+Manifest:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/imputation_ex2_scz_samples.csv
+
+SCZ donors:
+['Br2039', 'Br5588', 'Br5746', 'Br8772', 'Br1139', 'Br5973', 'Br6496', 'Br2421', 'Br6032', 'Br5373', 'Br5590', 'Br6437']
+
+Reading N24 Xenium object...
+N24 shape: (1224455, 300)
+Layers: ['counts', 'log1p_norm']
+obsm: ['spatial']

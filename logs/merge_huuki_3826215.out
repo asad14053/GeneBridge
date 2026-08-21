@@ -1,0 +1,66 @@
+========================================
+Job ID: 3826215
+Node: node02.hgcc.emory.edu
+Started: Thu Jul 23 16:21:56 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/snrnaseq_branch/verify_merged_huuki_full_h5ad.py
+========================================
+Python 3.10.20
+
+Starting Python script...
+
+======================================================================
+VERIFY HUUKI CHUNKS AND MERGED H5AD
+======================================================================
+Chunk directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_h5ad_chunks_allgenes_full_maxcells0_chunk200
+Merged H5AD: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Expected chunks: 389
+Expected cells: 77604
+Expected genes: 36601
+
+Number of chunks found: 389
+First chunk: huuki_allgenes_chunk_0001.h5ad
+Last chunk: huuki_allgenes_chunk_0389.h5ad
+
+======================================================================
+STEP 1: VERIFYING SOURCE CHUNKS
+======================================================================
+First chunk shape: (200, 36601)
+Checked 50/389 chunks | cells so far: 10000
+Checked 100/389 chunks | cells so far: 20000
+Checked 150/389 chunks | cells so far: 30000
+Checked 200/389 chunks | cells so far: 40000
+Checked 250/389 chunks | cells so far: 50000
+Checked 300/389 chunks | cells so far: 60000
+Checked 350/389 chunks | cells so far: 70000
+Checked 389/389 chunks | cells so far: 77604
+
+Total cells across chunks: 77604
+
+PASS: chunk count is correct
+PASS: total chunk cell count is correct
+PASS: all chunks have the same genes/order
+PASS: no duplicated cell IDs across chunks
+
+======================================================================
+STEP 2: VERIFYING MERGED H5AD
+======================================================================
+AnnData object with n_obs × n_vars = 77604 × 36601 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad'
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    layers: 'logcounts'
+Merged shape: (77604, 36601)
+
+======================================================================
+ALL CHECKS PASSED
+======================================================================
+Chunks: 389
+Cells in chunks: 77604
+Cells in merged: 77604
+Genes: 36601
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+======================================================================
+
+========================================
+Completed successfully
+Finished: Thu Jul 23 16:27:16 EDT 2026
+========================================

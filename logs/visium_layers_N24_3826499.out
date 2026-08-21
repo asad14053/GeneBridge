@@ -1,0 +1,201 @@
+========================================
+Job ID: 3826499
+Node: node01.hgcc.emory.edu
+Started: Thu Jul 23 19:44:44 EDT 2026
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: src/visium_branch/03_annotation/01_visualize_matched_N24_visium_layers.R
+========================================
+Rscript (R) version 4.5.3 (2026-03-11)
+
+====================================================================================================
+Loading Visium RDS 
+====================================================================================================
+Object class:
+[1] "SpatialExperiment"
+attr(,"package")
+[1] "SpatialExperiment"
+
+Object summary:
+class: SpatialExperiment 
+dim: 36601 279806 
+metadata(1): dx_df
+assays(2): counts logcounts
+rownames(36601): ENSG00000243485 ENSG00000237613 ... ENSG00000278817
+  ENSG00000277196
+rowData names(7): source type ... gene_type gene_search
+colnames(279806): AAACAACGAATAGTTC-1_V12F14-053_A1
+  AAACAAGTATCTCCCA-1_V12F14-053_A1 ... TTGTTTGTATTACACG-1_V13F27-336_D1
+  TTGTTTGTGTAAATTC-1_V13F27-336_D1
+colData names(69): sample_id in_tissue ... vasc_pos sizeFactor
+reducedDimNames(3): 10x_pca 10x_tsne 10x_umap
+mainExpName: NULL
+altExpNames(0):
+spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
+imgData names(4): sample_id image_id data scaleFactor
+
+====================================================================================================
+Detecting donor and layer columns 
+====================================================================================================
+
+Available colData columns:
+ [1] "sample_id"               "in_tissue"              
+ [3] "array_row"               "array_col"              
+ [5] "X10x_graphclust"         "X10x_kmeans_10_clusters"
+ [7] "X10x_kmeans_2_clusters"  "X10x_kmeans_3_clusters" 
+ [9] "X10x_kmeans_4_clusters"  "X10x_kmeans_5_clusters" 
+[11] "X10x_kmeans_6_clusters"  "X10x_kmeans_7_clusters" 
+[13] "X10x_kmeans_8_clusters"  "X10x_kmeans_9_clusters" 
+[15] "key"                     "sum_umi"                
+[17] "sum_gene"                "expr_chrM"              
+[19] "expr_chrM_ratio"         "spg_NDAPI"              
+[21] "spg_PDAPI"               "spg_IDAPI"              
+[23] "spg_CNDAPI"              "spg_NNeuN"              
+[25] "spg_PNeuN"               "spg_INeuN"              
+[27] "spg_CNNeuN"              "spg_NWFA"               
+[29] "spg_PWFA"                "spg_IWFA"               
+[31] "spg_CNWFA"               "spg_NClaudin5"          
+[33] "spg_PClaudin5"           "spg_IClaudin5"          
+[35] "spg_CNClaudin5"          "BrNumbr"                
+[37] "dx"                      "DX"                     
+[39] "sex"                     "age"                    
+[41] "rin"                     "slide_id"               
+[43] "lot_num"                 "brnum"                  
+[45] "sample_label"            "outlier_cat"            
+[47] "removed_spots"           "PRECAST_02"             
+[49] "PRECAST_03"              "PRECAST_04"             
+[51] "PRECAST_05"              "PRECAST_06"             
+[53] "PRECAST_07"              "PRECAST_08"             
+[55] "PRECAST_09"              "PRECAST_10"             
+[57] "PRECAST_11"              "PRECAST_12"             
+[59] "PRECAST_13"              "PRECAST_14"             
+[61] "PRECAST_15"              "PRECAST_16"             
+[63] "fnl_spd"                 "spd_label"              
+[65] "pnn_pos"                 "neuropil_pos"           
+[67] "neun_pos"                "vasc_pos"               
+[69] "sizeFactor"             
+
+Detected donor column:
+brnum 
+
+Detected layer column:
+PRECAST_07 
+
+Detected BrNum examples:
+ [1] "Br2719" "Br5182" "Br5367" "Br1526" "Br1958" "Br2039" "Br2378" "Br5373"
+ [9] "Br5472" "Br5789" "Br6432" "Br1113" "Br8042" "Br8537" "Br8514" "Br5590"
+[17] "Br5636" "Br2720" "Br6257" "Br5400" "Br5395" "Br2242" "Br5888" "Br6560"
+[25] "Br6437" "Br6297" "Br5436" "Br5622" "Br5599" "Br5588"
+
+====================================================================================================
+Subsetting Visium to matched Xenium N24 donors 
+====================================================================================================
+
+Match report:
+                            metric value
+1 n_expected_xenium_matched_brnums    24
+2            n_found_in_visium_rds    24
+3        n_missing_from_visium_rds     0
+4   n_extra_visium_brnums_not_used    39
+
+Found matched BrNums:
+ [1] "Br1113" "Br1139" "Br2039" "Br2421" "Br2719" "Br5314" "Br5373" "Br5400"
+ [9] "Br5436" "Br5588" "Br5590" "Br5622" "Br5639" "Br5746" "Br5931" "Br5973"
+[17] "Br6032" "Br6389" "Br6432" "Br6437" "Br6496" "Br8433" "Br8667" "Br8772"
+
+Missing BrNums:
+character(0)
+
+Subset object:
+class: SpatialExperiment 
+dim: 36601 109353 
+metadata(1): dx_df
+assays(2): counts logcounts
+rownames(36601): ENSG00000243485 ENSG00000237613 ... ENSG00000278817
+  ENSG00000277196
+rowData names(7): source type ... gene_type gene_search
+colnames(109353): AAACAACGAATAGTTC-1_V12F14-053_A1
+  AAACAAGTATCTCCCA-1_V12F14-053_A1 ... TTGTTTGTATTACACG-1_V13F27-336_D1
+  TTGTTTGTGTAAATTC-1_V13F27-336_D1
+colData names(70): sample_id in_tissue ... sizeFactor BrNum_matched
+reducedDimNames(3): 10x_pca 10x_tsne 10x_umap
+mainExpName: NULL
+altExpNames(0):
+spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
+imgData names(4): sample_id image_id data scaleFactor
+
+====================================================================================================
+Adding standardized layer annotation 
+====================================================================================================
+
+Layer counts after matching:
+
+   L1/M    L2/3    L3/4      L5      L6    WMtz      WM Unknown 
+  15761   15165   36388   13781   15205    6724    6329       0 
+
+====================================================================================================
+Saving matched N24 Visium layer annotation tables 
+====================================================================================================
+Saved tables to:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/tables 
+
+====================================================================================================
+Plotting layer proportions by matched BrNum 
+====================================================================================================
+
+====================================================================================================
+Plotting matched N24 Visium layer map panel 
+====================================================================================================
+
+====================================================================================================
+Plotting one layer map per matched BrNum 
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br1113_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br1139_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br2039_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br2421_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br2719_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5314_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5373_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5400_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5436_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5588_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5590_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5622_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5639_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5746_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5931_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br5973_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br6032_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br6389_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br6432_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br6437_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br6496_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br8433_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br8667_matched_visium_layer_map.png 
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps/Br8772_matched_visium_layer_map.png 
+
+====================================================================================================
+Saving matched N24 Visium RDS 
+====================================================================================================
+Saved RDS:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.rds 
+
+====================================================================================================
+Done 
+====================================================================================================
+Matched BrNums found: 24 
+Matched BrNums missing: 0 
+
+Main outputs:
+RDS:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.rds 
+Tables:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/tables 
+Figures:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures 
+Per-sample figures:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/figures/per_sample_layer_maps 
+========================================
+Completed successfully
+Finished: Thu Jul 23 19:49:50 EDT 2026
+========================================

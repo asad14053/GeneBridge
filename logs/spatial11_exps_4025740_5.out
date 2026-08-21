@@ -1,0 +1,23 @@
+============================================================
+11-gene spatial panel across experiments
+Method: spage
+Job: 4025745_5
+Node: node10.hgcc.emory.edu
+Started: Wed Aug 12 15:38:47 EDT 2026
+============================================================
+====================================================================================================
+11-GENE SPATIAL PANEL ACROSS EXPERIMENTS
+====================================================================================================
+Method: SpaGE
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/combined_v2/oof_predictions_300genes.h5ad
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/spage/combined_v2/oof_predictions_300genes.h5ad
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/spage/combined_v2/oof_predictions_300genes.h5ad
+
+DONE
+PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_experiments/spage/spage_spatial_11genes_across_experiments.png
+PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_experiments/spage/spage_spatial_11genes_across_experiments.pdf
+
+============================================================
+Completed: Wed Aug 12 15:39:25 EDT 2026
+Method: spage
+============================================================

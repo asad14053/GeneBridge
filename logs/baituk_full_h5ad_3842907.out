@@ -1,0 +1,17 @@
+============================================================
+Create full Baituk snRNA-seq H5AD
+============================================================
+Job ID: 3842907
+Node: node01.hgcc.emory.edu
+Started: Mon Jul 27 21:36:06 EDT 2026
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/03_batiuk_huuki_gene_overlap/03_make_baituk_full_h5ad.R
+============================================================
+Rscript (R) version 4.5.3 (2026-03-11)
+Matrix = 1.7.5
+SingleCellExperiment = 1.32.0
+SummarizedExperiment = 1.40.0
+S4Vectors = 0.48.0
+anndataR = 1.0.2
+
+Starting Baituk H5AD creation...

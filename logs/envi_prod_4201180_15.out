@@ -1,0 +1,169 @@
+====================================================================================================
+ENVI PRODUCTION
+Array job : 4201180
+Task      : 15
+Donor     : Br5973
+Dx        : SCZ
+Experiment: ex2_scz
+Memory    : 200G
+CPUs      : 16
+Started   : Thu Aug 20 16:44:34 EDT 2026
+====================================================================================================
+
+====================================================================================================
+IMPORT ENVI
+====================================================================================================
+ENVI location: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scenvi/ENVI.py
+JAX devices: [CpuDevice(id=0)]
+
+====================================================================================================
+PRODUCTION ENVI CONFIGURATION
+====================================================================================================
+Experiment       : ex2_scz
+Donor            : Br5973
+Target           : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex2_scz/targets/spatial_data_xenium_Br5973_ex2_scz.h5ad
+Reference        : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Output           : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex2_scz/envi/Br5973
+Training steps   : 16000
+Batch size       : 128
+num_HVG          : 2048
+num_cov_genes    : 64
+k_nearest        : 8
+spatial_dist     : pois
+sc_dist          : nb
+stable_eps       : 1e-06
+Seed             : 8682
+
+====================================================================================================
+LOAD XENIUM TARGET
+====================================================================================================
+Target shape: (41895, 300)
+Layers: ['counts']
+obsm: ['spatial']
+Cells: 41,895
+Measured genes: 300
+Observed 300-gene library range: 1.0 – 1609.0
+
+====================================================================================================
+LOAD HUUKI REFERENCE
+====================================================================================================
+Reference backed shape: (77604, 36601)
+Reference layers: ['logcounts']
+Loaded reference: (77604, 36601)
+Reference load seconds: 72.48
+
+====================================================================================================
+GENE OVERLAP AUDIT
+====================================================================================================
+Xenium genes: 300
+Xenium genes in Huuki: 300
+Missing: 0
+
+====================================================================================================
+REFERENCE GENE QC
+====================================================================================================
+Removing all-zero reference genes: 1614
+Reference cells retained: 77,604
+Reference genes retained: 34,987
+Reference-only genes: 34,687
+Reference cells removed: 0
+Reference genes removed: 1614
+
+====================================================================================================
+PREPARE ENVI METADATA
+====================================================================================================
+Spatial ENVI input: (41895, 300)
+Huuki ENVI input: (77604, 34987)
+
+====================================================================================================
+INITIALIZE ENVI
+====================================================================================================
+Measured spatial genes: 300
+Protected reference-only genes: 34,687
+DEBUG
+Computing Niche Covariance Matrices
+Initializing CVAE
+Finished Initializing ENVI
+Initialization seconds: 55.03
+
+====================================================================================================
+POST-INITIALIZATION AUDIT
+====================================================================================================
+ENVI retained spatial genes: 300
+ENVI retained scRNA genes: 34,987
+Protected imputation genes retained: 34,687
+
+====================================================================================================
+TRAIN ENVI
+====================================================================================================
+Training seconds: 6105.13
+Spatial latent shape: (41895, 512)
+
+====================================================================================================
+IMPUTE FULL TRANSCRIPTOME
+====================================================================================================
+Finished imputing missing gene for spatial data! See 'imputation' in obsm of ENVI.spatial_data
+Prediction seconds: 28.67
+
+====================================================================================================
+NATIVE ENVI OUTPUT
+====================================================================================================
+Native output shape: (41895, 34987)
+
+====================================================================================================
+COUNT-SCALE CALIBRATION
+====================================================================================================
+Scale-factor median: 1.8919239422681606
+Scale-factor range: 0.1579892187933903 – 25.85337882959615
+
+====================================================================================================
+RESTORE MEASURED XENIUM COUNTS
+====================================================================================================
+Measured Xenium genes restored: 300
+Imputed genes: 34687
+Final count-scale shape: (41895, 34987)
+
+====================================================================================================
+CREATE log1p LAYER
+====================================================================================================
+log1p shape: (41895, 34987)
+
+====================================================================================================
+BUILD FINAL H5AD
+====================================================================================================
+
+====================================================================================================
+PRE-WRITE QC
+====================================================================================================
+Shape: (41895, 34987)
+Layers: ['count_scale', 'log1p', 'native']
+obsm: ['spatial']
+Measured genes: 300
+Imputed genes: 34687
+
+====================================================================================================
+WRITE FULL PRODUCTION H5AD
+====================================================================================================
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex2_scz/envi/Br5973/spatial_data_xenium_Br5973_ENVI_full_transcriptome.h5ad
+
+====================================================================================================
+SUCCESS
+====================================================================================================
+Experiment: ex2_scz
+Donor: Br5973
+Cells: 41,895
+Total genes: 34,987
+Measured Xenium genes: 300
+ENVI-imputed genes: 34,687
+X: final count-scale expression
+layers["count_scale"]: final count-scale expression
+layers["log1p"]: log1p(count_scale)
+layers["native"]: original ENVI decoder output
+obsm["spatial"]: (41895, 2)
+Write seconds: 153.09
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex2_scz/envi/Br5973/spatial_data_xenium_Br5973_ENVI_full_transcriptome.h5ad
+DONE
+====================================================================================================
+SUCCESS: Br5973
+Finished: Thu Aug 20 18:33:33 EDT 2026
+====================================================================================================

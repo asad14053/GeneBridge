@@ -1,0 +1,44 @@
+====================================================================================================
+gimVI three-fold benchmark
+====================================================================================================
+Array job: 3974926
+Task: 1
+Node: node09.hgcc.emory.edu
+Started: Thu Aug  6 18:21:51 EDT 2026
+
+Experiment: ex5
+Experiment label: Experiment 5
+Fold: 1
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Run mode: full
+Memory: 200G
+CPUs: 16
+Array policy: 1-3%3
+====================================================================================================
+scvi-tools: 0.20.3
+PyTorch: 2.1.2
+CUDA available: False
+GIMVI import: PASS
+scvi-tools version: 0.20.3
+====================================================================================================
+STANDARD gimVI 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5
+Experiment label: Experiment 5
+Fold: 1
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Reference mode: benchmark_300
+Reference model input: (9897, 300)
+Spatial model input: (66148, 200)
+Held-out truth: (66148, 100)
+Reference batch key: batch
+Spatial batch key: batch
+Run mode: full
+Epochs: 200
+Batch size: 128
+Latent dimensions: 32
+Cell train size: 0.9
+Use GPU: False
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/gimvi/fold_1
+====================================================================================================
+Training:   0%|          | 0/200 [00:00<?, ?it/s]Epoch 1/200:   0%|          | 0/200 [00:00<?, ?it/s]Epoch 1/200:   0%|          | 1/200 [00:13<44:06, 13.30s/it]Epoch 1/200:   0%|          | 1/200 [00:13<44:06, 13.30s/it, loss=136, v_num=1]Epoch 2/200:   0%|          | 1/200 [00:13<44:06, 13.30s/it, loss=136, v_num=1]Epoch 2/200:   1%|          | 2/200 [00:22<36:26, 11.04s/it, loss=136, v_num=1]Epoch 2/200:   1%|          | 2/200 [00:22<36:26, 11.04s/it, loss=134, v_num=1]Epoch 3/200:   1%|          | 2/200 [00:22<36:26, 11.04s/it, loss=134, v_num=1]Epoch 3/200:   2%|▏         | 3/200 [00:32<34:22, 10.47s/it, loss=134, v_num=1]Epoch 3/200:   2%|▏         | 3/200 [00:32<34:22, 10.47s/it, loss=129, v_num=1]Epoch 4/200:   2%|▏         | 3/200 [00:32<34:22, 10.47s/it, loss=129, v_num=1]Epoch 4/200:   2%|▏         | 4/200 [00:42<33:17, 10.19s/it, loss=129, v_num=1]Epoch 4/200:   2%|▏         | 4/200 [00:42<33:17, 10.19s/it, loss=128, v_num=1]Epoch 5/200:   2%|▏         | 4/200 [00:42<33:17, 10.19s/it, loss=128, v_num=1]Epoch 5/200:   2%|▎         | 5/200 [00:59<40:55, 12.59s/it, loss=128, v_num=1]Epoch 5/200:   2%|▎         | 5/200 [00:59<40:55, 12.59s/it, loss=125, v_num=1]Epoch 6/200:   2%|▎         | 5/200 [00:59<40:55, 12.59s/it, loss=125, v_num=1]Epoch 6/200:   3%|▎         | 6/200 [01:20<50:24, 15.59s/it, loss=125, v_num=1]Epoch 6/200:   3%|▎         | 6/200 [01:20<50:24, 15.59s/it, loss=127, v_num=1]Epoch 7/200:   3%|▎         | 6/200 [01:20<50:24, 15.59s/it, loss=127, v_num=1]Epoch 7/200:   4%|▎         | 7/200 [01:30<43:57, 13.66s/it, loss=127, v_num=1]Epoch 7/200:   4%|▎         | 7/200 [01:30<43:57, 13.66s/it, loss=125, v_num=1]Epoch 8/200:   4%|▎         | 7/200 [01:30<43:57, 13.66s/it, loss=125, v_num=1]Epoch 8/200:   4%|▍         | 8/200 [01:41<41:13, 12.88s/it, loss=125, v_num=1]Epoch 8/200:   4%|▍         | 8/200 [01:41<41:13, 12.88s/it, loss=123, v_num=1]Epoch 9/200:   4%|▍         | 8/200 [01:41<41:13, 12.88s/it, loss=123, v_num=1]Epoch 9/200:   4%|▍         | 9/200 [01:57<43:51, 13.78s/it, loss=123, v_num=1]Epoch 9/200:   4%|▍         | 9/200 [01:57<43:51, 13.78s/it, loss=125, v_num=1]Epoch 10/200:   4%|▍         | 9/200 [01:57<43:51, 13.78s/it, loss=125, v_num=1]Epoch 10/200:   5%|▌         | 10/200 [02:17<49:36, 15.67s/it, loss=125, v_num=1]Epoch 10/200:   5%|▌         | 10/200 [02:17<49:36, 15.67s/it, loss=126, v_num=1]Epoch 11/200:   5%|▌         | 10/200 [02:17<49:36, 15.67s/it, loss=126, v_num=1]Epoch 11/200:   6%|▌         | 11/200 [02:31<47:42, 15.14s/it, loss=126, v_num=1]Epoch 11/200:   6%|▌         | 11/200 [02:31<47:42, 15.14s/it, loss=122, v_num=1]Epoch 12/200:   6%|▌         | 11/200 [02:31<47:42, 15.14s/it, loss=122, v_num=1]Epoch 12/200:   6%|▌         | 12/200 [02:40<42:16, 13.49s/it, loss=122, v_num=1]Epoch 12/200:   6%|▌         | 12/200 [02:40<42:16, 13.49s/it, loss=124, v_num=1]Epoch 13/200:   6%|▌         | 12/200 [02:40<42:16, 13.49s/it, loss=124, v_num=1]Epoch 13/200:   6%|▋         | 13/200 [02:51<39:21, 12.63s/it, loss=124, v_num=1]Epoch 13/200:   6%|▋         | 13/200 [02:51<39:21, 12.63s/it, loss=125, v_num=1]Epoch 14/200:   6%|▋         | 13/200 [02:51<39:21, 12.63s/it, loss=125, v_num=1]Epoch 14/200:   7%|▋         | 14/200 [03:01<36:34, 11.80s/it, loss=125, v_num=1]Epoch 14/200:   7%|▋         | 14/200 [03:01<36:34, 11.80s/it, loss=125, v_num=1]Epoch 15/200:   7%|▋         | 14/200 [03:01<36:34, 11.80s/it, loss=125, v_num=1]Epoch 15/200:   8%|▊         | 15/200 [03:11<34:34, 11.22s/it, loss=125, v_num=1]Epoch 15/200:   8%|▊         | 15/200 [03:11<34:34, 11.22s/it, loss=122, v_num=1]Epoch 16/200:   8%|▊         | 15/200 [03:11<34:34, 11.22s/it, loss=122, v_num=1]Epoch 16/200:   8%|▊         | 16/200 [03:21<33:07, 10.80s/it, loss=122, v_num=1]Epoch 16/200:   8%|▊         | 16/200 [03:21<33:07, 10.80s/it, loss=123, v_num=1]Epoch 17/200:   8%|▊         | 16/200 [03:21<33:07, 10.80s/it, loss=123, v_num=1]Epoch 17/200:   8%|▊         | 17/200 [03:31<32:24, 10.63s/it, loss=123, v_num=1]Epoch 17/200:   8%|▊         | 17/200 [03:31<32:24, 10.63s/it, loss=122, v_num=1]Epoch 18/200:   8%|▊         | 17/200 [03:31<32:24, 10.63s/it, loss=122, v_num=1]Epoch 18/200:   9%|▉         | 18/200 [03:41<31:29, 10.38s/it, loss=122, v_num=1]Epoch 18/200:   9%|▉         | 18/200 [03:41<31:29, 10.38s/it, loss=125, v_num=1]Epoch 19/200:   9%|▉         | 18/200 [03:41<31:29, 10.38s/it, loss=125, v_num=1]Epoch 19/200:   9%|▉         | 18/200 [03:49<38:41, 12.75s/it, loss=125, v_num=1]

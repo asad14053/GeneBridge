@@ -1,0 +1,15 @@
+============================================================
+Align VISTA Br8667 genes
+============================================================
+Job ID: 3842433
+Node: node07.hgcc.emory.edu
+Started: Mon Jul 27 16:32:38 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/03_align_vista_Br8667_genes.py
+============================================================
+Python 3.10.20
+Python executable: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+
+Starting gene alignment...
+

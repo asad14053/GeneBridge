@@ -1,0 +1,151 @@
+============================================================
+VISTA shared-basis UMAP
+Job: 4045218
+Started: Thu Aug 13 18:51:09 EDT 2026
+============================================================
+UMAP/sklearn compatibility shim: ENABLED
+====================================================================================================
+VISTA SHARED-BASIS UMAP
+====================================================================================================
+
+Experiment 5
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Experiment 5.1
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Experiment 5.3
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  shape: (66148, 300)
+  layers: []
+  matrix source: X (count_scale layer absent)
+
+Observed matrix: (66148, 300)
+
+Cell-type counts:
+cell_type_annotation
+Oligo            14685
+Endo             13821
+Ast               9247
+L2/3 Ex           7312
+Mic               4577
+MGE               3770
+L4/5 Ex           3287
+CGE               2932
+Ambig/In/Endo     2564
+L6 Ex             2383
+Ambig/Oligo       1284
+L5 Ex              286
+
+log1p observed counts...
+Fitting StandardScaler on observed...
+Fitting PCA (30 PCs) on observed...
+PCA variance explained by 30 PCs: 0.6067
+
+Fitting UMAP on observed PCA coordinates...
+UMAP(min_dist=0.3, n_jobs=1, n_neighbors=30, random_state=8667, transform_seed=8667, verbose=True)
+Thu Aug 13 18:51:21 2026 Construct fuzzy simplicial set
+Thu Aug 13 18:51:21 2026 Finding Nearest Neighbors
+Thu Aug 13 18:51:21 2026 Building RP forest with 18 trees
+Thu Aug 13 18:51:25 2026 NN descent for 16 iterations
+	 1  /  16
+	 2  /  16
+	 3  /  16
+	Stopping threshold met -- exiting after 3 iterations
+Thu Aug 13 18:51:38 2026 Finished Nearest Neighbor Search
+Thu Aug 13 18:51:43 2026 Construct embedding
+	completed  0  /  200 epochs
+	completed  20  /  200 epochs
+	completed  40  /  200 epochs
+	completed  60  /  200 epochs
+	completed  80  /  200 epochs
+	completed  100  /  200 epochs
+	completed  120  /  200 epochs
+	completed  140  /  200 epochs
+	completed  160  /  200 epochs
+	completed  180  /  200 epochs
+Thu Aug 13 18:52:39 2026 Finished embedding
+
+====================================================================================================
+Transforming Experiment 5
+====================================================================================================
+
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_predictions_300genes.h5ad
+  shape: (66148, 300)
+  layers: ['count_scale', 'log1p', 'native']
+  matrix source: layers['count_scale']
+Thu Aug 13 18:52:45 2026 Worst tree score: 0.84897503
+Thu Aug 13 18:52:45 2026 Mean tree score: 0.85279810
+Thu Aug 13 18:52:45 2026 Best tree score: 0.85815142
+Thu Aug 13 18:52:47 2026 Forward diversification reduced edges from 1984440 to 487497
+Thu Aug 13 18:52:48 2026 Reverse diversification reduced edges from 487497 to 487497
+Thu Aug 13 18:52:50 2026 Degree pruning reduced edges from 566152 to 566152
+Thu Aug 13 18:52:50 2026 Resorting data and graph based on tree order
+Thu Aug 13 18:52:50 2026 Building and compiling search function
+	completed  0  /  30 epochs
+	completed  3  /  30 epochs
+	completed  6  /  30 epochs
+	completed  9  /  30 epochs
+	completed  12  /  30 epochs
+	completed  15  /  30 epochs
+	completed  18  /  30 epochs
+	completed  21  /  30 epochs
+	completed  24  /  30 epochs
+	completed  27  /  30 epochs
+
+====================================================================================================
+Transforming Experiment 5.1
+====================================================================================================
+
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_predictions_300genes.h5ad
+  shape: (66148, 300)
+  layers: ['count_scale', 'log1p', 'native']
+  matrix source: layers['count_scale']
+	completed  0  /  30 epochs
+	completed  3  /  30 epochs
+	completed  6  /  30 epochs
+	completed  9  /  30 epochs
+	completed  12  /  30 epochs
+	completed  15  /  30 epochs
+	completed  18  /  30 epochs
+	completed  21  /  30 epochs
+	completed  24  /  30 epochs
+	completed  27  /  30 epochs
+
+====================================================================================================
+Transforming Experiment 5.3
+====================================================================================================
+
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_predictions_300genes.h5ad
+  shape: (66148, 300)
+  layers: ['count_scale', 'log1p', 'native']
+  matrix source: layers['count_scale']
+	completed  0  /  30 epochs
+	completed  3  /  30 epochs
+	completed  6  /  30 epochs
+	completed  9  /  30 epochs
+	completed  12  /  30 epochs
+	completed  15  /  30 epochs
+	completed  18  /  30 epochs
+	completed  21  /  30 epochs
+	completed  24  /  30 epochs
+	completed  27  /  30 epochs
+
+====================================================================================================
+UMAP COMPLETE
+====================================================================================================
+experiment experiment_label  n_cells  median_umap_displacement  q75_umap_displacement  q90_umap_displacement  q95_umap_displacement
+       ex5     Experiment 5    66148                  3.060400               7.660369              11.929760              13.828997
+     ex5_1   Experiment 5.1    66148                  2.041593               4.681732              10.649858              12.966657
+     ex5_3   Experiment 5.3    66148                  2.016209               4.878922              10.941493              13.104459
+
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/cell_population/umap/vista/vista_shared_umap_celltype.png
+
+============================================================
+Completed: Thu Aug 13 18:54:15 EDT 2026
+============================================================

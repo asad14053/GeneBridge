@@ -1,0 +1,72 @@
+============================================================
+Filter full Huuki H5AD
+============================================================
+Job ID: 3845041
+Node: node04.hgcc.emory.edu
+Started: Tue Jul 28 18:31:53 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/03_batiuk_huuki_gene_overlap/06_filter_huuki_h5ad.py
+============================================================
+Python syntax check: PASSED
+
+====================================================================================================
+FILTER FULL HUUKI H5AD
+====================================================================================================
+
+====================================================================================================
+READING FILTERED BAITUK GENE ORDER
+====================================================================================================
+Filtered Baituk shape: (209053, 36119)
+Shared genes: 36,119
+
+====================================================================================================
+LOADING FULL HUUKI INTO MEMORY
+====================================================================================================
+Full Huuki: AnnData object with n_obs × n_vars = 77604 × 36601
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    layers: 'logcounts'
+Load time: 1.0 minutes
+
+====================================================================================================
+MATCHING SHARED GENES
+====================================================================================================
+Matched 36,119 genes in the exact filtered Baituk order.
+
+====================================================================================================
+SUBSETTING HUUKI
+====================================================================================================
+Filtered Huuki: AnnData object with n_obs × n_vars = 77604 × 36119
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    var: 'alignment_gene'
+    uns: 'gene_alignment'
+    layers: 'logcounts'
+Layers retained: ['logcounts']
+Subset time: 1.9 minutes
+
+====================================================================================================
+WRITING FILTERED HUUKI
+====================================================================================================
+Write time: 1.1 minutes
+
+====================================================================================================
+VALIDATING BOTH FILTERED FILES
+====================================================================================================
+Baituk filtered shape: (209053, 36119)
+Huuki filtered shape: (77604, 36119)
+Huuki layers: ['logcounts']
+Gene names and order identical: TRUE
+
+====================================================================================================
+DONE
+====================================================================================================
+dataset                                                                                                                                file  n_cells  n_genes    layers
+ Baituk              /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_huuki_overlap.h5ad   209053    36119          
+  Huuki /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_baituk_overlap.h5ad    77604    36119 logcounts
+
+Created filtered Huuki H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_baituk_overlap.h5ad
+
+Retained Huuki layers:
+['logcounts']
+
+Completed successfully: Tue Jul 28 18:36:33 EDT 2026

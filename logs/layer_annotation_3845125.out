@@ -1,0 +1,133 @@
+========================================
+Job ID: 3845125
+Node: node04.hgcc.emory.edu
+Started: Tue Jul 28 19:48:55 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+========================================
+
+====================================================================================================
+Stage 03: Layer-wise annotation
+====================================================================================================
+Input h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_imputation_ready.h5ad
+Label CSV: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/layer_annotations/label_transfer_N24_k50_smoothed_labels.csv
+Output h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_annotated.h5ad
+
+====================================================================================================
+Loading data
+====================================================================================================
+AnnData object with n_obs × n_vars = 1224455 × 300
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'xenium_total_counts_metadata', 'qc_total_counts', 'qc_gene_counts', 'qc_detected', 'qc_detected_genes', 'detected', 'subsets_negProbe_sum', 'subsets_negCodeword_sum', 'subsets_unassigned_sum', 'subsets_mito_sum', 'subsets_negProbe_percent', 'subsets_negCodeword_percent', 'subsets_unassigned_percent', 'subsets_mito_percent', 'qc_pct_neg_probe', 'qc_pct_neg_codeword', 'qc_pct_unassigned', 'qc_pct_mito', 'qc_empty_cell', 'neg_probe_out', 'neg_codeword_out', 'unassigned_out', 'mito_out', 'detected_out', 'total_counts_out', 'qc_is_outlier', 'qc_pass', 'imputation_size_factor'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'counts_layer', 'description', 'normalized_layer', 'object_name', 'outlier_logic', 'raw_counts_layer', 'spatial_key', 'stage', 'target_sum'
+    obsm: 'spatial'
+    layers: 'counts', 'log1p_norm'
+Label CSV shape: (1262965, 1)
+         predictions_smooth
+Br1113_1              spd06
+Br1113_2              spd07
+Br1113_3              spd06
+Br1113_4              spd07
+Br1113_5              spd07
+
+====================================================================================================
+Matching label CSV to AnnData cells
+====================================================================================================
+                         metric   value
+                n_cells_in_h5ad 1224455
+           n_cells_in_label_csv 1262965
+                 n_common_cells 1224452
+    n_h5ad_cells_missing_labels       3
+     n_extra_labels_not_in_h5ad   38513
+n_BrNum_in_h5ad_before_matching      24
+WARNING: dropping 3 h5ad cells without labels.
+
+====================================================================================================
+Saving CSV outputs
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/tables/xenium_N24_layer_annotations.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/tables/xenium_N24_layer_counts_by_BrNum.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/tables/xenium_N24_layer_proportions_by_BrNum.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/tables/xenium_N24_layer_summary.csv
+
+====================================================================================================
+Creating combined spatial layer map panel
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/xenium_N24_layer_maps_panel.png
+
+====================================================================================================
+Creating separate layer map PNGs for each BrNum
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br1113_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br1139_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br2039_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br2421_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br2719_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5314_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5373_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5400_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5436_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5588_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5590_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5622_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5639_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5746_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5931_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br5973_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br6032_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br6389_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br6432_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br6437_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br6496_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br8433_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br8667_layer_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps/Br8772_layer_map.png
+
+====================================================================================================
+Creating layer proportion plot
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/xenium_N24_layer_proportions_by_BrNum.png
+
+====================================================================================================
+Creating layer count plot
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/xenium_N24_layer_counts_by_BrNum.png
+
+====================================================================================================
+Creating overall layer distribution plot
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/xenium_N24_layer_overall_distribution.png
+
+====================================================================================================
+Saving h5ad
+====================================================================================================
+Saved h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_annotated.h5ad
+
+====================================================================================================
+Final summary
+====================================================================================================
+Cells in output: 1224452
+Genes/features in output: 300
+Donors: 24
+
+Layer counts:
+layer_annotation
+L5      374577
+L2/3    283670
+WM      216632
+L1/M    156783
+L6      113710
+L3/4     49305
+WMtz     29775
+
+Main outputs:
+H5AD:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_annotated.h5ad
+CSV folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/tables
+Figure folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures
+Per-sample PNG folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/layerwise/figures/per_sample_layer_maps
+========================================
+Completed: Tue Jul 28 19:50:08 EDT 2026
+========================================

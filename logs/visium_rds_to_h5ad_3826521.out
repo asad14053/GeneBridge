@@ -1,0 +1,292 @@
+====================================================================================================
+Convert matched N24 Visium RDS to H5AD
+====================================================================================================
+Job ID: 3826521
+Node: node01.hgcc.emory.edu
+Started: Thu Jul 23 20:02:48 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/Rscript
+Script: src/visium_branch/03_annotation/02_convert_matched_visium_rds_to_h5ad.R
+====================================================================================================
+Rscript (R) version 4.5.3 (2026-03-11)
+
+Checking anndataR...
+anndataR version: 1.0.2 
+
+Starting conversion...
+
+==================================================================================================== 
+Convert matched N24 Visium RDS to H5AD 
+==================================================================================================== 
+Input RDS:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.rds 
+
+Output H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.h5ad 
+
+Summary CSV:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/tables/visium_N24_h5ad_conversion_summary.csv 
+
+Xenium H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad 
+
+==================================================================================================== 
+Reading Visium RDS 
+==================================================================================================== 
+Class:
+[1] "SpatialExperiment"
+attr(,"package")
+[1] "SpatialExperiment"
+
+Dimensions [genes x spots]:
+[1]  36601 109353
+
+Assays:
+[1] "counts"    "logcounts"
+
+Number of colData columns:
+[1] 73
+
+Number of rowData columns:
+[1] 7
+
+==================================================================================================== 
+Preparing gene and spot names 
+==================================================================================================== 
+Genes: 36601 
+Spots: 109353 
+
+==================================================================================================== 
+Checking assays 
+==================================================================================================== 
+counts assay found.
+logcounts assay already exists.
+
+Available assays:
+[1] "counts"    "logcounts"
+
+==================================================================================================== 
+Extracting expression matrices 
+==================================================================================================== 
+counts dimensions:
+[1]  36601 109353
+
+logcounts dimensions:
+[1]  36601 109353
+
+==================================================================================================== 
+Preparing metadata 
+==================================================================================================== 
+Retained colData columns: 73 
+Retained rowData columns: 7 
+
+==================================================================================================== 
+Preparing spatial coordinates 
+==================================================================================================== 
+Original spatial dimensions:
+[1] 109353      2
+
+Final spatial dimensions [spots x 2]:
+[1] 109353      2
+
+First spatial coordinates:
+                                 pxl_col_in_fullres pxl_row_in_fullres
+AAACAACGAATAGTTC-1_V12F14-053_A1               3080               2103
+AAACAAGTATCTCCCA-1_V12F14-053_A1              11697              10864
+AAACAATCTACTAGCA-1_V12F14-053_A1               5791               2634
+AAACACCAATAACTGC-1_V12F14-053_A1               3355              12416
+AAACAGAGCGACTCCT-1_V12F14-053_A1              10909               4569
+AAACAGCTTTCAGAAG-1_V12F14-053_A1               2358               9617
+
+==================================================================================================== 
+Building clean SingleCellExperiment 
+==================================================================================================== 
+
+Clean SCE:
+class: SingleCellExperiment 
+dim: 36601 109353 
+metadata(0):
+assays(2): counts logcounts
+rownames(36601): ENSG00000243485 ENSG00000237613 ... ENSG00000278817
+  ENSG00000277196
+rowData names(7): source type ... gene_type gene_search
+colnames(109353): AAACAACGAATAGTTC-1_V12F14-053_A1
+  AAACAAGTATCTCCCA-1_V12F14-053_A1 ... TTGTTTGTATTACACG-1_V13F27-336_D1
+  TTGTTTGTGTAAATTC-1_V13F27-336_D1
+colData names(73): sample_id in_tissue ... visium_layer_annotation
+  visium_layer_annotation_source
+reducedDimNames(1): spatial
+mainExpName: NULL
+altExpNames(0):
+
+Assays:
+[1] "counts"    "logcounts"
+
+Reduced dimensions:
+[1] "spatial"
+
+==================================================================================================== 
+Validating clean SCE 
+==================================================================================================== 
+Clean SCE validation PASSED.
+
+==================================================================================================== 
+Writing H5AD with anndataR 
+==================================================================================================== 
+Writing:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.h5ad 
+
+H5AD successfully written.
+File size GB: 1.6992 
+
+==================================================================================================== 
+Validating written H5AD 
+==================================================================================================== 
+Read-back object:
+class: SingleCellExperiment 
+dim: 36601 109353 
+metadata(0):
+assays(2): counts X
+rownames(36601): ENSG00000243485 ENSG00000237613 ... ENSG00000278817
+  ENSG00000277196
+rowData names(7): source type ... gene_type gene_search
+colnames(109353): AAACAACGAATAGTTC-1_V12F14-053_A1
+  AAACAAGTATCTCCCA-1_V12F14-053_A1 ... TTGTTTGTATTACACG-1_V13F27-336_D1
+  TTGTTTGTGTAAATTC-1_V13F27-336_D1
+colData names(73): sample_id in_tissue ... visium_layer_annotation
+  visium_layer_annotation_source
+reducedDimNames(1): spatial
+mainExpName: NULL
+altExpNames(0):
+
+Read-back dimensions [genes x spots]:
+[1]  36601 109353
+
+Read-back assays:
+[1] "counts" "X"     
+
+Read-back reducedDims:
+[1] "spatial"
+
+Read-back colData columns:
+ [1] "sample_id"                      "in_tissue"                     
+ [3] "array_row"                      "array_col"                     
+ [5] "X10x_graphclust"                "X10x_kmeans_10_clusters"       
+ [7] "X10x_kmeans_2_clusters"         "X10x_kmeans_3_clusters"        
+ [9] "X10x_kmeans_4_clusters"         "X10x_kmeans_5_clusters"        
+[11] "X10x_kmeans_6_clusters"         "X10x_kmeans_7_clusters"        
+[13] "X10x_kmeans_8_clusters"         "X10x_kmeans_9_clusters"        
+[15] "key"                            "sum_umi"                       
+[17] "sum_gene"                       "expr_chrM"                     
+[19] "expr_chrM_ratio"                "spg_NDAPI"                     
+[21] "spg_PDAPI"                      "spg_IDAPI"                     
+[23] "spg_CNDAPI"                     "spg_NNeuN"                     
+[25] "spg_PNeuN"                      "spg_INeuN"                     
+[27] "spg_CNNeuN"                     "spg_NWFA"                      
+[29] "spg_PWFA"                       "spg_IWFA"                      
+[31] "spg_CNWFA"                      "spg_NClaudin5"                 
+[33] "spg_PClaudin5"                  "spg_IClaudin5"                 
+[35] "spg_CNClaudin5"                 "BrNumbr"                       
+[37] "dx"                             "DX"                            
+[39] "sex"                            "age"                           
+[41] "rin"                            "slide_id"                      
+[43] "lot_num"                        "brnum"                         
+[45] "sample_label"                   "outlier_cat"                   
+[47] "removed_spots"                  "PRECAST_02"                    
+[49] "PRECAST_03"                     "PRECAST_04"                    
+[51] "PRECAST_05"                     "PRECAST_06"                    
+[53] "PRECAST_07"                     "PRECAST_08"                    
+[55] "PRECAST_09"                     "PRECAST_10"                    
+[57] "PRECAST_11"                     "PRECAST_12"                    
+[59] "PRECAST_13"                     "PRECAST_14"                    
+[61] "PRECAST_15"                     "PRECAST_16"                    
+[63] "fnl_spd"                        "spd_label"                     
+[65] "pnn_pos"                        "neuropil_pos"                  
+[67] "neun_pos"                       "vasc_pos"                      
+[69] "sizeFactor"                     "BrNum_matched"                 
+[71] "visium_layer_original"          "visium_layer_annotation"       
+[73] "visium_layer_annotation_source"
+
+Read-back rowData columns:
+[1] "source"       "type"         "gene_id"      "gene_version" "gene_name"   
+[6] "gene_type"    "gene_search" 
+
+Validation checks:
+counts assay: TRUE 
+spatial reducedDim: TRUE 
+BrNum_matched: TRUE 
+visium_layer_annotation: TRUE 
+
+==================================================================================================== 
+Creating conversion summary CSV 
+==================================================================================================== 
+
+Summary:
+                        metric
+1                    input_rds
+2                  output_h5ad
+3                  xenium_h5ad
+4           xenium_h5ad_exists
+5           visium_h5ad_exists
+6                      n_spots
+7                      n_genes
+8             AnnData_X_source
+9  AnnData_counts_layer_source
+10   has_counts_after_readback
+11  has_spatial_after_readback
+12           has_BrNum_matched
+13 has_visium_layer_annotation
+14           h5ad_file_size_GB
+15                    n_donors
+16                      donors
+17            layer_count_L1/M
+18            layer_count_L2/3
+19            layer_count_L3/4
+20              layer_count_L5
+21              layer_count_L6
+22              layer_count_WM
+23            layer_count_WMtz
+                                                                                                                                                                     value
+1                                                               /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.rds
+2                                                              /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.h5ad
+3                                                             /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad
+4                                                                                                                                                                     TRUE
+5                                                                                                                                                                     TRUE
+6                                                                                                                                                                   109353
+7                                                                                                                                                                    36601
+8                                                                                                                                                                logcounts
+9                                                                                                                                                                   counts
+10                                                                                                                                                                    TRUE
+11                                                                                                                                                                    TRUE
+12                                                                                                                                                                    TRUE
+13                                                                                                                                                                    TRUE
+14                                                                                                                                                                  1.6992
+15                                                                                                                                                                      24
+16 Br1113;Br1139;Br2039;Br2421;Br2719;Br5314;Br5373;Br5400;Br5436;Br5588;Br5590;Br5622;Br5639;Br5746;Br5931;Br5973;Br6032;Br6389;Br6432;Br6437;Br6496;Br8433;Br8667;Br8772
+17                                                                                                                                                                   15761
+18                                                                                                                                                                   15165
+19                                                                                                                                                                   36388
+20                                                                                                                                                                   13781
+21                                                                                                                                                                   15205
+22                                                                                                                                                                    6329
+23                                                                                                                                                                    6724
+
+Saved summary CSV:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/tables/visium_N24_h5ad_conversion_summary.csv 
+
+==================================================================================================== 
+DONE 
+==================================================================================================== 
+Visium H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/visium_N24_matched_layer_annotated.h5ad 
+
+Xenium H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad 
+
+Conversion summary:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/03_annotation/layerwise_matched_N24/tables/visium_N24_h5ad_conversion_summary.csv 
+
+====================================================================================================
+Completed successfully
+Finished: Thu Jul 23 20:08:02 EDT 2026
+====================================================================================================

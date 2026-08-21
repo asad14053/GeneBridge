@@ -1,0 +1,17 @@
+============================================================
+Split Batiuk full reference into SCZ and NTC
+Job ID: 3951496
+Host: node06.hgcc.emory.edu
+Started: Tue Aug  4 19:31:15 EDT 2026
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad
+SCZ output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_SCZ_full_allgenes.h5ad
+NTC output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_NTC_full_allgenes.h5ad
+============================================================
+====================================================================================================
+SPLIT BATIUK snRNA-seq INTO SCZ AND NTC
+====================================================================================================
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad
+SCZ output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_SCZ_full_allgenes.h5ad
+NTC output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_NTC_full_allgenes.h5ad
+MB8 policy: scz
+Loading full input H5AD into memory...

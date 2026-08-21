@@ -1,0 +1,78 @@
+============================================================
+Common nonempty-cell filtering
+Job ID: 3854709
+Host: node01.hgcc.emory.edu
+Started: Thu Jul 30 19:15:03 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/filter_common_nonempty_cells.py
+============================================================
+====================================================================================================
+COMMON NONEMPTY-CELL FILTER FOR ALL THREE FOLDS
+====================================================================================================
+Fold directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100
+Backup already exists: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_1_observed_genes.h5ad
+Backup already exists: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_1_heldout_genes.h5ad
+Backup already exists: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_2_observed_genes.h5ad
+Backup already exists: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_2_heldout_genes.h5ad
+Backup already exists: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_3_observed_genes.h5ad
+Backup already exists: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_3_heldout_genes.h5ad
+
+Fold 1
+--------------------------------------------------
+Observed shape: (66164, 200)
+Held-out shape: (66164, 100)
+Blank observed cells: 10
+Library-size percentiles: [0.0, 38.0, 337.0, 578.0, 887.0, 1644.0, 1861.0]
+
+Fold 2
+--------------------------------------------------
+Observed shape: (66164, 200)
+Held-out shape: (66164, 100)
+Blank observed cells: 5
+Library-size percentiles: [0.0, 42.0, 283.0, 473.0, 744.0, 1429.0, 1706.0]
+
+Fold 3
+--------------------------------------------------
+Observed shape: (66164, 200)
+Held-out shape: (66164, 100)
+Blank observed cells: 1
+Library-size percentiles: [0.0, 55.0, 374.0, 623.0, 949.0, 1666.0, 1902.0]
+
+====================================================================================================
+COMMON MASK
+====================================================================================================
+Original cells: 66164
+Retained cells: 66148
+Removed cells: 16
+Mask: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/common_nonempty_cells.csv
+Removed-cell audit: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/removed_blank_cells.csv
+
+Writing Fold 1:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_1_observed_genes.h5ad
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_1_heldout_genes.h5ad
+
+Writing Fold 2:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_2_observed_genes.h5ad
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_2_heldout_genes.h5ad
+
+Writing Fold 3:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_3_observed_genes.h5ad
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_3_heldout_genes.h5ad
+
+====================================================================================================
+FINAL ON-DISK VALIDATION
+====================================================================================================
+Fold 1: observed=(66148, 200), heldout=(66148, 100), blank cells=0
+Fold 2: observed=(66148, 200), heldout=(66148, 100), blank cells=0
+Fold 3: observed=(66148, 200), heldout=(66148, 100), blank cells=0
+
+====================================================================================================
+SUCCESS
+====================================================================================================
+Common retained cells: 66148
+Removed cells: 16
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/blank_cell_filter_manifest.json
+All three observed folds now contain zero blank cells.
+============================================================
+Finished: Thu Jul 30 19:15:23 EDT 2026
+============================================================

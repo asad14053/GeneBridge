@@ -1,0 +1,131 @@
+============================================================
+Expression-stratified imputation metrics
+Method: vista
+Job: 4034180_1
+Started: Thu Aug 13 02:09:24 EDT 2026
+============================================================
+====================================================================================================
+EXPRESSION-STRATIFIED GENE-LEVEL PERFORMANCE
+====================================================================================================
+Method: VISTA
+====================================================================================================
+BUILDING FIXED EXPRESSION STRATA
+====================================================================================================
+Canonical source:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/gene_level_metrics_300genes.csv
+
+Genes per expression stratum:
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+Expression-stratum ranges:
+expression_stratum  n_genes  min_observed_mean  median_observed_mean  max_observed_mean  min_log1p_mean  median_log1p_mean  max_log1p_mean
+               Low      100           0.006349              0.158735           0.437171        0.006329           0.147327        0.362677
+            Medium      100           0.446635              0.769192           1.554665        0.369240           0.570523        0.937921
+              High      100           1.582648              3.368280          69.445045        0.948815           1.474360        4.254833
+
+Loading vista / Ex5
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/gene_level_metrics_300genes.csv
+
+Loading vista / Ex5.1
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/gene_level_metrics_300genes.csv
+
+Loading vista / Ex5.3
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/gene_level_metrics_300genes.csv
+
+====================================================================================================
+VALIDATION
+====================================================================================================
+
+ex5
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+ex5_1
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+ex5_3
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+     metric expression_stratum experiment_label      mean   median
+        SCC                Low              Ex5  0.224232 0.236153
+        SCC                Low            Ex5.1  0.238832 0.266080
+        SCC                Low            Ex5.3  0.235000 0.257458
+        SCC             Medium              Ex5  0.452817 0.473446
+        SCC             Medium            Ex5.1  0.464666 0.479418
+        SCC             Medium            Ex5.3  0.461411 0.470772
+        SCC               High              Ex5  0.702665 0.705970
+        SCC               High            Ex5.1  0.704938 0.715681
+        SCC               High            Ex5.3  0.700567 0.716602
+       SSIM                Low              Ex5  0.187903 0.186452
+       SSIM                Low            Ex5.1  0.199846 0.195399
+       SSIM                Low            Ex5.3  0.195915 0.194322
+       SSIM             Medium              Ex5  0.370344 0.390995
+       SSIM             Medium            Ex5.1  0.386511 0.405779
+       SSIM             Medium            Ex5.3  0.382563 0.401727
+       SSIM               High              Ex5  0.574479 0.587399
+       SSIM               High            Ex5.1  0.575704 0.608865
+       SSIM               High            Ex5.3  0.568969 0.599325
+       RMSE                Low              Ex5  1.087776 0.707813
+       RMSE                Low            Ex5.1  1.107412 0.724393
+       RMSE                Low            Ex5.3  1.093139 0.707608
+       RMSE             Medium              Ex5  2.830139 1.737224
+       RMSE             Medium            Ex5.1  2.863440 1.701105
+       RMSE             Medium            Ex5.3  2.841150 1.755530
+       RMSE               High              Ex5 10.170879 5.158714
+       RMSE               High            Ex5.1 10.748243 4.993978
+       RMSE               High            Ex5.3 10.777304 5.116504
+        MAE                Low              Ex5  0.669407 0.399934
+        MAE                Low            Ex5.1  0.689241 0.403716
+        MAE                Low            Ex5.3  0.681538 0.405637
+        MAE             Medium              Ex5  1.617127 0.964739
+        MAE             Medium            Ex5.1  1.643328 0.969031
+        MAE             Medium            Ex5.3  1.635088 0.965139
+        MAE               High              Ex5  6.801702 2.906020
+        MAE               High            Ex5.1  7.275259 2.863534
+        MAE               High            Ex5.3  7.310791 2.878838
+        JSD                Low              Ex5  0.668228 0.666639
+        JSD                Low            Ex5.1  0.654685 0.640235
+        JSD                Low            Ex5.3  0.657410 0.642892
+        JSD             Medium              Ex5  0.378086 0.363767
+        JSD             Medium            Ex5.1  0.366652 0.345890
+        JSD             Medium            Ex5.3  0.369592 0.345641
+        JSD               High              Ex5  0.159211 0.143505
+        JSD               High            Ex5.1  0.151765 0.137959
+        JSD               High            Ex5.3  0.155498 0.139249
+Moran_error                Low              Ex5  0.185557 0.185619
+Moran_error                Low            Ex5.1  0.186893 0.184739
+Moran_error                Low            Ex5.3  0.189988 0.184571
+Moran_error             Medium              Ex5  0.164814 0.164453
+Moran_error             Medium            Ex5.1  0.174923 0.179349
+Moran_error             Medium            Ex5.3  0.174859 0.181570
+Moran_error               High              Ex5  0.112987 0.105601
+Moran_error               High            Ex5.1  0.121058 0.114418
+Moran_error               High            Ex5.3  0.121729 0.118479
+
+====================================================================================================
+DONE
+====================================================================================================
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/expression_stratified/vista/vista_metrics_by_expression.png
+
+============================================================
+Completed: Thu Aug 13 02:09:33 EDT 2026
+Method: vista
+============================================================

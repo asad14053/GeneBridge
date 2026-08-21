@@ -1,0 +1,120 @@
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+[rank: 0] Global seed set to 0
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+[rank: 0] Global seed set to 0
+[rank: 0] Global seed set to 8670
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/abc.py:119: FutureWarning: SparseDataset is deprecated and will be removed in late 2024. It has been replaced by the public classes CSRDataset and CSCDataset.
+
+For instance checks, use `isinstance(X, (anndata.experimental.CSRDataset, anndata.experimental.CSCDataset))` instead.
+
+For creation, use `anndata.experimental.sparse_dataset(X)` instead.
+
+  return _abc_instancecheck(cls, instance)
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/abc.py:119: FutureWarning: SparseDataset is deprecated and will be removed in late 2024. It has been replaced by the public classes CSRDataset and CSCDataset.
+
+For instance checks, use `isinstance(X, (anndata.experimental.CSRDataset, anndata.experimental.CSCDataset))` instead.
+
+For creation, use `anndata.experimental.sparse_dataset(X)` instead.
+
+  return _abc_instancecheck(cls, instance)
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+SLURM auto-requeueing enabled. Setting signal handlers.
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/gimVI/run_gimvi_fold.py", line 1609, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/gimVI/run_gimvi_fold.py", line 1051, in main
+    model.train(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/external/gimvi/_model.py", line 237, in train
+    self.trainer.fit(self._training_plan, train_dl, val_dls)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/train/_trainer.py", line 193, in fit
+    super().fit(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 608, in fit
+    call._call_and_handle_interrupt(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 38, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _fit_impl
+    self._run(model, ckpt_path=self.ckpt_path)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1112, in _run
+    results = self._run_stage()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1191, in _run_stage
+    self._run_train()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1214, in _run_train
+    self.fit_loop.run()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/fit_loop.py", line 267, in advance
+    self._outputs = self.epoch_loop.run(self._data_fetcher)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 213, in advance
+    batch_output = self.batch_loop.run(kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/batch/training_batch_loop.py", line 88, in advance
+    outputs = self.optimizer_loop.run(optimizers, kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 202, in advance
+    result = self._run_optimization(kwargs, self._optimizers[self.optim_progress.optimizer_position])
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 249, in _run_optimization
+    self._optimizer_step(optimizer, opt_idx, kwargs.get("batch_idx", 0), closure)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 370, in _optimizer_step
+    self.trainer._call_lightning_module_hook(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1356, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/core/module.py", line 1754, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/core/optimizer.py", line 169, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, self._optimizer_idx, closure, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 234, in optimizer_step
+    return self.precision_plugin.optimizer_step(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 119, in optimizer_step
+    return optimizer.step(closure=closure, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/optim/optimizer.py", line 373, in wrapper
+    out = func(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/optim/optimizer.py", line 76, in _use_grad
+    ret = func(self, *args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/optim/adam.py", line 143, in step
+    loss = closure()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 105, in _wrap_closure
+    closure_result = closure()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 149, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 135, in closure
+    step_output = self._step_fn()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 419, in _training_step
+    training_step_output = self.trainer._call_strategy_hook("training_step", *kwargs.values())
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1494, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 378, in training_step
+    return self.model.training_step(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/external/gimvi/_task.py", line 82, in training_step
+    outputs = self.module.inference(**inference_inputs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/module/base/_decorators.py", line 32, in auto_transfer_args
+    return fn(self, *args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/external/gimvi/_module.py", line 390, in inference
+    qz, z = self.z_encoder(x_, mode)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/nn/_base_components.py", line 597, in forward
+    dist = Normal(q_m, q_v.sqrt())
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/distributions/normal.py", line 56, in __init__
+    super().__init__(batch_shape, validate_args=validate_args)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/distributions/distribution.py", line 68, in __init__
+    raise ValueError(
+ValueError: Expected parameter loc (Tensor of shape (128, 32)) of distribution Normal(loc: torch.Size([128, 32]), scale: torch.Size([128, 32])) to satisfy the constraint Real(), but found invalid values:
+tensor([[nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        ...,
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan]])
+srun: error: node04: task 0: Exited with exit code 1

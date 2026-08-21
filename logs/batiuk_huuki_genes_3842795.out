@@ -1,0 +1,59 @@
+============================================================
+Compare Batiuk and Huuki genes
+============================================================
+Job ID: 3842795
+Node: node07.hgcc.emory.edu
+Started: Mon Jul 27 20:04:32 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/03_batiuk_huuki_gene_overlap/02_compare_batiuk_huuki_genes.py
+============================================================
+Python 3.10.20
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+anndata: 0.10.9
+pandas: 2.2.2
+
+Starting Batiuk–Huuki gene comparison...
+
+================================================================================
+Reading Huuki H5AD in backed mode
+================================================================================
+AnnData object with n_obs × n_vars = 9897 × 28907 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad'
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch', 'scClassify_original', 'scClassify', 'names', 'batch'
+    var: 'matched_gene_symbol', 'original_var_name', 'vista_gene_symbol'
+    uns: 'vista_expression_matrix'
+Huuki shape [cells x genes]: (9897, 28907)
+
+================================================================================
+HUUKI–BATIUK GENE OVERLAP
+================================================================================
+huuki_gene_source  n_unique_huuki_values  shared_exact_with_batiuk_union  shared_case_insensitive_with_batiuk_union
+        var_names                  28907                           28545                                      28545
+
+Selected Huuki gene source:
+var_names
+
+Final summary:
+                                   metric     value
+               selected_huuki_gene_source var_names
+                       batiuk_union_genes     60617
+                batiuk_intersection_genes     60617
+                       huuki_unique_genes     28907
+       shared_exact_batiuk_union_vs_huuki     28545
+shared_exact_batiuk_intersection_vs_huuki     28545
+                  shared_case_insensitive     28545
+                     genes_only_in_batiuk     32072
+                      genes_only_in_huuki       362
+   percent_batiuk_union_shared_with_huuki   47.0908
+         percent_huuki_shared_with_batiuk   98.7477
+
+Created:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/batiuk_huuki_gene_overlap_summary.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/batiuk_huuki_shared_genes.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/genes_only_in_batiuk.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/genes_only_in_huuki.csv
+
+============================================================
+Completed successfully
+Finished: Mon Jul 27 20:04:40 EDT 2026
+============================================================

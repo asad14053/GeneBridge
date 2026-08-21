@@ -1,0 +1,163 @@
+
+==================================================================================================== 
+Reading Baituk annotations 
+==================================================================================================== 
+Input:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/Baituk/annotations_final.RDS 
+Class: list 
+Type: list 
+
+==================================================================================================== 
+Searching for annotation candidates 
+==================================================================================================== 
+
+==================================================================================================== 
+Calculating candidate proportions 
+==================================================================================================== 
+
+Candidate: annotations_final$high 
+Cells: 235904 
+Labels: 37 
+Score: 150 
+             cell_type n_cells proportion  percent
+      L4_5_FEZF2_LRRK1   18779 0.07960442 7.960442
+   L2_CUX2_LAMP5_PDGFD   18762 0.07953235 7.953235
+ L2_3_CUX2_FREM3_UNC5D   16773 0.07110096 7.110096
+            PVALB_MEPE   16470 0.06981654 6.981654
+                  Glia   13377 0.05670527 5.670527
+        L3_CUX2_PRSS12   12607 0.05344123 5.344123
+  L2_CUX2_LAMP5_MARCH1   12491 0.05294950 5.294950
+    L5_6_THEMIS_SEMA3A   10303 0.04367455 4.367455
+   L4_RORB_SCHLAP1_MME    8738 0.03704049 3.704049
+         ID2_LAMP5_CRH    8114 0.03439535 3.439535
+            VIP_ABI3BP    6861 0.02908386 2.908386
+  L2_3_CUX2_FREM3_SV2C    6815 0.02888887 2.888887
+   L5_6_FEZF2_TLE4_ABO    6644 0.02816400 2.816400
+   L4_RORB_SCHLAP1_MET    6281 0.02662524 2.662524
+                 Other    5796 0.02456932 2.456932
+              SST_TAC3    5479 0.02322555 2.322555
+             SST_CALB1    4559 0.01932566 1.932566
+             PVALB_SST    4533 0.01921544 1.921544
+              VIP_RELN    4037 0.01711289 1.711289
+ L5_6_FEZF2_TLE4_HTR2C    4003 0.01696877 1.696877
+
+Candidate: annotations_final$med 
+Cells: 235904 
+Labels: 16 
+Score: 150 
+        cell_type n_cells  proportion    percent
+    L2_CUX2_LAMP5   31378 0.133011734 13.3011734
+  L2_3_CUX2_FREM3   23500 0.099616793  9.9616793
+            PVALB   22466 0.095233654  9.5233654
+              VIP   20736 0.087900163  8.7900163
+  L4_RORB_SCHLAP1   19469 0.082529334  8.2529334
+ L4_5_FEZF2_LRRK1   18853 0.079918102  7.9918102
+              SST   17858 0.075700285  7.5700285
+  L5_6_FEZF2_TLE4   14588 0.061838714  6.1838714
+        ID2_LAMP5   14552 0.061686110  6.1686110
+      L5_6_THEMIS   13607 0.057680243  5.7680243
+             Glia   13314 0.056438212  5.6438212
+   L3_CUX2_PRSS12   12490 0.052945266  5.2945266
+            Other    4955 0.021004307  2.1004307
+       ID2_NCKAP5    3953 0.016756816  1.6756816
+         ID2_PAX6    3196 0.013547884  1.3547884
+  L5_FEZF2_ADRA1A     989 0.004192383  0.4192383
+
+Candidate: annotations_final$high.clean 
+Cells: 235904 
+Labels: 35 
+Score: 150 
+                cell_type n_cells proportion  percent
+         L4_5_FEZF2_LRRK1   21109 0.08948131 8.948131
+      L2_CUX2_LAMP5_PDGFD   19292 0.08177903 8.177903
+               PVALB_MEPE   17893 0.07584865 7.584865
+    L2_3_CUX2_FREM3_UNC5D   16909 0.07167746 7.167746
+                 SST_TAC3   13969 0.05921477 5.921477
+           L3_CUX2_PRSS12   13047 0.05530640 5.530640
+     L2_CUX2_LAMP5_MARCH1   12516 0.05305548 5.305548
+       L5_6_THEMIS_SEMA3A   10385 0.04402214 4.402214
+      L4_RORB_SCHLAP1_MME    9015 0.03821470 3.821470
+            ID2_LAMP5_CRH    8326 0.03529402 3.529402
+               VIP_ABI3BP    7633 0.03235638 3.235638
+      L5_6_FEZF2_TLE4_ABO    6987 0.02961798 2.961798
+     L2_3_CUX2_FREM3_SV2C    6862 0.02908810 2.908810
+      L4_RORB_SCHLAP1_MET    6553 0.02777825 2.777825
+                SST_CALB1    4612 0.01955033 1.955033
+                PVALB_SST    4543 0.01925783 1.925783
+ L4_RORB_SCHLAP1_ARHGAP15    4101 0.01738419 1.738419
+    L5_6_FEZF2_TLE4_HTR2C    4084 0.01731213 1.731213
+                 VIP_RELN    4037 0.01711289 1.711289
+               ID2_NCKAP5    3974 0.01684584 1.684584
+
+Candidate: annotations_final$med.clean 
+Cells: 235904 
+Labels: 14 
+Score: 150 
+        cell_type n_cells  proportion    percent
+    L2_CUX2_LAMP5   31998 0.135639921 13.5639921
+              SST   28199 0.119535913 11.9535913
+  L2_3_CUX2_FREM3   23802 0.100896975 10.0896975
+            PVALB   23680 0.100379816 10.0379816
+              VIP   22683 0.096153520  9.6153520
+ L4_5_FEZF2_LRRK1   20774 0.088061245  8.8061245
+  L4_RORB_SCHLAP1   19829 0.084055378  8.4055378
+  L5_6_FEZF2_TLE4   15033 0.063725075  6.3725075
+        ID2_LAMP5   14785 0.062673800  6.2673800
+      L5_6_THEMIS   13928 0.059040966  5.9040966
+   L3_CUX2_PRSS12   12852 0.054479788  5.4479788
+       ID2_NCKAP5    3959 0.016782250  1.6782250
+         ID2_PAX6    3350 0.014200692  1.4200692
+  L5_FEZF2_ADRA1A    1032 0.004374661  0.4374661
+
+==================================================================================================== 
+Selecting the most likely final annotation 
+==================================================================================================== 
+
+==================================================================================================== 
+Creating proportion plot 
+==================================================================================================== 
+null device 
+          1 
+
+==================================================================================================== 
+FINAL RESULT 
+==================================================================================================== 
+Automatically selected annotation:
+annotations_final$med.clean 
+
+Total annotated cells:
+235,904 
+
+Number of cell types/subtypes:
+14 
+
+Cell-type counts and proportions:
+        cell_type n_cells  proportion    percent
+    L2_CUX2_LAMP5   31998 0.135639921 13.5639921
+              SST   28199 0.119535913 11.9535913
+  L2_3_CUX2_FREM3   23802 0.100896975 10.0896975
+            PVALB   23680 0.100379816 10.0379816
+              VIP   22683 0.096153520  9.6153520
+ L4_5_FEZF2_LRRK1   20774 0.088061245  8.8061245
+  L4_RORB_SCHLAP1   19829 0.084055378  8.4055378
+  L5_6_FEZF2_TLE4   15033 0.063725075  6.3725075
+        ID2_LAMP5   14785 0.062673800  6.2673800
+      L5_6_THEMIS   13928 0.059040966  5.9040966
+   L3_CUX2_PRSS12   12852 0.054479788  5.4479788
+       ID2_NCKAP5    3959 0.016782250  1.6782250
+         ID2_PAX6    3350 0.014200692  1.4200692
+  L5_FEZF2_ADRA1A    1032 0.004374661  0.4374661
+
+Saved candidate summary:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/04_baituk_celltype_annotation/baituk_annotation_candidate_summary.csv 
+
+Saved selected cell annotations:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/04_baituk_celltype_annotation/baituk_selected_cell_annotations.csv 
+
+Saved selected cell-type proportions:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/04_baituk_celltype_annotation/baituk_selected_celltype_counts_proportions.csv 
+
+Saved plot:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/04_baituk_celltype_annotation/baituk_selected_celltype_proportions.png 
+
+Completed: 2026-08-10 14:50:08.665044 

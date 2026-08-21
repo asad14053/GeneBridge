@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/03_metric_distributions_across_experiments.py", line 869, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/03_metric_distributions_across_experiments.py", line 737, in main
+    df = load_method_metrics(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/03_metric_distributions_across_experiments.py", line 186, in load_method_metrics
+    find_column_case_insensitive(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/03_metric_distributions_across_experiments.py", line 92, in find_column_case_insensitive
+    raise KeyError(
+KeyError: "Metric 'Moran_error' not found.\nAvailable columns:\n['experiment', 'model', 'fold', 'gene', 'scc', 'ssim', 'rmse', 'mae', 'jsd', 'moran_observed', 'moran_predicted', 'moran_abs_error', 'observed_mean', 'predicted_mean', 'observed_variance', 'predicted_variance', 'observed_detection_fraction', 'predicted_positive_fraction', 'log_mean_expression', 'dispersion', 'detection_fraction', 'morans_I', 'heldout_fold', 'metric_stratum']"

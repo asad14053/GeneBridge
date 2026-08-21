@@ -1,0 +1,86 @@
+========================================
+Job ID: 3854586
+Node: node01.hgcc.emory.edu
+Started: Thu Jul 30 17:30:45 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/imputation/04_extract_xenium_Br8667.py
+========================================
+Python 3.10.20
+====================================================================================================
+Task-01: Extract Xenium Br8667 from Xenium N24
+====================================================================================================
+
+Logical output directory:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667
+
+Physical output directory:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667
+
+Input file:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad
+
+Loading Xenium N24 in backed mode...
+
+Xenium N24:
+AnnData object with n_obs × n_vars = 1224452 × 300 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad'
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'xenium_total_counts_metadata', 'qc_total_counts', 'qc_gene_counts', 'qc_detected', 'qc_detected_genes', 'detected', 'subsets_negProbe_sum', 'subsets_negCodeword_sum', 'subsets_unassigned_sum', 'subsets_mito_sum', 'subsets_negProbe_percent', 'subsets_negCodeword_percent', 'subsets_unassigned_percent', 'subsets_mito_percent', 'qc_pct_neg_probe', 'qc_pct_neg_codeword', 'qc_pct_unassigned', 'qc_pct_mito', 'qc_empty_cell', 'neg_probe_out', 'neg_codeword_out', 'unassigned_out', 'mito_out', 'detected_out', 'total_counts_out', 'qc_is_outlier', 'qc_pass', 'imputation_size_factor', 'predictions_smooth', 'layer_annotation', 'layer_annotation_source', 'layer_annotation_stage', 'Banksy', 'cell_type_annotation_banksy', 'cell_type_annotation', 'cell_type_annotation_source', 'cell_type_annotation_stage', 'cell_type_annotation_confidence'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'banksy_inhibitory_mapping_mode', 'banksy_lambda', 'banksy_resolution', 'cell_type_annotation_mapping', 'cell_type_annotation_order', 'cell_type_annotation_source', 'counts_layer', 'description', 'layer_annotation_mapping', 'layer_annotation_order', 'layer_annotation_source', 'normalized_layer', 'object_name', 'outlier_logic', 'raw_counts_layer', 'spatial_key', 'stage', 'target_sum'
+    obsm: 'spatial'
+    layers: 'counts', 'log1p_norm'
+
+Brain column:
+BrNum
+
+Target donor:
+Br8667
+
+Selected Xenium cells:
+66,164
+
+Loading only Br8667 cells into memory...
+
+Extracted Xenium Br8667:
+AnnData object with n_obs × n_vars = 66164 × 300
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'xenium_total_counts_metadata', 'qc_total_counts', 'qc_gene_counts', 'qc_detected', 'qc_detected_genes', 'detected', 'subsets_negProbe_sum', 'subsets_negCodeword_sum', 'subsets_unassigned_sum', 'subsets_mito_sum', 'subsets_negProbe_percent', 'subsets_negCodeword_percent', 'subsets_unassigned_percent', 'subsets_mito_percent', 'qc_pct_neg_probe', 'qc_pct_neg_codeword', 'qc_pct_unassigned', 'qc_pct_mito', 'qc_empty_cell', 'neg_probe_out', 'neg_codeword_out', 'unassigned_out', 'mito_out', 'detected_out', 'total_counts_out', 'qc_is_outlier', 'qc_pass', 'imputation_size_factor', 'predictions_smooth', 'layer_annotation', 'layer_annotation_source', 'layer_annotation_stage', 'Banksy', 'cell_type_annotation_banksy', 'cell_type_annotation', 'cell_type_annotation_source', 'cell_type_annotation_stage', 'cell_type_annotation_confidence'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'banksy_inhibitory_mapping_mode', 'banksy_lambda', 'banksy_resolution', 'cell_type_annotation_mapping', 'cell_type_annotation_order', 'cell_type_annotation_source', 'counts_layer', 'description', 'layer_annotation_mapping', 'layer_annotation_order', 'layer_annotation_source', 'normalized_layer', 'object_name', 'outlier_logic', 'raw_counts_layer', 'spatial_key', 'stage', 'target_sum'
+    obsm: 'spatial'
+    layers: 'counts', 'log1p_norm'
+
+Available layers:
+['counts', 'log1p_norm']
+
+Existing obsm['spatial'] preserved.
+Coordinate shape: (66164, 2)
+
+Removing old output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_annotated.h5ad
+
+Writing Xenium Br8667 h5ad:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_annotated.h5ad
+
+Created Xenium Br8667 h5ad:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_annotated.h5ad
+Size: 56.76 MB
+
+Created extraction summary:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_extraction_summary.csv
+Size: 0.00 MB
+
+Final Xenium Br8667 object:
+AnnData object with n_obs × n_vars = 66164 × 300
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'xenium_total_counts_metadata', 'qc_total_counts', 'qc_gene_counts', 'qc_detected', 'qc_detected_genes', 'detected', 'subsets_negProbe_sum', 'subsets_negCodeword_sum', 'subsets_unassigned_sum', 'subsets_mito_sum', 'subsets_negProbe_percent', 'subsets_negCodeword_percent', 'subsets_unassigned_percent', 'subsets_mito_percent', 'qc_pct_neg_probe', 'qc_pct_neg_codeword', 'qc_pct_unassigned', 'qc_pct_mito', 'qc_empty_cell', 'neg_probe_out', 'neg_codeword_out', 'unassigned_out', 'mito_out', 'detected_out', 'total_counts_out', 'qc_is_outlier', 'qc_pass', 'imputation_size_factor', 'predictions_smooth', 'layer_annotation', 'layer_annotation_source', 'layer_annotation_stage', 'Banksy', 'cell_type_annotation_banksy', 'cell_type_annotation', 'cell_type_annotation_source', 'cell_type_annotation_stage', 'cell_type_annotation_confidence', 'batch', 'names', 'scClassify'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'banksy_inhibitory_mapping_mode', 'banksy_lambda', 'banksy_resolution', 'cell_type_annotation_mapping', 'cell_type_annotation_order', 'cell_type_annotation_source', 'counts_layer', 'description', 'layer_annotation_mapping', 'layer_annotation_order', 'layer_annotation_source', 'normalized_layer', 'object_name', 'outlier_logic', 'raw_counts_layer', 'spatial_key', 'stage', 'target_sum'
+    obsm: 'spatial'
+    layers: 'counts', 'log1p_norm'
+
+Final obs helper columns:
+['BrNum', 'batch', 'names', 'scClassify', 'cell_type_annotation', 'layer_annotation']
+
+DONE: Task-01 completed.
+========================================
+Completed successfully
+Finished: Thu Jul 30 17:30:59 EDT 2026
+========================================

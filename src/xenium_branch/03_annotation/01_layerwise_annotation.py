@@ -90,6 +90,16 @@ DEFAULT_INPUT_H5AD = (
     / "xenium_N24_imputation_ready.h5ad"
 )
 
+###################################### if you do not need QC ######## Uncomment
+#DEFAULT_INPUT_H5AD = (
+#    PROJECT_ROOT
+#    / "data"
+#    / "processed"
+#    / "xenium"
+#    / "xenium_N24_raw.h5ad"
+#)
+
+
 DEFAULT_LABEL_CSV = (
     PROJECT_ROOT
     / "data"

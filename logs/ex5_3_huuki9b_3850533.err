@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_3_create_huuki_9brains_excluding_xenium.py", line 746, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_3_create_huuki_9brains_excluding_xenium.py", line 635, in main
+    check = ad.read_h5ad(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 212, in read_h5ad
+    return read_h5ad_backed(filename, mode)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 155, in read_h5ad_backed
+    d.update({k: read_elem(f[k]) for k in attributes if k in f})
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 155, in <dictcomp>
+    d.update({k: read_elem(f[k]) for k in attributes if k in f})
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/h5py/_hl/group.py", line 407, in __getitem__
+    return self._get(name)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/h5py/_hl/group.py", line 421, in _get
+    oid = h5o.open(self.id, self._e(name), lapl=lapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5o.pyx", line 255, in h5py.h5o.open
+KeyError: 'Unable to synchronously open object (address of object past end of allocation)'

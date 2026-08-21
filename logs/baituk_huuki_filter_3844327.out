@@ -1,0 +1,51 @@
+============================================================
+Create filtered Baituk and Huuki overlap H5AD files
+============================================================
+Job ID: 3844327
+Node: node05.hgcc.emory.edu
+Started: Tue Jul 28 12:11:08 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/03_batiuk_huuki_gene_overlap/04_create_overlap_filtered_h5ads.py
+============================================================
+Python 3.10.20
+Python executable: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+anndata: 0.10.9
+pandas: 2.2.2
+numpy: 1.26.4
+
+Starting overlap filtering...
+====================================================================================================
+READING FULL BAITUK AND HUUKI REFERENCES
+====================================================================================================
+
+Baituk:
+AnnData object with n_obs × n_vars = 209053 × 60617 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad'
+    obs: 'sample', 'original_cell_id'
+    var: 'gene_name'
+
+Huuki:
+AnnData object with n_obs × n_vars = 77604 × 36601 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad'
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    layers: 'logcounts'
+
+Unique Baituk genes:
+60617
+
+Duplicated Baituk gene names skipped:
+0
+
+====================================================================================================
+GENE OVERLAP
+====================================================================================================
+huuki_gene_source  n_unique_huuki_values  duplicate_values_skipped  shared_exact_genes
+        var_names                  36601                         0               36119
+
+Selected Huuki gene source:
+var_names
+
+Shared exact genes:
+36119
+
+====================================================================================================
+FILTERING BAITUK
+====================================================================================================

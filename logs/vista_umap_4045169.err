@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/09_umap_vista_across_experiments.py", line 1578, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/09_umap_vista_across_experiments.py", line 1168, in main
+    U_obs = reducer.fit_transform(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/umap/umap_.py", line 2934, in fit_transform
+    self.fit(X, y, ensure_all_finite, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/umap/umap_.py", line 2372, in fit
+    X = check_array(
+TypeError: check_array() got an unexpected keyword argument 'ensure_all_finite'

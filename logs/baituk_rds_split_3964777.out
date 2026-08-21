@@ -1,0 +1,34 @@
+====================================================================================================
+Batiuk RDS to separate SCZ and NTC H5AD
+Job ID: 3964777
+Host: node09.hgcc.emory.edu
+Started: Wed Aug  5 16:45:40 EDT 2026
+Memory: 200G
+CPUs: 16
+R environment: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r
+====================================================================================================
+
+STEP 1: Export sample-level H5AD files from the raw RDS
+
+==================================================================================================== 
+EXPORT BATIUK RDS AS SAMPLE-LEVEL H5AD FILES
+==================================================================================================== 
+Input RDS: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/Baituk/snRNA-seq_raw_countmatrices.RDS 
+Sample output directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_rds_sample_h5ad 
+Reading RDS...
+RDS loaded. Class: list 
+Selected RDS container: root with 24 recognized samples
+
+----------------------------------------------------------------------------------------------------
+Sample 1 / 24 : MB6 ( SCZ )
+Dimensions: 60617 genes × 8183 cells
+Writing: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_rds_sample_h5ad/MB6.h5ad 
+patching file Modules/_ssl.c
+patching file Lib/test/test_poplib.py
+patching file Lib/test/test_ssl.py
+patching file Misc/NEWS.d/next/Library/2026-04-28-17-47-55.gh-issue-148292.oIq3ml.rst
+patching file Misc/NEWS.d/next/Tests/2026-04-21-12-33-14.gh-issue-148600.vnTb3t.rst
+patching file Modules/_ssl.c
+patching file Modules/_ssl/cert.c
+patching file Modules/_ssl_data_40.h
+patching file Tools/ssl/multissltests.py

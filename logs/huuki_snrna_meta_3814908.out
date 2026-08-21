@@ -1,0 +1,45 @@
+========================================
+Job ID: 3814908
+Node: node12.hgcc.emory.edu
+Started: Wed Jul 22 23:48:01 EDT 2026
+Working directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+========================================
+
+Rscript executable:
+/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+
+R version:
+Rscript (R) version 4.5.3 (2026-03-11)
+
+========================================
+Starting Huuki snRNA-seq metadata export
+========================================
+Reading snRNA-seq object from:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated 
+
+snRNA-seq object:
+class: SingleCellExperiment 
+dim: 36601 77604 
+metadata(3): Samples cell_type_colors cell_type_colors_broad
+assays(2): counts logcounts
+rownames(36601): MIR1302-2HG FAM138A ... AC007325.4 AC007325.2
+rowData names(7): source type ... gene_type binomial_deviance
+colnames(77604): 1_AAACCCAAGTTCTCTT-1 1_AAACCCACAAGGTCTT-1 ...
+  19_TTTGTTGTCTCATTGT-1 19_TTTGTTGTCTTAAGGC-1
+colData names(32): Sample Barcode ... cellType_layer layer_annotation
+reducedDimNames(4): GLMPCA_approx TSNE UMAP HARMONY
+mainExpName: NULL
+altExpNames(0):
+
+Saved:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/huuki_myers/tables/huuki_snrna_metadata.csv 
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/huuki_myers/tables/huuki_snrna_brain_counts.csv 
+
+Unique snRNA BrNum:
+ [1] "Br2720" "Br2743" "Br3942" "Br6423" "Br6432" "Br6471" "Br6522" "Br8325"
+ [9] "Br8492" "Br8667"
+
+========================================
+Completed successfully
+Finished: Wed Jul 22 23:48:12 EDT 2026
+========================================

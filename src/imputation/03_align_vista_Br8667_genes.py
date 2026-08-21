@@ -30,7 +30,7 @@ import anndata as ad
 import pandas as pd
 
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 DEFAULT_SEQ_PATH = (
     PROJECT_ROOT

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/prepare_ex5_1_manifest.py", line 1107, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/prepare_ex5_1_manifest.py", line 670, in main
+    fold_files = discover_fold_files(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/prepare_ex5_1_manifest.py", line 290, in discover_fold_files
+    raise RuntimeError(
+RuntimeError: Multiple candidate files were found for fold 1 heldout:
+1. /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/backup_before_common_nonempty_filter/fold_1_heldout_genes.h5ad
+2. /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/fold_1_heldout_genes.h5ad

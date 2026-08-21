@@ -1,0 +1,214 @@
+============================================================
+Extract Baituk genes
+============================================================
+Job ID: 3842703
+Node: node01.hgcc.emory.edu
+Started: Mon Jul 27 19:12:37 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/03_batiuk_huuki_gene_overlap/01_extract_batiuk_genes.R
+============================================================
+Rscript (R) version 4.5.3 (2026-03-11)
+
+Checking R script syntax...
+expression(suppressPackageStartupMessages({
+    library(Matrix)
+}), PROJECT_ROOT <- "/beegfs/labs/hulab/projects/mjabin/GeneBridge", 
+    INPUT_RDS <- file.path(PROJECT_ROOT, "data", "raw", "Baituk", 
+        "snRNA-seq_raw_countmatrices.RDS"), OUTPUT_DIR <- file.path(PROJECT_ROOT, 
+        "outputs", "snrnaseq_branch", "03_batiuk_huuki_gene_overlap"), 
+    dir.create(OUTPUT_DIR, recursive = TRUE, showWarnings = FALSE), 
+    SAMPLE_SUMMARY_CSV <- file.path(OUTPUT_DIR, "batiuk_sample_gene_summary.csv"), 
+    UNION_GENES_CSV <- file.path(OUTPUT_DIR, "batiuk_gene_union.csv"), 
+    INTERSECTION_GENES_CSV <- file.path(OUTPUT_DIR, "batiuk_gene_intersection.csv"), 
+    cat("Input Batiuk RDS:\n"), cat(INPUT_RDS, "\n"), if (!file.exists(INPUT_RDS)) {
+        stop("Input Batiuk RDS not found: ", INPUT_RDS)
+    }, cat("\nReading Batiuk RDS...\n"), batiuk <- readRDS(INPUT_RDS), 
+    if (!is.list(batiuk)) {
+        stop("Expected the Batiuk RDS to contain a list.")
+    }, sample_names <- names(batiuk), if (is.null(sample_names)) {
+        sample_names <- paste0("sample_", seq_along(batiuk))
+    }, gene_sets <- list(), sample_records <- vector("list", 
+        length(batiuk)), for (i in seq_along(batiuk)) {
+        sample_name <- sample_names[i]
+        object <- batiuk[[i]]
+        dimensions <- tryCatch(dim(object), error = function(e) NULL)
+        genes <- tryCatch(rownames(object), error = function(e) NULL)
+        genes <- as.character(genes)
+        genes <- trimws(genes)
+        genes <- genes[!is.na(genes) & nzchar(genes)]
+        unique_genes <- unique(genes)
+        n_rows <- if (!is.null(dimensions) && length(dimensions) >= 
+            1) {
+            dimensions[1]
+        }
+        else {
+            NA_integer_
+        }
+        n_cells <- if (!is.null(dimensions) && length(dimensions) >= 
+            2) {
+            dimensions[2]
+        }
+        else {
+            NA_integer_
+        }
+        status <- if (length(unique_genes) > 0) {
+            "gene_names_found"
+        }
+        else {
+            "no_gene_names"
+        }
+        if (length(unique_genes) > 0) {
+            gene_sets[[sample_name]] <- unique_genes
+        }
+        sample_records[[i]] <- data.frame(sample = sample_name, 
+            object_class = paste(class(object), collapse = ";"), 
+            n_rows = n_rows, n_cells = n_cells, n_gene_names = length(genes), 
+            n_unique_genes = length(unique_genes), duplicated_gene_names = length(genes) - 
+                length(unique_genes), status = status, stringsAsFactors = FALSE)
+    }, sample_summary <- do.call(rbind, sample_records), if (length(gene_sets) == 
+        0) {
+        stop("No gene names were found in the Batiuk RDS.")
+    }, reference_sample <- names(gene_sets)[1], reference_genes <- gene_sets[[reference_sample]], 
+    sample_summary$same_gene_set_as_reference <- vapply(sample_summary$sample, 
+        function(sample_name) {
+            if (!(sample_name %in% names(gene_sets))) {
+                return(FALSE)
+            }
+            setequal(gene_sets[[sample_name]], reference_genes)
+        }, logical(1)), sample_summary$same_gene_order_as_reference <- vapply(sample_summary$sample, 
+        function(sample_name) {
+            if (!(sample_name %in% names(gene_sets))) {
+                return(FALSE)
+            }
+            identical(gene_sets[[sample_name]], reference_genes)
+        }, logical(1)), batiuk_union <- Reduce(union, gene_sets), 
+    batiuk_intersection <- Reduce(intersect, gene_sets), write.csv(sample_summary, 
+        SAMPLE_SUMMARY_CSV, row.names = FALSE), write.csv(data.frame(gene = sort(batiuk_union), 
+        stringsAsFactors = FALSE), UNION_GENES_CSV, row.names = FALSE), 
+    write.csv(data.frame(gene = sort(batiuk_intersection), stringsAsFactors = FALSE), 
+        INTERSECTION_GENES_CSV, row.names = FALSE), cat("\nBatiuk sample summary:\n"), 
+    print(sample_summary), cat("\nNumber of Batiuk objects:\n"), 
+    print(length(batiuk)), cat("\nSamples containing gene names:\n"), 
+    print(length(gene_sets)), cat("\nReference sample:\n"), print(reference_sample), 
+    cat("\nBatiuk union genes:\n"), print(length(batiuk_union)), 
+    cat("\nBatiuk intersection genes:\n"), print(length(batiuk_intersection)), 
+    cat("\nAll valid samples have the same gene set:\n"), print(all(sample_summary$same_gene_set_as_reference[sample_summary$status == 
+        "gene_names_found"])), cat("\nCreated:\n"), cat(SAMPLE_SUMMARY_CSV, 
+        "\n"), cat(UNION_GENES_CSV, "\n"), cat(INTERSECTION_GENES_CSV, 
+        "\n"), cat("\nDONE\n"))
+R syntax check: PASSED
+
+Starting Baituk gene extraction...
+
+Input Batiuk RDS:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/Baituk/snRNA-seq_raw_countmatrices.RDS 
+
+Reading Batiuk RDS...
+
+Batiuk sample summary:
+   sample object_class n_rows n_cells n_gene_names n_unique_genes
+1     MB7    dgCMatrix  60617    9838        60617          60617
+2     MB9    dgCMatrix  60617   10652        60617          60617
+3    MB11    dgCMatrix  60617   11580        60617          60617
+4    MB13    dgCMatrix  60617    9253        60617          60617
+5    MB15    dgCMatrix  60617   10439        60617          60617
+6    MB16    dgCMatrix  60617    7564        60617          60617
+7    MB17    dgCMatrix  60617    9846        60617          60617
+8    MB19    dgCMatrix  60617    9792        60617          60617
+9    MB21    dgCMatrix  60617    9890        60617          60617
+10 MB18-2    dgCMatrix  60617   10176        60617          60617
+11   MB51    dgCMatrix  60617    4633        60617          60617
+12   MB53    dgCMatrix  60617    7879        60617          60617
+13   MB55    dgCMatrix  60617    8315        60617          60617
+14   MB57    dgCMatrix  60617    7379        60617          60617
+15    MB6    dgCMatrix  60617    8183        60617          60617
+16   MB10    dgCMatrix  60617    8750        60617          60617
+17   MB12    dgCMatrix  60617   10487        60617          60617
+18   MB14    dgCMatrix  60617    9989        60617          60617
+19   MB22    dgCMatrix  60617    8816        60617          60617
+20   MB23    dgCMatrix  60617   10599        60617          60617
+21  MB8-2    dgCMatrix  60617    6565        60617          60617
+22    MB8    dgCMatrix  60617    5267        60617          60617
+23   MB54    dgCMatrix  60617    7005        60617          60617
+24   MB56    dgCMatrix  60617    6156        60617          60617
+   duplicated_gene_names           status same_gene_set_as_reference
+1                      0 gene_names_found                       TRUE
+2                      0 gene_names_found                       TRUE
+3                      0 gene_names_found                       TRUE
+4                      0 gene_names_found                       TRUE
+5                      0 gene_names_found                       TRUE
+6                      0 gene_names_found                       TRUE
+7                      0 gene_names_found                       TRUE
+8                      0 gene_names_found                       TRUE
+9                      0 gene_names_found                       TRUE
+10                     0 gene_names_found                       TRUE
+11                     0 gene_names_found                       TRUE
+12                     0 gene_names_found                       TRUE
+13                     0 gene_names_found                       TRUE
+14                     0 gene_names_found                       TRUE
+15                     0 gene_names_found                       TRUE
+16                     0 gene_names_found                       TRUE
+17                     0 gene_names_found                       TRUE
+18                     0 gene_names_found                       TRUE
+19                     0 gene_names_found                       TRUE
+20                     0 gene_names_found                       TRUE
+21                     0 gene_names_found                       TRUE
+22                     0 gene_names_found                       TRUE
+23                     0 gene_names_found                       TRUE
+24                     0 gene_names_found                       TRUE
+   same_gene_order_as_reference
+1                          TRUE
+2                          TRUE
+3                          TRUE
+4                          TRUE
+5                          TRUE
+6                          TRUE
+7                          TRUE
+8                          TRUE
+9                          TRUE
+10                         TRUE
+11                         TRUE
+12                         TRUE
+13                         TRUE
+14                         TRUE
+15                         TRUE
+16                         TRUE
+17                         TRUE
+18                         TRUE
+19                         TRUE
+20                         TRUE
+21                         TRUE
+22                         TRUE
+23                         TRUE
+24                         TRUE
+
+Number of Batiuk objects:
+[1] 24
+
+Samples containing gene names:
+[1] 24
+
+Reference sample:
+[1] "MB7"
+
+Batiuk union genes:
+[1] 60617
+
+Batiuk intersection genes:
+[1] 60617
+
+All valid samples have the same gene set:
+[1] TRUE
+
+Created:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/batiuk_sample_gene_summary.csv 
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/batiuk_gene_union.csv 
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/03_batiuk_huuki_gene_overlap/batiuk_gene_intersection.csv 
+
+DONE
+
+============================================================
+Completed successfully
+Finished: Mon Jul 27 19:13:21 EDT 2026
+============================================================

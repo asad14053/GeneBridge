@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/create_brain_snrna_from_huuki_h5ad.py", line 540, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/create_brain_snrna_from_huuki_h5ad.py", line 323, in main
+    .to_memory()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_core/anndata.py", line 1415, in to_memory
+    attr = getattr(self, attr_name, None)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_core/anndata.py", line 557, in X
+    X = _subset(X, (self._oidx, self._vidx))
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/functools.py", line 889, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_core/index.py", line 198, in _subset_dataset
+    return d[tuple(ordered)][tuple(rev_order)]
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/h5py/_hl/dataset.py", line 945, in __getitem__
+    selection = sel.select(self.shape, args, dataset=self)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/h5py/_hl/selections.py", line 85, in select
+    return selector.make_selection(args)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/_selector.pyx", line 297, in h5py._selector.Selector.make_selection
+  File "h5py/_selector.pyx", line 200, in h5py._selector.Selector.apply_args
+TypeError: Only one indexing vector or array is currently allowed for fancy indexing

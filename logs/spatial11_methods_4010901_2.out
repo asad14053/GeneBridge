@@ -1,0 +1,46 @@
+============================================================
+11-gene spatial panel across methods
+Experiment: ex5_1
+Job ID: 4010903
+Array task: 2
+Node: node02.hgcc.emory.edu
+Started: Tue Aug 11 18:55:49 EDT 2026
+============================================================
+==============================================================================================================
+SPATIAL 11-GENE PANEL ACROSS METHODS
+==============================================================================================================
+Experiment: Experiment 5.1
+
+Loading canonical truth:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_ground_truth_300genes.h5ad
+Truth shape: (66148, 300)
+
+Loading VISTA:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Loading gimVI:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/gimvi/combined_v2/oof_predictions_300genes.h5ad
+
+Loading Tangram:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/tangram/combined_v2/oof_predictions_300genes.h5ad
+
+Loading ENVI:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/envi/combined_v2/oof_predictions_300genes.h5ad
+
+Loading SpaGE:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/spage/combined_v2/oof_predictions_300genes.h5ad
+
+Loading TransImpSpa:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/transimpspa/combined_v2/oof_predictions_300genes.h5ad
+
+==============================================================================================================
+DONE
+==============================================================================================================
+PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_methods/ex5_1/ex5_1_spatial_11genes_across_methods.png
+PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_methods/ex5_1/ex5_1_spatial_11genes_across_methods.pdf
+Scales: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_methods/ex5_1/gene_color_scales.csv
+
+============================================================
+Completed: Tue Aug 11 18:56:53 EDT 2026
+Experiment: ex5_1
+============================================================

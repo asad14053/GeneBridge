@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/plot_oof_advisor_genes.py", line 550, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/plot_oof_advisor_genes.py", line 457, in main
+    raise ValueError(
+ValueError: The fixed advisor panel is incomplete. Missing or unassigned genes: NTNG2
+Review: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/figures/advisor_highlight_genes/advisor_highlight_gene_availability.csv

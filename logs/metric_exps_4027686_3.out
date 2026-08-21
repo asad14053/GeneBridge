@@ -1,0 +1,70 @@
+============================================================
+Raw metric distributions across experiments
+Method: tangram
+Job: 4027689_3
+Started: Wed Aug 12 18:11:30 EDT 2026
+============================================================
+====================================================================================================
+RAW GENE-LEVEL METRIC DISTRIBUTIONS
+====================================================================================================
+Method: Tangram
+
+Loading Experiment 5:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/tangram/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.1:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/tangram/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.3:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/tangram/combined_v2/gene_level_metrics_300genes.csv
+
+====================================================================================================
+VALIDATION
+====================================================================================================
+SCC          missing=0     finite=900
+SSIM         missing=0     finite=900
+RMSE         missing=0     finite=900
+MAE          missing=0     finite=900
+JSD          missing=0     finite=900
+Moran_error  missing=0     finite=900
+
+Unique genes by experiment:
+experiment
+ex5      300
+ex5_1    300
+ex5_3    300
+Name: gene, dtype: int64
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+     metric experiment_label     mean   median      std
+        SCC     Experiment 5 0.409476 0.363294 0.213903
+        SCC   Experiment 5.1 0.424600 0.386856 0.203019
+        SCC   Experiment 5.3 0.425956 0.393985 0.201678
+       SSIM     Experiment 5 0.330421 0.319697 0.183823
+       SSIM   Experiment 5.1 0.343802 0.325785 0.186242
+       SSIM   Experiment 5.3 0.345231 0.338482 0.186901
+       RMSE     Experiment 5 4.903070 2.382594 8.743715
+       RMSE   Experiment 5.1 5.090905 2.352578 9.329705
+       RMSE   Experiment 5.3 5.124290 2.318300 9.427117
+        MAE     Experiment 5 3.460993 1.405011 7.004246
+        MAE   Experiment 5.1 3.629350 1.495466 7.517817
+        MAE   Experiment 5.3 3.660568 1.503057 7.606541
+        JSD     Experiment 5 0.433155 0.431010 0.227579
+        JSD   Experiment 5.1 0.415672 0.409908 0.219722
+        JSD   Experiment 5.3 0.413234 0.397417 0.219020
+Moran_error     Experiment 5 0.183088 0.183907 0.101555
+Moran_error   Experiment 5.1 0.175234 0.174841 0.109426
+Moran_error   Experiment 5.3 0.175150 0.176503 0.110917
+
+====================================================================================================
+DONE
+====================================================================================================
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/tangram/tangram_raw_metric_distributions.png
+Summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/tangram/metric_summary.csv
+
+============================================================
+Completed: Wed Aug 12 18:11:36 EDT 2026
+Method: tangram
+============================================================

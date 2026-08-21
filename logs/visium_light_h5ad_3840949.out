@@ -1,0 +1,17 @@
+====================================================================================================
+Convert Huuki Visium light RDS to H5AD
+====================================================================================================
+Job ID: 3840949
+Node: node14.hgcc.emory.edu
+Started: Mon Jul 27 13:48:34 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/visium_branch/01_build_datastructure/02_convert_spatialDLPFC_light_RDS_to_h5ad.R
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce_light.RDS
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad
+====================================================================================================
+
+R version:
+Rscript (R) version 4.5.3 (2026-03-11)
+
+Checking required R packages...

@@ -9,7 +9,7 @@ suppressPackageStartupMessages({
 
 Sys.setenv(HDF5_USE_FILE_LOCKING = "FALSE")
 
-project_root <- "/users/mjabin/projects/GeneBridge"
+project_root <- "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
 
 sce_dir <- file.path(
   project_root,

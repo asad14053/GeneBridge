@@ -1,0 +1,115 @@
+============================================================
+Create full Baituk snRNA-seq H5AD
+============================================================
+Job ID: 3842920
+Node: node06.hgcc.emory.edu
+Started: Mon Jul 27 21:47:25 EDT 2026
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/03_batiuk_huuki_gene_overlap/03_make_baituk_full_h5ad.R
+============================================================
+Rscript (R) version 4.5.3 (2026-03-11)
+Matrix = 1.7.5
+SingleCellExperiment = 1.32.0
+SummarizedExperiment = 1.40.0
+S4Vectors = 0.48.0
+anndataR = 1.0.2
+
+Starting Baituk H5AD creation...
+
+==================================================================================================== 
+Create full Baituk snRNA-seq H5AD 
+==================================================================================================== 
+Input RDS:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/Baituk/snRNA-seq_raw_countmatrices.RDS 
+
+Output H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad 
+
+==================================================================================================== 
+Reading Baituk RDS 
+==================================================================================================== 
+Number of Baituk objects: 24 
+Sample names:
+ [1] "MB7"    "MB9"    "MB11"   "MB13"   "MB15"   "MB16"   "MB17"   "MB19"  
+ [9] "MB21"   "MB18-2" "MB51"   "MB53"   "MB55"   "MB57"   "MB6"    "MB10"  
+[17] "MB12"   "MB14"   "MB22"   "MB23"   "MB8-2"  "MB8"    "MB54"   "MB56"  
+
+==================================================================================================== 
+Extracting sample matrices 
+==================================================================================================== 
+
+Processing sample MB7...
+Shape [genes x cells]: 60617 x 9838
+
+Processing sample MB9...
+Shape [genes x cells]: 60617 x 10652
+
+Processing sample MB11...
+Shape [genes x cells]: 60617 x 11580
+
+Processing sample MB13...
+Shape [genes x cells]: 60617 x 9253
+
+Processing sample MB15...
+Shape [genes x cells]: 60617 x 10439
+
+Processing sample MB16...
+Shape [genes x cells]: 60617 x 7564
+
+Processing sample MB17...
+Shape [genes x cells]: 60617 x 9846
+
+Processing sample MB19...
+Shape [genes x cells]: 60617 x 9792
+
+Processing sample MB21...
+Shape [genes x cells]: 60617 x 9890
+
+Processing sample MB18-2...
+Shape [genes x cells]: 60617 x 10176
+
+Processing sample MB51...
+Shape [genes x cells]: 60617 x 4633
+
+Processing sample MB53...
+Shape [genes x cells]: 60617 x 7879
+
+Processing sample MB55...
+Shape [genes x cells]: 60617 x 8315
+
+Processing sample MB57...
+Shape [genes x cells]: 60617 x 7379
+
+Processing sample MB6...
+Shape [genes x cells]: 60617 x 8183
+
+Processing sample MB10...
+Shape [genes x cells]: 60617 x 8750
+
+Processing sample MB12...
+Shape [genes x cells]: 60617 x 10487
+
+Processing sample MB14...
+Shape [genes x cells]: 60617 x 9989
+
+Processing sample MB22...
+Shape [genes x cells]: 60617 x 8816
+
+Processing sample MB23...
+Shape [genes x cells]: 60617 x 10599
+
+Processing sample MB8-2...
+Shape [genes x cells]: 60617 x 6565
+
+Processing sample MB8...
+Shape [genes x cells]: 60617 x 5267
+
+Processing sample MB54...
+Shape [genes x cells]: 60617 x 7005
+
+Processing sample MB56...
+Shape [genes x cells]: 60617 x 6156
+
+==================================================================================================== 
+Combining Baituk samples 
+==================================================================================================== 

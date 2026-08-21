@@ -1,0 +1,57 @@
+============================================================
+Direct cross-method comparison by expression
+Job: 4036792
+Started: Thu Aug 13 05:21:59 EDT 2026
+============================================================
+==============================================================================================================
+DIRECT CROSS-METHOD COMPARISON BY EXPRESSION STRATUM
+==============================================================================================================
+Loading: Experiment 5 | VISTA
+Loading: Experiment 5 | gimVI
+Loading: Experiment 5 | Tangram
+Loading: Experiment 5 | ENVI
+Loading: Experiment 5 | SpaGE
+Loading: Experiment 5 | TransImpSpa
+Loading: Experiment 5.1 | VISTA
+Loading: Experiment 5.1 | gimVI
+Loading: Experiment 5.1 | Tangram
+Loading: Experiment 5.1 | ENVI
+Loading: Experiment 5.1 | SpaGE
+Loading: Experiment 5.1 | TransImpSpa
+Loading: Experiment 5.3 | VISTA
+Loading: Experiment 5.3 | gimVI
+Loading: Experiment 5.3 | Tangram
+Loading: Experiment 5.3 | ENVI
+Loading: Experiment 5.3 | SpaGE
+Loading: Experiment 5.3 | TransImpSpa
+
+==============================================================================================================
+MEAN MEDIAN-RANK SUMMARY
+==============================================================================================================
+    experiment      method  mean_rank
+  Experiment 5        ENVI   2.555556
+  Experiment 5 TransImpSpa   2.722222
+  Experiment 5       gimVI   2.833333
+  Experiment 5       SpaGE   3.555556
+  Experiment 5       VISTA   4.055556
+  Experiment 5     Tangram   5.277778
+Experiment 5.1 TransImpSpa   2.722222
+Experiment 5.1       gimVI   2.722222
+Experiment 5.1        ENVI   2.888889
+Experiment 5.1       SpaGE   3.611111
+Experiment 5.1       VISTA   3.888889
+Experiment 5.1     Tangram   5.166667
+Experiment 5.3 TransImpSpa   2.722222
+Experiment 5.3       gimVI   2.833333
+Experiment 5.3        ENVI   3.055556
+Experiment 5.3       SpaGE   3.666667
+Experiment 5.3       VISTA   3.666667
+Experiment 5.3     Tangram   5.055556
+
+==============================================================================================================
+DONE
+==============================================================================================================
+
+============================================================
+Completed: Thu Aug 13 05:22:28 EDT 2026
+============================================================

@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/split_baituk_scz_ntc.py", line 643, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/split_baituk_scz_ntc.py", line 350, in main
+    source = ad.read_h5ad(input_path)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 258, in read_h5ad
+    adata = read_dispatched(f, callback=callback)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/experimental/_dispatch_io.py", line 42, in read_dispatched
+    return reader.read_elem(elem)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/utils.py", line 211, in func_wrapper
+    return func(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/specs/registry.py", line 275, in read_elem
+    return self.callback(read_func, elem.name, elem, iospec=iospec)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 239, in callback
+    **{
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 242, in <dictcomp>
+    k: read_dispatched(elem[k], callback)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/experimental/_dispatch_io.py", line 42, in read_dispatched
+    return reader.read_elem(elem)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/utils.py", line 211, in func_wrapper
+    return func(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/specs/registry.py", line 275, in read_elem
+    return self.callback(read_func, elem.name, elem, iospec=iospec)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/h5ad.py", line 256, in callback
+    return func(elem)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_io/specs/methods.py", line 724, in read_sparse
+    return sparse_dataset(elem).to_memory()
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/anndata/_core/sparse_dataset.py", line 575, in to_memory
+    mtx.data = self.group["data"][...]
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/h5py/_hl/dataset.py", line 872, in __getitem__
+    return self._fast_reader.read(args)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/_selector.pyx", line 393, in h5py._selector.Reader.read
+OSError: Can't synchronously read data (filter returned failure during read)
+Error raised while reading key 'X' of <class 'h5py._hl.group.Group'> from /
+srun: error: node06: task 0: Exited with exit code 1

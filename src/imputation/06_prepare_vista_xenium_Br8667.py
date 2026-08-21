@@ -38,7 +38,7 @@ import pandas as pd
 from scipy import sparse
 
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 INPUT_DIR = (
     PROJECT_ROOT

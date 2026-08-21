@@ -1,0 +1,450 @@
+========================================
+Job ID: 3814456
+Node: node01.hgcc.emory.edu
+Started: Wed Jul 22 17:42:35 EDT 2026
+Working directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+========================================
+
+Python executable:
+/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+
+Python version:
+Python 3.10.20
+
+Python environment check:
+/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+
+========================================
+Starting Xenium N24 raw data structure build
+========================================
+
+==========================================================================================
+Build Xenium N24 raw AnnData
+==========================================================================================
+Project root:    /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Raw Xenium dir:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium
+Output h5ad:     /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_raw.h5ad
+Saved sample paths: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/tables/sample_paths.csv
+ BrNum  has_matrix  has_cells
+Br1113        True       True
+Br1139        True       True
+Br2039        True       True
+Br2421        True       True
+Br2719        True       True
+Br5314        True       True
+Br5373        True       True
+Br5400        True       True
+Br5436        True       True
+Br5588        True       True
+Br5590        True       True
+Br5622        True       True
+Br5639        True       True
+Br5746        True       True
+Br5931        True       True
+Br5973        True       True
+Br6032        True       True
+Br6389        True       True
+Br6432        True       True
+Br6437        True       True
+Br6496        True       True
+Br8433        True       True
+Br8667        True       True
+Br8772        True       True
+
+Samples selected:
+ BrNum                                                                                                   matrix_path                                                                                              cells_path
+Br1113 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1113/GSM9223471_Br1113-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1113/GSM9223471_Br1113-cells.parquet.gz
+Br1139 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1139/GSM9223483_Br1139-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1139/GSM9223483_Br1139-cells.parquet.gz
+Br2039 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cells.parquet.gz
+Br2421 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2421/GSM9223489_Br2421-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2421/GSM9223489_Br2421-cells.parquet.gz
+Br2719 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cells.parquet.gz
+Br5314 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5314/GSM9223477_Br5314-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5314/GSM9223477_Br5314-cells.parquet.gz
+Br5373 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5373/GSM9223472_Br5373-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5373/GSM9223472_Br5373-cells.parquet.gz
+Br5400 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5400/GSM9223474_Br5400-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5400/GSM9223474_Br5400-cells.parquet.gz
+Br5436 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5436/GSM9223486_Br5436-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5436/GSM9223486_Br5436-cells.parquet.gz
+Br5588 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5588/GSM9223478_Br5588-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5588/GSM9223478_Br5588-cells.parquet.gz
+Br5590 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5590/GSM9223473_Br5590-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5590/GSM9223473_Br5590-cells.parquet.gz
+Br5622 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5622/GSM9223475_Br5622-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5622/GSM9223475_Br5622-cells.parquet.gz
+Br5639 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5639/GSM9223480_Br5639-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5639/GSM9223480_Br5639-cells.parquet.gz
+Br5746 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5746/GSM9223479_Br5746-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5746/GSM9223479_Br5746-cells.parquet.gz
+Br5931 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5931/GSM9223487_Br5931-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5931/GSM9223487_Br5931-cells.parquet.gz
+Br5973 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cells.parquet.gz
+Br6032 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6032/GSM9223490_Br6032-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6032/GSM9223490_Br6032-cells.parquet.gz
+Br6389 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6389/GSM9223491_Br6389-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6389/GSM9223491_Br6389-cells.parquet.gz
+Br6432 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cells.parquet.gz
+Br6437 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6437/GSM9223476_Br6437-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6437/GSM9223476_Br6437-cells.parquet.gz
+Br6496 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6496/GSM9223488_Br6496-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6496/GSM9223488_Br6496-cells.parquet.gz
+Br8433 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8433/GSM9223481_Br8433-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8433/GSM9223481_Br8433-cells.parquet.gz
+Br8667 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8667/GSM9223485_Br8667-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8667/GSM9223485_Br8667-cells.parquet.gz
+Br8772 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8772/GSM9223482_Br8772-cell_feature_matrix.h5 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8772/GSM9223482_Br8772-cells.parquet.gz
+
+==========================================================================================
+Loading Br1113
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1113/GSM9223471_Br1113-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1113/GSM9223471_Br1113-cells.parquet.gz
+Cells in H5 matrix:      57508
+Cells in cells metadata: 57508
+Matched cell IDs:        57508
+AnnData object with n_obs × n_vars = 57508 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br1139
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1139/GSM9223483_Br1139-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br1139/GSM9223483_Br1139-cells.parquet.gz
+Cells in H5 matrix:      59962
+Cells in cells metadata: 59962
+Matched cell IDs:        59962
+AnnData object with n_obs × n_vars = 59962 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br2039
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cells.parquet.gz
+Cells in H5 matrix:      45898
+Cells in cells metadata: 45898
+Matched cell IDs:        45898
+AnnData object with n_obs × n_vars = 45898 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br2421
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2421/GSM9223489_Br2421-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2421/GSM9223489_Br2421-cells.parquet.gz
+Cells in H5 matrix:      67472
+Cells in cells metadata: 67472
+Matched cell IDs:        67472
+AnnData object with n_obs × n_vars = 67472 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br2719
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cells.parquet.gz
+Cells in H5 matrix:      61222
+Cells in cells metadata: 61222
+Matched cell IDs:        61222
+AnnData object with n_obs × n_vars = 61222 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5314
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5314/GSM9223477_Br5314-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5314/GSM9223477_Br5314-cells.parquet.gz
+Cells in H5 matrix:      48542
+Cells in cells metadata: 48542
+Matched cell IDs:        48542
+AnnData object with n_obs × n_vars = 48542 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5373
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5373/GSM9223472_Br5373-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5373/GSM9223472_Br5373-cells.parquet.gz
+Cells in H5 matrix:      66560
+Cells in cells metadata: 66560
+Matched cell IDs:        66560
+AnnData object with n_obs × n_vars = 66560 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5400
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5400/GSM9223474_Br5400-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5400/GSM9223474_Br5400-cells.parquet.gz
+Cells in H5 matrix:      46917
+Cells in cells metadata: 46917
+Matched cell IDs:        46917
+AnnData object with n_obs × n_vars = 46917 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5436
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5436/GSM9223486_Br5436-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5436/GSM9223486_Br5436-cells.parquet.gz
+Cells in H5 matrix:      46286
+Cells in cells metadata: 46286
+Matched cell IDs:        46286
+AnnData object with n_obs × n_vars = 46286 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5588
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5588/GSM9223478_Br5588-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5588/GSM9223478_Br5588-cells.parquet.gz
+Cells in H5 matrix:      62396
+Cells in cells metadata: 62396
+Matched cell IDs:        62396
+AnnData object with n_obs × n_vars = 62396 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5590
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5590/GSM9223473_Br5590-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5590/GSM9223473_Br5590-cells.parquet.gz
+Cells in H5 matrix:      56715
+Cells in cells metadata: 56715
+Matched cell IDs:        56715
+AnnData object with n_obs × n_vars = 56715 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5622
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5622/GSM9223475_Br5622-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5622/GSM9223475_Br5622-cells.parquet.gz
+Cells in H5 matrix:      71389
+Cells in cells metadata: 71389
+Matched cell IDs:        71389
+AnnData object with n_obs × n_vars = 71389 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5639
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5639/GSM9223480_Br5639-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5639/GSM9223480_Br5639-cells.parquet.gz
+Cells in H5 matrix:      63221
+Cells in cells metadata: 63221
+Matched cell IDs:        63221
+AnnData object with n_obs × n_vars = 63221 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5746
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5746/GSM9223479_Br5746-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5746/GSM9223479_Br5746-cells.parquet.gz
+Cells in H5 matrix:      45675
+Cells in cells metadata: 45675
+Matched cell IDs:        45675
+AnnData object with n_obs × n_vars = 45675 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5931
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5931/GSM9223487_Br5931-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5931/GSM9223487_Br5931-cells.parquet.gz
+Cells in H5 matrix:      45793
+Cells in cells metadata: 45793
+Matched cell IDs:        45793
+AnnData object with n_obs × n_vars = 45793 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br5973
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cells.parquet.gz
+Cells in H5 matrix:      44655
+Cells in cells metadata: 44655
+Matched cell IDs:        44655
+AnnData object with n_obs × n_vars = 44655 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br6032
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6032/GSM9223490_Br6032-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6032/GSM9223490_Br6032-cells.parquet.gz
+Cells in H5 matrix:      47384
+Cells in cells metadata: 47384
+Matched cell IDs:        47384
+AnnData object with n_obs × n_vars = 47384 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br6389
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6389/GSM9223491_Br6389-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6389/GSM9223491_Br6389-cells.parquet.gz
+Cells in H5 matrix:      53201
+Cells in cells metadata: 53201
+Matched cell IDs:        53201
+AnnData object with n_obs × n_vars = 53201 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br6432
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cells.parquet.gz
+Cells in H5 matrix:      41266
+Cells in cells metadata: 59787
+Matched cell IDs:        1
+AnnData object with n_obs × n_vars = 1 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br6437
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6437/GSM9223476_Br6437-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6437/GSM9223476_Br6437-cells.parquet.gz
+Cells in H5 matrix:      59787
+Cells in cells metadata: 59787
+Matched cell IDs:        59787
+AnnData object with n_obs × n_vars = 59787 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br6496
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6496/GSM9223488_Br6496-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6496/GSM9223488_Br6496-cells.parquet.gz
+Cells in H5 matrix:      59438
+Cells in cells metadata: 59438
+Matched cell IDs:        59438
+AnnData object with n_obs × n_vars = 59438 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br8433
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8433/GSM9223481_Br8433-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8433/GSM9223481_Br8433-cells.parquet.gz
+Cells in H5 matrix:      61932
+Cells in cells metadata: 61932
+Matched cell IDs:        61932
+AnnData object with n_obs × n_vars = 61932 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br8667
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8667/GSM9223485_Br8667-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8667/GSM9223485_Br8667-cells.parquet.gz
+Cells in H5 matrix:      68976
+Cells in cells metadata: 68976
+Matched cell IDs:        68976
+AnnData object with n_obs × n_vars = 68976 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Loading Br8772
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8772/GSM9223482_Br8772-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br8772/GSM9223482_Br8772-cells.parquet.gz
+Cells in H5 matrix:      56956
+Cells in cells metadata: 56956
+Matched cell IDs:        56956
+AnnData object with n_obs × n_vars = 56956 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Combining samples
+==========================================================================================
+AnnData object with n_obs × n_vars = 1297886 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'stage', 'object_name', 'description', 'counts_layer', 'spatial_key'
+    obsm: 'spatial'
+    layers: 'counts'
+
+==========================================================================================
+Saving outputs
+==========================================================================================
+Saved h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_raw.h5ad
+
+==========================================================================================
+Saving diagnostic plots
+==========================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/figures/xenium_N24_cells_per_sample.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/figures/xenium_N24_features_per_sample.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/figures/xenium_N24_raw_spatial_locations.png
+
+==========================================================================================
+Done
+==========================================================================================
+Final h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_raw.h5ad
+Cells:      1297886
+Features:   541
+Donors:     24
+
+========================================
+Xenium N24 build completed successfully
+Completed: Wed Jul 22 18:59:47 EDT 2026
+========================================

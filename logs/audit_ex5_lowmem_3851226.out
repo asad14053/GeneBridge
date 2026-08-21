@@ -1,0 +1,50 @@
+Job ID: 3851226
+Node: node11.hgcc.emory.edu
+Started: Wed Jul 29 18:14:20 EDT 2026
+
+====================================================================================================
+Experiment_5_Br8667_only
+====================================================================================================
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Matrix sources: ['X']
+
+              experiment                                                                                                                       file matrix_source encoding  n_obs  n_vars  sampled_values  minimum  maximum  mean_sampled_nonzero  integer_like_fraction  nonnegative  nonzero_fraction    classification
+Experiment_5_Br8667_only /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad             X    array   9897   28907           86721      0.0   3108.0              5.851562                    1.0         True           0.19926 likely_raw_counts
+
+====================================================================================================
+Experiment_5_1_All_10_Huuki
+====================================================================================================
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Matrix sources: ['X', 'layers/logcounts']
+
+                 experiment                                                                                                                               file matrix_source encoding  n_obs  n_vars  sampled_values  minimum  maximum  mean_sampled_nonzero  integer_like_fraction  nonnegative  nonzero_fraction    classification
+Experiment_5_1_All_10_Huuki /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad             X    array  77604   36601          109803      0.0   3107.0              4.867298                    1.0         True           0.14618 likely_raw_counts
+
+                 experiment                                                                                                                               file    matrix_source encoding  n_obs  n_vars  sampled_values  minimum  maximum  mean_sampled_nonzero  integer_like_fraction  nonnegative  nonzero_fraction        classification
+Experiment_5_1_All_10_Huuki /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad layers/logcounts    array  77604   36601          109803      0.0 9.647735              1.260763                0.85382         True           0.14618 likely_log_normalized
+
+====================================================================================================
+Experiment_5_3_Nine_Huuki
+====================================================================================================
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9samples_excluding_xenium_overlap.h5ad
+Matrix sources: ['X', 'layers/logcounts']
+
+               experiment                                                                                                                                            file matrix_source encoding  n_obs  n_vars  sampled_values  minimum  maximum  mean_sampled_nonzero  integer_like_fraction  nonnegative  nonzero_fraction    classification
+Experiment_5_3_Nine_Huuki /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9samples_excluding_xenium_overlap.h5ad             X    array  67707   36601          109803      0.0   3107.0              4.799988                    1.0         True          0.149987 likely_raw_counts
+
+               experiment                                                                                                                                            file    matrix_source encoding  n_obs  n_vars  sampled_values  minimum   maximum  mean_sampled_nonzero  integer_like_fraction  nonnegative  nonzero_fraction        classification
+Experiment_5_3_Nine_Huuki /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9samples_excluding_xenium_overlap.h5ad layers/logcounts    array  67707   36601          109803      0.0 10.170671              1.261248               0.850013         True          0.149987 likely_log_normalized
+
+====================================================================================================
+FINAL SUMMARY
+====================================================================================================
+                 experiment    matrix_source encoding  minimum     maximum  mean_sampled_nonzero  integer_like_fraction        classification
+   Experiment_5_Br8667_only                X    array      0.0 3108.000000              5.851562               1.000000     likely_raw_counts
+Experiment_5_1_All_10_Huuki                X    array      0.0 3107.000000              4.867298               1.000000     likely_raw_counts
+Experiment_5_1_All_10_Huuki layers/logcounts    array      0.0    9.647735              1.260763               0.853820 likely_log_normalized
+  Experiment_5_3_Nine_Huuki                X    array      0.0 3107.000000              4.799988               1.000000     likely_raw_counts
+  Experiment_5_3_Nine_Huuki layers/logcounts    array      0.0   10.170671              1.261248               0.850013 likely_log_normalized
+
+Saved:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/reference_alignment_check/expression_matrix_audit_lowmem.csv
+Completed: Wed Jul 29 18:14:24 EDT 2026

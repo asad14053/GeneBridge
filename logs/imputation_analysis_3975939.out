@@ -1,0 +1,101 @@
+====================================================================================================
+STANDARDIZED IMPUTATION MODEL ANALYSIS
+====================================================================================================
+Model key:     gimvi
+Model label:   gimVI
+Combined dir:  combined_v2
+Started:       Fri Aug  7 01:40:57 EDT 2026
+Host:          node01.hgcc.emory.edu
+
+====================================================================================================
+1. PAIRED T-TEST + TOST
+====================================================================================================
+
+==============================================================================================================
+LOADING gimVI METRICS
+==============================================================================================================
+Experiment 5 gene-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/gimvi/combined_v2/gene_level_metrics_300genes.csv
+Experiment 5: 300 unique genes; metrics=['SCC', 'SSIM', 'RMSE', 'MAE', 'JSD', 'Moran_error']
+Experiment 5 fold-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/gimvi/combined_v2/fold_level_metrics_3folds.csv
+Experiment 5: 3 fold rows; metrics=['NMI', 'ARI']
+Experiment 5.1 gene-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/gimvi/combined_v2/gene_level_metrics_300genes.csv
+Experiment 5.1: 300 unique genes; metrics=['SCC', 'SSIM', 'RMSE', 'MAE', 'JSD', 'Moran_error']
+Experiment 5.1 fold-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/gimvi/combined_v2/fold_level_metrics_3folds.csv
+Experiment 5.1: 3 fold rows; metrics=['NMI', 'ARI']
+Experiment 5.3 gene-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/gimvi/combined_v2/gene_level_metrics_300genes.csv
+Experiment 5.3: 300 unique genes; metrics=['SCC', 'SSIM', 'RMSE', 'MAE', 'JSD', 'Moran_error']
+Experiment 5.3 fold-level source: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/gimvi/combined_v2/fold_level_metrics_3folds.csv
+Experiment 5.3: 3 fold rows; metrics=['NMI', 'ARI']
+
+==============================================================================================================
+GENE-LEVEL PAIRED TESTS
+==============================================================================================================
+
+==============================================================================================================
+FOLD-LEVEL NMI/ARI PAIRED TESTS
+==============================================================================================================
+
+==============================================================================================================
+GENE-LEVEL SUMMARY
+==============================================================================================================
+                comparison_label      metric  n_pairs  baseline_mean  comparison_mean  direction_adjusted_improvement_percent  paired_p_two_sided  paired_p_holm       tost_p  tost_p_holm  equivalent_within_5pct_holm
+  Experiment 5.1 vs Experiment 5         SCC      300       0.485947         0.490548                                0.946797        1.281795e-02   1.281795e-01 3.351554e-23 5.027331e-22                         True
+  Experiment 5.1 vs Experiment 5        SSIM      300       0.407765         0.417329                                2.345347        1.060438e-03   1.272526e-02 1.092681e-04 8.741450e-04                         True
+  Experiment 5.1 vs Experiment 5        RMSE      300       4.614870         4.646633                               -0.688281        8.019645e-01   1.000000e+00 5.843913e-02 3.506348e-01                        False
+  Experiment 5.1 vs Experiment 5         MAE      300       2.966597         3.028597                               -2.089940        5.545093e-01   1.000000e+00 2.053355e-01 8.213421e-01                        False
+  Experiment 5.1 vs Experiment 5         JSD      300       0.378621         0.368749                                2.607380        5.156805e-11   9.282249e-10 6.863786e-10 8.236543e-09                         True
+  Experiment 5.1 vs Experiment 5 Moran_error      300       0.153508         0.146088                                4.833863        3.749810e-03   4.124791e-02 4.600439e-01 8.213421e-01                        False
+  Experiment 5.3 vs Experiment 5         SCC      300       0.485947         0.486096                                0.030775        9.378577e-01   1.000000e+00 8.702779e-30 1.392445e-28                         True
+  Experiment 5.3 vs Experiment 5        SSIM      300       0.407765         0.410446                                0.657452        4.166840e-01   1.000000e+00 7.838052e-08 7.054247e-07                         True
+  Experiment 5.3 vs Experiment 5        RMSE      300       4.614870         4.624470                               -0.208040        9.513692e-01   1.000000e+00 8.038821e-02 4.019411e-01                        False
+  Experiment 5.3 vs Experiment 5         MAE      300       2.966597         3.023995                               -1.934826        6.532818e-01   1.000000e+00 2.384000e-01 8.213421e-01                        False
+  Experiment 5.3 vs Experiment 5         JSD      300       0.378621         0.373682                                1.304507        5.119846e-04   6.655800e-03 1.220875e-20 1.587137e-19                         True
+  Experiment 5.3 vs Experiment 5 Moran_error      300       0.153508         0.152458                                0.684058        7.018931e-01   1.000000e+00 8.116867e-03 5.681807e-02                        False
+Experiment 5.3 vs Experiment 5.1         SCC      300       0.490548         0.486096                               -0.907431        3.518712e-06   5.278068e-05 2.918255e-62 5.252859e-61                         True
+Experiment 5.3 vs Experiment 5.1        SSIM      300       0.417329         0.410446                               -1.649215        1.317664e-06   2.108262e-05 6.635094e-21 9.289132e-20                         True
+Experiment 5.3 vs Experiment 5.1        RMSE      300       4.646633         4.624470                                0.476958        5.301843e-01   1.000000e+00 3.551227e-09 3.906350e-08                         True
+Experiment 5.3 vs Experiment 5.1         MAE      300       3.028597         3.023995                                0.151939        8.531679e-01   1.000000e+00 4.642169e-09 4.642169e-08                         True
+Experiment 5.3 vs Experiment 5.1         JSD      300       0.368749         0.373682                               -1.337753        1.058413e-08   1.799302e-07 8.682929e-43 1.476098e-41                         True
+Experiment 5.3 vs Experiment 5.1 Moran_error      300       0.146088         0.152458                               -4.360590        2.003135e-05   2.804390e-04 2.627938e-01 8.213421e-01                        False
+
+==============================================================================================================
+SAVED OUTPUTS
+==============================================================================================================
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/gimvi_experiments/gimvi_gene_level_paired_ttest_tost.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/gimvi_experiments/gimvi_fold_level_nmi_ari_paired_ttest_tost.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/gimvi_experiments/gimvi_pairing_audit.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/gimvi_experiments/gimvi_statistical_test_source_manifest.json
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/gimvi_experiments/gimvi_paired_test_report.txt
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/statistical_tests/gimvi_experiments/gimvi_gene_level_relative_difference_forest.png
+
+Completed successfully.
+
+====================================================================================================
+2. FIXED ADVISOR 11-GENE COMPARISON
+====================================================================================================
+==============================================================================================================
+ADVISOR 11-GENE CROSS-EXPERIMENT REPORT COMPLETE
+==============================================================================================================
+Model: gimVI
+Genes: ['MBP', 'RELN', 'CUX2', 'ADCYAP1', 'VAMP1', 'RORB', 'PCP4', 'NPTX1', 'CCK', 'PVALB', 'ENC1']
+
+Spatial comparison PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_ex5_ex5_1_ex5_3_comparison.png
+Spatial comparison PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_ex5_ex5_1_ex5_3_comparison.pdf
+Gene-level metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_metrics_by_experiment.csv
+11-gene summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_metric_summary.csv
+Best experiment table: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_best_experiment_by_metric.csv
+Text report: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_comparison_report.txt
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/comparisons/gimvi/ex5_ex5_1_ex5_3/advisor_11_genes/advisor_11_gene_comparison_manifest.json
+
+11-gene metric summary:
+experiment experiment_label experiment_short_label  n_highlight_genes  scc_mean_11genes  scc_sd_11genes  ssim_mean_11genes  ssim_sd_11genes  rmse_mean_11genes  rmse_sd_11genes  mae_mean_11genes  mae_sd_11genes  jsd_mean_11genes  jsd_sd_11genes  moran_abs_error_mean_11genes  moran_abs_error_sd_11genes
+       ex5     Experiment 5                   Ex-5                 11          0.556680        0.193135           0.400782         0.192959           5.361831         3.572964          3.097520        2.668003          0.320830        0.192392                      0.176586                    0.056847
+     ex5_1   Experiment 5.1                 Ex-5.1                 11          0.561601        0.195001           0.408002         0.218039           5.677103         4.175888          3.135611        2.537243          0.316297        0.195710                      0.165449                    0.053637
+     ex5_3   Experiment 5.3                 Ex-5.3                 11          0.563942        0.192262           0.415056         0.221096           5.424705         3.979129          2.951618        2.404244          0.317707        0.200404                      0.167779                    0.067088
+==============================================================================================================
+
+====================================================================================================
+SUCCESS
+Model: gimVI
+Completed: Fri Aug  7 01:41:56 EDT 2026
+====================================================================================================

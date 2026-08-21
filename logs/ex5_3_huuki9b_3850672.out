@@ -1,0 +1,136 @@
+====================================================================================================
+Experiment 5.3: remove all Huuki variants associated with the Xenium brain
+====================================================================================================
+Job ID: 3850672
+Node: node11.hgcc.emory.edu
+Started: Wed Jul 29 16:09:45 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_3_create_huuki_9brains_excluding_xenium.py
+====================================================================================================
+Python 3.10.20
+Python syntax check: PASSED
+
+Starting Experiment 5.3...
+
+
+====================================================================================================
+EXPERIMENT 5.3: REMOVE ALL HUUKI VARIANTS ASSOCIATED WITH THE XENIUM BRAIN
+====================================================================================================
+Huuki input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+
+Xenium input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista.h5ad
+
+Output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+
+====================================================================================================
+READING METADATA
+====================================================================================================
+Huuki shape: (77604, 36601)
+Xenium shape: (66164, 300)
+Huuki layers: ['logcounts']
+
+Xenium brain identified as: Br8667
+Identification method: Xenium metadata and/or input path
+
+====================================================================================================
+HUUKI BRAIN AND VARIANT SUMMARY
+====================================================================================================
+ BrNum      Sample  n_cells
+Br2720  Br2720_mid     3101
+Br2720 Br2720_post     5911
+Br2743  Br2743_ant     2861
+Br2743  Br2743_mid     2723
+Br3942  Br3942_ant     5205
+Br3942  Br3942_mid     4282
+Br6423  Br6423_ant     3898
+Br6423 Br6423_post     4067
+Br6432  Br6432_ant     3059
+Br6471  Br6471_ant     3212
+Br6471  Br6471_mid     4724
+Br6522  Br6522_mid     4004
+Br6522 Br6522_post     4275
+Br8325  Br8325_ant     4707
+Br8325  Br8325_mid     4020
+Br8492  Br8492_mid     4997
+Br8492 Br8492_post     2661
+Br8667  Br8667_ant     5774
+Br8667  Br8667_mid     4123
+
+Unique brains: 10
+Unique Sample variants: 19
+
+====================================================================================================
+VARIANTS TO REMOVE
+====================================================================================================
+Brain to remove: Br8667
+Cells to remove: 9,897
+Associated Sample variants: ['Br8667_ant', 'Br8667_mid']
+
+====================================================================================================
+LOADING THE NINE-BRAIN HUUKI SUBSET
+====================================================================================================
+Subset loaded in 0.24 minutes.
+Subset shape: (67707, 36601)
+Layers retained: ['logcounts']
+
+====================================================================================================
+PRE-WRITE VALIDATION
+====================================================================================================
+ BrNum      Sample  n_cells
+Br2720  Br2720_mid     3101
+Br2720 Br2720_post     5911
+Br2743  Br2743_ant     2861
+Br2743  Br2743_mid     2723
+Br3942  Br3942_ant     5205
+Br3942  Br3942_mid     4282
+Br6423  Br6423_ant     3898
+Br6423 Br6423_post     4067
+Br6432  Br6432_ant     3059
+Br6471  Br6471_ant     3212
+Br6471  Br6471_mid     4724
+Br6522  Br6522_mid     4004
+Br6522 Br6522_post     4275
+Br8325  Br8325_ant     4707
+Br8325  Br8325_mid     4020
+Br8492  Br8492_mid     4997
+Br8492 Br8492_post     2661
+
+Input brains: 10
+Output brains: 9
+Input Sample variants: 19
+Output Sample variants: 17
+Removed variants: ['Br8667_ant', 'Br8667_mid']
+Removed cells: 9,897
+Retained cells: 67,707
+
+====================================================================================================
+WRITING EXPERIMENT 5.3 OUTPUT
+====================================================================================================
+Write completed in 0.72 minutes.
+
+====================================================================================================
+READ-BACK VALIDATION
+====================================================================================================
+
+====================================================================================================
+EXPERIMENT 5.3 COMPLETED
+====================================================================================================
+experiment                                                                                                                        huuki_input                                                                                                              xenium_input                                                                                                                            output_h5ad excluded_brain     excluded_variants  input_brains  output_brains  input_sample_variants  output_sample_variants  input_cells  removed_cells  output_cells  input_genes  output_genes    layers  output_size_GB  runtime_minutes
+       5.3 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista.h5ad /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad         Br8667 Br8667_ant;Br8667_mid            10              9                     19                      17        77604           9897         67707        36601         36601 logcounts          2.4194             1.56
+
+Primary output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+
+Compatibility link:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9samples_excluding_xenium_overlap.h5ad
+
+Removed variants:
+['Br8667_ant', 'Br8667_mid']
+
+====================================================================================================
+Experiment 5.3 completed successfully
+Finished: Wed Jul 29 16:11:23 EDT 2026
+====================================================================================================

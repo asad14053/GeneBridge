@@ -1,0 +1,13 @@
+==================================================
+Balanced gene-fold generation
+==================================================
+Host: node11.hgcc.emory.edu
+Job ID: 3852122
+Started: Wed Jul 29 21:37:03 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista_qc.h5ad
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100
+==================================================
+==================================================
+Finished: Wed Jul 29 21:37:30 EDT 2026
+==================================================

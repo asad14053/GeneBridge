@@ -1,0 +1,15 @@
+========================================
+Job ID: 3826208
+Node: node02.hgcc.emory.edu
+Started: Thu Jul 23 16:17:06 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/snrnaseq_branch/verify_merged_huuki_full_h5ad.py
+========================================
+Python 3.10.20
+
+Starting Python script...
+
+Chunk dir: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_h5ad_chunks_allgenes_full_maxcells0_chunk50
+Merged h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+
+Number of chunks found: 0

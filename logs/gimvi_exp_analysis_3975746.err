@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/advisor_gene_panel_imputation.py", line 769, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/advisor_gene_panel_imputation.py", line 421, in main
+    metrics_df = load_metric_tables(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/advisor_gene_panel_imputation.py", line 251, in load_metric_tables
+    sub.insert(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/pandas/core/frame.py", line 5180, in insert
+    raise ValueError(f"cannot insert {column}, already exists")
+ValueError: cannot insert experiment, already exists

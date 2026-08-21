@@ -1,0 +1,560 @@
+#!/usr/bin/env python3
+
+"""
+Create the fixed advisor-highlight spatial plot from a model's aggregated
+300-gene out-of-fold predictions.
+
+Works for:
+    VISTA
+    gimVI
+    Tangram
+    ENVI
+    TransImp
+    SpaGE
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+import anndata as ad
+import numpy as np
+import pandas as pd
+from scipy import sparse
+
+
+PROJECT_ROOT = Path(
+    "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
+)
+
+DEFAULT_FOLD_DIR = (
+    PROJECT_ROOT
+    / "data"
+    / "processed"
+    / "imputation_beta"
+    / "Br8667"
+    / "gene_folds_200_100"
+)
+
+DEFAULT_HIGHLIGHT_FILE = (
+    PROJECT_ROOT
+    / "data"
+    / "metadata"
+    / "imputation"
+    / "advisor_highlight_genes.csv"
+)
+
+
+def parse_arguments() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--experiment",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--experiment-label",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--model",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--model-label",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--combined-dir",
+        default="auto",
+        help=(
+            "Use combined_v2, combined, or auto. "
+            "Auto prefers combined_v2."
+        ),
+    )
+
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=(
+            PROJECT_ROOT
+            / "outputs"
+            / "imputation_beta"
+            / "Br8667"
+        ),
+    )
+
+    parser.add_argument(
+        "--fold-dir",
+        type=Path,
+        default=DEFAULT_FOLD_DIR,
+    )
+
+    parser.add_argument(
+        "--highlight-file",
+        type=Path,
+        default=DEFAULT_HIGHLIGHT_FILE,
+    )
+
+    return parser.parse_args()
+
+
+def to_dense_float32(matrix) -> np.ndarray:
+    if sparse.issparse(matrix):
+        matrix = matrix.toarray()
+
+    return np.asarray(
+        matrix,
+        dtype=np.float32,
+    )
+
+
+def resolve_combined_dir(
+    model_root: Path,
+    requested: str,
+) -> Path:
+    if requested != "auto":
+        selected = (
+            model_root
+            / requested
+        )
+
+        if not selected.is_dir():
+            raise FileNotFoundError(
+                selected
+            )
+
+        return selected
+
+    candidates = [
+        model_root / "combined_v2",
+        model_root / "combined",
+    ]
+
+    for candidate in candidates:
+        if (
+            candidate
+            / "oof_predictions_300genes.h5ad"
+        ).is_file():
+            return candidate
+
+    raise FileNotFoundError(
+        "Could not locate combined_v2 or combined under:\n"
+        f"{model_root}"
+    )
+
+
+def build_fold_mapping(
+    fold_dir: Path,
+) -> dict[str, int]:
+    fold_mapping: dict[str, int] = {}
+
+    for fold in (1, 2, 3):
+        path = (
+            fold_dir
+            / f"fold_{fold}_heldout_genes.h5ad"
+        )
+
+        if not path.is_file():
+            raise FileNotFoundError(
+                path
+            )
+
+        adata = ad.read_h5ad(
+            path,
+            backed="r",
+        )
+
+        try:
+            for gene in adata.var_names.astype(str):
+                if gene in fold_mapping:
+                    raise ValueError(
+                        f"Gene appears in multiple held-out folds: {gene}"
+                    )
+
+                fold_mapping[
+                    gene
+                ] = fold
+        finally:
+            adata.file.close()
+
+    return fold_mapping
+
+
+def main() -> None:
+    args = parse_arguments()
+
+    common_dir = (
+        PROJECT_ROOT
+        / "src"
+        / "imputation"
+        / "common"
+    )
+
+    sys.path.insert(
+        0,
+        str(common_dir),
+    )
+
+    try:
+        from benchmark_evaluation_v2 import (
+            plot_ten_gene_maps,
+        )
+        benchmark_module = (
+            "benchmark_evaluation_v2"
+        )
+    except ImportError:
+        from benchmark_evaluation import (
+            plot_ten_gene_maps,
+        )
+        benchmark_module = (
+            "benchmark_evaluation"
+        )
+
+    model_root = (
+        args.output_root.resolve()
+        / args.experiment
+        / args.model
+    )
+
+    combined_dir = resolve_combined_dir(
+        model_root=model_root,
+        requested=args.combined_dir,
+    )
+
+    prediction_path = (
+        combined_dir
+        / "oof_predictions_300genes.h5ad"
+    )
+
+    truth_path = (
+        combined_dir
+        / "oof_ground_truth_300genes.h5ad"
+    )
+
+    metrics_path = (
+        combined_dir
+        / "gene_level_metrics_300genes.csv"
+    )
+
+    for path in (
+        prediction_path,
+        truth_path,
+        metrics_path,
+        args.highlight_file,
+    ):
+        if not path.is_file():
+            raise FileNotFoundError(
+                path
+            )
+
+    highlight = pd.read_csv(
+        args.highlight_file
+    )
+
+    required_highlight_columns = {
+        "plot_order",
+        "gene",
+        "expected_region",
+        "source_category",
+    }
+
+    missing_columns = (
+        required_highlight_columns
+        - set(highlight.columns)
+    )
+
+    if missing_columns:
+        raise KeyError(
+            "Highlight CSV is missing columns: "
+            + ", ".join(
+                sorted(missing_columns)
+            )
+        )
+
+    highlight["gene"] = (
+        highlight["gene"]
+        .astype(str)
+        .str.strip()
+    )
+
+    skip_genes = {"NTNG2"}
+
+    highlight = highlight.loc[
+        ~highlight["gene"].str.upper().isin(skip_genes)
+    ].copy()
+
+    highlight = (
+        highlight
+        .sort_values("plot_order")
+        .drop_duplicates("gene")
+        .reset_index(drop=True)
+    )
+
+    prediction = ad.read_h5ad(
+        prediction_path
+    )
+
+    truth = ad.read_h5ad(
+        truth_path
+    )
+
+    try:
+        prediction.obs_names = (
+            prediction.obs_names.astype(str)
+        )
+
+        truth.obs_names = (
+            truth.obs_names.astype(str)
+        )
+
+        prediction.var_names = (
+            prediction.var_names.astype(str)
+        )
+
+        truth.var_names = (
+            truth.var_names.astype(str)
+        )
+
+        if not prediction.obs_names.equals(
+            truth.obs_names
+        ):
+            common_cells = truth.obs_names.intersection(
+                prediction.obs_names
+            )
+
+            if len(common_cells) == 0:
+                raise ValueError(
+                    "Prediction and truth share no cells."
+                )
+
+            truth = truth[
+                common_cells,
+                :
+            ].copy()
+
+            prediction = prediction[
+                common_cells,
+                :
+            ].copy()
+
+        if not prediction.var_names.equals(
+            truth.var_names
+        ):
+            missing_prediction_genes = (
+                truth.var_names.difference(
+                    prediction.var_names
+                )
+            )
+
+            if len(missing_prediction_genes):
+                raise ValueError(
+                    "Prediction is missing truth genes: "
+                    f"{missing_prediction_genes[:20].tolist()}"
+                )
+
+            prediction = prediction[
+                :,
+                truth.var_names
+            ].copy()
+
+        if "count_scale" in prediction.layers:
+            predicted_counts = to_dense_float32(
+                prediction.layers[
+                    "count_scale"
+                ]
+            )
+
+            prediction_source = (
+                "layers['count_scale']"
+            )
+        else:
+            predicted_counts = to_dense_float32(
+                prediction.X
+            )
+
+            prediction_source = "X"
+
+        observed_counts = to_dense_float32(
+            truth.X
+        )
+
+        if "spatial" in truth.obsm:
+            coordinates = np.asarray(
+                truth.obsm["spatial"],
+                dtype=np.float32,
+            )
+        elif "spatial" in prediction.obsm:
+            coordinates = np.asarray(
+                prediction.obsm["spatial"],
+                dtype=np.float32,
+            )
+        else:
+            raise KeyError(
+                "Neither truth nor prediction contains obsm['spatial']."
+            )
+
+        truth_gene_set = set(
+            truth.var_names.astype(str)
+        )
+
+        prediction_gene_set = set(
+            prediction.var_names.astype(str)
+        )
+
+        fold_mapping = build_fold_mapping(
+            args.fold_dir.resolve()
+        )
+
+        highlight["in_truth"] = (
+            highlight["gene"]
+            .isin(truth_gene_set)
+        )
+
+        highlight["in_prediction"] = (
+            highlight["gene"]
+            .isin(prediction_gene_set)
+        )
+
+        highlight["heldout_fold"] = (
+            highlight["gene"]
+            .map(fold_mapping)
+        )
+
+        highlight["available"] = (
+            highlight["in_truth"]
+            & highlight["in_prediction"]
+            & highlight["heldout_fold"].notna()
+        )
+
+        output_dir = (
+            combined_dir
+            / "figures"
+            / "advisor_highlight_genes"
+        )
+
+        output_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        availability_path = (
+            output_dir
+            / "advisor_highlight_gene_availability.csv"
+        )
+
+        highlight.to_csv(
+            availability_path,
+            index=False,
+        )
+
+        missing = highlight.loc[
+            ~highlight["available"],
+            "gene",
+        ].tolist()
+
+        if missing:
+            raise ValueError(
+                "The fixed advisor panel is incomplete. "
+                "Missing or unassigned genes: "
+                + ", ".join(missing)
+                + f"\nReview: {availability_path}"
+            )
+
+        metrics = pd.read_csv(
+            metrics_path
+        )
+
+        if "gene" not in metrics.columns:
+            raise KeyError(
+                f"gene column is missing from {metrics_path}"
+            )
+
+        metrics["gene"] = (
+            metrics["gene"]
+            .astype(str)
+        )
+
+        metrics = metrics.merge(
+            highlight[
+                [
+                    "gene",
+                    "plot_order",
+                    "expected_region",
+                    "source_category",
+                    "heldout_fold",
+                ]
+            ],
+            on="gene",
+            how="left",
+        )
+
+        selected_genes = (
+            highlight["gene"]
+            .tolist()
+        )
+
+        selected_file = (
+            output_dir
+            / "advisor_highlight_genes_used.csv"
+        )
+
+        highlight.to_csv(
+            selected_file,
+            index=False,
+        )
+
+        n_selected_genes = len(
+            selected_genes
+        )
+
+        png_path = (
+            output_dir
+            / f"advisor_{n_selected_genes}_gene_observed_vs_prediction.png"
+        )
+
+        pdf_path = (
+            output_dir
+            / f"advisor_{n_selected_genes}_gene_observed_vs_prediction.pdf"
+        )
+
+        plot_ten_gene_maps(
+            observed_counts,
+            predicted_counts,
+            truth.var_names.astype(str).tolist(),
+            selected_genes,
+            coordinates,
+            metrics,
+            png_path,
+            pdf_path,
+            experiment_label=args.experiment_label,
+            model_label=args.model_label,
+            fold=None,
+        )
+
+        print("=" * 100)
+        print("ADVISOR HIGHLIGHT-GENE PLOT COMPLETE")
+        print("=" * 100)
+        print("Benchmark module:", benchmark_module)
+        print("Experiment:", args.experiment)
+        print("Model:", args.model)
+        print("Combined directory:", combined_dir)
+        print("Prediction source:", prediction_source)
+        print("Genes:", selected_genes)
+        print("PNG:", png_path)
+        print("PDF:", pdf_path)
+        print("Availability:", availability_path)
+
+    finally:
+        prediction.file.close()
+        truth.file.close()
+
+
+if __name__ == "__main__":
+    main()

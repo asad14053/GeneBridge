@@ -1,0 +1,69 @@
+====================================================================================================
+TransImpSpa three-fold benchmark
+====================================================================================================
+Job: 3977024
+Fold: 2
+Node: node01.hgcc.emory.edu
+Started: Fri Aug  7 14:54:07 EDT 2026
+
+Experiment: ex5_3
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+
+signature_mode: cell
+mapping_mode: lowrank
+mapping_lowdim: 256
+wt_spa: 1.0
+spatial kNN: 6
+epochs: 2000
+lr: 0.01
+weight_decay: 0.01
+clip_max: 10
+
+Memory: 200G
+CPUs: 16
+====================================================================================================
+====================================================================================================
+STANDARD TransImpSpa 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5_3
+Fold: 2
+Reference raw shape: (67707, 36601)
+Reference model shape: (67707, 300)
+Removed zero-observed reference cells: 0
+Spatial model shape: (66148, 200)
+Held-out truth: (66148, 100)
+Train genes: 200
+Test genes: 100
+signature_mode: cell
+mapping_mode: lowrank
+mapping_lowdim: 256
+Spatial neighbors: 6
+Adjacency nnz: 471790
+wt_spa: 1.0
+epochs: 2000
+lr: 0.01
+weight_decay: 0.01
+clip_max: 10.0
+Device: cpu
+Seed: 8669
+====================================================================================================
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/transimpspa/fold_2/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['ITGB4', 'KCNK1', 'DDIT4', 'ENPP2', 'TNK2', 'AQP1', 'SYK', 'GPX3', 'ALCAM', 'YWHAH']
+
+====================================================================================================
+SUCCESS
+Model: TransImpSpa
+Experiment: ex5_3
+Fold: 2
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/transimpspa/fold_2/predicted_heldout_genes.h5ad
+Runtime minutes: 23.96
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/transimpspa/fold_2/run_complete.flag
+====================================================================================================
+
+====================================================================================================
+SUCCESS
+Model: TransImpSpa
+Experiment: ex5_3
+Fold: 2
+Completed: Fri Aug  7 15:20:40 EDT 2026
+====================================================================================================

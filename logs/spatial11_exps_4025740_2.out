@@ -1,0 +1,23 @@
+============================================================
+11-gene spatial panel across experiments
+Method: gimvi
+Job: 4025742_2
+Node: node09.hgcc.emory.edu
+Started: Wed Aug 12 15:38:44 EDT 2026
+============================================================
+====================================================================================================
+11-GENE SPATIAL PANEL ACROSS EXPERIMENTS
+====================================================================================================
+Method: gimVI
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/gimvi/combined_v2/oof_predictions_300genes.h5ad
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/gimvi/combined_v2/oof_predictions_300genes.h5ad
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/gimvi/combined_v2/oof_predictions_300genes.h5ad
+
+DONE
+PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_experiments/gimvi/gimvi_spatial_11genes_across_experiments.png
+PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_experiments/gimvi/gimvi_spatial_11genes_across_experiments.pdf
+
+============================================================
+Completed: Wed Aug 12 15:39:21 EDT 2026
+Method: gimvi
+============================================================

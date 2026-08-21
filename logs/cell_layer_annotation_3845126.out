@@ -1,0 +1,218 @@
+========================================
+Job ID: 3845126
+Node: node04.hgcc.emory.edu
+Started: Tue Jul 28 19:50:11 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/xenium_branch/03_annotation/02_banksy_celltype_annotation.py
+========================================
+Python 3.10.20
+
+====================================================================================================
+Stage 03: BANKSY-based cell-type annotation
+====================================================================================================
+Input h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_annotated.h5ad
+BANKSY CSV: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/celltype_annotations/banksy_clustering_lambda0.1_res0.7.csv
+Output h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad
+Inhibitory mapping mode: plot_clusters
+
+====================================================================================================
+Loading h5ad
+====================================================================================================
+AnnData object with n_obs × n_vars = 1224452 × 300
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'xenium_total_counts_metadata', 'qc_total_counts', 'qc_gene_counts', 'qc_detected', 'qc_detected_genes', 'detected', 'subsets_negProbe_sum', 'subsets_negCodeword_sum', 'subsets_unassigned_sum', 'subsets_mito_sum', 'subsets_negProbe_percent', 'subsets_negCodeword_percent', 'subsets_unassigned_percent', 'subsets_mito_percent', 'qc_pct_neg_probe', 'qc_pct_neg_codeword', 'qc_pct_unassigned', 'qc_pct_mito', 'qc_empty_cell', 'neg_probe_out', 'neg_codeword_out', 'unassigned_out', 'mito_out', 'detected_out', 'total_counts_out', 'qc_is_outlier', 'qc_pass', 'imputation_size_factor', 'predictions_smooth', 'layer_annotation', 'layer_annotation_source', 'layer_annotation_stage'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'counts_layer', 'description', 'layer_annotation_mapping', 'layer_annotation_order', 'layer_annotation_source', 'normalized_layer', 'object_name', 'outlier_logic', 'raw_counts_layer', 'spatial_key', 'stage', 'target_sum'
+    obsm: 'spatial'
+    layers: 'counts', 'log1p_norm'
+
+====================================================================================================
+Loading BANKSY CSV
+====================================================================================================
+Raw BANKSY CSV shape: (1262965, 3)
+Raw BANKSY CSV columns: ['Unnamed: 0', 'V1', 'V2']
+   Unnamed: 0  V1        V2
+0           1  16  Br1113_1
+1           2   5  Br1113_2
+2           3   7  Br1113_3
+3           4   3  Br1113_4
+4           5   7  Br1113_5
+Column overlap with h5ad cells:
+  Unnamed: 0: 0
+  V1: 0
+  V2: 1224452
+Detected cell ID column: V2
+Detected BANKSY cluster column: V1
+Processed BANKSY table shape: (1262965, 1)
+         Banksy
+cell_id        
+Br1113_1     16
+Br1113_2      5
+Br1113_3      7
+Br1113_4      3
+Br1113_5      7
+
+====================================================================================================
+Matching BANKSY clusters to AnnData cells
+====================================================================================================
+                          metric         value
+                 n_cells_in_h5ad       1224452
+           n_cells_in_banksy_csv       1262965
+                  n_common_cells       1224452
+     n_h5ad_cells_missing_banksy             0
+n_extra_banksy_cells_not_in_h5ad         38513
+ n_BrNum_in_h5ad_before_matching            24
+         inhibitory_mapping_mode plot_clusters
+
+====================================================================================================
+Saving CSV outputs
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/tables/xenium_N24_banksy_celltype_annotations.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/tables/xenium_N24_banksy_cluster_to_celltype_mapping.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/tables/xenium_N24_celltype_counts_by_BrNum.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/tables/xenium_N24_celltype_proportions_by_BrNum.csv
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/tables/xenium_N24_celltype_summary_by_BrNum.csv
+
+====================================================================================================
+Creating panel plot: Xenium BANKSY-based cell-type annotation by donor
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/xenium_N24_banksy_celltype_maps_panel.png
+
+====================================================================================================
+Creating separate per-BrNum maps: BANKSY-based cell-type annotation
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br1113_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br1139_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br2039_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br2421_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br2719_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5314_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5373_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5400_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5436_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5588_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5590_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5622_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5639_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5746_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5931_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br5973_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br6032_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br6389_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br6432_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br6437_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br6496_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br8433_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br8667_banksy_celltype_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps/Br8772_banksy_celltype_map.png
+
+====================================================================================================
+Creating panel plot: Xenium BANKSY clusters by donor
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/xenium_N24_banksy_cluster_maps_panel.png
+
+====================================================================================================
+Creating separate per-BrNum maps: BANKSY cluster map
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br1113_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br1139_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br2039_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br2421_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br2719_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5314_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5373_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5400_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5436_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5588_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5590_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5622_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5639_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5746_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5931_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br5973_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br6032_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br6389_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br6432_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br6437_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br6496_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br8433_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br8667_banksy_cluster_map.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps/Br8772_banksy_cluster_map.png
+
+====================================================================================================
+Creating proportion plot: BANKSY-based cell-type composition by donor
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/xenium_N24_banksy_celltype_proportions_by_BrNum.png
+
+====================================================================================================
+Creating proportion plot: BANKSY cluster composition by donor
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/xenium_N24_banksy_cluster_proportions_by_BrNum.png
+
+====================================================================================================
+Creating overall cell-type distribution plot
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/xenium_N24_banksy_celltype_overall_distribution.png
+
+====================================================================================================
+Saving h5ad
+====================================================================================================
+Saved h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad
+
+====================================================================================================
+Final summary
+====================================================================================================
+Cells in output: 1224452
+Genes/features in output: 300
+Donors: 24
+
+BANKSY cluster counts:
+Banksy
+1     131362
+10     62856
+11     54514
+12     49779
+13     46900
+14     44586
+15     44026
+16     34053
+17     21604
+18      4725
+2     129099
+3     106326
+4     103355
+5      92550
+6      80813
+7      77897
+8      75545
+9      64462
+
+BANKSY-based cell-type counts:
+cell_type_annotation
+Oligo            287720
+Endo             245776
+Ast              159012
+L2/3 Ex          129099
+Mic               77897
+MGE               64462
+Ambig/Oligo       62856
+L4/5 Ex           54514
+CGE               49779
+L6 Ex             44586
+Ambig/In/Endo     44026
+L5 Ex              4725
+
+Main outputs:
+H5AD:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad
+CSV folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/tables
+Figure folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures
+Per-sample cell-type PNG folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_celltype_maps
+Per-sample cluster PNG folder:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/03_annotation/celltype_banksy/figures/per_sample_cluster_maps
+========================================
+Completed successfully
+Finished: Tue Jul 28 19:52:08 EDT 2026
+========================================

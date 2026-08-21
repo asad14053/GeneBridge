@@ -5,7 +5,7 @@ import re
 import pandas as pd
 import scanpy as sc
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 paths = {
     "xenium_N24": PROJECT_ROOT / "data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad",

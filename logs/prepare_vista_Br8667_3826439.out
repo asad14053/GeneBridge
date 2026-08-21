@@ -1,0 +1,17 @@
+========================================
+Job ID: 3826439
+Node: node05.hgcc.emory.edu
+Started: Thu Jul 23 19:04:28 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/imputation/06_prepare_vista_xenium_Br8667.py
+========================================
+Python 3.10.20
+====================================================================================================
+Task-03: Prepare final Br8667 VISTA inputs
+====================================================================================================
+
+snRNA input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_shared.h5ad
+
+Xenium input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_annotated.h5ad

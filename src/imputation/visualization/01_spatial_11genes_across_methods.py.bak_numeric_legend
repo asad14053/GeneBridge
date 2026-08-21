@@ -1,0 +1,1117 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import argparse
+import json
+
+import anndata as ad
+import numpy as np
+import pandas as pd
+from scipy import sparse
+
+import matplotlib
+matplotlib.use("Agg")
+
+import matplotlib.pyplot as plt
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import Normalize
+
+
+# =============================================================================
+# CONFIGURATION
+# =============================================================================
+
+PROJECT_ROOT = Path(
+    "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
+)
+
+BASE_DIR = (
+    PROJECT_ROOT
+    / "outputs"
+    / "imputation_beta"
+    / "Br8667"
+)
+
+OUT_ROOT = (
+    BASE_DIR
+    / "final_visualizations"
+    / "gene_level"
+    / "across_methods"
+)
+
+
+EXPERIMENTS = {
+    "ex5": "Experiment 5",
+    "ex5_1": "Experiment 5.1",
+    "ex5_3": "Experiment 5.3",
+}
+
+
+METHODS = [
+    ("vista", "VISTA"),
+    ("gimvi", "gimVI"),
+    ("tangram", "Tangram"),
+    ("envi", "ENVI"),
+    ("spage", "SpaGE"),
+    ("transimpspa", "TransImpSpa"),
+]
+
+
+COMBINED_DIR = "combined_v2"
+
+
+# =============================================================================
+# FIXED 11-GENE PANEL
+# Same panel used in previous advisor-gene analysis
+# =============================================================================
+
+GENE_PANEL = [
+    ("MBP", "WM"),
+    ("RELN", "Layer 1"),
+    ("CUX2", "Layer 2"),
+    ("ADCYAP1", "Layer 3"),
+    ("VAMP1", "Layer 4"),
+    ("RORB", "Layer 4"),
+    ("PCP4", "Layer 5"),
+    ("NPTX1", "Layer 6"),
+    ("CCK", "Interneuron"),
+    ("PVALB", "Interneuron"),
+    ("ENC1", "Cortical"),
+]
+
+
+GENES = [
+    gene
+    for gene, region in GENE_PANEL
+]
+
+
+COLUMN_LABELS = [
+    "Observed Xenium",
+] + [
+    label
+    for key, label in METHODS
+]
+
+
+# =============================================================================
+# HELPERS
+# =============================================================================
+
+def dense_vector(matrix, gene_index):
+
+    x = matrix[:, gene_index]
+
+    if sparse.issparse(x):
+        x = x.toarray()
+
+    elif hasattr(x, "to_memory"):
+        x = x.to_memory()
+
+        if sparse.issparse(x):
+            x = x.toarray()
+
+    x = np.asarray(x).reshape(-1)
+
+    return x.astype(
+        np.float64,
+        copy=False,
+    )
+
+
+def get_count_matrix(adata, prediction=False):
+
+    if prediction:
+
+        if "count_scale" in adata.layers:
+            return adata.layers["count_scale"]
+
+        print(
+            "WARNING: count_scale layer missing; "
+            "using prediction X."
+        )
+
+        return adata.X
+
+    # Ground truth is canonical count-scale X.
+    return adata.X
+
+
+def extract_panel(
+    adata,
+    prediction=False,
+):
+
+    missing = [
+        gene
+        for gene in GENES
+        if gene not in adata.var_names
+    ]
+
+    if missing:
+
+        raise ValueError(
+            "Missing genes from H5AD: "
+            + ", ".join(missing)
+        )
+
+
+    matrix = get_count_matrix(
+        adata,
+        prediction=prediction,
+    )
+
+
+    result = {}
+
+
+    for gene in GENES:
+
+        idx = int(
+            adata.var_names.get_loc(
+                gene
+            )
+        )
+
+        result[gene] = dense_vector(
+            matrix,
+            idx,
+        )
+
+
+    return result
+
+
+def close_adata(adata):
+
+    try:
+        adata.file.close()
+    except Exception:
+        pass
+
+
+def load_truth(
+    experiment,
+):
+
+    # Use VISTA ground truth as canonical truth.
+    path = (
+        BASE_DIR
+        / experiment
+        / "vista"
+        / COMBINED_DIR
+        / "oof_ground_truth_300genes.h5ad"
+    )
+
+
+    if not path.is_file():
+
+        raise FileNotFoundError(
+            f"Ground truth not found:\n{path}"
+        )
+
+
+    print()
+    print(
+        "Loading canonical truth:"
+    )
+
+    print(
+        path
+    )
+
+
+    adata = ad.read_h5ad(
+        path,
+        backed="r",
+    )
+
+
+    obs_names = (
+        adata.obs_names
+        .astype(str)
+        .to_numpy()
+        .copy()
+    )
+
+
+    var_names = (
+        adata.var_names
+        .astype(str)
+        .to_numpy()
+        .copy()
+    )
+
+
+    if "spatial" not in adata.obsm:
+
+        raise KeyError(
+            f"'spatial' missing from truth obsm: {path}"
+        )
+
+
+    coords = np.asarray(
+        adata.obsm["spatial"]
+    ).copy()
+
+
+    if coords.ndim != 2 or coords.shape[1] < 2:
+
+        raise ValueError(
+            f"Unexpected spatial shape: {coords.shape}"
+        )
+
+
+    coords = coords[:, :2]
+
+
+    expression = extract_panel(
+        adata,
+        prediction=False,
+    )
+
+
+    shape = adata.shape
+
+
+    close_adata(
+        adata
+    )
+
+
+    return {
+        "path": path,
+        "shape": shape,
+        "obs_names": obs_names,
+        "var_names": var_names,
+        "coords": coords,
+        "expression": expression,
+    }
+
+
+def load_method_prediction(
+    experiment,
+    method_key,
+    method_label,
+    truth,
+):
+
+    path = (
+        BASE_DIR
+        / experiment
+        / method_key
+        / COMBINED_DIR
+        / "oof_predictions_300genes.h5ad"
+    )
+
+
+    if not path.is_file():
+
+        raise FileNotFoundError(
+            f"Prediction not found:\n{path}"
+        )
+
+
+    print()
+    print(
+        f"Loading {method_label}:"
+    )
+
+    print(
+        path
+    )
+
+
+    adata = ad.read_h5ad(
+        path,
+        backed="r",
+    )
+
+
+    # -------------------------------------------------------------------------
+    # Alignment checks
+    # -------------------------------------------------------------------------
+
+    current_obs = (
+        adata.obs_names
+        .astype(str)
+        .to_numpy()
+    )
+
+
+    current_var = (
+        adata.var_names
+        .astype(str)
+        .to_numpy()
+    )
+
+
+    if not np.array_equal(
+        current_obs,
+        truth["obs_names"],
+    ):
+
+        raise ValueError(
+            f"{experiment}/{method_key}: "
+            "cell order differs from ground truth."
+        )
+
+
+    if not np.array_equal(
+        current_var,
+        truth["var_names"],
+    ):
+
+        raise ValueError(
+            f"{experiment}/{method_key}: "
+            "gene order differs from ground truth."
+        )
+
+
+    if "spatial" not in adata.obsm:
+
+        raise KeyError(
+            f"{experiment}/{method_key}: "
+            "'spatial' missing from predictions."
+        )
+
+
+    coords = np.asarray(
+        adata.obsm["spatial"]
+    )[:, :2]
+
+
+    if not np.array_equal(
+        coords,
+        truth["coords"],
+    ):
+
+        raise ValueError(
+            f"{experiment}/{method_key}: "
+            "spatial coordinates differ from truth."
+        )
+
+
+    expression = extract_panel(
+        adata,
+        prediction=True,
+    )
+
+
+    for gene, values in expression.items():
+
+        if not np.isfinite(values).all():
+
+            raise ValueError(
+                f"{experiment}/{method_key}/{gene}: "
+                "non-finite prediction."
+            )
+
+
+        if np.min(values) < 0:
+
+            raise ValueError(
+                f"{experiment}/{method_key}/{gene}: "
+                "negative count-scale prediction."
+            )
+
+
+    close_adata(
+        adata
+    )
+
+
+    return expression
+
+
+# =============================================================================
+# COLOR SCALES
+# =============================================================================
+
+def calculate_gene_scales(
+    all_expression,
+):
+
+    rows = []
+
+
+    for gene in GENES:
+
+        pooled = np.concatenate(
+            [
+                expression[gene]
+                for expression
+                in all_expression.values()
+            ]
+        )
+
+
+        pooled_log = np.log1p(
+            np.maximum(
+                pooled,
+                0,
+            )
+        )
+
+
+        vmin = float(
+            np.nanpercentile(
+                pooled_log,
+                1,
+            )
+        )
+
+
+        vmax = float(
+            np.nanpercentile(
+                pooled_log,
+                99,
+            )
+        )
+
+
+        if not np.isfinite(vmin):
+            vmin = 0.0
+
+
+        if not np.isfinite(vmax):
+            vmax = 1.0
+
+
+        if vmax <= vmin:
+
+            vmax = (
+                vmin
+                + 1e-6
+            )
+
+
+        rows.append(
+            {
+                "gene": gene,
+                "vmin_log1p": vmin,
+                "vmax_log1p": vmax,
+            }
+        )
+
+
+    return pd.DataFrame(
+        rows
+    )
+
+
+# =============================================================================
+# PLOT
+# =============================================================================
+
+def create_spatial_panel(
+    experiment,
+    experiment_label,
+    coords,
+    all_expression,
+    scales,
+    output_dir,
+):
+
+    n_rows = len(
+        GENE_PANEL
+    )
+
+    n_cols = len(
+        COLUMN_LABELS
+    )
+
+
+    # Large advisor-facing figure.
+    fig, axes = plt.subplots(
+        n_rows,
+        n_cols,
+        figsize=(
+            17.5,
+            25.5,
+        ),
+        squeeze=False,
+    )
+
+
+    x = coords[:, 0]
+    y = coords[:, 1]
+
+
+    scale_lookup = (
+        scales
+        .set_index("gene")
+        .to_dict("index")
+    )
+
+
+    expression_keys = [
+        "Observed",
+    ] + [
+        key
+        for key, label in METHODS
+    ]
+
+
+    for row_idx, (
+        gene,
+        region,
+    ) in enumerate(
+        GENE_PANEL
+    ):
+
+        vmin = (
+            scale_lookup[
+                gene
+            ][
+                "vmin_log1p"
+            ]
+        )
+
+        vmax = (
+            scale_lookup[
+                gene
+            ][
+                "vmax_log1p"
+            ]
+        )
+
+
+        norm = Normalize(
+            vmin=vmin,
+            vmax=vmax,
+            clip=True,
+        )
+
+
+        for col_idx, key in enumerate(
+            expression_keys
+        ):
+
+            ax = axes[
+                row_idx,
+                col_idx,
+            ]
+
+
+            values = np.log1p(
+                np.maximum(
+                    all_expression[
+                        key
+                    ][
+                        gene
+                    ],
+                    0,
+                )
+            )
+
+
+            ax.scatter(
+                x,
+                y,
+                c=values,
+                cmap="viridis",
+                norm=norm,
+                s=0.30,
+                linewidths=0,
+                rasterized=True,
+            )
+
+
+            ax.set_aspect(
+                "equal",
+                adjustable="box",
+            )
+
+
+            ax.set_xticks([])
+            ax.set_yticks([])
+
+
+            for spine in ax.spines.values():
+                spine.set_visible(False)
+
+
+            if row_idx == 0:
+
+                ax.set_title(
+                    COLUMN_LABELS[
+                        col_idx
+                    ],
+                    fontsize=12,
+                    fontweight="bold",
+                    pad=8,
+                )
+
+
+            if col_idx == 0:
+
+                ax.set_ylabel(
+                    f"{gene}\n{region}",
+                    fontsize=11,
+                    fontweight="bold",
+                    rotation=0,
+                    ha="right",
+                    va="center",
+                    labelpad=18,
+                )
+
+
+
+
+    fig.suptitle(
+        (
+            f"{experiment_label}: "
+            "Spatial expression of the fixed 11-gene panel\n"
+            "Observed Xenium vs six imputation methods"
+        ),
+        fontsize=16,
+        fontweight="bold",
+        y=0.995,
+    )
+
+
+    # =========================================================================
+    # One shared vertical legend underneath the title
+    # This matches the old row-level colorbar style.
+    # =========================================================================
+
+    shared_sm = ScalarMappable(
+        norm=mpl.colors.Normalize(
+            vmin=0.0,
+            vmax=7.0,
+        ),
+        cmap="viridis",
+    )
+    shared_sm.set_array([])
+
+    cax = fig.add_axes(
+        [
+            0.495,  # left
+            0.895,  # bottom
+            0.010,  # width
+            0.085,  # height
+        ]
+    )
+
+    cbar = fig.colorbar(
+        shared_sm,
+        cax=cax,
+        orientation="vertical",
+    )
+
+    cbar.set_ticks(
+        [
+            0,
+            2,
+            4,
+            6,
+        ]
+    )
+
+    cbar.ax.tick_params(
+        labelsize=10,
+    )
+
+    cbar.set_label(
+        "log1p(count)",
+        fontsize=10,
+        rotation=90,
+        labelpad=8,
+    )
+
+
+    fig.subplots_adjust(
+        left=0.10,
+        right=0.985,
+        top=0.84,
+        bottom=0.02,
+        wspace=0.03,
+        hspace=0.08,
+    )
+
+
+    png_file = (
+        output_dir
+        / f"{experiment}_spatial_11genes_across_methods.png"
+    )
+
+
+    pdf_file = (
+        output_dir
+        / f"{experiment}_spatial_11genes_across_methods.pdf"
+    )
+
+
+    fig.savefig(
+        png_file,
+        dpi=300,
+        bbox_inches="tight",
+    )
+
+
+    fig.savefig(
+        pdf_file,
+        bbox_inches="tight",
+    )
+
+
+    plt.close(
+        fig
+    )
+
+
+    return (
+        png_file,
+        pdf_file,
+    )
+
+
+# =============================================================================
+# MAIN
+# =============================================================================
+
+def main():
+
+    parser = argparse.ArgumentParser()
+
+
+    parser.add_argument(
+        "--experiment",
+        required=True,
+        choices=list(
+            EXPERIMENTS.keys()
+        ),
+    )
+
+
+    args = parser.parse_args()
+
+
+    experiment = args.experiment
+
+    experiment_label = (
+        EXPERIMENTS[
+            experiment
+        ]
+    )
+
+
+    output_dir = (
+        OUT_ROOT
+        / experiment
+    )
+
+    output_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+
+    print("=" * 110)
+    print(
+        "SPATIAL 11-GENE PANEL ACROSS METHODS"
+    )
+    print("=" * 110)
+
+    print(
+        "Experiment:",
+        experiment_label,
+    )
+
+
+    # =========================================================================
+    # Load canonical observed expression
+    # =========================================================================
+
+    truth = load_truth(
+        experiment
+    )
+
+
+    print(
+        "Truth shape:",
+        truth["shape"],
+    )
+
+
+    # =========================================================================
+    # Load all six methods
+    # =========================================================================
+
+    all_expression = {
+        "Observed":
+            truth[
+                "expression"
+            ]
+    }
+
+
+    manifest_rows = [
+        {
+            "experiment":
+                experiment,
+
+            "source":
+                "Observed",
+
+            "path":
+                str(
+                    truth[
+                        "path"
+                    ]
+                ),
+
+            "matrix":
+                "X",
+
+            "n_cells":
+                len(
+                    truth[
+                        "obs_names"
+                    ]
+                ),
+
+            "n_genes":
+                len(
+                    truth[
+                        "var_names"
+                    ]
+                ),
+        }
+    ]
+
+
+    for (
+        method_key,
+        method_label,
+    ) in METHODS:
+
+        expression = (
+            load_method_prediction(
+                experiment,
+                method_key,
+                method_label,
+                truth,
+            )
+        )
+
+
+        all_expression[
+            method_key
+        ] = expression
+
+
+        path = (
+            BASE_DIR
+            / experiment
+            / method_key
+            / COMBINED_DIR
+            / "oof_predictions_300genes.h5ad"
+        )
+
+
+        manifest_rows.append(
+            {
+                "experiment":
+                    experiment,
+
+                "source":
+                    method_label,
+
+                "path":
+                    str(path),
+
+                "matrix":
+                    "layers[count_scale]",
+
+                "n_cells":
+                    len(
+                        truth[
+                            "obs_names"
+                        ]
+                    ),
+
+                "n_genes":
+                    len(
+                        truth[
+                            "var_names"
+                        ]
+                    ),
+            }
+        )
+
+
+    # =========================================================================
+    # Calculate shared gene-specific scales
+    # =========================================================================
+
+    scales = calculate_gene_scales(
+        all_expression
+    )
+
+
+    scales_file = (
+        output_dir
+        / "gene_color_scales.csv"
+    )
+
+
+    scales.to_csv(
+        scales_file,
+        index=False,
+    )
+
+
+    # =========================================================================
+    # Save panel metadata
+    # =========================================================================
+
+    panel_df = pd.DataFrame(
+        GENE_PANEL,
+        columns=[
+            "gene",
+            "expected_region",
+        ],
+    )
+
+
+    panel_df.to_csv(
+        output_dir
+        / "gene_panel.csv",
+        index=False,
+    )
+
+
+    pd.DataFrame(
+        manifest_rows
+    ).to_csv(
+        output_dir
+        / "input_manifest.csv",
+        index=False,
+    )
+
+
+    # =========================================================================
+    # Plot
+    # =========================================================================
+
+    png_file, pdf_file = (
+        create_spatial_panel(
+            experiment,
+            experiment_label,
+            truth[
+                "coords"
+            ],
+            all_expression,
+            scales,
+            output_dir,
+        )
+    )
+
+
+    # =========================================================================
+    # Completion manifest
+    # =========================================================================
+
+    manifest = {
+        "experiment":
+            experiment,
+
+        "experiment_label":
+            experiment_label,
+
+        "n_cells":
+            int(
+                len(
+                    truth[
+                        "obs_names"
+                    ]
+                )
+            ),
+
+        "n_genes_total":
+            int(
+                len(
+                    truth[
+                        "var_names"
+                    ]
+                )
+            ),
+
+        "panel_genes":
+            GENES,
+
+        "methods":
+            [
+                label
+                for key, label in METHODS
+            ],
+
+        "display_scale":
+            "log1p(count_scale)",
+
+        "color_scale":
+            (
+                "Per-gene shared scale across "
+                "Observed + all six methods; "
+                "pooled 1st-99th percentile."
+            ),
+
+        "png":
+            str(
+                png_file
+            ),
+
+        "pdf":
+            str(
+                pdf_file
+            ),
+    }
+
+
+    with (
+        output_dir
+        / "manifest.json"
+    ).open(
+        "w"
+    ) as handle:
+
+        json.dump(
+            manifest,
+            handle,
+            indent=2,
+        )
+
+
+    (
+        output_dir
+        / "plot_complete.flag"
+    ).write_text(
+        "PASS\n"
+    )
+
+
+    print()
+    print("=" * 110)
+    print("DONE")
+    print("=" * 110)
+
+    print(
+        "PNG:",
+        png_file,
+    )
+
+    print(
+        "PDF:",
+        pdf_file,
+    )
+
+    print(
+        "Scales:",
+        scales_file,
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_3_create_huuki_9samples_excluding_xenium.py", line 787, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_3_create_huuki_9samples_excluding_xenium.py", line 485, in main
+    raise RuntimeError(
+RuntimeError: Experiment 5.3 expects exactly 10 Huuki samples, but found 19.
+Samples:
+['Br2720_mid', 'Br6432_ant', 'Br6471_ant', 'Br6522_mid', 'Br6522_post', 'Br6471_mid', 'Br8492_post', 'Br2743_ant', 'Br2720_post', 'Br8492_mid', 'Br3942_ant', 'Br6423_post', 'Br8667_mid', 'Br6423_ant', 'Br3942_mid', 'Br8325_ant', 'Br8325_mid', 'Br8667_ant', 'Br2743_mid']

@@ -1,0 +1,70 @@
+============================================================
+Raw metric distributions across experiments
+Method: transimpspa
+Job: 4027686_6
+Started: Wed Aug 12 18:11:31 EDT 2026
+============================================================
+====================================================================================================
+RAW GENE-LEVEL METRIC DISTRIBUTIONS
+====================================================================================================
+Method: TransImpSpa
+
+Loading Experiment 5:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/transimpspa/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.1:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/transimpspa/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.3:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/transimpspa/combined_v2/gene_level_metrics_300genes.csv
+
+====================================================================================================
+VALIDATION
+====================================================================================================
+SCC          missing=0     finite=900
+SSIM         missing=0     finite=900
+RMSE         missing=0     finite=900
+MAE          missing=0     finite=900
+JSD          missing=0     finite=900
+Moran_error  missing=0     finite=900
+
+Unique genes by experiment:
+experiment
+ex5      300
+ex5_1    300
+ex5_3    300
+Name: gene, dtype: int64
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+     metric experiment_label        mean   median           std
+        SCC     Experiment 5    0.483106 0.494727      0.221141
+        SCC   Experiment 5.1    0.487950 0.508298      0.221150
+        SCC   Experiment 5.3    0.486991 0.496715      0.220400
+       SSIM     Experiment 5    0.397733 0.388162      0.233982
+       SSIM   Experiment 5.1    0.387339 0.349919      0.238161
+       SSIM   Experiment 5.3    0.382407 0.356294      0.237921
+       RMSE     Experiment 5  630.085940 2.128451   6558.895822
+       RMSE   Experiment 5.1 6076.860926 2.293692  92157.364934
+       RMSE   Experiment 5.3 9746.535424 2.240535 155220.152614
+        MAE     Experiment 5  211.948852 0.888612   2293.949562
+        MAE   Experiment 5.1 1654.175375 0.912603  23155.523215
+        MAE   Experiment 5.3 2436.630506 0.970843  36666.455719
+        JSD     Experiment 5    0.348279 0.276897      0.211060
+        JSD   Experiment 5.1    0.348115 0.283859      0.210461
+        JSD   Experiment 5.3    0.349459 0.286957      0.209814
+Moran_error     Experiment 5    0.063979 0.045377      0.064624
+Moran_error   Experiment 5.1    0.067951 0.049442      0.066863
+Moran_error   Experiment 5.3    0.066931 0.050553      0.065447
+
+====================================================================================================
+DONE
+====================================================================================================
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/transimpspa/transimpspa_raw_metric_distributions.png
+Summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/transimpspa/metric_summary.csv
+
+============================================================
+Completed: Wed Aug 12 18:11:37 EDT 2026
+Method: transimpspa
+============================================================

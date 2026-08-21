@@ -1,0 +1,1638 @@
+#!/usr/bin/env python3
+
+"""
+Run one standard gimVI fold for the GeneBridge 3-fold benchmark.
+
+Standard output contract
+------------------------
+- X and layers["count_scale"]:
+    nonnegative floating-point expected Xenium counts
+- layers["log1p"]:
+    log1p(count_scale)
+- layers["native"]:
+    native gimVI non-normalized held-out prediction
+- same cells and 100 held-out genes as the Xenium fold truth
+"""
+
+from __future__ import annotations
+
+import argparse
+import gc
+import json
+import os
+import random
+import re
+import sys
+import time
+from pathlib import Path
+
+import anndata as ad
+import matplotlib
+
+matplotlib.use("Agg")
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import scanpy as sc
+from scipy import sparse
+import torch
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--project-root",
+        type=Path,
+        default=Path(
+            "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
+        ),
+    )
+
+    parser.add_argument(
+        "--experiment",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--experiment-label",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--fold",
+        type=int,
+        required=True,
+        choices=[1, 2, 3],
+    )
+
+    parser.add_argument(
+        "--reference",
+        type=Path,
+        required=True,
+    )
+
+    parser.add_argument(
+        "--fold-dir",
+        type=Path,
+        default=None,
+    )
+
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=None,
+    )
+
+    parser.add_argument(
+        "--reference-mode",
+        choices=[
+            "benchmark_300",
+            "full_reference",
+        ],
+        default="benchmark_300",
+    )
+
+    parser.add_argument(
+        "--run-mode",
+        choices=[
+            "smoke",
+            "full",
+        ],
+        default="full",
+    )
+
+    parser.add_argument(
+        "--smoke-epochs",
+        type=int,
+        default=2,
+    )
+
+    parser.add_argument(
+        "--full-epochs",
+        type=int,
+        default=200,
+    )
+
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=128,
+    )
+
+    parser.add_argument(
+        "--n-latent",
+        type=int,
+        default=32,
+    )
+
+    parser.add_argument(
+        "--train-size",
+        type=float,
+        default=0.90,
+    )
+
+    parser.add_argument(
+        "--learning-rate",
+        type=float,
+        default=1e-4,
+        help="Optimizer learning rate.",
+    )
+
+    parser.add_argument(
+        "--gradient-clip-val",
+        type=float,
+        default=5.0,
+        help="Maximum gradient norm.",
+    )
+
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=8667,
+    )
+
+    parser.add_argument(
+        "--cpus",
+        type=int,
+        default=16,
+    )
+
+    parser.add_argument(
+        "--use-gpu",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "--skip-model-save",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "--k-spatial",
+        type=int,
+        default=15,
+    )
+
+    parser.add_argument(
+        "--ssim-grid-size",
+        type=int,
+        default=128,
+    )
+
+    parser.add_argument(
+        "--n-clusters",
+        type=int,
+        default=10,
+    )
+
+    parser.add_argument(
+        "--n-pcs",
+        type=int,
+        default=30,
+    )
+
+    parser.add_argument(
+        "--plot-genes",
+        type=int,
+        default=10,
+    )
+
+    return parser.parse_args()
+
+
+def row_sums(matrix) -> np.ndarray:
+    if sparse.issparse(matrix):
+        return np.asarray(
+            matrix.sum(axis=1)
+        ).ravel()
+
+    return np.asarray(
+        matrix
+    ).sum(axis=1)
+
+
+def history_to_table(model) -> pd.DataFrame:
+    history = getattr(
+        model,
+        "history",
+        None,
+    )
+
+    if history is None or len(history) == 0:
+        return pd.DataFrame()
+
+    tables = []
+
+    for metric_name, values in history.items():
+        if isinstance(
+            values,
+            pd.DataFrame,
+        ):
+            raw_values = values.to_numpy(
+                dtype=object
+            ).reshape(-1)
+
+        elif isinstance(
+            values,
+            pd.Series,
+        ):
+            raw_values = values.to_numpy(
+                dtype=object
+            ).reshape(-1)
+
+        else:
+            raw_values = np.asarray(
+                values,
+                dtype=object,
+            ).reshape(-1)
+
+        numeric_values = []
+
+        for value in raw_values:
+            try:
+                if torch.is_tensor(value):
+                    if value.numel() != 1:
+                        continue
+
+                    value = (
+                        value
+                        .detach()
+                        .cpu()
+                        .item()
+                    )
+
+                value = float(value)
+
+                if np.isfinite(value):
+                    numeric_values.append(
+                        value
+                    )
+
+            except (
+                TypeError,
+                ValueError,
+            ):
+                continue
+
+        if numeric_values:
+            tables.append(
+                pd.DataFrame(
+                    {
+                        "epoch": np.arange(
+                            1,
+                            len(numeric_values) + 1,
+                        ),
+                        "metric": str(
+                            metric_name
+                        ),
+                        "value": numeric_values,
+                    }
+                )
+            )
+
+    if not tables:
+        return pd.DataFrame()
+
+    return pd.concat(
+        tables,
+        ignore_index=True,
+    )
+
+
+def save_training_history(
+    history: pd.DataFrame,
+    output_dir: Path,
+) -> None:
+    if history.empty:
+        print(
+            "No numeric gimVI training history was available."
+        )
+        return
+
+    history.to_csv(
+        output_dir
+        / "training_history.csv",
+        index=False,
+    )
+
+    for metric, frame in history.groupby(
+        "metric",
+        sort=True,
+    ):
+        figure, axis = plt.subplots(
+            figsize=(8, 5)
+        )
+
+        axis.plot(
+            frame["epoch"],
+            frame["value"],
+            linewidth=2,
+        )
+
+        axis.set_xlabel(
+            "Recorded epoch"
+        )
+
+        axis.set_ylabel(
+            metric.replace(
+                "_",
+                " ",
+            )
+        )
+
+        axis.set_title(
+            "gimVI "
+            + metric.replace(
+                "_",
+                " ",
+            )
+        )
+
+        axis.grid(
+            alpha=0.25
+        )
+
+        figure.tight_layout()
+
+        safe_name = re.sub(
+            r"[^A-Za-z0-9_.-]+",
+            "_",
+            metric,
+        )
+
+        figure.savefig(
+            output_dir
+            / f"training_{safe_name}.png",
+            dpi=220,
+            bbox_inches="tight",
+        )
+
+        plt.close(
+            figure
+        )
+
+
+@torch.inference_mode()
+def predict_selected_spatial_genes(
+    model,
+    seq_adata: ad.AnnData,
+    spatial_adata: ad.AnnData,
+    selected_genes: list[str],
+    *,
+    normalized: bool,
+    batch_size: int,
+) -> np.ndarray:
+    """
+    Predict selected genes without retaining a full reference-gene
+    prediction matrix.
+
+    This follows the scvi-tools 0.20.3 gimVI internal prediction loop.
+    """
+
+    from scvi.external.gimvi._model import (
+        _unpack_tensors,
+    )
+
+    selected_genes = [
+        str(gene)
+        for gene in selected_genes
+    ]
+
+    gene_positions = (
+        seq_adata.var_names.get_indexer(
+            selected_genes
+        )
+    )
+
+    if np.any(
+        gene_positions < 0
+    ):
+        missing = [
+            selected_genes[index]
+            for index, position
+            in enumerate(gene_positions)
+            if position < 0
+        ]
+
+        raise ValueError(
+            "Selected genes missing from the reference: "
+            f"{missing[:20]}"
+        )
+
+    (
+        sequencing_loader,
+        spatial_loader,
+    ) = model._make_scvi_dls(
+        [
+            seq_adata,
+            spatial_adata,
+        ],
+        batch_size=batch_size,
+    )
+
+    del sequencing_loader
+
+    model.module.eval()
+
+    output = np.empty(
+        (
+            spatial_adata.n_obs,
+            len(selected_genes),
+        ),
+        dtype=np.float32,
+    )
+
+    gene_index_tensor = torch.as_tensor(
+        gene_positions,
+        dtype=torch.long,
+        device=model.device,
+    )
+
+    processed_cells = 0
+    spatial_mode = 1
+
+    for batch_number, tensors in enumerate(
+        spatial_loader,
+        start=1,
+    ):
+        (
+            sample_batch,
+            batch_index,
+            label,
+            *_,
+        ) = _unpack_tensors(
+            tensors
+        )
+
+        if normalized:
+            full_prediction = (
+                model.module.sample_scale(
+                    sample_batch,
+                    spatial_mode,
+                    batch_index,
+                    label,
+                    deterministic=True,
+                    decode_mode=None,
+                )
+            )
+        else:
+            full_prediction = (
+                model.module.sample_rate(
+                    sample_batch,
+                    spatial_mode,
+                    batch_index,
+                    label,
+                    deterministic=True,
+                    decode_mode=None,
+                )
+            )
+
+        selected_prediction = (
+            full_prediction
+            .index_select(
+                dim=1,
+                index=gene_index_tensor,
+            )
+            .detach()
+            .cpu()
+            .numpy()
+            .astype(
+                np.float32,
+                copy=False,
+            )
+        )
+
+        batch_cells = (
+            selected_prediction.shape[0]
+        )
+
+        end = (
+            processed_cells
+            + batch_cells
+        )
+
+        output[
+            processed_cells:end,
+            :,
+        ] = selected_prediction
+
+        processed_cells = end
+
+        del full_prediction
+        del selected_prediction
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        if (
+            batch_number == 1
+            or batch_number % 25 == 0
+            or processed_cells
+            == spatial_adata.n_obs
+        ):
+            print(
+                f"Predicted {processed_cells:,}/"
+                f"{spatial_adata.n_obs:,} spatial cells"
+            )
+
+    if (
+        processed_cells
+        != spatial_adata.n_obs
+    ):
+        raise ValueError(
+            f"Predicted {processed_cells} cells, "
+            f"expected {spatial_adata.n_obs}."
+        )
+
+    return output
+
+
+def main() -> None:
+    args = parse_args()
+
+    project_root = (
+        args.project_root.resolve()
+    )
+
+    fold_dir = (
+        args.fold_dir.resolve()
+        if args.fold_dir is not None
+        else project_root
+        / "data"
+        / "processed"
+        / "imputation_beta"
+        / "Br8667"
+        / "gene_folds_200_100"
+    )
+
+    output_root = (
+        args.output_root.resolve()
+        if args.output_root is not None
+        else project_root
+        / "outputs"
+        / "imputation_beta"
+        / "Br8667"
+    )
+
+    output_dir = (
+        output_root
+        / args.experiment
+        / "gimvi"
+        / f"fold_{args.fold}"
+    )
+
+    model_dir = (
+        output_dir
+        / "model"
+    )
+
+    figure_dir = (
+        output_dir
+        / "figures"
+    )
+
+    for directory in [
+        output_dir,
+        model_dir,
+        figure_dir,
+    ]:
+        directory.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+    complete_flag = (
+        output_dir
+        / "run_complete.flag"
+    )
+
+    if complete_flag.exists():
+        complete_flag.unlink()
+
+    common_dir = (
+        project_root
+        / "src"
+        / "imputation"
+        / "common"
+    )
+
+    sys.path.insert(
+        0,
+        str(common_dir),
+    )
+
+    from benchmark_evaluation import (
+        assert_nonnegative_count_like,
+        build_fold_summary,
+        calculate_cluster_metrics,
+        calculate_gene_metrics,
+        plot_fold_metric_summary,
+        plot_gene_metric_distributions,
+        plot_ten_gene_maps,
+        select_or_load_plot_genes,
+        to_dense_float32,
+    )
+
+    import scvi
+    from scvi.external import GIMVI
+
+    print(
+        "scvi-tools version:",
+        scvi.__version__,
+    )
+
+    if not str(
+        scvi.__version__
+    ).startswith("0.20."):
+        raise RuntimeError(
+            "This runner uses the scvi-tools 0.20.x gimVI "
+            "prediction API. Detected version: "
+            f"{scvi.__version__}"
+        )
+
+    seed = int(
+        args.seed
+        + args.fold
+    )
+
+    random.seed(
+        seed
+    )
+
+    np.random.seed(
+        seed
+    )
+
+    torch.manual_seed(
+        seed
+    )
+
+    scvi.settings.seed = seed
+
+    torch.set_num_threads(
+        max(
+            1,
+            int(args.cpus),
+        )
+    )
+
+    try:
+        torch.set_num_interop_threads(
+            max(
+                1,
+                min(
+                    4,
+                    int(args.cpus),
+                ),
+            )
+        )
+    except RuntimeError:
+        pass
+
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(
+            seed
+        )
+
+    if (
+        args.use_gpu
+        and not torch.cuda.is_available()
+    ):
+        raise RuntimeError(
+            "--use-gpu was requested, but CUDA is unavailable."
+        )
+
+    observed_path = (
+        fold_dir
+        / f"fold_{args.fold}_observed_genes.h5ad"
+    )
+
+    heldout_path = (
+        fold_dir
+        / f"fold_{args.fold}_heldout_genes.h5ad"
+    )
+
+    master_path = (
+        fold_dir
+        / "gene_metrics_and_fold_assignment.h5ad"
+    )
+
+    for path in [
+        observed_path,
+        heldout_path,
+        args.reference,
+    ]:
+        if not path.exists():
+            raise FileNotFoundError(
+                path
+            )
+
+    spatial_observed = sc.read_h5ad(
+        observed_path
+    )
+
+    spatial_truth = sc.read_h5ad(
+        heldout_path
+    )
+
+    seq_data = sc.read_h5ad(
+        args.reference
+    )
+
+    for dataset in [
+        spatial_observed,
+        spatial_truth,
+        seq_data,
+    ]:
+        dataset.obs_names = (
+            dataset.obs_names.astype(str)
+        )
+
+        dataset.var_names = (
+            dataset.var_names.astype(str)
+        )
+
+    if spatial_observed.n_vars != 200:
+        raise ValueError(
+            f"Fold {args.fold} observed input has "
+            f"{spatial_observed.n_vars} genes; expected 200."
+        )
+
+    if spatial_truth.n_vars != 100:
+        raise ValueError(
+            f"Fold {args.fold} truth has "
+            f"{spatial_truth.n_vars} genes; expected 100."
+        )
+
+    if not spatial_observed.obs_names.equals(
+        spatial_truth.obs_names
+    ):
+        raise ValueError(
+            "Observed and held-out Xenium cell IDs/order differ."
+        )
+
+    if not set(
+        spatial_observed.var_names
+    ).isdisjoint(
+        set(
+            spatial_truth.var_names
+        )
+    ):
+        raise ValueError(
+            "Observed and held-out genes overlap."
+        )
+
+    if (
+        "spatial"
+        not in spatial_observed.obsm
+    ):
+        raise KeyError(
+            "Observed Xenium input lacks obsm['spatial']."
+        )
+
+    assert_nonnegative_count_like(
+        spatial_observed.X,
+        "Observed Xenium fold input",
+    )
+
+    assert_nonnegative_count_like(
+        spatial_truth.X,
+        "Held-out Xenium truth",
+    )
+
+    observed_genes = (
+        spatial_observed
+        .var_names
+        .tolist()
+    )
+
+    heldout_genes = (
+        spatial_truth
+        .var_names
+        .tolist()
+    )
+
+    benchmark_gene_set = (
+        set(observed_genes)
+        | set(heldout_genes)
+    )
+
+    if len(
+        benchmark_gene_set
+    ) != 300:
+        raise ValueError(
+            "Observed/held-out union does not contain 300 genes."
+        )
+
+    if master_path.exists():
+        master = ad.read_h5ad(
+            master_path,
+            backed="r",
+        )
+
+        master_order = (
+            master.var_names
+            .astype(str)
+            .tolist()
+        )
+
+        master.file.close()
+
+        if set(
+            master_order
+        ) != benchmark_gene_set:
+            raise ValueError(
+                "Master 300-gene file differs from the fold union."
+            )
+
+        benchmark_genes = (
+            master_order
+        )
+    else:
+        benchmark_genes = (
+            observed_genes
+            + heldout_genes
+        )
+
+    missing_reference = (
+        pd.Index(
+            benchmark_genes
+        ).difference(
+            seq_data.var_names
+        )
+    )
+
+    if len(
+        missing_reference
+    ):
+        raise ValueError(
+            f"{len(missing_reference)} benchmark genes are "
+            "missing from the reference: "
+            f"{missing_reference[:20].tolist()}"
+        )
+
+    if (
+        args.reference_mode
+        == "benchmark_300"
+    ):
+        seq_model = seq_data[
+            :,
+            benchmark_genes,
+        ].copy()
+    else:
+        seq_model = (
+            seq_data.copy()
+        )
+
+    spatial_model = (
+        spatial_observed[
+            :,
+            observed_genes,
+        ].copy()
+    )
+
+    # Remove reference nuclei with no counts across the model genes.
+    reference_totals = row_sums(
+        seq_model.X
+    )
+
+    reference_keep = (
+        reference_totals > 0
+    )
+
+    removed_reference_cells = int(
+        np.sum(
+            ~reference_keep
+        )
+    )
+
+    if removed_reference_cells:
+        print(
+            "Removing zero-count reference nuclei:",
+            removed_reference_cells,
+        )
+
+        seq_model = (
+            seq_model[
+                reference_keep,
+                :,
+            ].copy()
+        )
+
+    # Do not silently remove Xenium cells because every model and fold
+    # must evaluate the same spatial cells.
+    spatial_totals = row_sums(
+        spatial_model.X
+    )
+
+    zero_spatial_cells = int(
+        np.sum(
+            spatial_totals <= 0
+        )
+    )
+
+    if zero_spatial_cells:
+        raise ValueError(
+            f"Fold {args.fold} has {zero_spatial_cells} Xenium "
+            "cells with zero counts across the 200 observed genes. "
+            "No cells were silently removed because fold and model "
+            "comparisons require identical spatial cells."
+        )
+
+    coordinates = np.asarray(
+        spatial_observed.obsm[
+            "spatial"
+        ],
+        dtype=np.float32,
+    )
+
+    if (
+        coordinates.shape[0]
+        != spatial_observed.n_obs
+        or coordinates.shape[1] < 2
+    ):
+        raise ValueError(
+            f"Invalid spatial-coordinate shape: {coordinates.shape}"
+        )
+
+    coordinates = (
+        coordinates[
+            :,
+            :2,
+        ]
+    )
+
+    spatial_model.obsm[
+        "spatial"
+    ] = coordinates.copy()
+
+    spatial_truth.obsm[
+        "spatial"
+    ] = coordinates.copy()
+
+    if (
+        "batch"
+        not in spatial_model.obs.columns
+    ):
+        spatial_model.obs[
+            "batch"
+        ] = "Br8667_Xenium"
+
+    spatial_model.obs[
+        "batch"
+    ] = (
+        spatial_model.obs[
+            "batch"
+        ].astype(str)
+    )
+
+    seq_batch_key = (
+        "batch"
+        if "batch"
+        in seq_model.obs.columns
+        else None
+    )
+
+    spatial_batch_key = (
+        "batch"
+    )
+
+    if seq_batch_key is not None:
+        seq_model.obs[
+            seq_batch_key
+        ] = (
+            seq_model.obs[
+                seq_batch_key
+            ].astype(str)
+        )
+
+    GIMVI.setup_anndata(
+        seq_model,
+        batch_key=seq_batch_key,
+        layer=None,
+    )
+
+    GIMVI.setup_anndata(
+        spatial_model,
+        batch_key=spatial_batch_key,
+        layer=None,
+    )
+
+    max_epochs = (
+        args.smoke_epochs
+        if args.run_mode == "smoke"
+        else args.full_epochs
+    )
+
+    use_gpu = (
+        "cuda:0"
+        if args.use_gpu
+        else False
+    )
+
+    print("=" * 100)
+    print("STANDARD gimVI 3-FOLD BENCHMARK")
+    print("=" * 100)
+    print("Experiment:", args.experiment)
+    print("Experiment label:", args.experiment_label)
+    print("Fold:", args.fold)
+    print("Reference:", args.reference.resolve())
+    print("Reference mode:", args.reference_mode)
+    print("Reference model input:", seq_model.shape)
+    print("Spatial model input:", spatial_model.shape)
+    print("Held-out truth:", spatial_truth.shape)
+    print("Reference batch key:", seq_batch_key)
+    print("Spatial batch key:", spatial_batch_key)
+    print("Run mode:", args.run_mode)
+    print("Epochs:", max_epochs)
+    print("Batch size:", args.batch_size)
+    print("Latent dimensions:", args.n_latent)
+    print("Cell train size:", args.train_size)
+    print("Learning rate:", args.learning_rate)
+    print("Gradient clipping:", args.gradient_clip_val)
+    print("Gradient clipping algorithm: norm")
+    print("Use GPU:", use_gpu)
+    print("Output:", output_dir)
+    print("=" * 100)
+
+    model = GIMVI(
+        seq_model,
+        spatial_model,
+        n_latent=args.n_latent,
+    )
+
+    training_start = time.time()
+
+    model.train(
+        max_epochs=max_epochs,
+        use_gpu=use_gpu,
+        train_size=args.train_size,
+        validation_size=None,
+        batch_size=args.batch_size,
+        plan_kwargs={
+            "lr": args.learning_rate,
+        },
+        gradient_clip_val=args.gradient_clip_val,
+        gradient_clip_algorithm="norm",
+        check_val_every_n_epoch=1,
+    )
+
+    training_seconds = (
+        time.time()
+        - training_start
+    )
+
+    print(
+        "Training completed in "
+        f"{training_seconds / 60:.2f} minutes."
+    )
+
+    history = history_to_table(
+        model
+    )
+
+    save_training_history(
+        history,
+        figure_dir,
+    )
+
+    if not args.skip_model_save:
+        model.save(
+            str(model_dir),
+            overwrite=True,
+            save_anndata=False,
+        )
+
+    prediction_start = time.time()
+
+    native_benchmark_prediction = (
+        predict_selected_spatial_genes(
+            model=model,
+            seq_adata=seq_model,
+            spatial_adata=spatial_model,
+            selected_genes=benchmark_genes,
+            normalized=False,
+            batch_size=args.batch_size,
+        )
+    )
+
+    prediction_seconds = (
+        time.time()
+        - prediction_start
+    )
+
+    if (
+        native_benchmark_prediction.shape
+        != (
+            spatial_model.n_obs,
+            len(benchmark_genes),
+        )
+    ):
+        raise ValueError(
+            "Unexpected gimVI prediction shape: "
+            f"{native_benchmark_prediction.shape}"
+        )
+
+    if (
+        not np.isfinite(
+            native_benchmark_prediction
+        ).all()
+        or np.any(
+            native_benchmark_prediction < 0
+        )
+    ):
+        raise ValueError(
+            "gimVI native predictions contain invalid values."
+        )
+
+    benchmark_index = pd.Index(
+        benchmark_genes
+    )
+
+    observed_positions = (
+        benchmark_index.get_indexer(
+            observed_genes
+        )
+    )
+
+    heldout_positions = (
+        benchmark_index.get_indexer(
+            heldout_genes
+        )
+    )
+
+    if (
+        np.any(
+            observed_positions < 0
+        )
+        or np.any(
+            heldout_positions < 0
+        )
+    ):
+        raise ValueError(
+            "Observed or held-out genes are missing from gimVI output."
+        )
+
+    native_observed = (
+        native_benchmark_prediction[
+            :,
+            observed_positions,
+        ]
+    )
+
+    native_heldout = (
+        native_benchmark_prediction[
+            :,
+            heldout_positions,
+        ]
+    )
+
+    observed_count_matrix = (
+        to_dense_float32(
+            spatial_observed[
+                :,
+                observed_genes,
+            ].X
+        )
+    )
+
+    observed_library = (
+        observed_count_matrix.sum(
+            axis=1
+        )
+    )
+
+    native_observed_library = (
+        native_observed.sum(
+            axis=1
+        )
+    )
+
+    scale_factor = np.divide(
+        observed_library,
+        native_observed_library,
+        out=np.zeros_like(
+            observed_library,
+            dtype=np.float32,
+        ),
+        where=(
+            native_observed_library
+            > 1e-12
+        ),
+    )
+
+    predicted_counts = (
+        native_heldout
+        * scale_factor[
+            :,
+            None,
+        ]
+    )
+
+    predicted_counts = np.clip(
+        predicted_counts,
+        0,
+        None,
+    ).astype(
+        np.float32,
+        copy=False,
+    )
+
+    del native_benchmark_prediction
+    del native_observed
+
+    gc.collect()
+
+    prediction_adata = ad.AnnData(
+        X=predicted_counts,
+        obs=spatial_truth.obs.copy(),
+        var=spatial_truth.var.copy(),
+    )
+
+    prediction_adata.layers[
+        "count_scale"
+    ] = predicted_counts.copy()
+
+    prediction_adata.layers[
+        "log1p"
+    ] = np.log1p(
+        predicted_counts
+    ).astype(
+        np.float32
+    )
+
+    prediction_adata.layers[
+        "native"
+    ] = native_heldout.astype(
+        np.float32,
+        copy=False,
+    )
+
+    prediction_adata.obsm[
+        "spatial"
+    ] = coordinates.copy()
+
+    prediction_adata.obs[
+        "gimvi_count_scale_factor"
+    ] = scale_factor
+
+    prediction_adata.uns[
+        "benchmark"
+    ] = {
+        "experiment": args.experiment,
+        "experiment_label": args.experiment_label,
+        "model": "gimvi",
+        "model_label": "gimVI",
+        "fold": int(args.fold),
+        "observed_gene_count": 200,
+        "heldout_gene_count": 100,
+        "output_scale": (
+            "nonnegative floating-point expected counts"
+        ),
+        "native_output": (
+            "gimVI sample_rate / normalized=False"
+        ),
+        "count_scale_calibration": (
+            "Per-cell ratio of observed Xenium counts across "
+            "the 200 observed genes to native gimVI predictions "
+            "across the same 200 genes."
+        ),
+        "reference": str(
+            args.reference.resolve()
+        ),
+        "reference_mode": args.reference_mode,
+        "seed": seed,
+        "epochs": int(max_epochs),
+        "batch_size": int(
+            args.batch_size
+        ),
+        "n_latent": int(
+            args.n_latent
+        ),
+        "train_size": float(
+            args.train_size
+        ),
+        "scvi_tools_version": str(
+            scvi.__version__
+        ),
+    }
+
+    prediction_path = (
+        output_dir
+        / "predicted_heldout_genes.h5ad"
+    )
+
+    prediction_adata.write_h5ad(
+        prediction_path,
+        compression="gzip",
+    )
+
+    observed_truth = (
+        to_dense_float32(
+            spatial_truth[
+                :,
+                heldout_genes,
+            ].X
+        )
+    )
+
+    gene_metrics = calculate_gene_metrics(
+        observed_truth,
+        predicted_counts,
+        heldout_genes,
+        coordinates,
+        k_neighbors=args.k_spatial,
+        ssim_grid_size=args.ssim_grid_size,
+        n_jobs=args.cpus,
+    )
+
+    fold_metric_columns = [
+        "log_mean_expression",
+        "dispersion",
+        "detection_fraction",
+        "morans_I",
+        "heldout_fold",
+        "metric_stratum",
+    ]
+
+    available_fold_columns = [
+        column
+        for column in fold_metric_columns
+        if column in spatial_truth.var.columns
+    ]
+
+    if available_fold_columns:
+        fold_gene_metadata = (
+            spatial_truth.var[
+                available_fold_columns
+            ].copy()
+        )
+
+        fold_gene_metadata[
+            "gene"
+        ] = (
+            spatial_truth
+            .var_names
+            .astype(str)
+        )
+
+        gene_metrics = gene_metrics.merge(
+            fold_gene_metadata,
+            on="gene",
+            how="left",
+        )
+
+    gene_metrics.insert(
+        0,
+        "fold",
+        args.fold,
+    )
+
+    gene_metrics.insert(
+        0,
+        "model",
+        "gimvi",
+    )
+
+    gene_metrics.insert(
+        0,
+        "experiment",
+        args.experiment,
+    )
+
+    gene_metrics.to_csv(
+        output_dir
+        / "gene_level_metrics.csv",
+        index=False,
+    )
+
+    nmi, ari = calculate_cluster_metrics(
+        observed_truth,
+        predicted_counts,
+        n_clusters=args.n_clusters,
+        n_pcs=args.n_pcs,
+        seed=args.seed,
+    )
+
+    fold_summary = build_fold_summary(
+        gene_metrics,
+        experiment=args.experiment,
+        model_key="gimvi",
+        model_label="gimVI",
+        fold=args.fold,
+        n_cells=spatial_truth.n_obs,
+        n_observed_genes=spatial_observed.n_vars,
+        n_heldout_genes=spatial_truth.n_vars,
+        nmi=nmi,
+        ari=ari,
+        training_seconds=training_seconds,
+        prediction_seconds=prediction_seconds,
+    )
+
+    fold_summary.to_csv(
+        output_dir
+        / "fold_level_metrics.csv",
+        index=False,
+    )
+
+    plot_fold_metric_summary(
+        fold_summary,
+        figure_dir
+        / "evaluation_metrics.png",
+        title=(
+            f"{args.experiment_label} | gimVI | "
+            f"Fold {args.fold}"
+        ),
+    )
+
+    plot_gene_metric_distributions(
+        gene_metrics,
+        figure_dir
+        / "gene_metric_distributions.png",
+        title=(
+            f"{args.experiment_label} | gimVI | "
+            f"Fold {args.fold} | 100 held-out genes"
+        ),
+    )
+
+    shared_plot_gene_path = (
+        fold_dir
+        / "plot_genes"
+        / f"fold_{args.fold}_plot_genes_10.csv"
+    )
+
+    selected_plot_genes = (
+        select_or_load_plot_genes(
+            spatial_truth,
+            shared_plot_gene_path,
+            n_genes=args.plot_genes,
+            seed=args.seed,
+        )
+    )
+
+    pd.DataFrame(
+        {
+            "plot_order": np.arange(
+                1,
+                len(selected_plot_genes) + 1,
+            ),
+            "gene": selected_plot_genes,
+        }
+    ).to_csv(
+        output_dir
+        / "selected_plot_genes.csv",
+        index=False,
+    )
+
+    plot_ten_gene_maps(
+        observed_truth,
+        predicted_counts,
+        heldout_genes,
+        selected_plot_genes,
+        coordinates,
+        gene_metrics,
+        figure_dir
+        / "ten_gene_observed_vs_prediction.png",
+        figure_dir
+        / "ten_gene_observed_vs_prediction.pdf",
+        experiment_label=args.experiment_label,
+        model_label="gimVI",
+        fold=args.fold,
+    )
+
+    run_config = {
+        "experiment": args.experiment,
+        "experiment_label": args.experiment_label,
+        "model": "gimvi",
+        "fold": int(args.fold),
+        "reference": str(
+            args.reference.resolve()
+        ),
+        "observed_input": str(
+            observed_path.resolve()
+        ),
+        "heldout_truth": str(
+            heldout_path.resolve()
+        ),
+        "prediction": str(
+            prediction_path.resolve()
+        ),
+        "run_mode": args.run_mode,
+        "epochs": int(max_epochs),
+        "batch_size": int(
+            args.batch_size
+        ),
+        "n_latent": int(
+            args.n_latent
+        ),
+        "train_size": float(
+            args.train_size
+        ),
+        "learning_rate": float(
+            args.learning_rate
+        ),
+        "gradient_clip_val": float(
+            args.gradient_clip_val
+        ),
+        "gradient_clip_algorithm": "norm",
+        "reference_mode": args.reference_mode,
+        "use_gpu": bool(
+            args.use_gpu
+        ),
+        "seed": int(seed),
+        "reference_cells_removed_as_zero": (
+            removed_reference_cells
+        ),
+    }
+
+    (
+        output_dir
+        / "run_config.json"
+    ).write_text(
+        json.dumps(
+            run_config,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    runtime = {
+        "training_seconds": float(
+            training_seconds
+        ),
+        "prediction_seconds": float(
+            prediction_seconds
+        ),
+        "all_zero_predicted_cells": int(
+            np.sum(
+                predicted_counts.sum(
+                    axis=1
+                )
+                == 0
+            )
+        ),
+        "all_zero_predicted_genes": int(
+            np.sum(
+                predicted_counts.sum(
+                    axis=0
+                )
+                == 0
+            )
+        ),
+        "scale_factor_min": float(
+            np.min(
+                scale_factor
+            )
+        ),
+        "scale_factor_median": float(
+            np.median(
+                scale_factor
+            )
+        ),
+        "scale_factor_max": float(
+            np.max(
+                scale_factor
+            )
+        ),
+    }
+
+    (
+        output_dir
+        / "runtime_summary.json"
+    ).write_text(
+        json.dumps(
+            runtime,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    complete_flag.write_text(
+        "SUCCESS "
+        + time.strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    print("=" * 100)
+    print("SUCCESS")
+    print("Prediction:", prediction_path)
+    print(
+        "Gene metrics:",
+        output_dir
+        / "gene_level_metrics.csv",
+    )
+    print(
+        "Fold metrics:",
+        output_dir
+        / "fold_level_metrics.csv",
+    )
+    print("=" * 100)
+
+
+if __name__ == "__main__":
+    main()

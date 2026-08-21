@@ -1,0 +1,131 @@
+============================================================
+Expression-stratified imputation metrics
+Method: transimpspa
+Job: 4034179_6
+Started: Thu Aug 13 02:09:27 EDT 2026
+============================================================
+====================================================================================================
+EXPRESSION-STRATIFIED GENE-LEVEL PERFORMANCE
+====================================================================================================
+Method: TransImpSpa
+====================================================================================================
+BUILDING FIXED EXPRESSION STRATA
+====================================================================================================
+Canonical source:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/gene_level_metrics_300genes.csv
+
+Genes per expression stratum:
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+Expression-stratum ranges:
+expression_stratum  n_genes  min_observed_mean  median_observed_mean  max_observed_mean  min_log1p_mean  median_log1p_mean  max_log1p_mean
+               Low      100           0.006349              0.158735           0.437171        0.006329           0.147327        0.362677
+            Medium      100           0.446635              0.769192           1.554665        0.369240           0.570523        0.937921
+              High      100           1.582648              3.368280          69.445045        0.948815           1.474360        4.254833
+
+Loading transimpspa / Ex5
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/transimpspa/combined_v2/gene_level_metrics_300genes.csv
+
+Loading transimpspa / Ex5.1
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/transimpspa/combined_v2/gene_level_metrics_300genes.csv
+
+Loading transimpspa / Ex5.3
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/transimpspa/combined_v2/gene_level_metrics_300genes.csv
+
+====================================================================================================
+VALIDATION
+====================================================================================================
+
+ex5
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+ex5_1
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+ex5_3
+expression_stratum
+Low       100
+Medium    100
+High      100
+Name: count, dtype: int64
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+     metric expression_stratum experiment_label         mean    median
+        SCC                Low              Ex5     0.260037  0.284962
+        SCC                Low            Ex5.1     0.263777  0.288251
+        SCC                Low            Ex5.3     0.263725  0.288440
+        SCC             Medium              Ex5     0.489455  0.513010
+        SCC             Medium            Ex5.1     0.495218  0.522368
+        SCC             Medium            Ex5.3     0.493961  0.517932
+        SCC               High              Ex5     0.699827  0.720316
+        SCC               High            Ex5.1     0.704855  0.722686
+        SCC               High            Ex5.3     0.703285  0.718973
+       SSIM                Low              Ex5     0.270800  0.247787
+       SSIM                Low            Ex5.1     0.275982  0.245464
+       SSIM                Low            Ex5.3     0.272443  0.241664
+       SSIM             Medium              Ex5     0.401350  0.400131
+       SSIM             Medium            Ex5.1     0.392370  0.382284
+       SSIM             Medium            Ex5.3     0.387724  0.390792
+       SSIM               High              Ex5     0.521048  0.582053
+       SSIM               High            Ex5.1     0.493664  0.518267
+       SSIM               High            Ex5.3     0.487055  0.515665
+       RMSE                Low              Ex5     1.143698  0.706225
+       RMSE                Low            Ex5.1     1.683503  0.702206
+       RMSE                Low            Ex5.3     1.977384  0.699706
+       RMSE             Medium              Ex5    16.107510  2.031925
+       RMSE             Medium            Ex5.1    35.821993  2.157608
+       RMSE             Medium            Ex5.3    41.095461  2.122809
+       RMSE               High              Ex5  1873.006612 10.765807
+       RMSE               High            Ex5.1 18193.077282 12.877868
+       RMSE               High            Ex5.3 29196.533428 12.005178
+        MAE                Low              Ex5     0.384523  0.196693
+        MAE                Low            Ex5.1     0.482342  0.211433
+        MAE                Low            Ex5.3     0.519823  0.215137
+        MAE             Medium              Ex5     4.774197  0.800480
+        MAE             Medium            Ex5.1     9.426079  0.841221
+        MAE             Medium            Ex5.3    11.343901  0.849909
+        MAE               High              Ex5   630.687836  4.541364
+        MAE               High            Ex5.1  4952.617703  4.902719
+        MAE               High            Ex5.3  7298.027794  4.811996
+        JSD                Low              Ex5     0.568400  0.541333
+        JSD                Low            Ex5.1     0.565155  0.539094
+        JSD                Low            Ex5.3     0.567411  0.538687
+        JSD             Medium              Ex5     0.300491  0.274408
+        JSD             Medium            Ex5.1     0.301474  0.273274
+        JSD             Medium            Ex5.3     0.301707  0.274623
+        JSD               High              Ex5     0.175946  0.164022
+        JSD               High            Ex5.1     0.177715  0.162323
+        JSD               High            Ex5.3     0.179260  0.163814
+Moran_error                Low              Ex5     0.063628  0.038286
+Moran_error                Low            Ex5.1     0.073122  0.053581
+Moran_error                Low            Ex5.3     0.072532  0.058045
+Moran_error             Medium              Ex5     0.050850  0.038025
+Moran_error             Medium            Ex5.1     0.055527  0.040701
+Moran_error             Medium            Ex5.3     0.053906  0.038277
+Moran_error               High              Ex5     0.077460  0.056634
+Moran_error               High            Ex5.1     0.075204  0.051253
+Moran_error               High            Ex5.3     0.074355  0.051364
+
+====================================================================================================
+DONE
+====================================================================================================
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/expression_stratified/transimpspa/transimpspa_metrics_by_expression.png
+
+============================================================
+Completed: Thu Aug 13 02:09:35 EDT 2026
+Method: transimpspa
+============================================================

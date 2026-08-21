@@ -1,0 +1,583 @@
+
+==============================================================================================================
+LOAD 23-DONOR MANIFEST
+==============================================================================================================
+ donor  Dx experiment
+Br2039 SCZ    ex2_scz
+Br2719 NTC    ex1_ntc
+Br1113 NTC    ex1_ntc
+Br5373 SCZ    ex2_scz
+Br5590 SCZ    ex2_scz
+Br5400 NTC    ex1_ntc
+Br5622 NTC    ex1_ntc
+Br6437 SCZ    ex2_scz
+Br5314 NTC    ex1_ntc
+Br5588 SCZ    ex2_scz
+Br5746 SCZ    ex2_scz
+Br5639 NTC    ex1_ntc
+Br8433 NTC    ex1_ntc
+Br8772 SCZ    ex2_scz
+Br1139 SCZ    ex2_scz
+Br5973 SCZ    ex2_scz
+Br8667 NTC    ex1_ntc
+Br5436 NTC    ex1_ntc
+Br5931 NTC    ex1_ntc
+Br6496 SCZ    ex2_scz
+Br2421 SCZ    ex2_scz
+Br6032 SCZ    ex2_scz
+Br6389 NTC    ex1_ntc
+
+==============================================================================================================
+LOAD CELL-TYPE ANNOTATION
+==============================================================================================================
+Annotation cells: 1,224,451
+
+Primary cell types:
+  Oligo     : 287,720
+  Endo      : 245,775
+  Ast       : 159,012
+  L2/3 Ex   : 129,099
+  Mic       : 77,897
+  MGE       : 64,462
+  L4/5 Ex   : 54,514
+  CGE       : 49,779
+  L6 Ex     : 44,586
+  L5 Ex     : 4,725
+
+==============================================================================================================
+BUILD DONOR × CELL-TYPE PSEUDOBULK
+==============================================================================================================
+
+[01/23] Br2039 | SCZ
+  cells            : 41,101
+  unmatched labels : 0
+  Oligo     : 18,284
+  Endo      : 5,052
+  Ast       : 4,119
+  L2/3 Ex   : 1,593
+  Mic       : 3,073
+  MGE       : 1,168
+  L4/5 Ex   : 994
+  CGE       : 590
+  L6 Ex     : 1,992
+  L5 Ex     : 80
+    cells 512/41,101
+    cells 10,752/41,101
+    cells 20,992/41,101
+    cells 31,232/41,101
+    cells 41,101/41,101
+
+[02/23] Br2719 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 57,949
+  unmatched labels : 0
+  Oligo     : 14,533
+  Endo      : 10,739
+  Ast       : 6,659
+  L2/3 Ex   : 6,092
+  Mic       : 3,811
+  MGE       : 3,290
+  L4/5 Ex   : 2,005
+  CGE       : 2,155
+  L6 Ex     : 2,376
+  L5 Ex     : 211
+    cells 512/57,949
+    cells 10,752/57,949
+    cells 20,992/57,949
+    cells 31,232/57,949
+    cells 41,472/57,949
+    cells 51,712/57,949
+    cells 57,949/57,949
+
+[03/23] Br1113 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 54,585
+  unmatched labels : 0
+  Oligo     : 10,586
+  Endo      : 9,866
+  Ast       : 7,671
+  L2/3 Ex   : 6,839
+  Mic       : 3,918
+  MGE       : 3,546
+  L4/5 Ex   : 3,198
+  CGE       : 2,602
+  L6 Ex     : 1,680
+  L5 Ex     : 185
+    cells 512/54,585
+    cells 10,752/54,585
+    cells 20,992/54,585
+    cells 31,232/54,585
+    cells 41,472/54,585
+    cells 51,712/54,585
+    cells 54,585/54,585
+
+[04/23] Br5373 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 63,894
+  unmatched labels : 3
+  Oligo     : 14,630
+  Endo      : 14,461
+  Ast       : 8,630
+  L2/3 Ex   : 7,534
+  Mic       : 3,430
+  MGE       : 3,296
+  L4/5 Ex   : 2,902
+  CGE       : 2,864
+  L6 Ex     : 2,090
+  L5 Ex     : 218
+    cells 512/63,894
+    cells 10,752/63,894
+    cells 20,992/63,894
+    cells 31,232/63,894
+    cells 41,472/63,894
+    cells 51,712/63,894
+    cells 61,952/63,894
+    cells 63,894/63,894
+
+[05/23] Br5590 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 53,577
+  unmatched labels : 0
+  Oligo     : 13,290
+  Endo      : 11,115
+  Ast       : 5,592
+  L2/3 Ex   : 5,206
+  Mic       : 2,730
+  MGE       : 2,582
+  L4/5 Ex   : 2,075
+  CGE       : 2,297
+  L6 Ex     : 1,612
+  L5 Ex     : 193
+    cells 512/53,577
+    cells 10,752/53,577
+    cells 20,992/53,577
+    cells 31,232/53,577
+    cells 41,472/53,577
+    cells 51,712/53,577
+    cells 53,577/53,577
+
+[06/23] Br5400 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 44,283
+  unmatched labels : 0
+  Oligo     : 8,294
+  Endo      : 8,632
+  Ast       : 5,911
+  L2/3 Ex   : 5,594
+  Mic       : 3,368
+  MGE       : 2,909
+  L4/5 Ex   : 2,559
+  CGE       : 1,814
+  L6 Ex     : 1,695
+  L5 Ex     : 297
+    cells 512/44,283
+    cells 10,752/44,283
+    cells 20,992/44,283
+    cells 31,232/44,283
+    cells 41,472/44,283
+    cells 44,283/44,283
+
+[07/23] Br5622 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 68,236
+  unmatched labels : 0
+  Oligo     : 11,553
+  Endo      : 13,333
+  Ast       : 8,082
+  L2/3 Ex   : 9,742
+  Mic       : 5,534
+  MGE       : 4,918
+  L4/5 Ex   : 3,225
+  CGE       : 3,790
+  L6 Ex     : 1,674
+  L5 Ex     : 246
+    cells 512/68,236
+    cells 10,752/68,236
+    cells 20,992/68,236
+    cells 31,232/68,236
+    cells 41,472/68,236
+    cells 51,712/68,236
+    cells 61,952/68,236
+    cells 68,236/68,236
+
+[08/23] Br6437 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 55,773
+  unmatched labels : 0
+  Oligo     : 15,331
+  Endo      : 9,740
+  Ast       : 6,435
+  L2/3 Ex   : 5,793
+  Mic       : 3,866
+  MGE       : 2,706
+  L4/5 Ex   : 2,388
+  CGE       : 1,983
+  L6 Ex     : 2,282
+  L5 Ex     : 178
+    cells 512/55,773
+    cells 10,752/55,773
+    cells 20,992/55,773
+    cells 31,232/55,773
+    cells 41,472/55,773
+    cells 51,712/55,773
+    cells 55,773/55,773
+
+[09/23] Br5314 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 45,585
+  unmatched labels : 0
+  Oligo     : 13,976
+  Endo      : 10,191
+  Ast       : 5,808
+  L2/3 Ex   : 3,332
+  Mic       : 2,564
+  MGE       : 1,983
+  L4/5 Ex   : 1,620
+  CGE       : 1,616
+  L6 Ex     : 1,721
+  L5 Ex     : 140
+    cells 512/45,585
+    cells 10,752/45,585
+    cells 20,992/45,585
+    cells 31,232/45,585
+    cells 41,472/45,585
+    cells 45,585/45,585
+
+[10/23] Br5588 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 59,694
+  unmatched labels : 0
+  Oligo     : 10,559
+  Endo      : 12,486
+  Ast       : 8,418
+  L2/3 Ex   : 5,736
+  Mic       : 5,175
+  MGE       : 2,972
+  L4/5 Ex   : 2,572
+  CGE       : 2,187
+  L6 Ex     : 2,006
+  L5 Ex     : 241
+    cells 512/59,694
+    cells 10,752/59,694
+    cells 20,992/59,694
+    cells 31,232/59,694
+    cells 41,472/59,694
+    cells 51,712/59,694
+    cells 59,694/59,694
+
+[11/23] Br5746 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 43,025
+  unmatched labels : 0
+  Oligo     : 13,688
+  Endo      : 6,221
+  Ast       : 5,563
+  L2/3 Ex   : 3,229
+  Mic       : 2,220
+  MGE       : 2,041
+  L4/5 Ex   : 2,091
+  CGE       : 1,176
+  L6 Ex     : 2,514
+  L5 Ex     : 187
+    cells 512/43,025
+    cells 10,752/43,025
+    cells 20,992/43,025
+    cells 31,232/43,025
+    cells 41,472/43,025
+    cells 43,025/43,025
+
+[12/23] Br5639 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 58,976
+  unmatched labels : 0
+  Oligo     : 12,216
+  Endo      : 12,948
+  Ast       : 8,197
+  L2/3 Ex   : 5,741
+  Mic       : 2,256
+  MGE       : 2,746
+  L4/5 Ex   : 2,769
+  CGE       : 2,569
+  L6 Ex     : 2,224
+  L5 Ex     : 252
+    cells 512/58,976
+    cells 10,752/58,976
+    cells 20,992/58,976
+    cells 31,232/58,976
+    cells 41,472/58,976
+    cells 51,712/58,976
+    cells 58,976/58,976
+
+[13/23] Br8433 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 58,195
+  unmatched labels : 0
+  Oligo     : 12,668
+  Endo      : 13,066
+  Ast       : 7,798
+  L2/3 Ex   : 6,896
+  Mic       : 3,694
+  MGE       : 3,117
+  L4/5 Ex   : 2,412
+  CGE       : 2,834
+  L6 Ex     : 2,435
+  L5 Ex     : 277
+    cells 512/58,195
+    cells 10,752/58,195
+    cells 20,992/58,195
+    cells 31,232/58,195
+    cells 41,472/58,195
+    cells 51,712/58,195
+    cells 58,195/58,195
+
+[14/23] Br8772 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 54,456
+  unmatched labels : 0
+  Oligo     : 11,831
+  Endo      : 13,009
+  Ast       : 7,154
+  L2/3 Ex   : 4,950
+  Mic       : 3,463
+  MGE       : 3,046
+  L4/5 Ex   : 2,478
+  CGE       : 2,735
+  L6 Ex     : 2,339
+  L5 Ex     : 192
+    cells 512/54,456
+    cells 10,752/54,456
+    cells 20,992/54,456
+    cells 31,232/54,456
+    cells 41,472/54,456
+    cells 51,712/54,456
+    cells 54,456/54,456
+
+[15/23] Br1139 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 56,617
+  unmatched labels : 0
+  Oligo     : 11,255
+  Endo      : 12,624
+  Ast       : 7,209
+  L2/3 Ex   : 5,714
+  Mic       : 3,399
+  MGE       : 2,459
+  L4/5 Ex   : 2,512
+  CGE       : 1,845
+  L6 Ex     : 1,779
+  L5 Ex     : 182
+    cells 512/56,617
+    cells 10,752/56,617
+    cells 20,992/56,617
+    cells 31,232/56,617
+    cells 41,472/56,617
+    cells 51,712/56,617
+    cells 56,617/56,617
+
+[16/23] Br5973 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 41,895
+  unmatched labels : 0
+  Oligo     : 11,621
+  Endo      : 7,928
+  Ast       : 5,538
+  L2/3 Ex   : 3,600
+  Mic       : 2,177
+  MGE       : 1,953
+  L4/5 Ex   : 2,148
+  CGE       : 1,432
+  L6 Ex     : 1,904
+  L5 Ex     : 213
+    cells 512/41,895
+    cells 10,752/41,895
+    cells 20,992/41,895
+    cells 31,232/41,895
+    cells 41,472/41,895
+    cells 41,895/41,895
+
+[17/23] Br8667 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 66,164
+  unmatched labels : 0
+  Oligo     : 14,701
+  Endo      : 13,821
+  Ast       : 9,247
+  L2/3 Ex   : 7,312
+  Mic       : 4,577
+  MGE       : 3,770
+  L4/5 Ex   : 3,287
+  CGE       : 2,932
+  L6 Ex     : 2,383
+  L5 Ex     : 286
+    cells 512/66,164
+    cells 10,752/66,164
+    cells 20,992/66,164
+    cells 31,232/66,164
+    cells 41,472/66,164
+    cells 51,712/66,164
+    cells 61,952/66,164
+    cells 66,164/66,164
+
+[18/23] Br5436 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 44,430
+  unmatched labels : 0
+  Oligo     : 7,272
+  Endo      : 10,020
+  Ast       : 6,201
+  L2/3 Ex   : 6,671
+  Mic       : 2,946
+  MGE       : 2,426
+  L4/5 Ex   : 1,770
+  CGE       : 2,200
+  L6 Ex     : 1,429
+  L5 Ex     : 143
+    cells 512/44,430
+    cells 10,752/44,430
+    cells 20,992/44,430
+    cells 31,232/44,430
+    cells 41,472/44,430
+    cells 44,430/44,430
+
+[19/23] Br5931 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 43,522
+  unmatched labels : 0
+  Oligo     : 7,834
+  Endo      : 8,860
+  Ast       : 6,470
+  L2/3 Ex   : 5,458
+  Mic       : 2,603
+  MGE       : 2,656
+  L4/5 Ex   : 2,128
+  CGE       : 1,833
+  L6 Ex     : 1,455
+  L5 Ex     : 185
+    cells 512/43,522
+    cells 10,752/43,522
+    cells 20,992/43,522
+    cells 31,232/43,522
+    cells 41,472/43,522
+    cells 43,522/43,522
+
+[20/23] Br6496 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 56,213
+  unmatched labels : 0
+  Oligo     : 16,635
+  Endo      : 8,887
+  Ast       : 7,307
+  L2/3 Ex   : 6,124
+  Mic       : 3,921
+  MGE       : 2,832
+  L4/5 Ex   : 2,249
+  CGE       : 2,525
+  L6 Ex     : 1,833
+  L5 Ex     : 203
+    cells 512/56,213
+    cells 10,752/56,213
+    cells 20,992/56,213
+    cells 31,232/56,213
+    cells 41,472/56,213
+    cells 51,712/56,213
+    cells 56,213/56,213
+
+[21/23] Br2421 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 62,073
+  unmatched labels : 0
+  Oligo     : 14,909
+  Endo      : 14,592
+  Ast       : 8,500
+  L2/3 Ex   : 5,850
+  Mic       : 3,456
+  MGE       : 2,767
+  L4/5 Ex   : 2,221
+  CGE       : 2,353
+  L6 Ex     : 1,970
+  L5 Ex     : 132
+    cells 512/62,073
+    cells 10,752/62,073
+    cells 20,992/62,073
+    cells 31,232/62,073
+    cells 41,472/62,073
+    cells 51,712/62,073
+    cells 61,952/62,073
+    cells 62,073/62,073
+
+[22/23] Br6032 | SCZ
+  gene order differs -> aligning by gene name
+  cells            : 44,669
+  unmatched labels : 0
+  Oligo     : 8,164
+  Endo      : 7,410
+  Ast       : 5,898
+  L2/3 Ex   : 4,933
+  Mic       : 3,100
+  MGE       : 3,023
+  L4/5 Ex   : 2,832
+  CGE       : 1,746
+  L6 Ex     : 2,119
+  L5 Ex     : 372
+    cells 512/44,669
+    cells 10,752/44,669
+    cells 20,992/44,669
+    cells 31,232/44,669
+    cells 41,472/44,669
+    cells 44,669/44,669
+
+[23/23] Br6389 | NTC
+  gene order differs -> aligning by gene name
+  cells            : 49,542
+  unmatched labels : 0
+  Oligo     : 13,890
+  Endo      : 10,774
+  Ast       : 6,605
+  L2/3 Ex   : 5,160
+  Mic       : 2,616
+  MGE       : 2,256
+  L4/5 Ex   : 2,079
+  CGE       : 1,701
+  L6 Ex     : 1,074
+  L5 Ex     : 112
+    cells 512/49,542
+    cells 10,752/49,542
+    cells 20,992/49,542
+    cells 31,232/49,542
+    cells 41,472/49,542
+    cells 49,542/49,542
+
+==============================================================================================================
+WRITE CELL-TYPE PSEUDOBULKS
+==============================================================================================================
+
+Gene source:
+expression_source
+envi_imputed       34687
+measured_xenium      300
+Name: count, dtype: int64
+Oligo     : (23, 34987) -> ENVI_Oligo_full34987_pseudobulk_countscale_23donors.csv.gz
+Endo      : (23, 34987) -> ENVI_Endo_full34987_pseudobulk_countscale_23donors.csv.gz
+Ast       : (23, 34987) -> ENVI_Ast_full34987_pseudobulk_countscale_23donors.csv.gz
+L2/3 Ex   : (23, 34987) -> ENVI_L2_3_Ex_full34987_pseudobulk_countscale_23donors.csv.gz
+Mic       : (23, 34987) -> ENVI_Mic_full34987_pseudobulk_countscale_23donors.csv.gz
+MGE       : (23, 34987) -> ENVI_MGE_full34987_pseudobulk_countscale_23donors.csv.gz
+L4/5 Ex   : (23, 34987) -> ENVI_L4_5_Ex_full34987_pseudobulk_countscale_23donors.csv.gz
+CGE       : (23, 34987) -> ENVI_CGE_full34987_pseudobulk_countscale_23donors.csv.gz
+L6 Ex     : (23, 34987) -> ENVI_L6_Ex_full34987_pseudobulk_countscale_23donors.csv.gz
+L5 Ex     : (23, 34987) -> ENVI_L5_Ex_full34987_pseudobulk_countscale_23donors.csv.gz
+
+==============================================================================================================
+FINAL SUMMARY
+==============================================================================================================
+Donors              : 23
+SCZ donors          : 12
+NTC donors          : 11
+Primary cell types  : 10
+Total genes         : 34987
+Measured genes      : 300
+Imputed genes       : 34687
+Unmatched cells     : 3
+
+SUCCESS
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/envi_celltype/pseudobulk

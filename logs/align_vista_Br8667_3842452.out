@@ -1,0 +1,31 @@
+============================================================
+Align VISTA Br8667 genes
+============================================================
+Job ID: 3842452
+Node: node07.hgcc.emory.edu
+Started: Mon Jul 27 16:39:55 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/03_align_vista_Br8667_genes.py
+============================================================
+Python 3.10.20
+Python executable: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+
+Starting gene alignment...
+
+====================================================================================================
+VISTA Br8667 gene alignment
+====================================================================================================
+
+Input files:
+seq_data:     /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full.h5ad
+spatial_data: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_huuki_visium_Br8667.h5ad
+
+Output directory:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667
+
+Planned output files:
+1. aligned seq_data h5ad:     /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_shared.h5ad
+2. aligned spatial_data h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_huuki_visium_Br8667_shared.h5ad
+3. shared genes CSV:          /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/Br8667_vista_shared_genes.csv
+4. alignment summary CSV:     /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/Br8667_vista_alignment_summary.csv

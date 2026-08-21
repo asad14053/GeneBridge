@@ -1,0 +1,12 @@
+You created a large dataset with compression and chunking.
+The chunk size is equal to the dataset dimensions.
+If you want to read subsets of the dataset, you should testsmaller chunk sizes to improve read times.
+You created a large dataset with compression and chunking.
+The chunk size is equal to the dataset dimensions.
+If you want to read subsets of the dataset, you should testsmaller chunk sizes to improve read times.
+You created a large dataset with compression and chunking.
+The chunk size is equal to the dataset dimensions.
+If you want to read subsets of the dataset, you should testsmaller chunk sizes to improve read times.
+Current chunk settings will exceed HDF5's 4GB limit.
+Automatically adjusting them to: 536870911
+You may wish to set these to more appropriate values using the 'chunk' argument.

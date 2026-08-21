@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/01_spatial_11genes_across_methods.py", line 1117, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/01_spatial_11genes_across_methods.py", line 1000, in main
+    create_spatial_panel(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/visualization/01_spatial_11genes_across_methods.py", line 680, in create_spatial_panel
+    norm=mpl.colors.Normalize(
+NameError: name 'mpl' is not defined

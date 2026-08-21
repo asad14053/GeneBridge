@@ -1,0 +1,152 @@
+==================================================================================================== 
+ENVI TRANSCRIPTOME-WIDE SCZ vs NTC DIFFERENTIAL EXPRESSION
+==================================================================================================== 
+
+Pseudobulk shape: 23 donors x 34987 genes
+
+Gene source:
+
+   envi_imputed measured_xenium 
+          34687             300 
+
+Diagnosis:
+
+NTC SCZ 
+ 11  12 
+
+Sex:
+
+ F  M 
+13 10 
+
+Age summary:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  23.16   40.86   49.03   47.88   53.48   61.39 
+
+Design matrix:
+   (Intercept) DxSCZ Age_centered Sex_DEM
+1            1     1  -6.91826087       1
+2            1     0 -11.27826087       0
+4            1     0   4.03173913       0
+5            1     1  -0.12826087       1
+6            1     1   4.07173913       0
+7            1     0   4.81173913       0
+8            1     0 -24.71826087       0
+9            1     1  -7.11826087       1
+10           1     0   0.81173913       0
+11           1     1  -7.44826087       0
+12           1     1   4.11173913       0
+13           1     0   6.38173913       1
+14           1     0   0.07173913       1
+15           1     1   9.92173913       0
+16           1     1  -3.01826087       0
+17           1     1  13.51173913       0
+18           1     0 -10.54826087       0
+19           1     0   2.29173913       1
+20           1     0   1.15173913       0
+21           1     1  -9.77826087       1
+22           1     1   9.70173913       1
+23           1     1   9.15173913       1
+24           1     0  10.93173913       1
+attr(,"assign")
+[1] 0 1 2 3
+attr(,"contrasts")
+attr(,"contrasts")$Dx
+[1] "contr.treatment"
+
+attr(,"contrasts")$Sex_DE
+[1] "contr.treatment"
+
+
+Design rank: 4 / 4 
+
+====================================================================================================
+PRIMARY: 34,687 ENVI-IMPUTED GENES — SCZ vs NTC 
+==================================================================================================== 
+
+ALL GENES
+Total         : 34687 
+Higher in SCZ : 17496 
+Higher in NTC : 17191 
+
+NOMINAL P < 0.05
+Total         : 1596 
+Higher in SCZ : 767 
+Higher in NTC : 829 
+
+FDR < 0.05
+Total         : 0 
+Higher in SCZ : 0 
+Higher in NTC : 0 
+
+Top 20:
+       gene      P.value       FDR    log2FC     direction
+     CORO2B 2.550721e-05 0.8847687  4.562876 Higher_in_SCZ
+      LARS2 7.171710e-05 0.9961285  3.987991 Higher_in_SCZ
+   ERVFRD-1 2.344543e-04 0.9961285 -4.190794 Higher_in_NTC
+ AC112504.3 2.987867e-04 0.9961285 -3.701101 Higher_in_NTC
+    SLC35F2 3.253887e-04 0.9961285  3.805443 Higher_in_SCZ
+       SKIL 3.657507e-04 0.9961285  3.704199 Higher_in_SCZ
+   Z83818.2 4.257727e-04 0.9961285 -3.682666 Higher_in_NTC
+ AP006621.1 4.388900e-04 0.9961285  3.448960 Higher_in_SCZ
+     IGDCC3 5.293036e-04 0.9961285  3.657179 Higher_in_SCZ
+      GINM1 5.313700e-04 0.9961285  3.420292 Higher_in_SCZ
+    FAM219A 5.528112e-04 0.9961285  3.860628 Higher_in_SCZ
+ AC009163.6 5.994031e-04 0.9961285 -3.375713 Higher_in_NTC
+  LINC02543 6.291800e-04 0.9961285 -3.534904 Higher_in_NTC
+    TNFSF13 7.225760e-04 0.9961285 -3.554649 Higher_in_NTC
+ AC025773.1 7.704081e-04 0.9961285 -3.602437 Higher_in_NTC
+     GIMAP4 7.962669e-04 0.9961285 -3.655429 Higher_in_NTC
+ AL050320.1 8.098260e-04 0.9961285 -3.222757 Higher_in_NTC
+      RPE65 8.445931e-04 0.9961285 -3.592768 Higher_in_NTC
+ AC020550.2 8.816825e-04 0.9961285 -3.544215 Higher_in_NTC
+      JAZF1 8.902115e-04 0.9961285  3.704811 Higher_in_SCZ
+
+====================================================================================================
+FULL TRANSCRIPTOME: 34,987 GENES — SCZ vs NTC 
+==================================================================================================== 
+
+ALL GENES
+Total         : 34987 
+Higher in SCZ : 17608 
+Higher in NTC : 17379 
+
+NOMINAL P < 0.05
+Total         : 1600 
+Higher in SCZ : 768 
+Higher in NTC : 832 
+
+FDR < 0.05
+Total         : 0 
+Higher in SCZ : 0 
+Higher in NTC : 0 
+
+Top 20:
+       gene      P.value       FDR    log2FC     direction
+     CORO2B 2.550721e-05 0.8924208  4.562876 Higher_in_SCZ
+      LARS2 7.171710e-05 0.9998091  3.987991 Higher_in_SCZ
+   ERVFRD-1 2.344543e-04 0.9998091 -4.190794 Higher_in_NTC
+ AC112504.3 2.987867e-04 0.9998091 -3.701101 Higher_in_NTC
+    SLC35F2 3.253887e-04 0.9998091  3.805443 Higher_in_SCZ
+       SKIL 3.657507e-04 0.9998091  3.704199 Higher_in_SCZ
+   Z83818.2 4.257727e-04 0.9998091 -3.682666 Higher_in_NTC
+ AP006621.1 4.388900e-04 0.9998091  3.448960 Higher_in_SCZ
+     IGDCC3 5.293036e-04 0.9998091  3.657179 Higher_in_SCZ
+      GINM1 5.313700e-04 0.9998091  3.420292 Higher_in_SCZ
+    FAM219A 5.528112e-04 0.9998091  3.860628 Higher_in_SCZ
+ AC009163.6 5.994031e-04 0.9998091 -3.375713 Higher_in_NTC
+  LINC02543 6.291800e-04 0.9998091 -3.534904 Higher_in_NTC
+    TNFSF13 7.225760e-04 0.9998091 -3.554649 Higher_in_NTC
+ AC025773.1 7.704081e-04 0.9998091 -3.602437 Higher_in_NTC
+     GIMAP4 7.962669e-04 0.9998091 -3.655429 Higher_in_NTC
+ AL050320.1 8.098260e-04 0.9998091 -3.222757 Higher_in_NTC
+      RPE65 8.445931e-04 0.9998091 -3.592768 Higher_in_NTC
+ AC020550.2 8.816825e-04 0.9998091 -3.544215 Higher_in_NTC
+      JAZF1 8.902115e-04 0.9998091  3.704811 Higher_in_SCZ
+
+====================================================================================================
+SUCCESS
+==================================================================================================== 
+
+Primary advisor table:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/envi_transcriptome/ENVI_imputed34687_DE_SCZ_vs_NTC_advisor_table.csv

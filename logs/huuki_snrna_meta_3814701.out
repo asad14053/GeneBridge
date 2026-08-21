@@ -1,0 +1,16 @@
+========================================
+Job ID: 3814701
+Node: node12.hgcc.emory.edu
+Started: Wed Jul 22 20:54:11 EDT 2026
+Working directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+========================================
+
+Rscript executable:
+/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+
+R version:
+Rscript (R) version 4.5.3 (2026-03-11)
+
+========================================
+Starting Huuki snRNA-seq metadata export
+========================================

@@ -1,0 +1,134 @@
+========================================
+Job ID: 3845129
+Node: node04.hgcc.emory.edu
+Started: Tue Jul 28 19:53:20 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/imputation/05_inspect_xenium_Br8667.py
+========================================
+Python 3.10.20
+====================================================================================================
+Task-02: Inspect Xenium Br8667 and snRNA overlap
+====================================================================================================
+
+Xenium input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_annotated.h5ad
+
+snRNA input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_shared.h5ad
+
+Loading Xenium Br8667...
+Loading snRNA Br8667...
+
+Xenium Br8667:
+AnnData object with n_obs × n_vars = 66164 × 300
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'xenium_total_counts_metadata', 'qc_total_counts', 'qc_gene_counts', 'qc_detected', 'qc_detected_genes', 'detected', 'subsets_negProbe_sum', 'subsets_negCodeword_sum', 'subsets_unassigned_sum', 'subsets_mito_sum', 'subsets_negProbe_percent', 'subsets_negCodeword_percent', 'subsets_unassigned_percent', 'subsets_mito_percent', 'qc_pct_neg_probe', 'qc_pct_neg_codeword', 'qc_pct_unassigned', 'qc_pct_mito', 'qc_empty_cell', 'neg_probe_out', 'neg_codeword_out', 'unassigned_out', 'mito_out', 'detected_out', 'total_counts_out', 'qc_is_outlier', 'qc_pass', 'imputation_size_factor', 'predictions_smooth', 'layer_annotation', 'layer_annotation_source', 'layer_annotation_stage', 'Banksy', 'cell_type_annotation_banksy', 'cell_type_annotation', 'cell_type_annotation_source', 'cell_type_annotation_stage', 'cell_type_annotation_confidence', 'batch', 'names', 'scClassify'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'banksy_inhibitory_mapping_mode', 'banksy_lambda', 'banksy_resolution', 'cell_type_annotation_mapping', 'cell_type_annotation_order', 'cell_type_annotation_source', 'counts_layer', 'description', 'layer_annotation_mapping', 'layer_annotation_order', 'layer_annotation_source', 'normalized_layer', 'object_name', 'outlier_logic', 'raw_counts_layer', 'spatial_key', 'stage', 'target_sum'
+    obsm: 'spatial'
+    layers: 'counts', 'log1p_norm'
+
+snRNA Br8667:
+AnnData object with n_obs × n_vars = 9897 × 28907
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    var: 'matched_gene_symbol'
+    layers: 'counts', 'logcounts'
+
+Xenium layers:
+['counts', 'log1p_norm']
+
+snRNA layers:
+['counts', 'logcounts']
+
+Matrix summary:
+                 matrix matrix_type        shape   dtype  nonzero_values  density  sparsity  sampled_minimum  sampled_maximum  sampled_mean  integer_like_fraction  has_negative_values
+               xenium:X  csr_matrix  66164 x 300 float32         7275516 0.366540  0.633460         1.000000       269.000000      8.482153               1.000000                False
+    xenium:layer:counts  csr_matrix  66164 x 300 float32         7275516 0.366540  0.633460         1.000000       269.000000      8.482153               1.000000                False
+xenium:layer:log1p_norm  csr_matrix  66164 x 300 float32         7275516 0.366540  0.633460         1.593315         9.210441      3.589227               0.000047                False
+                snrna:X     ndarray 9897 x 28907 float64        37883060 0.132415  0.867585         0.000000         9.468975      0.208027               0.867260                False
+     snrna:layer:counts     ndarray 9897 x 28907 float64        37883060 0.132415  0.867585         0.000000      2108.000000      0.670410               1.000000                False
+
+Xenium X comparison:
+X matches layers['counts']: True
+X matches layers['log1p_norm']: False
+X classification: raw_counts
+Xenium: using var['Symbol'] for gene symbols.
+snRNA: using var_names for gene symbols.
+
+Gene overlap:
+Xenium genes: 300
+snRNA genes: 28,907
+Shared by gene symbol: 300
+Xenium genes missing from snRNA: 0
+All Xenium symbols present in snRNA: True
+Raw Xenium var_names subset of snRNA var_names: True
+
+Xenium cell-type counts:
+cell_type_annotation  n_cells
+               Oligo    14701
+                Endo    13821
+                 Ast     9247
+             L2/3 Ex     7312
+                 Mic     4577
+                 MGE     3770
+             L4/5 Ex     3287
+                 CGE     2932
+       Ambig/In/Endo     2564
+               L6 Ex     2383
+         Ambig/Oligo     1284
+               L5 Ex      286
+
+Xenium cortical-layer counts:
+layer_annotation  n_cells
+              L5    20280
+            L2/3    16405
+              WM    12303
+            L1/M     7177
+              L6     5948
+            L3/4     2276
+            WMtz     1775
+
+Xenium spatial coordinates:
+Shape: (66164, 2)
+All finite: True
+X coordinate range: 37.25954055786133 to 10258.830078125
+Y coordinate range: 75.67212677001953 to 7233.43359375
+
+====================================================================================================
+VISTA PRELIMINARY DECISION
+====================================================================================================
+Use Xenium layers['counts'] as the spatial count matrix.
+Use snRNA layers['counts'] as the reference count matrix.
+Do not use normalized/log-transformed values as the VISTA training counts.
+
+Preliminary readiness:
+                            check      value
+          xenium_has_counts_layer       True
+xenium_counts_integer_nonnegative       True
+           snrna_has_counts_layer       True
+ snrna_counts_integer_nonnegative       True
+               xenium_has_spatial       True
+                 xenium_has_names       True
+                 xenium_has_batch       True
+            xenium_has_scClassify       True
+             snrna_has_scClassify      False
+   xenium_symbols_subset_of_snrna       True
+             raw_var_names_subset       True
+          xenium_X_classification raw_counts
+               xenium_gene_source     Symbol
+                snrna_gene_source  var_names
+                shared_gene_count        300
+               missing_gene_count          0
+
+Created reports:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/05_xenium_Br8667_matrix_summary.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/05_xenium_snrna_gene_overlap.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/05_xenium_genes_missing_from_snrna.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/05_vista_Br8667_readiness_summary.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/05_xenium_Br8667_celltype_counts.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/05_xenium_Br8667_layer_counts.csv
+
+DONE: Task-02 completed.
+========================================
+Completed successfully
+Finished: Tue Jul 28 19:53:43 EDT 2026
+========================================

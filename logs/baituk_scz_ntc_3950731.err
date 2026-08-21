@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/split_baituk_scz_ntc.py", line 644, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/snrnaseq_branch/split_baituk_scz_ntc.py", line 405, in main
+    raise RuntimeError(
+RuntimeError: Exact sample MB8 was detected. The supplied mapping explicitly assigns MB8-2 to SCZ but does not assign MB8. No output was written. After confirming MB8, rerun with --mb8-policy scz or --mb8-policy ntc.
+srun: error: node06: task 0: Exited with exit code 1

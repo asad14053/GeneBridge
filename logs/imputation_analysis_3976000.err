@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/compare_advisor_genes_across_experiments.py", line 1128, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/compare_advisor_genes_across_experiments.py", line 946, in main
+    experiment_data = [
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/compare_advisor_genes_across_experiments.py", line 947, in <listcomp>
+    load_experiment(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/compare_advisor_genes_across_experiments.py", line 251, in load_experiment
+    combined_dir = resolve_combined_dir(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/compare_advisor_genes_across_experiments.py", line 158, in resolve_combined_dir
+    raise FileNotFoundError(candidate)
+FileNotFoundError: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/ vista/combined

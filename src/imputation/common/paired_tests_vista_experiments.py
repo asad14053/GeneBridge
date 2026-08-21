@@ -1,0 +1,2034 @@
+#!/usr/bin/env python3
+
+"""
+Paired statistical comparisons among VISTA Experiments 5, 5.1 and 5.3.
+
+Gene-level metrics:
+    SCC
+    SSIM
+    RMSE
+    MAE
+    Jensen-Shannon divergence
+    Moran's I absolute error
+
+Fold-level metrics:
+    NMI
+    ARI
+
+For every comparison, this script performs:
+
+1. Two-sided paired t-test
+       H0: mean paired difference = 0
+
+2. Paired TOST equivalence test with a +/-5% margin
+       H0: difference is outside the equivalence interval
+       H1: difference is inside the equivalence interval
+
+The equivalence margin for each metric is:
+
+    0.05 * abs(mean of the baseline experiment)
+
+Paired difference is defined as:
+
+    comparison - baseline
+"""
+
+from __future__ import annotations
+
+import json
+import math
+import re
+from pathlib import Path
+from typing import Any
+
+import matplotlib
+
+matplotlib.use("Agg")
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+
+PROJECT_ROOT = Path(
+    "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
+)
+
+OUTPUT_ROOT = (
+    PROJECT_ROOT
+    / "outputs"
+    / "imputation_beta"
+    / "Br8667"
+)
+
+EXPERIMENTS = {
+    "Experiment 5": OUTPUT_ROOT / "ex5" / "vista",
+    "Experiment 5.1": OUTPUT_ROOT / "ex5_1" / "vista",
+    "Experiment 5.3": OUTPUT_ROOT / "ex5_3" / "vista",
+}
+
+COMPARISONS = [
+    ("Experiment 5", "Experiment 5.1"),
+    ("Experiment 5", "Experiment 5.3"),
+    ("Experiment 5.1", "Experiment 5.3"),
+]
+
+RESULT_DIR = (
+    OUTPUT_ROOT
+    / "statistical_tests"
+    / "vista_experiments"
+)
+
+ALPHA = 0.05
+EQUIVALENCE_MARGIN_FRACTION = 0.05
+
+
+GENE_METRICS = {
+    "SCC": {
+        "higher_is_better": True,
+        "aliases": [
+            "scc",
+            "spearman",
+            "spearman_r",
+            "spearman_correlation",
+            "spearman_rank_correlation",
+        ],
+    },
+    "SSIM": {
+        "higher_is_better": True,
+        "aliases": [
+            "ssim",
+            "structural_similarity",
+            "structural_similarity_index",
+        ],
+    },
+    "RMSE": {
+        "higher_is_better": False,
+        "aliases": [
+            "rmse",
+            "root_mean_squared_error",
+        ],
+    },
+    "MAE": {
+        "higher_is_better": False,
+        "aliases": [
+            "mae",
+            "mean_absolute_error",
+        ],
+    },
+    "JSD": {
+        "higher_is_better": False,
+        "aliases": [
+            "jsd",
+            "jensen_shannon",
+            "jensen_shannon_divergence",
+            "jensen_shannon_distance",
+        ],
+    },
+    "Moran_error": {
+        "higher_is_better": False,
+        "aliases": [
+            "moran_error",
+            "moran_abs_error",
+            "moran_absolute_error",
+            "moran_i_error",
+            "moran_i_abs_error",
+            "moran_i_absolute_error",
+            "morans_i_error",
+            "morans_i_abs_error",
+            "morans_i_absolute_error",
+        ],
+    },
+}
+
+
+FOLD_METRICS = {
+    "NMI": {
+        "higher_is_better": True,
+        "aliases": [
+            "nmi",
+            "normalized_mutual_information",
+        ],
+    },
+    "ARI": {
+        "higher_is_better": True,
+        "aliases": [
+            "ari",
+            "adjusted_rand_index",
+        ],
+    },
+}
+
+
+GENE_ID_ALIASES = [
+    "gene",
+    "gene_name",
+    "gene_symbol",
+    "heldout_gene",
+    "held_out_gene",
+    "target_gene",
+    "var_name",
+    "var_names",
+]
+
+FOLD_ID_ALIASES = [
+    "fold",
+    "fold_id",
+    "fold_number",
+    "cv_fold",
+]
+
+
+def section(title: str) -> None:
+    print()
+    print("=" * 110)
+    print(title)
+    print("=" * 110)
+
+
+def normalize_column_name(value: str) -> str:
+    value = str(value).strip().lower()
+    value = re.sub(r"[^a-z0-9]+", "_", value)
+    return value.strip("_")
+
+
+def resolve_column(
+    frame: pd.DataFrame,
+    aliases: list[str],
+) -> str | None:
+    normalized_to_original = {
+        normalize_column_name(column): column
+        for column in frame.columns
+    }
+
+    for alias in aliases:
+        normalized_alias = normalize_column_name(alias)
+
+        if normalized_alias in normalized_to_original:
+            return normalized_to_original[normalized_alias]
+
+    return None
+
+
+def find_metric_file(
+    experiment_dir: Path,
+    level: str,
+) -> Path | None:
+    combined_dir = experiment_dir / "combined"
+
+    if level == "gene":
+        exact_names = [
+            "gene_level_metrics_300genes.csv",
+            "gene_level_metrics.csv",
+            "gene_metrics_300genes.csv",
+            "gene_metrics.csv",
+        ]
+        patterns = [
+            "*gene*level*metric*.csv",
+            "*gene*metric*.csv",
+        ]
+    elif level == "fold":
+        exact_names = [
+            "fold_level_metrics_3folds.csv",
+            "fold_level_metrics.csv",
+            "fold_metrics_3folds.csv",
+            "fold_metrics.csv",
+        ]
+        patterns = [
+            "*fold*level*metric*.csv",
+            "*fold*metric*.csv",
+        ]
+    else:
+        raise ValueError(
+            f"Unsupported level: {level}"
+        )
+
+    for filename in exact_names:
+        candidate = combined_dir / filename
+
+        if candidate.is_file():
+            return candidate
+
+    if combined_dir.is_dir():
+        for pattern in patterns:
+            candidates = sorted(
+                path
+                for path in combined_dir.glob(pattern)
+                if "summary" not in path.name.lower()
+            )
+
+            if candidates:
+                return candidates[0]
+
+    return None
+
+
+def find_fold_metric_file(
+    fold_dir: Path,
+    level: str,
+) -> Path | None:
+    if level == "gene":
+        exact_names = [
+            "gene_level_metrics.csv",
+            "gene_metrics.csv",
+        ]
+        patterns = [
+            "*gene*level*metric*.csv",
+            "*gene*metric*.csv",
+        ]
+    elif level == "fold":
+        exact_names = [
+            "fold_level_metrics.csv",
+            "fold_metrics.csv",
+        ]
+        patterns = [
+            "*fold*level*metric*.csv",
+            "*fold*metric*.csv",
+        ]
+    else:
+        raise ValueError(
+            f"Unsupported level: {level}"
+        )
+
+    for filename in exact_names:
+        candidate = fold_dir / filename
+
+        if candidate.is_file():
+            return candidate
+
+    for pattern in patterns:
+        candidates = sorted(
+            path
+            for path in fold_dir.glob(pattern)
+            if "summary" not in path.name.lower()
+        )
+
+        if candidates:
+            return candidates[0]
+
+    return None
+
+
+def load_metric_table(
+    experiment_name: str,
+    experiment_dir: Path,
+    level: str,
+) -> tuple[pd.DataFrame, list[str]]:
+    combined_file = find_metric_file(
+        experiment_dir=experiment_dir,
+        level=level,
+    )
+
+    if combined_file is not None:
+        print(
+            f"{experiment_name} {level}-level source: "
+            f"{combined_file}"
+        )
+
+        return (
+            pd.read_csv(combined_file),
+            [str(combined_file)],
+        )
+
+    frames: list[pd.DataFrame] = []
+    source_files: list[str] = []
+
+    for fold in (1, 2, 3):
+        fold_dir = experiment_dir / f"fold_{fold}"
+
+        metric_file = find_fold_metric_file(
+            fold_dir=fold_dir,
+            level=level,
+        )
+
+        if metric_file is None:
+            continue
+
+        frame = pd.read_csv(metric_file)
+
+        fold_column = resolve_column(
+            frame,
+            FOLD_ID_ALIASES,
+        )
+
+        if fold_column is None:
+            frame["fold"] = fold
+
+        frames.append(frame)
+        source_files.append(
+            str(metric_file)
+        )
+
+    if not frames:
+        raise FileNotFoundError(
+            f"Could not find {level}-level metric files for "
+            f"{experiment_name} under:\n{experiment_dir}"
+        )
+
+    print(
+        f"{experiment_name} {level}-level sources:"
+    )
+
+    for source in source_files:
+        print(f"  {source}")
+
+    return (
+        pd.concat(
+            frames,
+            ignore_index=True,
+            sort=False,
+        ),
+        source_files,
+    )
+
+
+def detect_identifier_column(
+    frame: pd.DataFrame,
+    aliases: list[str],
+    level: str,
+) -> str:
+    resolved = resolve_column(
+        frame,
+        aliases,
+    )
+
+    if resolved is not None:
+        return resolved
+
+    if level == "gene":
+        for column in frame.columns:
+            series = frame[column]
+
+            if (
+                series.dtype == object
+                and series.notna().sum() > 0
+                and series.nunique(dropna=True)
+                >= 0.8 * series.notna().sum()
+            ):
+                return column
+
+    raise KeyError(
+        f"Could not identify the {level} identifier column.\n"
+        f"Available columns:\n{frame.columns.tolist()}"
+    )
+
+
+def prepare_metric_table(
+    raw_frame: pd.DataFrame,
+    metrics: dict[str, dict[str, Any]],
+    level: str,
+) -> tuple[pd.DataFrame, dict[str, str]]:
+    identifier_aliases = (
+        GENE_ID_ALIASES
+        if level == "gene"
+        else FOLD_ID_ALIASES
+    )
+
+    identifier_name = (
+        "gene"
+        if level == "gene"
+        else "fold"
+    )
+
+    identifier_column = detect_identifier_column(
+        raw_frame,
+        aliases=identifier_aliases,
+        level=level,
+    )
+
+    prepared = pd.DataFrame()
+
+    if level == "gene":
+        prepared[identifier_name] = (
+            raw_frame[identifier_column]
+            .astype(str)
+            .str.strip()
+        )
+    else:
+        prepared[identifier_name] = pd.to_numeric(
+            raw_frame[identifier_column],
+            errors="coerce",
+        )
+
+    resolved_metrics: dict[str, str] = {}
+
+    for metric_name, specification in metrics.items():
+        source_column = resolve_column(
+            raw_frame,
+            specification["aliases"],
+        )
+
+        if source_column is None:
+            continue
+
+        prepared[metric_name] = pd.to_numeric(
+            raw_frame[source_column],
+            errors="coerce",
+        )
+
+        resolved_metrics[metric_name] = source_column
+
+    prepared = prepared.dropna(
+        subset=[identifier_name]
+    )
+
+    if level == "gene":
+        prepared = prepared[
+            prepared["gene"] != ""
+        ]
+
+    if prepared[identifier_name].duplicated().any():
+        duplicate_count = int(
+            prepared[identifier_name]
+            .duplicated()
+            .sum()
+        )
+
+        print(
+            f"Warning: found {duplicate_count} duplicate "
+            f"{identifier_name} entries; averaging duplicates."
+        )
+
+        prepared = (
+            prepared
+            .groupby(
+                identifier_name,
+                as_index=False,
+            )
+            .mean(numeric_only=True)
+        )
+
+    return prepared, resolved_metrics
+
+
+def holm_adjust(
+    p_values: pd.Series,
+) -> np.ndarray:
+    values = pd.to_numeric(
+        p_values,
+        errors="coerce",
+    ).to_numpy(dtype=float)
+
+    adjusted = np.full(
+        values.shape,
+        np.nan,
+        dtype=float,
+    )
+
+    valid_indices = np.where(
+        np.isfinite(values)
+    )[0]
+
+    if valid_indices.size == 0:
+        return adjusted
+
+    valid_values = values[
+        valid_indices
+    ]
+
+    order = np.argsort(
+        valid_values
+    )
+
+    sorted_values = valid_values[
+        order
+    ]
+
+    number_of_tests = len(
+        sorted_values
+    )
+
+    sorted_adjusted = np.empty(
+        number_of_tests,
+        dtype=float,
+    )
+
+    running_maximum = 0.0
+
+    for rank, p_value in enumerate(
+        sorted_values
+    ):
+        candidate = (
+            number_of_tests - rank
+        ) * p_value
+
+        running_maximum = max(
+            running_maximum,
+            candidate,
+        )
+
+        sorted_adjusted[rank] = min(
+            running_maximum,
+            1.0,
+        )
+
+    restored = np.empty_like(
+        sorted_adjusted
+    )
+
+    restored[order] = (
+        sorted_adjusted
+    )
+
+    adjusted[
+        valid_indices
+    ] = restored
+
+    return adjusted
+
+
+def safe_tost(
+    differences: np.ndarray,
+    lower_bound: float,
+    upper_bound: float,
+    alpha: float,
+) -> dict[str, float | bool]:
+    differences = np.asarray(
+        differences,
+        dtype=float,
+    )
+
+    differences = differences[
+        np.isfinite(differences)
+    ]
+
+    n_pairs = differences.size
+
+    if n_pairs < 2:
+        return {
+            "tost_lower_t": math.nan,
+            "tost_lower_p": math.nan,
+            "tost_upper_t": math.nan,
+            "tost_upper_p": math.nan,
+            "tost_p": math.nan,
+            "ci90_lower": math.nan,
+            "ci90_upper": math.nan,
+            "equivalent": False,
+        }
+
+    mean_difference = float(
+        np.mean(differences)
+    )
+
+    standard_deviation = float(
+        np.std(
+            differences,
+            ddof=1,
+        )
+    )
+
+    degrees_of_freedom = (
+        n_pairs - 1
+    )
+
+    standard_error = (
+        standard_deviation
+        / np.sqrt(n_pairs)
+    )
+
+    if standard_error == 0:
+        lower_p = (
+            0.0
+            if mean_difference > lower_bound
+            else 1.0
+        )
+
+        upper_p = (
+            0.0
+            if mean_difference < upper_bound
+            else 1.0
+        )
+
+        lower_t = (
+            math.inf
+            if mean_difference > lower_bound
+            else -math.inf
+        )
+
+        upper_t = (
+            -math.inf
+            if mean_difference < upper_bound
+            else math.inf
+        )
+
+        ci90_lower = mean_difference
+        ci90_upper = mean_difference
+
+    else:
+        lower_t = (
+            mean_difference
+            - lower_bound
+        ) / standard_error
+
+        lower_p = float(
+            stats.t.sf(
+                lower_t,
+                degrees_of_freedom,
+            )
+        )
+
+        upper_t = (
+            mean_difference
+            - upper_bound
+        ) / standard_error
+
+        upper_p = float(
+            stats.t.cdf(
+                upper_t,
+                degrees_of_freedom,
+            )
+        )
+
+        critical_value = float(
+            stats.t.ppf(
+                1.0 - alpha,
+                degrees_of_freedom,
+            )
+        )
+
+        ci90_lower = (
+            mean_difference
+            - critical_value
+            * standard_error
+        )
+
+        ci90_upper = (
+            mean_difference
+            + critical_value
+            * standard_error
+        )
+
+    tost_p = max(
+        lower_p,
+        upper_p,
+    )
+
+    equivalent = bool(
+        lower_p < alpha
+        and upper_p < alpha
+    )
+
+    return {
+        "tost_lower_t": float(lower_t),
+        "tost_lower_p": float(lower_p),
+        "tost_upper_t": float(upper_t),
+        "tost_upper_p": float(upper_p),
+        "tost_p": float(tost_p),
+        "ci90_lower": float(ci90_lower),
+        "ci90_upper": float(ci90_upper),
+        "equivalent": equivalent,
+    }
+
+
+def calculate_paired_statistics(
+    baseline_values: np.ndarray,
+    comparison_values: np.ndarray,
+    higher_is_better: bool,
+) -> dict[str, Any]:
+    baseline_values = np.asarray(
+        baseline_values,
+        dtype=float,
+    )
+
+    comparison_values = np.asarray(
+        comparison_values,
+        dtype=float,
+    )
+
+    valid = (
+        np.isfinite(baseline_values)
+        & np.isfinite(comparison_values)
+    )
+
+    baseline_values = baseline_values[
+        valid
+    ]
+
+    comparison_values = comparison_values[
+        valid
+    ]
+
+    n_pairs = baseline_values.size
+
+    if n_pairs < 2:
+        raise ValueError(
+            "At least two complete paired observations are required."
+        )
+
+    differences = (
+        comparison_values
+        - baseline_values
+    )
+
+    baseline_mean = float(
+        np.mean(baseline_values)
+    )
+
+    comparison_mean = float(
+        np.mean(comparison_values)
+    )
+
+    mean_difference = float(
+        np.mean(differences)
+    )
+
+    standard_deviation_difference = float(
+        np.std(
+            differences,
+            ddof=1,
+        )
+    )
+
+    standard_error_difference = (
+        standard_deviation_difference
+        / np.sqrt(n_pairs)
+    )
+
+    degrees_of_freedom = (
+        n_pairs - 1
+    )
+
+    paired_result = stats.ttest_rel(
+        comparison_values,
+        baseline_values,
+        nan_policy="omit",
+        alternative="two-sided",
+    )
+
+    critical_95 = float(
+        stats.t.ppf(
+            0.975,
+            degrees_of_freedom,
+        )
+    )
+
+    ci95_lower = (
+        mean_difference
+        - critical_95
+        * standard_error_difference
+    )
+
+    ci95_upper = (
+        mean_difference
+        + critical_95
+        * standard_error_difference
+    )
+
+    denominator = abs(
+        baseline_mean
+    )
+
+    equivalence_margin = (
+        EQUIVALENCE_MARGIN_FRACTION
+        * denominator
+    )
+
+    lower_bound = (
+        -equivalence_margin
+    )
+
+    upper_bound = (
+        equivalence_margin
+    )
+
+    tost_result = safe_tost(
+        differences=differences,
+        lower_bound=lower_bound,
+        upper_bound=upper_bound,
+        alpha=ALPHA,
+    )
+
+    if denominator > 0:
+        raw_relative_difference_percent = (
+            100.0
+            * mean_difference
+            / denominator
+        )
+
+        relative_ci95_lower = (
+            100.0
+            * ci95_lower
+            / denominator
+        )
+
+        relative_ci95_upper = (
+            100.0
+            * ci95_upper
+            / denominator
+        )
+
+        relative_ci90_lower = (
+            100.0
+            * float(
+                tost_result["ci90_lower"]
+            )
+            / denominator
+        )
+
+        relative_ci90_upper = (
+            100.0
+            * float(
+                tost_result["ci90_upper"]
+            )
+            / denominator
+        )
+    else:
+        raw_relative_difference_percent = math.nan
+        relative_ci95_lower = math.nan
+        relative_ci95_upper = math.nan
+        relative_ci90_lower = math.nan
+        relative_ci90_upper = math.nan
+
+    direction_multiplier = (
+        1.0
+        if higher_is_better
+        else -1.0
+    )
+
+    direction_adjusted_improvement_percent = (
+        direction_multiplier
+        * raw_relative_difference_percent
+    )
+
+    direction_ci90_values = sorted(
+        [
+            direction_multiplier
+            * relative_ci90_lower,
+            direction_multiplier
+            * relative_ci90_upper,
+        ]
+    )
+
+    direction_ci95_values = sorted(
+        [
+            direction_multiplier
+            * relative_ci95_lower,
+            direction_multiplier
+            * relative_ci95_upper,
+        ]
+    )
+
+    effect_size_dz = (
+        mean_difference
+        / standard_deviation_difference
+        if standard_deviation_difference > 0
+        else math.nan
+    )
+
+    return {
+        "n_pairs": int(n_pairs),
+        "baseline_mean": baseline_mean,
+        "comparison_mean": comparison_mean,
+        "mean_difference_comparison_minus_baseline": mean_difference,
+        "relative_difference_percent": raw_relative_difference_percent,
+        "direction_adjusted_improvement_percent": (
+            direction_adjusted_improvement_percent
+        ),
+        "difference_sd": standard_deviation_difference,
+        "difference_se": standard_error_difference,
+        "effect_size_dz": effect_size_dz,
+        "paired_t": float(
+            paired_result.statistic
+        ),
+        "paired_p_two_sided": float(
+            paired_result.pvalue
+        ),
+        "ci95_difference_lower": ci95_lower,
+        "ci95_difference_upper": ci95_upper,
+        "ci95_relative_lower_percent": relative_ci95_lower,
+        "ci95_relative_upper_percent": relative_ci95_upper,
+        "ci95_direction_adjusted_lower_percent": (
+            direction_ci95_values[0]
+        ),
+        "ci95_direction_adjusted_upper_percent": (
+            direction_ci95_values[1]
+        ),
+        "equivalence_margin_fraction": (
+            EQUIVALENCE_MARGIN_FRACTION
+        ),
+        "equivalence_margin_absolute": equivalence_margin,
+        "equivalence_lower_bound": lower_bound,
+        "equivalence_upper_bound": upper_bound,
+        "tost_lower_t": tost_result["tost_lower_t"],
+        "tost_lower_p": tost_result["tost_lower_p"],
+        "tost_upper_t": tost_result["tost_upper_t"],
+        "tost_upper_p": tost_result["tost_upper_p"],
+        "tost_p": tost_result["tost_p"],
+        "ci90_difference_lower": tost_result["ci90_lower"],
+        "ci90_difference_upper": tost_result["ci90_upper"],
+        "ci90_relative_lower_percent": relative_ci90_lower,
+        "ci90_relative_upper_percent": relative_ci90_upper,
+        "ci90_direction_adjusted_lower_percent": (
+            direction_ci90_values[0]
+        ),
+        "ci90_direction_adjusted_upper_percent": (
+            direction_ci90_values[1]
+        ),
+        "equivalent_within_5pct_unadjusted": (
+            tost_result["equivalent"]
+        ),
+    }
+
+
+def run_paired_comparisons(
+    tables: dict[str, pd.DataFrame],
+    metrics: dict[str, dict[str, Any]],
+    identifier: str,
+    level: str,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    result_rows: list[dict[str, Any]] = []
+    pairing_rows: list[dict[str, Any]] = []
+
+    for baseline_name, comparison_name in COMPARISONS:
+        baseline_table = tables[
+            baseline_name
+        ]
+
+        comparison_table = tables[
+            comparison_name
+        ]
+
+        baseline_ids = set(
+            baseline_table[identifier]
+            .dropna()
+            .tolist()
+        )
+
+        comparison_ids = set(
+            comparison_table[identifier]
+            .dropna()
+            .tolist()
+        )
+
+        common_ids = (
+            baseline_ids
+            & comparison_ids
+        )
+
+        pairing_rows.append(
+            {
+                "level": level,
+                "baseline": baseline_name,
+                "comparison": comparison_name,
+                "baseline_n_ids": len(
+                    baseline_ids
+                ),
+                "comparison_n_ids": len(
+                    comparison_ids
+                ),
+                "common_n_ids": len(
+                    common_ids
+                ),
+                "baseline_only_n_ids": len(
+                    baseline_ids
+                    - comparison_ids
+                ),
+                "comparison_only_n_ids": len(
+                    comparison_ids
+                    - baseline_ids
+                ),
+            }
+        )
+
+        merged = baseline_table.merge(
+            comparison_table,
+            on=identifier,
+            how="inner",
+            suffixes=(
+                "_baseline",
+                "_comparison",
+            ),
+            validate="one_to_one",
+        )
+
+        for metric_name, specification in metrics.items():
+            baseline_column = (
+                f"{metric_name}_baseline"
+            )
+
+            comparison_column = (
+                f"{metric_name}_comparison"
+            )
+
+            if (
+                baseline_column
+                not in merged.columns
+                or comparison_column
+                not in merged.columns
+            ):
+                print(
+                    f"Warning: skipping {level}-level "
+                    f"{metric_name} for "
+                    f"{baseline_name} vs {comparison_name}; "
+                    "metric is unavailable."
+                )
+                continue
+
+            complete = merged[
+                [
+                    identifier,
+                    baseline_column,
+                    comparison_column,
+                ]
+            ].dropna()
+
+            if len(complete) < 2:
+                print(
+                    f"Warning: skipping {metric_name}; "
+                    "fewer than two complete pairs."
+                )
+                continue
+
+            statistics = calculate_paired_statistics(
+                baseline_values=complete[
+                    baseline_column
+                ].to_numpy(),
+                comparison_values=complete[
+                    comparison_column
+                ].to_numpy(),
+                higher_is_better=specification[
+                    "higher_is_better"
+                ],
+            )
+
+            result_rows.append(
+                {
+                    "level": level,
+                    "baseline": baseline_name,
+                    "comparison": comparison_name,
+                    "comparison_label": (
+                        f"{comparison_name} vs {baseline_name}"
+                    ),
+                    "metric": metric_name,
+                    "higher_is_better": specification[
+                        "higher_is_better"
+                    ],
+                    **statistics,
+                }
+            )
+
+    results = pd.DataFrame(
+        result_rows
+    )
+
+    pairing = pd.DataFrame(
+        pairing_rows
+    )
+
+    if not results.empty:
+        results[
+            "paired_p_holm"
+        ] = holm_adjust(
+            results[
+                "paired_p_two_sided"
+            ]
+        )
+
+        results[
+            "tost_p_holm"
+        ] = holm_adjust(
+            results[
+                "tost_p"
+            ]
+        )
+
+        results[
+            "paired_difference_significant_unadjusted"
+        ] = (
+            results[
+                "paired_p_two_sided"
+            ]
+            < ALPHA
+        )
+
+        results[
+            "paired_difference_significant_holm"
+        ] = (
+            results[
+                "paired_p_holm"
+            ]
+            < ALPHA
+        )
+
+        results[
+            "equivalent_within_5pct_holm"
+        ] = (
+            results[
+                "tost_p_holm"
+            ]
+            < ALPHA
+        )
+
+    return results, pairing
+
+
+def create_forest_plot(
+    results: pd.DataFrame,
+    output_file: Path,
+) -> None:
+    """
+    Plot TOST forest results with a violin representing uncertainty
+    around the estimated mean paired difference.
+
+    The violin is NOT the distribution of the individual genes.
+
+    For each comparison-metric row, the violin is generated from the
+    Student-t sampling distribution:
+
+        mean + t(df=n-1) * SE
+
+    Therefore, its central 90% approximately matches the existing
+    t-based 90% confidence interval used in the TOST analysis.
+
+    Point:
+        Observed direction-adjusted mean difference.
+
+    Error bar:
+        Existing 90% confidence interval.
+
+    Dashed vertical lines:
+        +/-5% equivalence margins.
+    """
+
+    from matplotlib.patches import Patch
+
+    if results.empty:
+        return
+
+    plot_frame = results.copy()
+
+    plot_frame["plot_label"] = (
+        plot_frame["comparison_label"]
+        + " | "
+        + plot_frame["metric"]
+    )
+
+    plot_frame = plot_frame.reset_index(
+        drop=True
+    )
+
+    y_positions = np.arange(
+        len(plot_frame)
+    )
+
+    means = plot_frame[
+        "direction_adjusted_improvement_percent"
+    ].to_numpy(dtype=float)
+
+    lower = plot_frame[
+        "ci90_direction_adjusted_lower_percent"
+    ].to_numpy(dtype=float)
+
+    upper = plot_frame[
+        "ci90_direction_adjusted_upper_percent"
+    ].to_numpy(dtype=float)
+
+    lower_error = (
+        means
+        - lower
+    )
+
+    upper_error = (
+        upper
+        - means
+    )
+
+    comparison_colors = {
+        (
+            "Experiment 5",
+            "Experiment 5.1",
+        ): "#4C78A8",
+        (
+            "Experiment 5",
+            "Experiment 5.3",
+        ): "#F58518",
+        (
+            "Experiment 5.1",
+            "Experiment 5.3",
+        ): "#54A24B",
+    }
+
+    comparison_labels = {
+        (
+            "Experiment 5",
+            "Experiment 5.1",
+        ): "Ex-5.1 vs Ex-5",
+        (
+            "Experiment 5",
+            "Experiment 5.3",
+        ): "Ex-5.3 vs Ex-5",
+        (
+            "Experiment 5.1",
+            "Experiment 5.3",
+        ): "Ex-5.3 vs Ex-5.1",
+    }
+
+    rng = np.random.default_rng(
+        8667
+    )
+
+    n_sampling_draws = 10000
+
+    sampling_distributions = []
+    violin_colors = []
+
+    for _, row in plot_frame.iterrows():
+        n_pairs = int(
+            row["n_pairs"]
+        )
+
+        degrees_of_freedom = (
+            n_pairs - 1
+        )
+
+        baseline_mean = float(
+            row["baseline_mean"]
+        )
+
+        difference_se = float(
+            row["difference_se"]
+        )
+
+        mean_percent = float(
+            row[
+                "direction_adjusted_improvement_percent"
+            ]
+        )
+
+        denominator = abs(
+            baseline_mean
+        )
+
+        if (
+            n_pairs < 2
+            or degrees_of_freedom < 1
+        ):
+            raise ValueError(
+                "At least two paired observations are required "
+                "for the uncertainty violin."
+            )
+
+        if (
+            not np.isfinite(
+                denominator
+            )
+            or denominator <= 0
+        ):
+            raise ValueError(
+                "Invalid baseline mean for uncertainty violin: "
+                f"{baseline_mean}"
+            )
+
+        if (
+            not np.isfinite(
+                difference_se
+            )
+            or difference_se < 0
+        ):
+            raise ValueError(
+                "Invalid paired-difference standard error: "
+                f"{difference_se}"
+            )
+
+        # Convert the raw metric standard error to the same
+        # direction-adjusted percentage scale as the forest plot.
+        se_percent = (
+            100.0
+            * difference_se
+            / denominator
+        )
+
+        if se_percent == 0:
+            sampling_distribution = (
+                mean_percent
+                + np.linspace(
+                    -1e-8,
+                    1e-8,
+                    n_sampling_draws,
+                )
+            )
+        else:
+            t_draws = rng.standard_t(
+                df=degrees_of_freedom,
+                size=n_sampling_draws,
+            )
+
+            sampling_distribution = (
+                mean_percent
+                + t_draws
+                * se_percent
+            )
+
+        sampling_distributions.append(
+            sampling_distribution
+        )
+
+        comparison_key = (
+            str(row["baseline"]),
+            str(row["comparison"]),
+        )
+
+        if comparison_key not in comparison_colors:
+            raise KeyError(
+                "No plot color defined for comparison: "
+                f"{comparison_key}"
+            )
+
+        violin_colors.append(
+            comparison_colors[
+                comparison_key
+            ]
+        )
+
+    figure_height = max(
+        9,
+        0.52
+        * len(plot_frame)
+        + 2.5,
+    )
+
+    figure, axis = plt.subplots(
+        figsize=(
+            14,
+            figure_height,
+        )
+    )
+
+    violin_parts = axis.violinplot(
+        dataset=sampling_distributions,
+        positions=y_positions,
+        vert=False,
+        widths=0.72,
+        showmeans=False,
+        showmedians=False,
+        showextrema=False,
+        bw_method="scott",
+    )
+
+    for body, color in zip(
+        violin_parts["bodies"],
+        violin_colors,
+    ):
+        body.set_facecolor(
+            color
+        )
+
+        body.set_edgecolor(
+            color
+        )
+
+        body.set_alpha(
+            0.38
+        )
+
+        body.set_linewidth(
+            1.0
+        )
+
+        body.set_zorder(
+            1
+        )
+
+    # Draw the original TOST mean and 90% confidence interval
+    # directly over the uncertainty violin.
+    for (
+        y_position,
+        mean_value,
+        lower_value,
+        upper_value,
+        color,
+    ) in zip(
+        y_positions,
+        means,
+        lower_error,
+        upper_error,
+        violin_colors,
+    ):
+        axis.errorbar(
+            mean_value,
+            y_position,
+            xerr=np.asarray(
+                [
+                    [lower_value],
+                    [upper_value],
+                ]
+            ),
+            fmt="o",
+            color=color,
+            markerfacecolor=color,
+            markeredgecolor="black",
+            markeredgewidth=0.6,
+            markersize=6,
+            capsize=4,
+            linewidth=1.8,
+            zorder=4,
+        )
+
+    axis.axvline(
+        0,
+        color="black",
+        linewidth=1.2,
+        zorder=2,
+    )
+
+    axis.axvline(
+        -5,
+        color="black",
+        linestyle="--",
+        linewidth=1.1,
+        zorder=2,
+    )
+
+    axis.axvline(
+        5,
+        color="black",
+        linestyle="--",
+        linewidth=1.1,
+        zorder=2,
+    )
+
+    # Determine the x-axis from the uncertainty distributions,
+    # the existing confidence intervals, and the TOST boundaries.
+    sampling_lower = np.asarray(
+        [
+            np.percentile(
+                values,
+                0.5,
+            )
+            for values in sampling_distributions
+        ],
+        dtype=float,
+    )
+
+    sampling_upper = np.asarray(
+        [
+            np.percentile(
+                values,
+                99.5,
+            )
+            for values in sampling_distributions
+        ],
+        dtype=float,
+    )
+
+    required_x_values = np.concatenate(
+        [
+            sampling_lower,
+            sampling_upper,
+            means,
+            lower,
+            upper,
+            np.asarray(
+                [
+                    -5.0,
+                    0.0,
+                    5.0,
+                ],
+                dtype=float,
+            ),
+        ]
+    )
+
+    x_min_core = float(
+        np.nanmin(
+            required_x_values
+        )
+    )
+
+    x_max_core = float(
+        np.nanmax(
+            required_x_values
+        )
+    )
+
+    x_span = (
+        x_max_core
+        - x_min_core
+    )
+
+    if (
+        not np.isfinite(
+            x_span
+        )
+        or x_span <= 0
+    ):
+        x_span = 10.0
+
+    x_padding = max(
+        0.75,
+        0.06
+        * x_span,
+    )
+
+    axis.set_xlim(
+        x_min_core
+        - x_padding,
+        x_max_core
+        + x_padding,
+    )
+
+    axis.set_yticks(
+        y_positions
+    )
+
+    axis.set_yticklabels(
+        plot_frame[
+            "plot_label"
+        ].tolist()
+    )
+
+    axis.set_xlabel(
+        "Direction-adjusted performance difference (%)\n"
+        "Positive means the comparison experiment performs better"
+    )
+
+    axis.set_title(
+        "VISTA paired TOST comparisons with uncertainty distributions\n"
+        "Violin = t-based uncertainty around the mean; "
+        "point and error bar = mean and 90% CI; "
+        "dashed lines = ±5% equivalence margin"
+    )
+
+    axis.grid(
+        axis="x",
+        alpha=0.25,
+        zorder=0,
+    )
+
+    axis.invert_yaxis()
+
+    legend_handles = [
+        Patch(
+            facecolor=color,
+            edgecolor=color,
+            alpha=0.38,
+            label=comparison_labels[
+                comparison_key
+            ],
+        )
+        for (
+            comparison_key,
+            color,
+        ) in comparison_colors.items()
+    ]
+
+    axis.legend(
+        handles=legend_handles,
+        loc="lower right",
+        frameon=False,
+    )
+
+    axis.text(
+        0.01,
+        -0.065,
+        (
+            "Each violin contains 10,000 draws from the "
+            "Student-t sampling distribution of the mean paired "
+            "difference. It represents uncertainty of the mean, "
+            "not variability among individual genes."
+        ),
+        transform=axis.transAxes,
+        ha="left",
+        va="top",
+        fontsize=8,
+    )
+
+    figure.tight_layout()
+
+    figure.savefig(
+        output_file,
+        dpi=300,
+        bbox_inches="tight",
+    )
+
+    figure.savefig(
+        output_file.with_suffix(
+            ".pdf"
+        ),
+        bbox_inches="tight",
+    )
+
+    plt.close(
+        figure
+    )
+
+
+
+
+
+
+def write_text_report(
+    gene_results: pd.DataFrame,
+    fold_results: pd.DataFrame,
+    output_file: Path,
+) -> None:
+    lines = [
+        "VISTA PAIRED STATISTICAL COMPARISON REPORT",
+        "=" * 110,
+        "",
+        "Paired difference: comparison - baseline",
+        (
+            "Equivalence margin: +/-5% of the absolute "
+            "baseline metric mean"
+        ),
+        "Alpha: 0.05",
+        "Multiple-testing correction: Holm",
+        "",
+        "GENE-LEVEL RESULTS",
+        "-" * 110,
+    ]
+
+    if gene_results.empty:
+        lines.append(
+            "No gene-level results were available."
+        )
+    else:
+        report_columns = [
+            "comparison_label",
+            "metric",
+            "n_pairs",
+            "baseline_mean",
+            "comparison_mean",
+            "direction_adjusted_improvement_percent",
+            "paired_p_two_sided",
+            "paired_p_holm",
+            "tost_p",
+            "tost_p_holm",
+            "equivalent_within_5pct_holm",
+        ]
+
+        lines.append(
+            gene_results[
+                report_columns
+            ].to_string(
+                index=False
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "FOLD-LEVEL NMI/ARI RESULTS",
+            "-" * 110,
+            (
+                "Caution: fold-level tests use only three paired folds "
+                "and therefore have very low statistical power."
+            ),
+        ]
+    )
+
+    if fold_results.empty:
+        lines.append(
+            "No fold-level NMI/ARI results were available."
+        )
+    else:
+        report_columns = [
+            "comparison_label",
+            "metric",
+            "n_pairs",
+            "baseline_mean",
+            "comparison_mean",
+            "direction_adjusted_improvement_percent",
+            "paired_p_two_sided",
+            "paired_p_holm",
+            "tost_p",
+            "tost_p_holm",
+            "equivalent_within_5pct_holm",
+        ]
+
+        lines.append(
+            fold_results[
+                report_columns
+            ].to_string(
+                index=False
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "INTERPRETATION",
+            "-" * 110,
+            (
+                "paired_p_holm < 0.05: evidence that the two "
+                "experiments differ."
+            ),
+            (
+                "tost_p_holm < 0.05: evidence that the experiments "
+                "are equivalent within the +/-5% margin."
+            ),
+            (
+                "A nonsignificant paired t-test alone does not prove "
+                "equivalence."
+            ),
+            "",
+        ]
+    )
+
+    output_file.write_text(
+        "\n".join(lines),
+        encoding="utf-8",
+    )
+
+
+def main() -> None:
+    RESULT_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    section("LOADING VISTA METRICS")
+
+    gene_tables: dict[str, pd.DataFrame] = {}
+    fold_tables: dict[str, pd.DataFrame] = {}
+
+    source_manifest: dict[str, Any] = {}
+    column_manifest: dict[str, Any] = {}
+
+    for experiment_name, experiment_dir in EXPERIMENTS.items():
+        if not experiment_dir.is_dir():
+            raise FileNotFoundError(
+                f"Experiment directory was not found:\n"
+                f"{experiment_dir}"
+            )
+
+        raw_gene_table, gene_sources = load_metric_table(
+            experiment_name=experiment_name,
+            experiment_dir=experiment_dir,
+            level="gene",
+        )
+
+        prepared_gene_table, resolved_gene_metrics = (
+            prepare_metric_table(
+                raw_frame=raw_gene_table,
+                metrics=GENE_METRICS,
+                level="gene",
+            )
+        )
+
+        gene_tables[
+            experiment_name
+        ] = prepared_gene_table
+
+        source_manifest.setdefault(
+            experiment_name,
+            {},
+        )["gene_sources"] = gene_sources
+
+        column_manifest.setdefault(
+            experiment_name,
+            {},
+        )["gene_metrics"] = resolved_gene_metrics
+
+        print(
+            f"{experiment_name}: "
+            f"{len(prepared_gene_table)} unique genes; "
+            f"metrics={list(resolved_gene_metrics.keys())}"
+        )
+
+        try:
+            raw_fold_table, fold_sources = load_metric_table(
+                experiment_name=experiment_name,
+                experiment_dir=experiment_dir,
+                level="fold",
+            )
+
+            prepared_fold_table, resolved_fold_metrics = (
+                prepare_metric_table(
+                    raw_frame=raw_fold_table,
+                    metrics=FOLD_METRICS,
+                    level="fold",
+                )
+            )
+
+            fold_tables[
+                experiment_name
+            ] = prepared_fold_table
+
+            source_manifest[
+                experiment_name
+            ]["fold_sources"] = fold_sources
+
+            column_manifest[
+                experiment_name
+            ]["fold_metrics"] = resolved_fold_metrics
+
+            print(
+                f"{experiment_name}: "
+                f"{len(prepared_fold_table)} fold rows; "
+                f"metrics={list(resolved_fold_metrics.keys())}"
+            )
+
+        except (
+            FileNotFoundError,
+            KeyError,
+            ValueError,
+        ) as error:
+            print(
+                f"Warning: fold-level NMI/ARI could not be loaded "
+                f"for {experiment_name}: {error}"
+            )
+
+    section("GENE-LEVEL PAIRED TESTS")
+
+    gene_results, gene_pairing = run_paired_comparisons(
+        tables=gene_tables,
+        metrics=GENE_METRICS,
+        identifier="gene",
+        level="gene",
+    )
+
+    if gene_results.empty:
+        raise RuntimeError(
+            "No gene-level paired tests were completed."
+        )
+
+    section("FOLD-LEVEL NMI/ARI PAIRED TESTS")
+
+    if set(fold_tables) == set(EXPERIMENTS):
+        fold_results, fold_pairing = run_paired_comparisons(
+            tables=fold_tables,
+            metrics=FOLD_METRICS,
+            identifier="fold",
+            level="fold",
+        )
+    else:
+        fold_results = pd.DataFrame()
+        fold_pairing = pd.DataFrame()
+
+        print(
+            "Fold-level tests were skipped because fold metrics "
+            "were unavailable for one or more experiments."
+        )
+
+    gene_results_file = (
+        RESULT_DIR
+        / "vista_gene_level_paired_ttest_tost.csv"
+    )
+
+    fold_results_file = (
+        RESULT_DIR
+        / "vista_fold_level_nmi_ari_paired_ttest_tost.csv"
+    )
+
+    pairing_file = (
+        RESULT_DIR
+        / "vista_pairing_audit.csv"
+    )
+
+    source_manifest_file = (
+        RESULT_DIR
+        / "vista_statistical_test_source_manifest.json"
+    )
+
+    text_report_file = (
+        RESULT_DIR
+        / "vista_paired_test_report.txt"
+    )
+
+    plot_file = (
+        RESULT_DIR
+        / "vista_gene_level_relative_difference_forest.png"
+    )
+
+    gene_results.to_csv(
+        gene_results_file,
+        index=False,
+    )
+
+    fold_results.to_csv(
+        fold_results_file,
+        index=False,
+    )
+
+    pairing_frames = [
+        frame
+        for frame in (
+            gene_pairing,
+            fold_pairing,
+        )
+        if not frame.empty
+    ]
+
+    if pairing_frames:
+        pd.concat(
+            pairing_frames,
+            ignore_index=True,
+        ).to_csv(
+            pairing_file,
+            index=False,
+        )
+
+    with source_manifest_file.open(
+        "w",
+        encoding="utf-8",
+    ) as handle:
+        json.dump(
+            {
+                "experiments": {
+                    name: str(path)
+                    for name, path in EXPERIMENTS.items()
+                },
+                "comparisons": COMPARISONS,
+                "alpha": ALPHA,
+                "equivalence_margin_fraction": (
+                    EQUIVALENCE_MARGIN_FRACTION
+                ),
+                "sources": source_manifest,
+                "resolved_columns": column_manifest,
+            },
+            handle,
+            indent=2,
+        )
+
+    create_forest_plot(
+        results=gene_results,
+        output_file=plot_file,
+    )
+
+    write_text_report(
+        gene_results=gene_results,
+        fold_results=fold_results,
+        output_file=text_report_file,
+    )
+
+    section("GENE-LEVEL SUMMARY")
+
+    display_columns = [
+        "comparison_label",
+        "metric",
+        "n_pairs",
+        "baseline_mean",
+        "comparison_mean",
+        "direction_adjusted_improvement_percent",
+        "paired_p_two_sided",
+        "paired_p_holm",
+        "tost_p",
+        "tost_p_holm",
+        "equivalent_within_5pct_holm",
+    ]
+
+    print(
+        gene_results[
+            display_columns
+        ].to_string(
+            index=False
+        )
+    )
+
+    section("SAVED OUTPUTS")
+
+    print(gene_results_file)
+    print(fold_results_file)
+    print(pairing_file)
+    print(source_manifest_file)
+    print(text_report_file)
+    print(plot_file)
+
+    print()
+    print("Completed successfully.")
+
+
+if __name__ == "__main__":
+    main()

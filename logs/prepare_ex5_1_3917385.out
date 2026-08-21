@@ -1,0 +1,23 @@
+====================================================================================================
+Experiment 5.1 preflight and manifest
+====================================================================================================
+Job ID: 3917385
+Node: node13.hgcc.emory.edu
+Started: Mon Aug  3 13:17:49 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/prepare_ex5_1_manifest.py
+====================================================================================================
+Python 3.10.20
+Python syntax check: PASSED
+
+====================================================================================================
+EXPERIMENT 5.1 PREFLIGHT
+====================================================================================================
+Reference:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+
+Target:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista_qc.h5ad
+
+Fold directory:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100

@@ -1,0 +1,8 @@
+INFO:root:200 training genes are saved in `uns``training_genes` of both single cell and spatial Anndatas.
+INFO:root:200 overlapped genes are saved in `uns``overlap_genes` of both single cell and spatial Anndatas.
+INFO:root:uniform based density prior is calculated and saved in `obs``uniform_density` of the spatial Anndata.
+INFO:root:rna count based density prior is calculated and saved in `obs``rna_count_based_density` of the spatial Anndata.
+INFO:root:Allocate tensors for mapping.
+INFO:root:Begin training with 200 genes and uniform density_prior in clusters mode...
+INFO:root:Printing scores every 100 epochs.
+INFO:root:Saving results..

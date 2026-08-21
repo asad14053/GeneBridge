@@ -1,0 +1,26 @@
+====================================================================================================
+Shared three-fold imputation aggregation v2
+====================================================================================================
+Job ID: 3976599
+Node: node09.hgcc.emory.edu
+Started: Fri Aug  7 10:52:47 EDT 2026
+
+Memory: 160G
+CPUs: 16
+Experiment: ex5
+Experiment label: Experiment 5
+Model: spage
+Model label: SpaGE
+Combined directory: combined_v2
+Aggregator: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/aggregate_three_folds_v2.py
+Common directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common
+====================================================================================================
+Shared module syntax check: PASSED
+====================================================================================================
+SUCCESS: three VISTA folds aggregated
+OOF prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/combined_v2/oof_predictions_300genes.h5ad
+Model summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/combined_v2/model_experiment_summary.csv
+Three-fold plot: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/combined_v2/figures/three_fold_evaluation_metrics.png
+====================================================================================================
+
+Completed successfully: Fri Aug  7 10:53:21 EDT 2026

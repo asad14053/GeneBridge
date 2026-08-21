@@ -1,0 +1,11 @@
+========================================
+Job ID: 3826196
+Node: node02.hgcc.emory.edu
+Started: Thu Jul 23 16:05:49 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/snrnaseq_branch/verify_merged_huuki_full_h5ad.py
+========================================
+Python 3.10.20
+
+Starting Python script...
+

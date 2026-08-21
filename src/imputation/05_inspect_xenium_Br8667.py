@@ -25,7 +25,7 @@ import pandas as pd
 from scipy import sparse
 
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 ############## If Xenium is layer-cell annotated Xenium  #########################
 
@@ -48,7 +48,7 @@ XENIUM_PATH = (
 SNRNA_PATH = (
     PROJECT_ROOT
     / "data/processed/imputation_beta/Br8667/"
-      "seq_data_huuki_snrna_Br8667_shared.h5ad"
+      "seq_data_huuki_snrna_Br8667_full.h5ad"
 )
 ############## If ScRNA is Hukki-visium  #########################
 # SNRNA_PATH = (

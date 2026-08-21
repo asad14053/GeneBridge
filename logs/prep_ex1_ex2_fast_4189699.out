@@ -1,0 +1,345 @@
+============================================================
+Ex1 NTC + Ex2 SCZ target preparation
+RAM: 200G
+CPUs: 16
+Job: 4189699
+Host: node03.hgcc.emory.edu
+Started: Wed Aug 19 20:40:20 EDT 2026
+============================================================
+====================================================================================================
+ULTRAFAST Ex1 + Ex2 TARGET PREPARATION
+====================================================================================================
+
+Ex1 NTC donors:
+patient_index patient_id
+           P2     Br2719
+           P4     Br1113
+           P7     Br5400
+           P8     Br5622
+          P10     Br5314
+          P13     Br5639
+          P14     Br8433
+          P18     Br8667
+          P19     Br5436
+          P20     Br5931
+          P24     Br6389
+
+Ex2 SCZ donors:
+patient_index patient_id
+           P1     Br2039
+           P5     Br5373
+           P6     Br5590
+           P9     Br6437
+          P11     Br5588
+          P12     Br5746
+          P15     Br8772
+          P16     Br1139
+          P17     Br5973
+          P21     Br6496
+          P22     Br2421
+          P23     Br6032
+
+====================================================================================================
+OPENING N24 H5AD IN BACKED MODE
+====================================================================================================
+Opened metadata in 7.19 sec
+Shape : (1224455, 300)
+Layers: ['counts', 'log1p_norm']
+
+====================================================================================================
+LOADING ONLY layers['counts'] INTO RAM
+This is one sequential read, not 24 disk slices.
+====================================================================================================
+Counts loaded in 0.24 sec
+Counts type: <class 'scipy.sparse._csr.csr_matrix'>
+Counts shape: (1224455, 300)
+Counts nnz: 122,302,337
+
+Loading spatial coordinates...
+Spatial loaded in 0.00 sec
+Metadata ready.
+
+====================================================================================================
+DONOR CELL INDEX
+====================================================================================================
+Br2039: 41,101 cells
+Br2719: 57,949 cells
+Br1113: 54,585 cells
+Br5373: 63,894 cells
+Br5590: 53,577 cells
+Br5400: 44,283 cells
+Br5622: 68,236 cells
+Br6437: 55,773 cells
+Br5314: 45,585 cells
+Br5588: 59,694 cells
+Br5746: 43,025 cells
+Br5639: 58,976 cells
+Br8433: 58,195 cells
+Br8772: 54,456 cells
+Br1139: 56,617 cells
+Br5973: 41,895 cells
+Br8667: 66,164 cells
+Br5436: 44,430 cells
+Br5931: 43,522 cells
+Br6496: 56,213 cells
+Br2421: 62,073 cells
+Br6032: 44,669 cells
+Br6389: 49,542 cells
+
+====================================================================================================
+EX1_NTC | NTC
+====================================================================================================
+
+[01/12] Br2719 | cells=57,949
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.07 sec
+  Shape: (57949, 300)
+  Counts range: 0.0 – 373.0
+  Writing: spatial_data_xenium_Br2719_ex1_ntc.h5ad
+  Write time: 1.16 sec
+  DONE Br2719
+
+[02/12] Br1113 | cells=54,585
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.03 sec
+  Shape: (54585, 300)
+  Counts range: 0.0 – 418.0
+  Writing: spatial_data_xenium_Br1113_ex1_ntc.h5ad
+  Write time: 1.10 sec
+  DONE Br1113
+
+[03/12] Br5400 | cells=44,283
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.02 sec
+  Shape: (44283, 300)
+  Counts range: 0.0 – 392.0
+  Writing: spatial_data_xenium_Br5400_ex1_ntc.h5ad
+  Write time: 1.06 sec
+  DONE Br5400
+
+[04/12] Br5622 | cells=68,236
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.10 sec
+  Shape: (68236, 300)
+  Counts range: 0.0 – 408.0
+  Writing: spatial_data_xenium_Br5622_ex1_ntc.h5ad
+  Write time: 1.24 sec
+  DONE Br5622
+
+[05/12] Br5314 | cells=45,585
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.02 sec
+  Shape: (45585, 300)
+  Counts range: 0.0 – 376.0
+  Writing: spatial_data_xenium_Br5314_ex1_ntc.h5ad
+  Write time: 1.07 sec
+  DONE Br5314
+
+[06/12] Br5639 | cells=58,976
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.03 sec
+  Shape: (58976, 300)
+  Counts range: 0.0 – 442.0
+  Writing: spatial_data_xenium_Br5639_ex1_ntc.h5ad
+  Write time: 1.15 sec
+  DONE Br5639
+
+[07/12] Br8433 | cells=58,195
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.03 sec
+  Shape: (58195, 300)
+  Counts range: 0.0 – 404.0
+  Writing: spatial_data_xenium_Br8433_ex1_ntc.h5ad
+  Write time: 1.18 sec
+  DONE Br8433
+
+[08/12] Br8667 | cells=66,164
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.04 sec
+  Shape: (66164, 300)
+  Counts range: 0.0 – 334.0
+  Writing: spatial_data_xenium_Br8667_ex1_ntc.h5ad
+  Write time: 1.24 sec
+  DONE Br8667
+
+[09/12] Br5436 | cells=44,430
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.02 sec
+  Shape: (44430, 300)
+  Counts range: 0.0 – 403.0
+  Writing: spatial_data_xenium_Br5436_ex1_ntc.h5ad
+  Write time: 1.08 sec
+  DONE Br5436
+
+[10/12] Br5931 | cells=43,522
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.02 sec
+  Shape: (43522, 300)
+  Counts range: 0.0 – 357.0
+  Writing: spatial_data_xenium_Br5931_ex1_ntc.h5ad
+  Write time: 1.06 sec
+  DONE Br5931
+
+[11/12] Br6389 | cells=49,542
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: NTC
+  RAM extraction: 0.02 sec
+  Shape: (49542, 300)
+  Counts range: 0.0 – 340.0
+  Writing: spatial_data_xenium_Br6389_ex1_ntc.h5ad
+  Write time: 1.09 sec
+  DONE Br6389
+
+ex1_ntc: READY=11/12 | BLOCKED=0/12
+
+====================================================================================================
+EX2_SCZ | SCZ
+====================================================================================================
+
+[01/12] Br2039 | cells=41,101
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.02 sec
+  Shape: (41101, 300)
+  Counts range: 0.0 – 307.0
+  Writing: spatial_data_xenium_Br2039_ex2_scz.h5ad
+  Write time: 1.02 sec
+  DONE Br2039
+
+[02/12] Br5373 | cells=63,894
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (63894, 300)
+  Counts range: 0.0 – 441.0
+  Writing: spatial_data_xenium_Br5373_ex2_scz.h5ad
+  Write time: 1.16 sec
+  DONE Br5373
+
+[03/12] Br5590 | cells=53,577
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.02 sec
+  Shape: (53577, 300)
+  Counts range: 0.0 – 371.0
+  Writing: spatial_data_xenium_Br5590_ex2_scz.h5ad
+  Write time: 1.07 sec
+  DONE Br5590
+
+[04/12] Br6437 | cells=55,773
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (55773, 300)
+  Counts range: 0.0 – 347.0
+  Writing: spatial_data_xenium_Br6437_ex2_scz.h5ad
+  Write time: 1.12 sec
+  DONE Br6437
+
+[05/12] Br5588 | cells=59,694
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (59694, 300)
+  Counts range: 0.0 – 378.0
+  Writing: spatial_data_xenium_Br5588_ex2_scz.h5ad
+  Write time: 1.16 sec
+  DONE Br5588
+
+[06/12] Br5746 | cells=43,025
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.02 sec
+  Shape: (43025, 300)
+  Counts range: 0.0 – 260.0
+  Writing: spatial_data_xenium_Br5746_ex2_scz.h5ad
+  Write time: 1.01 sec
+  DONE Br5746
+
+[07/12] Br8772 | cells=54,456
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (54456, 300)
+  Counts range: 0.0 – 400.0
+  Writing: spatial_data_xenium_Br8772_ex2_scz.h5ad
+  Write time: 1.09 sec
+  DONE Br8772
+
+[08/12] Br1139 | cells=56,617
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (56617, 300)
+  Counts range: 0.0 – 516.0
+  Writing: spatial_data_xenium_Br1139_ex2_scz.h5ad
+  Write time: 1.05 sec
+  DONE Br1139
+
+[09/12] Br5973 | cells=41,895
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.02 sec
+  Shape: (41895, 300)
+  Counts range: 0.0 – 238.0
+  Writing: spatial_data_xenium_Br5973_ex2_scz.h5ad
+  Write time: 0.99 sec
+  DONE Br5973
+
+[10/12] Br6496 | cells=56,213
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (56213, 300)
+  Counts range: 0.0 – 463.0
+  Writing: spatial_data_xenium_Br6496_ex2_scz.h5ad
+  Write time: 1.07 sec
+  DONE Br6496
+
+[11/12] Br2421 | cells=62,073
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.03 sec
+  Shape: (62073, 300)
+  Counts range: 0.0 – 453.0
+  Writing: spatial_data_xenium_Br2421_ex2_scz.h5ad
+  Write time: 1.09 sec
+  DONE Br2421
+
+[12/12] Br6032 | cells=44,669
+  Original N24 Dx: ['UNKNOWN'] | assigned Dx: SCZ
+  RAM extraction: 0.02 sec
+  Shape: (44669, 300)
+  Counts range: 0.0 – 420.0
+  Writing: spatial_data_xenium_Br6032_ex2_scz.h5ad
+  Write time: 1.04 sec
+  DONE Br6032
+
+ex2_scz: READY=12/12 | BLOCKED=0/12
+
+====================================================================================================
+FINAL SUMMARY
+====================================================================================================
+experiment patient_id  Dx status  n_cells  n_genes
+   ex1_ntc     Br2719 NTC  READY    57949      300
+   ex1_ntc     Br1113 NTC  READY    54585      300
+   ex1_ntc     Br5400 NTC  READY    44283      300
+   ex1_ntc     Br5622 NTC  READY    68236      300
+   ex1_ntc     Br5314 NTC  READY    45585      300
+   ex1_ntc     Br5639 NTC  READY    58976      300
+   ex1_ntc     Br8433 NTC  READY    58195      300
+   ex1_ntc     Br8667 NTC  READY    66164      300
+   ex1_ntc     Br5436 NTC  READY    44430      300
+   ex1_ntc     Br5931 NTC  READY    43522      300
+   ex1_ntc     Br6389 NTC  READY    49542      300
+   ex2_scz     Br2039 SCZ  READY    41101      300
+   ex2_scz     Br5373 SCZ  READY    63894      300
+   ex2_scz     Br5590 SCZ  READY    53577      300
+   ex2_scz     Br6437 SCZ  READY    55773      300
+   ex2_scz     Br5588 SCZ  READY    59694      300
+   ex2_scz     Br5746 SCZ  READY    43025      300
+   ex2_scz     Br8772 SCZ  READY    54456      300
+   ex2_scz     Br1139 SCZ  READY    56617      300
+   ex2_scz     Br5973 SCZ  READY    41895      300
+   ex2_scz     Br6496 SCZ  READY    56213      300
+   ex2_scz     Br2421 SCZ  READY    62073      300
+   ex2_scz     Br6032 SCZ  READY    44669      300
+
+Ex1 NTC: READY=11/12 | BLOCKED=0/12
+Ex2 SCZ: READY=12/12 | BLOCKED=0/12
+
+Summary CSV:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/imputation_ex1_ex2_target_summary.csv
+
+DONE
+============================================================
+Finished: Wed Aug 19 20:40:58 EDT 2026
+============================================================

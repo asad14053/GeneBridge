@@ -1,0 +1,49 @@
+============================================================
+VISTA shared-basis UMAP
+Job: 4045169
+Started: Thu Aug 13 18:46:54 EDT 2026
+============================================================
+====================================================================================================
+VISTA SHARED-BASIS UMAP
+====================================================================================================
+
+Experiment 5
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Experiment 5.1
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Experiment 5.3
+  truth: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  pred : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/vista/combined_v2/oof_predictions_300genes.h5ad
+
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined_v2/oof_ground_truth_300genes.h5ad
+  shape: (66148, 300)
+  layers: []
+  matrix source: X (count_scale layer absent)
+
+Observed matrix: (66148, 300)
+
+Cell-type counts:
+cell_type_annotation
+Oligo            14685
+Endo             13821
+Ast               9247
+L2/3 Ex           7312
+Mic               4577
+MGE               3770
+L4/5 Ex           3287
+CGE               2932
+Ambig/In/Endo     2564
+L6 Ex             2383
+Ambig/Oligo       1284
+L5 Ex              286
+
+log1p observed counts...
+Fitting StandardScaler on observed...
+Fitting PCA (30 PCs) on observed...
+PCA variance explained by 30 PCs: 0.6067
+
+Fitting UMAP on observed PCA coordinates...

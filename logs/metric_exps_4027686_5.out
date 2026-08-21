@@ -1,0 +1,70 @@
+============================================================
+Raw metric distributions across experiments
+Method: spage
+Job: 4027691_5
+Started: Wed Aug 12 18:11:30 EDT 2026
+============================================================
+====================================================================================================
+RAW GENE-LEVEL METRIC DISTRIBUTIONS
+====================================================================================================
+Method: SpaGE
+
+Loading Experiment 5:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/spage/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.1:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/spage/combined_v2/gene_level_metrics_300genes.csv
+
+Loading Experiment 5.3:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/spage/combined_v2/gene_level_metrics_300genes.csv
+
+====================================================================================================
+VALIDATION
+====================================================================================================
+SCC          missing=0     finite=900
+SSIM         missing=0     finite=900
+RMSE         missing=0     finite=900
+MAE          missing=0     finite=900
+JSD          missing=0     finite=900
+Moran_error  missing=0     finite=900
+
+Unique genes by experiment:
+experiment
+ex5      300
+ex5_1    300
+ex5_3    300
+Name: gene, dtype: int64
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+     metric experiment_label     mean   median       std
+        SCC     Experiment 5 0.453007 0.455542  0.204633
+        SCC   Experiment 5.1 0.447567 0.452499  0.197281
+        SCC   Experiment 5.3 0.442950 0.448338  0.195987
+       SSIM     Experiment 5 0.304088 0.246399  0.249446
+       SSIM   Experiment 5.1 0.291433 0.214325  0.250816
+       SSIM   Experiment 5.3 0.288216 0.217554  0.250487
+       RMSE     Experiment 5 8.131867 2.336574 22.201084
+       RMSE   Experiment 5.1 9.282064 2.411364 25.967031
+       RMSE   Experiment 5.3 9.498545 2.413732 26.925037
+        MAE     Experiment 5 4.063058 0.980850 11.934424
+        MAE   Experiment 5.1 4.531663 1.031916 13.554381
+        MAE   Experiment 5.3 4.616261 1.040270 13.919712
+        JSD     Experiment 5 0.352738 0.303793  0.198410
+        JSD   Experiment 5.1 0.369165 0.315188  0.191838
+        JSD   Experiment 5.3 0.373759 0.321387  0.193163
+Moran_error     Experiment 5 0.061741 0.039460  0.067806
+Moran_error   Experiment 5.1 0.068141 0.041419  0.086071
+Moran_error   Experiment 5.3 0.068696 0.040881  0.088147
+
+====================================================================================================
+DONE
+====================================================================================================
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/spage/spage_raw_metric_distributions.png
+Summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/panel_level/raw_metrics/spage/metric_summary.csv
+
+============================================================
+Completed: Wed Aug 12 18:11:36 EDT 2026
+Method: spage
+============================================================

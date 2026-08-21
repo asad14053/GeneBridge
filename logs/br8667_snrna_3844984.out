@@ -1,0 +1,65 @@
+========================================
+Job ID: 3844984
+Node: node04.hgcc.emory.edu
+Started: Tue Jul 28 17:41:33 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/snrnaseq_branch/create_brain_snrna_from_huuki_h5ad.py
+========================================
+Python 3.10.20
+================================================================================
+Huuki donor-specific snRNA-seq H5AD creation
+================================================================================
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Brain ID: Br8667
+Gene mode: full
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full.h5ad
+Gene list: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full_genes.csv
+
+Reading full Huuki reference...
+AnnData object with n_obs × n_vars = 77604 × 36601 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad'
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    layers: 'logcounts'
+Full shape [cells x genes]: (77604, 36601)
+Layers: ['logcounts']
+
+Cells found for Br8667: 9897
+
+Keeping FULL gene set.
+Genes selected: 36601
+
+Loading donor cells into memory...
+Donor subset loaded [cells x genes]: (9897, 36601)
+Final subset shape [cells x genes]: (9897, 36601)
+Subset shape [cells x genes]: (9897, 36601)
+
+Preparing X = logcounts...
+Final X: logcounts
+Final layers: ['logcounts', 'counts']
+
+Removing existing output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full.h5ad
+
+Writing H5AD...
+
+Verifying saved H5AD...
+AnnData object with n_obs × n_vars = 9897 × 36601 backed at '/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full.h5ad'
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    layers: 'counts', 'logcounts'
+Saved shape: (9897, 36601)
+Saved layers: ['counts', 'logcounts']
+
+============================================================
+DONE
+============================================================
+Brain: Br8667
+Cells: 9897
+Genes: 36601
+Output H5AD:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full.h5ad
+
+Saved gene list:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_full_genes.csv
+========================================
+Completed successfully
+Finished: Tue Jul 28 17:42:45 EDT 2026
+========================================

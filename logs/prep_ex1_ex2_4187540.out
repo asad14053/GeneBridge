@@ -1,0 +1,62 @@
+============================================================
+Prepare Ex1 NTC + Ex2 SCZ production targets
+Job ID: 4187540
+Host: node02.hgcc.emory.edu
+Started: Wed Aug 19 19:46:55 EDT 2026
+============================================================
+==============================================================================================================
+PREPARE PRODUCTION TARGETS
+Ex1 = 12 NTC Xenium
+Ex2 = 12 SCZ Xenium
+Reference for both = all 10 Huuki snRNA
+==============================================================================================================
+
+Manifests created:
+Ex1: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/imputation_ex1_ntc_samples.csv
+Ex2: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/imputation_ex2_scz_samples.csv
+
+Ex1 NTC donors:
+patient_index patient_id  Dx xenium_gsm
+           P2     Br2719 NTC GSM9223469
+           P3     Br6432 NTC GSM9223470
+           P4     Br1113 NTC GSM9223471
+           P7     Br5400 NTC GSM9223474
+           P8     Br5622 NTC GSM9223475
+          P10     Br5314 NTC GSM9223477
+          P13     Br5639 NTC GSM9223480
+          P14     Br8433 NTC GSM9223481
+          P18     Br8667 NTC GSM9223485
+          P19     Br5436 NTC GSM9223486
+          P20     Br5931 NTC GSM9223487
+          P24     Br6389 NTC GSM9223491
+
+Ex2 SCZ donors:
+patient_index patient_id  Dx xenium_gsm
+           P1     Br2039 SCZ GSM9223468
+           P5     Br5373 SCZ GSM9223472
+           P6     Br5590 SCZ GSM9223473
+           P9     Br6437 SCZ GSM9223476
+          P11     Br5588 SCZ GSM9223478
+          P12     Br5746 SCZ GSM9223479
+          P15     Br8772 SCZ GSM9223482
+          P16     Br1139 SCZ GSM9223483
+          P17     Br5973 SCZ GSM9223484
+          P21     Br6496 SCZ GSM9223488
+          P22     Br2421 SCZ GSM9223489
+          P23     Br6032 SCZ GSM9223490
+
+==============================================================================================================
+READING N24 XENIUM OBJECT ONCE
+==============================================================================================================
+Shape : (1224455, 300)
+Layers: ['counts', 'log1p_norm']
+obsm  : ['spatial']
+
+Donor index prepared.
+
+==============================================================================================================
+EX1_NTC — NTC TARGET EXTRACTION
+==============================================================================================================
+
+[01/12] ex1_ntc | Br2719 | NTC
+Cells found: 57949

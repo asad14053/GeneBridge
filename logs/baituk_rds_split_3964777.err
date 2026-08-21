@@ -1,0 +1,12 @@
+For native R and reading and writing of H5AD files, an R <AnnData> object, and
+conversion to <SingleCellExperiment> or <Seurat> objects, check out the
+anndataR package:
+i Install it from Bioconductor with `BiocManager::install("anndataR")`
+i See more at <https://bioconductor.org/packages/anndataR/>
+This message is displayed once per session.
+Downloading Python-3.14.0.tar.xz...
+-> https://www.python.org/ftp/python/3.14.0/Python-3.14.0.tar.xz
+Installing Python-3.14.0...
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+slurmstepd: error: *** STEP 3964777.0 ON node09 CANCELLED AT 2026-08-05T16:50:28 ***
+slurmstepd: error: *** JOB 3964777 ON node09 CANCELLED AT 2026-08-05T16:50:28 ***

@@ -1,0 +1,7 @@
+====================================================================================================
+SUCCESS: three VISTA folds aggregated
+OOF prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined/oof_predictions_300genes.h5ad
+Model summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined/model_experiment_summary.csv
+Three-fold plot: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/vista/combined/figures/three_fold_evaluation_metrics.png
+====================================================================================================
+Finished: Mon Aug  3 20:50:07 EDT 2026

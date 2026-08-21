@@ -1,0 +1,83 @@
+====================================================================================================
+ENVI three-fold benchmark
+====================================================================================================
+Job: 3976249
+Array job: 3976249
+Task/fold: 3
+Node: node01.hgcc.emory.edu
+Started: Fri Aug  7 04:18:55 EDT 2026
+
+Experiment: ex5
+Experiment label: Experiment 5
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+
+Training steps: 16000
+Batch size: 128
+num_HVG: 2048
+num_cov_genes: 64
+k_nearest: 8
+covet_batch_size: 256
+spatial_dist: pois
+sc_dist: nb
+stable_eps: 1e-6
+
+JAX backend: cpu
+Memory: 200G
+CPUs: 16
+Array policy: 1-3%3
+====================================================================================================
+scenvi: version-not-exposed
+JAX: 0.4.30
+JAX backend: cpu
+JAX devices: [CpuDevice(id=0)]
+====================================================================================================
+STANDARD ENVI 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5
+Experiment label: Experiment 5
+Fold: 3
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_vista.h5ad
+Reference raw shape: (9897, 28907)
+ENVI reference model input: (9897, 2348)
+ENVI spatial model input: (66148, 200)
+Held-out truth: (66148, 100)
+Training steps: 16000
+Batch size: 128
+num_HVG: 2048
+num_cov_genes: 64
+k_nearest: 8
+covet_batch_size: 256
+spatial_dist: pois
+sc_dist: nb
+stable_eps: 1e-06
+Seed: 8670
+Dropped optional kwargs: ['covet_batch_size']
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3
+====================================================================================================
+DEBUG
+Computing Niche Covariance Matrices
+Initializing CVAE
+Finished Initializing ENVI
+Finished imputing missing gene for spatial data! See 'imputation' in obsm of ENVI.spatial_data
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['RASGRF2', 'CORT', 'ATP2B4', 'GAD2', 'TYROBP', 'CNDP1', 'MTURN', 'HMGB2', 'ACTA2', 'NRG1']
+====================================================================================================
+SUCCESS
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3/fold_level_metrics.csv
+Initialization minutes: 0.39
+Training minutes: 26.29
+Imputation minutes: 0.35
+Scale factor min/median/max: 0.0982666 2.53221 24.9789
+complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3/complete.flag
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/envi/fold_3/run_complete.flag
+====================================================================================================
+
+====================================================================================================
+SUCCESS
+Experiment: ex5
+Fold: 3
+Completed: Fri Aug  7 04:46:58 EDT 2026
+====================================================================================================

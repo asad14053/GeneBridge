@@ -1,0 +1,23 @@
+============================================================
+11-gene spatial panel across experiments
+Method: transimpspa
+Job: 4025740_6
+Node: node10.hgcc.emory.edu
+Started: Wed Aug 12 15:38:47 EDT 2026
+============================================================
+====================================================================================================
+11-GENE SPATIAL PANEL ACROSS EXPERIMENTS
+====================================================================================================
+Method: TransImpSpa
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5/transimpspa/combined_v2/oof_predictions_300genes.h5ad
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_1/transimpspa/combined_v2/oof_predictions_300genes.h5ad
+Loading: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/ex5_3/transimpspa/combined_v2/oof_predictions_300genes.h5ad
+
+DONE
+PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_experiments/transimpspa/transimpspa_spatial_11genes_across_experiments.png
+PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_beta/Br8667/final_visualizations/gene_level/across_experiments/transimpspa/transimpspa_spatial_11genes_across_experiments.pdf
+
+============================================================
+Completed: Wed Aug 12 15:39:24 EDT 2026
+Method: transimpspa
+============================================================

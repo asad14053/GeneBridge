@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 import anndata as ad
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 in_h5ad = PROJECT_ROOT / "data/processed/visium/spatialDLPFC_Visium_sce.h5ad"
 

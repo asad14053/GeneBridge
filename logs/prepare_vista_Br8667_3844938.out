@@ -1,0 +1,80 @@
+========================================
+Job ID: 3844938
+Node: node06.hgcc.emory.edu
+Started: Tue Jul 28 17:12:35 EDT 2026
+Python: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Script: src/imputation/06_prepare_vista_xenium_Br8667.py
+========================================
+Python 3.10.20
+====================================================================================================
+Task-03: Prepare final Br8667 VISTA inputs
+====================================================================================================
+
+snRNA input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_shared.h5ad
+
+Xenium input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/xenium_Br8667_annotated.h5ad
+
+Loading snRNA Br8667...
+Loading Xenium Br8667...
+
+Original snRNA:
+AnnData object with n_obs × n_vars = 9897 × 28907
+    obs: 'Sample', 'Barcode', 'key', 'SAMPLE_ID', 'pos', 'BrNum', 'round', 'Position', 'age', 'sex', 'diagnosis', 'sum', 'detected', 'subsets_Mito_sum', 'subsets_Mito_detected', 'subsets_Mito_percent', 'total', 'high_mito', 'low_sum', 'low_detected', 'discard_auto', 'doubletScore', 'prelimCluster', 'collapsedCluster', 'kmeans', 'sizeFactor', 'cellType_broad_k', 'cellType_k', 'cellType_broad_hc', 'cellType_hc', 'cellType_layer', 'layer_annotation', 'source_chunk', 'merge_batch'
+    var: 'matched_gene_symbol'
+    layers: 'counts', 'logcounts'
+
+Original Xenium:
+AnnData object with n_obs × n_vars = 66164 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path', 'predictions_smooth', 'layer_annotation', 'layer_annotation_source', 'layer_annotation_stage', 'Banksy', 'cell_type_annotation_banksy', 'cell_type_annotation', 'cell_type_annotation_source', 'cell_type_annotation_stage', 'cell_type_annotation_confidence', 'batch', 'names', 'scClassify'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    uns: 'banksy_inhibitory_mapping_mode', 'banksy_lambda', 'banksy_resolution', 'cell_type_annotation_mapping', 'cell_type_annotation_order', 'cell_type_annotation_source', 'counts_layer', 'description', 'layer_annotation_mapping', 'layer_annotation_order', 'layer_annotation_source', 'object_name', 'spatial_key', 'stage'
+    obsm: 'spatial'
+    layers: 'counts'
+
+snRNA label source:
+cellType_broad_k
+
+Harmonized snRNA cell types:
+scClassify
+Oligo        5305
+Excit        2613
+Other        1214
+Inhib         340
+Astro         250
+EndoMural     114
+OPC            61
+
+Harmonized Xenium cell types:
+scClassify
+Oligo        14701
+EndoMural    13821
+Excit        13268
+Astro         9247
+Inhib         6702
+Micro         4577
+Other         3848
+
+Common harmonized cell types:
+['Astro', 'EndoMural', 'Excit', 'Inhib', 'Oligo', 'Other']
+snRNA: using var_names as gene symbols.
+
+snRNA gene standardization:
+  Input genes: 28,907
+  Final genes: 28,907
+  Duplicates removed: 0
+  Gene source: var_names
+Xenium: using var['Symbol'] as gene symbols.
+
+Xenium gene standardization:
+  Input genes: 541
+  Final genes: 541
+  Duplicates removed: 0
+  Gene source: Symbol
+
+Gene overlap:
+snRNA genes: 28,907
+Xenium genes: 541
+Xenium genes present in snRNA: 300
+Xenium genes missing from snRNA: 241

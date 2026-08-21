@@ -1,0 +1,46 @@
+============================================================
+Split Batiuk full reference into SCZ and NTC
+Job ID: 3950731
+Host: node06.hgcc.emory.edu
+Started: Tue Aug  4 18:20:06 EDT 2026
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad
+SCZ output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_SCZ_full_allgenes.h5ad
+NTC output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_NTC_full_allgenes.h5ad
+============================================================
+====================================================================================================
+SPLIT BATIUK snRNA-seq INTO SCZ AND NTC
+====================================================================================================
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad
+SCZ output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_SCZ_full_allgenes.h5ad
+NTC output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_NTC_full_allgenes.h5ad
+MB8 policy: error
+Input shape: (209053, 60617)
+Selected sample-ID source: obs['sample']
+Matched observations: 209053 / 209053
+
+Detected samples:
+sample_id  cell_count
+     MB10        8750
+     MB11       11580
+     MB12       10487
+     MB13        9253
+     MB14        9989
+     MB15       10439
+     MB16        7564
+     MB17        9846
+   MB18-2       10176
+     MB19        9792
+     MB21        9890
+     MB22        8816
+     MB23       10599
+     MB51        4633
+     MB53        7879
+     MB54        7005
+     MB55        8315
+     MB56        6156
+     MB57        7379
+      MB6        8183
+      MB7        9838
+      MB8        5267
+    MB8-2        6565
+      MB9       10652

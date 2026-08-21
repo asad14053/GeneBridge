@@ -1,0 +1,24 @@
+============================================================
+Chunked Batiuk SCZ/NTC split
+Job ID: 3964245
+Host: node09.hgcc.emory.edu
+Started: Wed Aug  5 15:46:30 EDT 2026
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad
+Chunk directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_scz_ntc_chunks
+============================================================
+====================================================================================================
+CHUNKED BATIUK SCZ/NTC SPLIT
+====================================================================================================
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_full_allgenes.h5ad
+Chunk size: 5,000
+Chunk directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_scz_ntc_chunks
+SCZ output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_SCZ_full_allgenes.h5ad
+NTC output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_NTC_full_allgenes.h5ad
+Opening source in backed mode...
+Input shape: (209053, 60617)
+SCZ cells: 81,817
+NTC cells: 127,236
+Genes: 60,617
+
+Chunk 1/42: rows 0:5,000; SCZ=0, NTC=5,000
+Loading rows 0:5,000 (attempt 1/3)

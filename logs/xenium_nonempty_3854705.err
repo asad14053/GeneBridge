@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/filter_common_nonempty_cells.py", line 439, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/filter_common_nonempty_cells.py", line 362, in main
+    observed_totals_final = row_sums(observed.X)
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/common/filter_common_nonempty_cells.py", line 39, in row_sums
+    return np.asarray(matrix).sum(axis=1)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/numpy/core/_methods.py", line 49, in _sum
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 0
+srun: error: node01: task 0: Exited with exit code 1

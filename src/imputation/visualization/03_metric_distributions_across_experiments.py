@@ -1,0 +1,881 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import argparse
+import json
+
+import numpy as np
+import pandas as pd
+
+import matplotlib
+matplotlib.use("Agg")
+
+import matplotlib.pyplot as plt
+
+
+# =============================================================================
+# CONFIGURATION
+# =============================================================================
+
+PROJECT_ROOT = Path(
+    "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
+)
+
+BASE_DIR = (
+    PROJECT_ROOT
+    / "outputs"
+    / "imputation_beta"
+    / "Br8667"
+)
+
+OUT_ROOT = (
+    BASE_DIR
+    / "final_visualizations"
+    / "panel_level"
+    / "raw_metrics"
+)
+
+COMBINED_DIR = "combined_v2"
+
+
+METHODS = {
+    "vista": "VISTA",
+    "gimvi": "gimVI",
+    "tangram": "Tangram",
+    "envi": "ENVI",
+    "spage": "SpaGE",
+    "transimpspa": "TransImpSpa",
+}
+
+
+EXPERIMENTS = [
+    ("ex5", "Experiment 5"),
+    ("ex5_1", "Experiment 5.1"),
+    ("ex5_3", "Experiment 5.3"),
+]
+
+
+METRICS = [
+    "SCC",
+    "SSIM",
+    "RMSE",
+    "MAE",
+    "JSD",
+    "Moran_error",
+]
+
+
+HIGHER_IS_BETTER = {
+    "SCC": True,
+    "SSIM": True,
+    "RMSE": False,
+    "MAE": False,
+    "JSD": False,
+    "Moran_error": False,
+}
+
+
+# =============================================================================
+# HELPERS
+# =============================================================================
+
+def find_column_case_insensitive(df, target):
+
+    lookup = {
+        str(col).lower(): str(col)
+        for col in df.columns
+    }
+
+    key = target.lower()
+
+    # Canonical visualization name -> actual aggregate CSV column.
+    aliases = {
+        "moran_error": [
+            "moran_abs_error",
+            "moran_error",
+        ],
+    }
+
+    if key in lookup:
+        return lookup[key]
+
+    for alias in aliases.get(key, []):
+        if alias in lookup:
+            return lookup[alias]
+
+    raise KeyError(
+        f"Metric '{target}' not found.\n"
+        f"Available columns:\n{list(df.columns)}"
+    )
+
+
+def detect_gene_column(df):
+
+    candidates = [
+        "gene",
+        "gene_name",
+        "Gene",
+        "var_name",
+        "feature",
+    ]
+
+    for candidate in candidates:
+        if candidate in df.columns:
+            return candidate
+
+    # Fall back to first non-metric column.
+    metric_lower = {
+        x.lower()
+        for x in METRICS
+    }
+
+    for col in df.columns:
+
+        if str(col).lower() not in metric_lower:
+            return str(col)
+
+    raise ValueError(
+        "Could not identify gene column."
+    )
+
+
+def load_method_metrics(
+    method,
+):
+
+    frames = []
+
+    for (
+        experiment_key,
+        experiment_label,
+    ) in EXPERIMENTS:
+
+        path = (
+            BASE_DIR
+            / experiment_key
+            / method
+            / COMBINED_DIR
+            / "gene_level_metrics_300genes.csv"
+        )
+
+        if not path.is_file():
+            raise FileNotFoundError(
+                path
+            )
+
+        print()
+        print(
+            f"Loading {experiment_label}:"
+        )
+        print(path)
+
+        df = pd.read_csv(
+            path
+        )
+
+        gene_col = detect_gene_column(
+            df
+        )
+
+        out = pd.DataFrame(
+            {
+                "gene":
+                    df[
+                        gene_col
+                    ].astype(str),
+
+                "experiment":
+                    experiment_key,
+
+                "experiment_label":
+                    experiment_label,
+            }
+        )
+
+        for metric in METRICS:
+
+            source_col = (
+                find_column_case_insensitive(
+                    df,
+                    metric,
+                )
+            )
+
+            out[
+                metric
+            ] = pd.to_numeric(
+                df[source_col],
+                errors="coerce",
+            )
+
+        frames.append(
+            out
+        )
+
+    combined = pd.concat(
+        frames,
+        ignore_index=True,
+    )
+
+    return combined
+
+
+def validate_metrics(
+    df,
+):
+
+    print()
+    print("=" * 100)
+    print("VALIDATION")
+    print("=" * 100)
+
+    for metric in METRICS:
+
+        n_missing = int(
+            df[
+                metric
+            ].isna().sum()
+        )
+
+        n_finite = int(
+            np.isfinite(
+                df[
+                    metric
+                ].to_numpy(
+                    dtype=float
+                )
+            ).sum()
+        )
+
+        print(
+            f"{metric:<12} "
+            f"missing={n_missing:<5} "
+            f"finite={n_finite}"
+        )
+
+        if n_missing > 0:
+            raise ValueError(
+                f"{metric} contains "
+                f"{n_missing} missing values."
+            )
+
+
+    counts = (
+        df.groupby(
+            "experiment"
+        )[
+            "gene"
+        ]
+        .nunique()
+    )
+
+    print()
+    print(
+        "Unique genes by experiment:"
+    )
+    print(counts)
+
+    if not (
+        counts
+        == 300
+    ).all():
+
+        raise ValueError(
+            "Expected exactly 300 genes "
+            "per experiment."
+        )
+
+
+    gene_sets = []
+
+    for experiment_key, _ in EXPERIMENTS:
+
+        gene_sets.append(
+            set(
+                df.loc[
+                    df[
+                        "experiment"
+                    ]
+                    == experiment_key,
+                    "gene",
+                ]
+            )
+        )
+
+    if not (
+        gene_sets[0]
+        == gene_sets[1]
+        == gene_sets[2]
+    ):
+
+        raise ValueError(
+            "Gene sets differ between "
+            "experiments."
+        )
+
+
+def make_summary(
+    df,
+):
+
+    rows = []
+
+    for metric in METRICS:
+
+        for (
+            experiment_key,
+            experiment_label,
+        ) in EXPERIMENTS:
+
+            values = (
+                df.loc[
+                    df[
+                        "experiment"
+                    ]
+                    == experiment_key,
+                    metric,
+                ]
+                .to_numpy(
+                    dtype=float
+                )
+            )
+
+            rows.append(
+                {
+                    "metric":
+                        metric,
+
+                    "experiment":
+                        experiment_key,
+
+                    "experiment_label":
+                        experiment_label,
+
+                    "n_genes":
+                        len(values),
+
+                    "mean":
+                        float(
+                            np.mean(values)
+                        ),
+
+                    "median":
+                        float(
+                            np.median(values)
+                        ),
+
+                    "std":
+                        float(
+                            np.std(
+                                values,
+                                ddof=1,
+                            )
+                        ),
+
+                    "q25":
+                        float(
+                            np.quantile(
+                                values,
+                                0.25,
+                            )
+                        ),
+
+                    "q75":
+                        float(
+                            np.quantile(
+                                values,
+                                0.75,
+                            )
+                        ),
+
+                    "min":
+                        float(
+                            np.min(values)
+                        ),
+
+                    "max":
+                        float(
+                            np.max(values)
+                        ),
+
+                    "higher_is_better":
+                        HIGHER_IS_BETTER[
+                            metric
+                        ],
+                }
+            )
+
+    return pd.DataFrame(
+        rows
+    )
+
+
+# =============================================================================
+# PLOT
+# =============================================================================
+
+def create_plot(
+    df,
+    method,
+    method_label,
+    out_dir,
+):
+
+    fig, axes = plt.subplots(
+        2,
+        3,
+        figsize=(
+            15,
+            9,
+        ),
+    )
+
+    axes = axes.ravel()
+
+    positions = np.array(
+        [
+            1,
+            2,
+            3,
+        ],
+        dtype=float,
+    )
+
+    labels = [
+        "Ex5",
+        "Ex5.1",
+        "Ex5.3",
+    ]
+
+    rng = np.random.default_rng(
+        8667
+    )
+
+
+    for ax, metric in zip(
+        axes,
+        METRICS,
+    ):
+
+        distributions = []
+
+        for (
+            experiment_key,
+            experiment_label,
+        ) in EXPERIMENTS:
+
+            values = (
+                df.loc[
+                    df[
+                        "experiment"
+                    ]
+                    == experiment_key,
+                    metric,
+                ]
+                .to_numpy(
+                    dtype=float
+                )
+            )
+
+            distributions.append(
+                values
+            )
+
+
+        # ---------------------------------------------------------------------
+        # Violin
+        # ---------------------------------------------------------------------
+
+        violin = ax.violinplot(
+            distributions,
+            positions=positions,
+            widths=0.75,
+            showmeans=False,
+            showmedians=False,
+            showextrema=False,
+        )
+
+        for body in violin[
+            "bodies"
+        ]:
+
+            body.set_alpha(
+                0.35
+            )
+
+
+        # ---------------------------------------------------------------------
+        # Boxplot
+        # ---------------------------------------------------------------------
+
+        ax.boxplot(
+            distributions,
+            positions=positions,
+            widths=0.22,
+            showfliers=False,
+            patch_artist=False,
+            medianprops={
+                "linewidth": 1.5,
+            },
+        )
+
+
+        # ---------------------------------------------------------------------
+        # Individual gene points
+        # ---------------------------------------------------------------------
+
+        for (
+            position,
+            values,
+        ) in zip(
+            positions,
+            distributions,
+        ):
+
+            jitter = (
+                rng.uniform(
+                    -0.10,
+                    0.10,
+                    size=len(values),
+                )
+            )
+
+            ax.scatter(
+                np.full(
+                    len(values),
+                    position,
+                )
+                + jitter,
+                values,
+                s=5,
+                alpha=0.20,
+                linewidths=0,
+            )
+
+
+        # ---------------------------------------------------------------------
+        # Formatting
+        # ---------------------------------------------------------------------
+
+        direction = (
+            "higher is better"
+            if HIGHER_IS_BETTER[
+                metric
+            ]
+            else
+            "lower is better"
+        )
+
+        display_metric = (
+            "Moran error"
+            if metric
+            == "Moran_error"
+            else metric
+        )
+
+        ax.set_title(
+            f"{display_metric}\n({direction})",
+            fontsize=12,
+            fontweight="bold",
+        )
+
+        ax.set_xticks(
+            positions
+        )
+
+        ax.set_xticklabels(
+            labels,
+            fontsize=10,
+        )
+
+        ax.set_ylabel(
+            "Raw metric value",
+            fontsize=10,
+        )
+
+        ax.grid(
+            axis="y",
+            alpha=0.20,
+        )
+
+
+        # Defined metric ranges.
+        if metric == "SCC":
+
+            ax.set_ylim(
+                -1.0,
+                1.0,
+            )
+
+            ax.axhline(
+                0,
+                linewidth=0.8,
+                alpha=0.5,
+            )
+
+
+        elif metric in {
+            "SSIM",
+            "JSD",
+        }:
+
+            observed_max = max(
+                np.max(x)
+                for x in distributions
+            )
+
+            # Use canonical [0,1] only when
+            # actual values fall inside it.
+            if observed_max <= 1.0:
+
+                ax.set_ylim(
+                    0,
+                    1.0,
+                )
+
+
+        ax.spines[
+            "top"
+        ].set_visible(False)
+
+        ax.spines[
+            "right"
+        ].set_visible(False)
+
+
+    fig.suptitle(
+        (
+            f"{method_label}: Gene-level imputation "
+            "performance across experiments\n"
+            "300 Xenium genes; raw metric distributions"
+        ),
+        fontsize=15,
+        fontweight="bold",
+        y=0.995,
+    )
+
+
+    fig.tight_layout(
+        rect=[
+            0,
+            0,
+            1,
+            0.93,
+        ]
+    )
+
+
+    png = (
+        out_dir
+        / f"{method}_raw_metric_distributions.png"
+    )
+
+    pdf = (
+        out_dir
+        / f"{method}_raw_metric_distributions.pdf"
+    )
+
+
+    fig.savefig(
+        png,
+        dpi=300,
+        bbox_inches="tight",
+    )
+
+    fig.savefig(
+        pdf,
+        bbox_inches="tight",
+    )
+
+    plt.close(
+        fig
+    )
+
+    return (
+        png,
+        pdf,
+    )
+
+
+# =============================================================================
+# MAIN
+# =============================================================================
+
+def main():
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--method",
+        required=True,
+        choices=list(
+            METHODS.keys()
+        ),
+    )
+
+    args = parser.parse_args()
+
+    method = args.method
+
+    method_label = (
+        METHODS[
+            method
+        ]
+    )
+
+    out_dir = (
+        OUT_ROOT
+        / method
+    )
+
+    out_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+
+    print("=" * 100)
+    print(
+        "RAW GENE-LEVEL METRIC DISTRIBUTIONS"
+    )
+    print("=" * 100)
+
+    print(
+        "Method:",
+        method_label,
+    )
+
+
+    df = load_method_metrics(
+        method
+    )
+
+    validate_metrics(
+        df
+    )
+
+
+    long_file = (
+        out_dir
+        / "gene_metrics_all_experiments.csv"
+    )
+
+    df.to_csv(
+        long_file,
+        index=False,
+    )
+
+
+    summary = make_summary(
+        df
+    )
+
+    summary_file = (
+        out_dir
+        / "metric_summary.csv"
+    )
+
+    summary.to_csv(
+        summary_file,
+        index=False,
+    )
+
+
+    print()
+    print("=" * 100)
+    print("SUMMARY")
+    print("=" * 100)
+
+    print(
+        summary[
+            [
+                "metric",
+                "experiment_label",
+                "mean",
+                "median",
+                "std",
+            ]
+        ].to_string(
+            index=False
+        )
+    )
+
+
+    png, pdf = create_plot(
+        df,
+        method,
+        method_label,
+        out_dir,
+    )
+
+
+    manifest = {
+        "method":
+            method,
+
+        "method_label":
+            method_label,
+
+        "experiments":
+            [
+                x[0]
+                for x in EXPERIMENTS
+            ],
+
+        "metrics":
+            METRICS,
+
+        "n_genes_per_experiment":
+            300,
+
+        "scale":
+            "raw/original metric scale",
+
+        "png":
+            str(png),
+
+        "pdf":
+            str(pdf),
+    }
+
+
+    with (
+        out_dir
+        / "manifest.json"
+    ).open(
+        "w"
+    ) as handle:
+
+        json.dump(
+            manifest,
+            handle,
+            indent=2,
+        )
+
+
+    (
+        out_dir
+        / "plot_complete.flag"
+    ).write_text(
+        "PASS\n"
+    )
+
+
+    print()
+    print("=" * 100)
+    print("DONE")
+    print("=" * 100)
+
+    print(
+        "Figure:",
+        png,
+    )
+
+    print(
+        "Summary:",
+        summary_file,
+    )
+
+
+if __name__ == "__main__":
+    main()

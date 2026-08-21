@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_inspect_xenium_Br8667.py", line 732, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/05_inspect_xenium_Br8667.py", line 321, in main
+    raise FileNotFoundError(
+FileNotFoundError: Missing required input:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/seq_data_huuki_snrna_Br8667_shared.h5ad

@@ -1,0 +1,187 @@
+====================================================================================================
+Convert Huuki Visium light RDS to H5AD
+====================================================================================================
+Job ID: 3840983
+Node: node01.hgcc.emory.edu
+Started: Mon Jul 27 13:59:37 EDT 2026
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+Script: /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/visium_branch/01_build_datastructure/02_convert_spatialDLPFC_light_RDS_to_h5ad.R
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce_light.RDS
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad
+====================================================================================================
+
+R version:
+Rscript (R) version 4.5.3 (2026-03-11)
+
+Checking required R packages...
+anndataR = 1.0.2
+SingleCellExperiment = 1.32.0
+SummarizedExperiment = 1.40.0
+S4Vectors = 0.48.0
+scuttle = 1.20.0
+
+Starting conversion...
+
+
+==================================================================================================== 
+Convert spatialDLPFC Visium light RDS to H5AD 
+==================================================================================================== 
+Input RDS:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce_light.RDS 
+
+Output H5AD:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad 
+
+==================================================================================================== 
+Reading RDS 
+==================================================================================================== 
+Object class:
+[1] "SingleCellExperiment"
+attr(,"package")
+[1] "SingleCellExperiment"
+
+Object dimensions [genes x spots]:
+[1]  28916 113927
+
+Available assays:
+[1] "counts"    "logcounts"
+
+Available reduced dimensions:
+[1] "spatial"
+
+==================================================================================================== 
+Preparing gene and spot names 
+==================================================================================================== 
+Genes: 28916
+Spots: 113927
+
+==================================================================================================== 
+Preparing assays 
+==================================================================================================== 
+logcounts assay already exists.
+
+Counts dimensions:
+[1]  28916 113927
+
+Logcounts dimensions:
+[1]  28916 113927
+
+==================================================================================================== 
+Preparing metadata 
+==================================================================================================== 
+Retained colData columns: 155
+Retained rowData columns: 7
+
+==================================================================================================== 
+Preparing spatial coordinates 
+==================================================================================================== 
+Spatial-coordinate source: reducedDim_spatial
+Spatial dimensions [spots x 2]:
+[1] 113927      2
+
+==================================================================================================== 
+Building clean SingleCellExperiment 
+==================================================================================================== 
+
+Clean object:
+class: SingleCellExperiment 
+dim: 28916 113927 
+metadata(0):
+assays(2): counts logcounts
+rownames(28916): ENSG00000243485 ENSG00000238009 ... ENSG00000278817
+  ENSG00000277196
+rowData names(7): source type ... gene_type gene_search
+colnames(113927): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ...
+  TTGTTTGTATTACACG-1.18 TTGTTTGTGTAAATTC-1.21
+colData names(155): age array_col ... VistoSeg_proportion wrinkle_type
+reducedDimNames(1): spatial
+mainExpName: NULL
+altExpNames(0):
+
+Assays:
+[1] "counts"    "logcounts"
+
+Reduced dimensions:
+[1] "spatial"
+
+==================================================================================================== 
+Pre-write validation 
+==================================================================================================== 
+Pre-write validation passed.
+
+==================================================================================================== 
+Writing H5AD using anndataR 
+==================================================================================================== 
+H5AD successfully written:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad 
+
+==================================================================================================== 
+Validating written H5AD 
+==================================================================================================== 
+Read-back object:
+class: SingleCellExperiment 
+dim: 28916 113927 
+metadata(0):
+assays(2): counts X
+rownames(28916): ENSG00000243485 ENSG00000238009 ... ENSG00000278817
+  ENSG00000277196
+rowData names(7): source type ... gene_type gene_search
+colnames(113927): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ...
+  TTGTTTGTATTACACG-1.18 TTGTTTGTGTAAATTC-1.21
+colData names(155): age array_col ... VistoSeg_proportion wrinkle_type
+reducedDimNames(1): spatial
+mainExpName: NULL
+altExpNames(0):
+
+Read-back dimensions [genes x spots]:
+[1]  28916 113927
+
+Read-back assays:
+[1] "counts" "X"     
+
+Read-back reduced dimensions:
+[1] "spatial"
+
+Conversion summary:
+                       metric
+1                   input_rds
+2                 output_h5ad
+3                     n_genes
+4                     n_spots
+5                    X_source
+6         counts_layer_source
+7              spatial_source
+8  has_spatial_after_readback
+9              output_size_GB
+10    dropped_colData_columns
+11    dropped_rowData_columns
+                                                                                                   value
+1  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce_light.RDS
+2       /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad
+3                                                                                                  28916
+4                                                                                                 113927
+5                                                                                              logcounts
+6                                                                                                 counts
+7                                                                                     reducedDim_spatial
+8                                                                                                   TRUE
+9                                                                                                 1.3342
+10                                                                                                      
+11                                                                                                      
+
+==================================================================================================== 
+DONE 
+==================================================================================================== 
+H5AD:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad 
+
+Summary CSV:
+ /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/visium_branch/01_build_datastructure/spatialDLPFC_Visium_sce_h5ad_conversion_summary.csv 
+
+Checking output...
+-rw-r----- 1 mjabin hulab 1.4G Jul 27 14:01 /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/visium/spatialDLPFC_Visium_sce.h5ad
+
+====================================================================================================
+Conversion completed successfully
+Finished: Mon Jul 27 14:07:44 EDT 2026
+====================================================================================================

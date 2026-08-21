@@ -1,0 +1,42 @@
+2026-07-29 21:37:13,759 | INFO | Reading input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/spatial_data_xenium_Br8667_vista_qc.h5ad
+2026-07-29 21:37:14,865 | INFO | Input shape: 66164 cells × 300 genes
+2026-07-29 21:37:14,865 | INFO | Counts source: X
+/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/scipy/sparse/_index.py:143: SparseEfficiencyWarning: Changing the sparsity structure of a csr_matrix is expensive. lil_matrix is more efficient.
+  self._set_arrayXarray(i, j, x)
+2026-07-29 21:37:16,635 | INFO | Moran's I completed: 25/300 genes
+2026-07-29 21:37:16,975 | INFO | Moran's I completed: 50/300 genes
+2026-07-29 21:37:17,326 | INFO | Moran's I completed: 75/300 genes
+2026-07-29 21:37:17,686 | INFO | Moran's I completed: 100/300 genes
+2026-07-29 21:37:18,041 | INFO | Moran's I completed: 125/300 genes
+2026-07-29 21:37:18,406 | INFO | Moran's I completed: 150/300 genes
+2026-07-29 21:37:18,770 | INFO | Moran's I completed: 175/300 genes
+2026-07-29 21:37:19,145 | INFO | Moran's I completed: 200/300 genes
+2026-07-29 21:37:19,497 | INFO | Moran's I completed: 225/300 genes
+2026-07-29 21:37:19,860 | INFO | Moran's I completed: 250/300 genes
+2026-07-29 21:37:20,204 | INFO | Moran's I completed: 275/300 genes
+2026-07-29 21:37:20,549 | INFO | Moran's I completed: 300/300 genes
+2026-07-29 21:37:21,158 | INFO | Fold balance summary:
+ fold              metric   n     mean   median      std
+    1 log_mean_expression 100 1.320535 0.813586 1.236023
+    1          dispersion 100 2.126116 2.265746 0.766218
+    1  detection_fraction 100 0.366465 0.279911 0.263273
+    1            morans_I 100 0.137051 0.093307 0.132096
+    2 log_mean_expression 100 1.352494 0.916675 1.374801
+    2          dispersion 100 2.099004 2.144530 0.802663
+    2  detection_fraction 100 0.367922 0.302884 0.270974
+    2            morans_I 100 0.129311 0.091186 0.110691
+    3 log_mean_expression 100 1.273741 0.920092 1.149532
+    3          dispersion 100 2.100922 2.126679 0.740580
+    3  detection_fraction 100 0.365231 0.307403 0.255722
+    3            morans_I 100 0.128914 0.091444 0.117131
+2026-07-29 21:37:22,939 | INFO | Wrote master file: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100/gene_metrics_and_fold_assignment.h5ad
+... storing 'split_role' as categorical
+... storing 'split_role' as categorical
+2026-07-29 21:37:25,585 | INFO | Fold 1: observed=(66164, 200), heldout=(66164, 100)
+... storing 'split_role' as categorical
+... storing 'split_role' as categorical
+2026-07-29 21:37:28,103 | INFO | Fold 2: observed=(66164, 200), heldout=(66164, 100)
+... storing 'split_role' as categorical
+... storing 'split_role' as categorical
+2026-07-29 21:37:30,647 | INFO | Fold 3: observed=(66164, 200), heldout=(66164, 100)
+2026-07-29 21:37:30,651 | INFO | SUCCESS: fold H5AD files created in /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_beta/Br8667/gene_folds_200_100

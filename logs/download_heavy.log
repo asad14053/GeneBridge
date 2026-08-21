@@ -1,0 +1,150 @@
+
+==========================================================================================
+Download 24 common Xenium + Visium samples
+==========================================================================================
+Project root: /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Xenium output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium
+Visium output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium
+Include heavy Xenium files: True
+Dry run: False
+Saved pair metadata: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/patient_xenium_visium_24_common.csv
+
+==========================================================================================
+P1 / Br2039
+==========================================================================================
+Reading GEO page: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9223468
+GSM9223468 / Br2039 / xenium: 6 selected files
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_boundaries.csv.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_feature_matrix.h5
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cells.parquet.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-morphology.ome.tif.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-nucleus_boundaries.csv.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-transcripts.zarr.zip
+Reading GEO page: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9223410
+GSM9223410 / Br2039 / visium: 7 selected files
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-scalefactors_json.json.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-tissue_hires_image.png.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-tissue_lowres_image.png.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-tissue_positions.csv.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1_barcodes.tsv.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1_features.tsv.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1_matrix.mtx.gz
+
+==========================================================================================
+P2 / Br2719
+==========================================================================================
+Reading GEO page: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9223469
+GSM9223469 / Br2719 / xenium: 6 selected files
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cell_boundaries.csv.gz
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cell_feature_matrix.h5
+Exists, skipping: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-cells.parquet.gz
+Downloading:
+  https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223469&format=file&file=GSM9223469%5FBr2719%2Dmorphology%2Eome%2Etif%2Egz
+  -> /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2719/GSM9223469_Br2719-morphology.ome.tif.gz
+  100.0 MB / 9218.8 MB (1.1%)
+  200.0 MB / 9218.8 MB (2.2%)
+  300.0 MB / 9218.8 MB (3.3%)
+  400.0 MB / 9218.8 MB (4.3%)
+  500.0 MB / 9218.8 MB (5.4%)
+  600.0 MB / 9218.8 MB (6.5%)
+  700.0 MB / 9218.8 MB (7.6%)
+  800.0 MB / 9218.8 MB (8.7%)
+  900.0 MB / 9218.8 MB (9.8%)
+  1000.0 MB / 9218.8 MB (10.8%)
+  1100.0 MB / 9218.8 MB (11.9%)
+  1200.0 MB / 9218.8 MB (13.0%)
+  1300.0 MB / 9218.8 MB (14.1%)
+  1400.0 MB / 9218.8 MB (15.2%)
+  1500.0 MB / 9218.8 MB (16.3%)
+  1600.0 MB / 9218.8 MB (17.4%)
+  1700.0 MB / 9218.8 MB (18.4%)
+  1800.0 MB / 9218.8 MB (19.5%)
+  1900.0 MB / 9218.8 MB (20.6%)
+  2000.0 MB / 9218.8 MB (21.7%)
+  2100.0 MB / 9218.8 MB (22.8%)
+  2200.0 MB / 9218.8 MB (23.9%)
+  2300.0 MB / 9218.8 MB (24.9%)
+  2400.0 MB / 9218.8 MB (26.0%)
+  2500.0 MB / 9218.8 MB (27.1%)
+  2600.0 MB / 9218.8 MB (28.2%)
+  2700.0 MB / 9218.8 MB (29.3%)
+  2800.0 MB / 9218.8 MB (30.4%)
+  2900.0 MB / 9218.8 MB (31.5%)
+  3000.0 MB / 9218.8 MB (32.5%)
+  3100.0 MB / 9218.8 MB (33.6%)
+  3200.0 MB / 9218.8 MB (34.7%)
+  3300.0 MB / 9218.8 MB (35.8%)
+  3400.0 MB / 9218.8 MB (36.9%)
+  3500.0 MB / 9218.8 MB (38.0%)
+  3600.0 MB / 9218.8 MB (39.1%)
+  3700.0 MB / 9218.8 MB (40.1%)
+  3800.0 MB / 9218.8 MB (41.2%)
+  3900.0 MB / 9218.8 MB (42.3%)
+  4000.0 MB / 9218.8 MB (43.4%)
+  4100.0 MB / 9218.8 MB (44.5%)
+  4200.0 MB / 9218.8 MB (45.6%)
+  4300.0 MB / 9218.8 MB (46.6%)
+  4400.0 MB / 9218.8 MB (47.7%)
+  4500.0 MB / 9218.8 MB (48.8%)
+  4600.0 MB / 9218.8 MB (49.9%)
+  4700.0 MB / 9218.8 MB (51.0%)
+  4800.0 MB / 9218.8 MB (52.1%)
+  4900.0 MB / 9218.8 MB (53.2%)
+  5000.0 MB / 9218.8 MB (54.2%)
+  5100.0 MB / 9218.8 MB (55.3%)
+  5200.0 MB / 9218.8 MB (56.4%)
+  5300.0 MB / 9218.8 MB (57.5%)
+  5400.0 MB / 9218.8 MB (58.6%)
+  5500.0 MB / 9218.8 MB (59.7%)
+  5600.0 MB / 9218.8 MB (60.7%)
+  5700.0 MB / 9218.8 MB (61.8%)
+  5800.0 MB / 9218.8 MB (62.9%)
+  5900.0 MB / 9218.8 MB (64.0%)
+  6000.0 MB / 9218.8 MB (65.1%)
+  6100.0 MB / 9218.8 MB (66.2%)
+  6200.0 MB / 9218.8 MB (67.3%)
+  6300.0 MB / 9218.8 MB (68.3%)
+  6400.0 MB / 9218.8 MB (69.4%)
+  6500.0 MB / 9218.8 MB (70.5%)
+  6600.0 MB / 9218.8 MB (71.6%)
+  6700.0 MB / 9218.8 MB (72.7%)
+  6800.0 MB / 9218.8 MB (73.8%)
+  6900.0 MB / 9218.8 MB (74.8%)
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/urllib3/response.py", line 905, in _error_catcher
+    yield
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/urllib3/response.py", line 1043, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(7324631592 bytes read, 2342026110 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/requests/models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/urllib3/response.py", line 1267, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/urllib3/response.py", line 1155, in read
+    data = self._raw_read(amt)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/urllib3/response.py", line 1021, in _raw_read
+    with self._error_catcher():
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/urllib3/response.py", line 925, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(7324631592 bytes read, 2342026110 more expected)', IncompleteRead(7324631592 bytes read, 2342026110 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/data/download_24_common_xenium_visium.py", line 332, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/data/download_24_common_xenium_visium.py", line 299, in main
+    download_sample(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/data/download_24_common_xenium_visium.py", line 232, in download_sample
+    download_file(item["url"], out_path, dry_run=dry_run)
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/data/download_24_common_xenium_visium.py", line 188, in download_file
+    for chunk in r.iter_content(chunk_size=1024 * 1024):
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/requests/models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(7324631592 bytes read, 2342026110 more expected)', IncompleteRead(7324631592 bytes read, 2342026110 more expected))

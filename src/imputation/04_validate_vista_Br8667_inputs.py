@@ -20,7 +20,7 @@ import pandas as pd
 import anndata as ad
 
 
-PROJECT_ROOT = Path("/users/mjabin/projects/GeneBridge")
+PROJECT_ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 BASE = PROJECT_ROOT / "data/processed/imputation_beta/Br8667"
 
