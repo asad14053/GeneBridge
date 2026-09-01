@@ -1,0 +1,25 @@
+2026-08-28 10:57:36.482471 create model matrix
+2026-08-28 10:57:36.585566 run duplicateCorrelation()
+2026-08-28 10:57:37.771945 The estimated correlation is: 0.516133899964506
+2026-08-28 10:57:37.776519 computing enrichment statistics
+2026-08-28 10:57:37.913921 extract and reformat enrichment results
+2026-08-28 10:57:38.408804 create model matrix
+2026-08-28 10:57:38.444394 run duplicateCorrelation()
+2026-08-28 10:57:39.243441 The estimated correlation is: 0.519788078537992
+2026-08-28 10:57:39.247252 computing enrichment statistics
+2026-08-28 10:57:39.338609 extract and reformat enrichment results
+2026-08-28 10:57:39.805437 create model matrix
+2026-08-28 10:57:39.827298 run duplicateCorrelation()
+2026-08-28 10:57:41.408325 The estimated correlation is: 0.519729996746397
+2026-08-28 10:57:41.412393 computing enrichment statistics
+2026-08-28 10:57:41.471423 extract and reformat enrichment results
+2026-08-28 10:57:41.835225 create model matrix
+2026-08-28 10:57:41.856036 run duplicateCorrelation()
+2026-08-28 10:57:42.625767 The estimated correlation is: 0.519729996746397
+2026-08-28 10:57:42.630051 computing enrichment statistics
+2026-08-28 10:57:42.689668 extract and reformat enrichment results
+2026-08-28 10:58:46.037338 create model matrix
+2026-08-28 10:58:46.062295 run duplicateCorrelation()
+2026-08-28 11:00:13.273515 The estimated correlation is: 0.246175376642973
+2026-08-28 11:00:13.278105 computing enrichment statistics
+2026-08-28 11:00:15.135441 extract and reformat enrichment results

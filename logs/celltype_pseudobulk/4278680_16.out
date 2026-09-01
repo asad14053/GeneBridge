@@ -1,0 +1,174 @@
+========================================
+Cell-type pseudobulk
+SLURM_JOB_ID:       4278696
+SLURM_ARRAY_JOB_ID: 4278680
+SLURM_ARRAY_TASK_ID:16
+Node:               node03.hgcc.emory.edu
+Started:            Fri Aug 28 10:14:03 EDT 2026
+========================================
+
+====================================================================================================
+RESOLVE DONOR
+====================================================================================================
+Array index: 16
+Donor: Br5973
+Dx: SCZ
+Experiment: ex2_scz
+Target: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex2_scz/targets/spatial_data_xenium_Br5973_ex2_scz.h5ad
+
+====================================================================================================
+CANONICAL DONOR METADATA
+====================================================================================================
+Dx: SCZ
+Age: 61.39
+Sex: F
+slide_id: output-XETG00133__0033862
+run_date: 2024-12-06_xenium-pnn-SKCCC
+
+====================================================================================================
+EXPECTED DONOR x CELL-TYPE COVERAGE
+====================================================================================================
+Oligo                  11,621
+Ambig/Oligo             1,893
+Mic                     2,177
+Ambig/In/Endo           1,488
+L5 Ex                     213
+L6 Ex                   1,904
+L4/5 Ex                 2,148
+L2/3 Ex                 3,600
+Ast                     5,538
+Endo                    7,928
+In: VIP, LAMP5          1,432
+In: SST, PVALB          1,953
+
+====================================================================================================
+LOAD CELL-TYPE ANNOTATION
+====================================================================================================
+Annotated donor cells: 41895
+
+Annotation cell-type counts:
+cell_type_annotation
+Oligo             11621
+Ambig/Oligo        1893
+Mic                2177
+Ambig/In/Endo      1488
+L5 Ex               213
+L6 Ex              1904
+L4/5 Ex            2148
+L2/3 Ex            3600
+Ast                5538
+Endo               7928
+In: VIP, LAMP5     1432
+In: SST, PVALB     1953
+
+====================================================================================================
+OPEN TARGET + ENVI
+====================================================================================================
+Target: (41895, 300)
+ENVI: (41895, 34987)
+Target cells: 41895
+Target-only unannotated: 0
+Annotated-only: 0
+
+====================================================================================================
+GENE VALIDATION
+====================================================================================================
+
+ENVI expression source:
+expression_source
+envi_imputed       34687
+measured_xenium      300
+Name: count, dtype: int64
+Original Xenium genes: 300
+ENVI full genes: 34987
+Original genes present as measured: 300
+
+====================================================================================================
+MATRIX SOURCES
+====================================================================================================
+Original Xenium source: target.layers['counts']
+ENVI measured source: after.X
+ENVI full source: after.layers['count_scale']
+
+====================================================================================================
+ALLOCATE CELL-TYPE TOTALS
+====================================================================================================
+
+====================================================================================================
+AGGREGATE CELLS
+====================================================================================================
+cells 512/41,895
+cells 10,752/41,895
+cells 20,992/41,895
+cells 31,232/41,895
+cells 41,472/41,895
+cells 41,895/41,895
+
+====================================================================================================
+CELL COUNT VALIDATION
+====================================================================================================
+Oligo                observed=  11,621 expected=  11,621
+Ambig/Oligo          observed=   1,893 expected=   1,893
+Mic                  observed=   2,177 expected=   2,177
+Ambig/In/Endo        observed=   1,488 expected=   1,488
+L5 Ex                observed=     213 expected=     213
+L6 Ex                observed=   1,904 expected=   1,904
+L4/5 Ex              observed=   2,148 expected=   2,148
+L2/3 Ex              observed=   3,600 expected=   3,600
+Ast                  observed=   5,538 expected=   5,538
+Endo                 observed=   7,928 expected=   7,928
+In: VIP, LAMP5       observed=   1,432 expected=   1,432
+In: SST, PVALB       observed=   1,953 expected=   1,953
+
+All 12 cell-type counts match audit: TRUE
+
+====================================================================================================
+SUM CONSERVATION
+====================================================================================================
+Original sum conservation: TRUE
+ENVI measured sum conservation: TRUE
+ENVI full sum conservation: TRUE
+
+====================================================================================================
+BUILD OUTPUT TABLES
+====================================================================================================
+
+====================================================================================================
+ORIGINAL VS ENVI MEASURED CONTROL
+====================================================================================================
+Shapes: (12, 300) (12, 300)
+Original vs ENVI measured exact: True
+Original vs ENVI measured allclose: True
+Maximum absolute difference: 0.0
+
+====================================================================================================
+SAVE DONOR OUTPUTS
+====================================================================================================
+
+====================================================================================================
+FINAL STATUS
+====================================================================================================
+Donor: Br5973
+Diagnosis: SCZ
+Cell types: 12
+Pseudobulks: 12
+Original matrix: (12, 300)
+ENVI measured matrix: (12, 300)
+ENVI full matrix: (12, 34987)
+Target-only excluded cells: 0
+Original vs ENVI measured exact: True
+Original vs ENVI measured allclose: True
+
+Saved:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/celltype_N23/pseudobulk/per_donor/Br5973_original300_celltype_pseudobulk.csv.gz
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/celltype_N23/pseudobulk/per_donor/Br5973_ENVI_measured300_celltype_pseudobulk.csv.gz
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/celltype_N23/pseudobulk/per_donor/Br5973_ENVI_full34987_celltype_pseudobulk.csv.gz
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/celltype_N23/pseudobulk/per_donor/Br5973_celltype_pseudobulk_metadata.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/celltype_N23/pseudobulk/per_donor/Br5973_excluded_target_cells.csv
+
+FINAL STATUS: DONOR CELL-TYPE PSEUDOBULK COMPLETE
+
+========================================
+Completed successfully
+Finished: Fri Aug 28 10:15:13 EDT 2026
+========================================

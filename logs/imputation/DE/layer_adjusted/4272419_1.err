@@ -1,0 +1,3 @@
+Error: package or namespace load failed for 'spatialLIBD' in .getGeneric(f, where, package):
+ cannot open file '/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/lib/R/library/GenomicAlignments/R/GenomicAlignments.rdb': No such file or directory
+Execution halted

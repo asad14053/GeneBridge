@@ -1,0 +1,4 @@
+Error: unexpected string constant in:
+"        "Pseudobulk count rows and metadata are not "
+        "in identical order.""
+Execution halted

@@ -1,0 +1,740 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import numpy as np
+import pandas as pd
+
+
+ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
+
+META23 = ROOT / "data/metadata/xenium_DE_metadata_23.csv"
+
+IN = (
+    ROOT
+    / "outputs/imputation_full/DE/paper_concordance"
+    / "celltype_N23/pseudobulk/per_donor"
+)
+
+OUT = (
+    ROOT
+    / "outputs/imputation_full/DE/paper_concordance"
+    / "celltype_N23/pseudobulk"
+)
+
+OUT.mkdir(parents=True, exist_ok=True)
+
+
+def section(x):
+    print("\n" + "=" * 100)
+    print(x)
+    print("=" * 100)
+
+
+# =============================================================================
+# EXPECTED DONORS
+# =============================================================================
+
+section("EXPECTED DONORS")
+
+meta23 = pd.read_csv(META23)
+
+meta23["BrNum"] = (
+    meta23["BrNum"]
+    .astype(str)
+    .str.strip()
+)
+
+donors = (
+    meta23["BrNum"]
+    .tolist()
+)
+
+if len(donors) != 23:
+    raise RuntimeError(
+        f"Expected 23 donors; found {len(donors)}"
+    )
+
+if len(set(donors)) != 23:
+    raise RuntimeError(
+        "Duplicate donors in N23 metadata"
+    )
+
+if "Br6432" in donors:
+    raise RuntimeError(
+        "Br6432 must not be present"
+    )
+
+print("Donors:", len(donors))
+print("NTC:", (meta23["Dx"] == "NTC").sum())
+print("SCZ:", (meta23["Dx"] == "SCZ").sum())
+
+
+# =============================================================================
+# LOAD 23 DONORS
+# =============================================================================
+
+section("LOAD DONOR PSEUDOBULKS")
+
+original_list = []
+measured_list = []
+full_list = []
+metadata_list = []
+
+original_gene_order = None
+full_gene_order = None
+
+
+for donor in donors:
+
+    original_file = (
+        IN
+        / f"{donor}_original300_celltype_pseudobulk.csv.gz"
+    )
+
+    measured_file = (
+        IN
+        / f"{donor}_ENVI_measured300_celltype_pseudobulk.csv.gz"
+    )
+
+    full_file = (
+        IN
+        / f"{donor}_ENVI_full34987_celltype_pseudobulk.csv.gz"
+    )
+
+    metadata_file = (
+        IN
+        / f"{donor}_celltype_pseudobulk_metadata.csv"
+    )
+
+
+    for f in [
+        original_file,
+        measured_file,
+        full_file,
+        metadata_file,
+    ]:
+        if not f.exists():
+            raise FileNotFoundError(f)
+
+
+    original = pd.read_csv(
+        original_file,
+        index_col=0,
+    )
+
+    measured = pd.read_csv(
+        measured_file,
+        index_col=0,
+    )
+
+    full = pd.read_csv(
+        full_file,
+        index_col=0,
+    )
+
+    md = pd.read_csv(
+        metadata_file,
+    )
+
+
+    # -------------------------------------------------------------------------
+    # Dimensions
+    # -------------------------------------------------------------------------
+
+    if original.shape != (12, 300):
+        raise RuntimeError(
+            f"{donor}: original shape={original.shape}"
+        )
+
+    if measured.shape != (12, 300):
+        raise RuntimeError(
+            f"{donor}: measured shape={measured.shape}"
+        )
+
+    if full.shape != (12, 34987):
+        raise RuntimeError(
+            f"{donor}: full shape={full.shape}"
+        )
+
+    if len(md) != 12:
+        raise RuntimeError(
+            f"{donor}: metadata rows={len(md)}"
+        )
+
+
+    # -------------------------------------------------------------------------
+    # Pseudobulk row order / IDs
+    # -------------------------------------------------------------------------
+
+    if not original.index.equals(
+        measured.index
+    ):
+        raise RuntimeError(
+            f"{donor}: original/measured PB IDs differ"
+        )
+
+    if not original.index.equals(
+        full.index
+    ):
+        raise RuntimeError(
+            f"{donor}: original/full PB IDs differ"
+        )
+
+    if list(original.index) != list(
+        md["pseudobulk_id"].astype(str)
+    ):
+        raise RuntimeError(
+            f"{donor}: matrix/metadata PB IDs differ"
+        )
+
+
+    # -------------------------------------------------------------------------
+    # Gene identity + canonical ordering
+    #
+    # Different donor H5AD files can contain the same genes in different
+    # column orders. We therefore:
+    #   1) require the gene SET to be identical
+    #   2) reorder columns by gene name to the first donor's canonical order
+    #   3) stop if genes are actually missing or extra
+    # -------------------------------------------------------------------------
+
+    original_cols = original.columns.tolist()
+    measured_cols = measured.columns.tolist()
+    full_cols = full.columns.tolist()
+
+
+    # ----------------------------
+    # Original Xenium 300 genes
+    # ----------------------------
+
+    if original_gene_order is None:
+
+        original_gene_order = original_cols
+
+    else:
+
+        canonical_set = set(original_gene_order)
+        donor_set = set(original_cols)
+
+        if donor_set != canonical_set:
+
+            missing = sorted(
+                canonical_set - donor_set
+            )
+
+            extra = sorted(
+                donor_set - canonical_set
+            )
+
+            raise RuntimeError(
+                f"{donor}: original 300 gene SET differs; "
+                f"missing={missing[:20]}, "
+                f"extra={extra[:20]}"
+            )
+
+        if original_cols != original_gene_order:
+
+            print(
+                f"{donor}: reordering original 300 genes "
+                "to canonical order"
+            )
+
+            original = original.reindex(
+                columns=original_gene_order
+            )
+
+
+    # ----------------------------
+    # ENVI measured 300 genes
+    # ----------------------------
+
+    measured_set = set(measured_cols)
+    canonical_original_set = set(original_gene_order)
+
+    if measured_set != canonical_original_set:
+
+        missing = sorted(
+            canonical_original_set - measured_set
+        )
+
+        extra = sorted(
+            measured_set - canonical_original_set
+        )
+
+        raise RuntimeError(
+            f"{donor}: ENVI measured 300 gene SET differs; "
+            f"missing={missing[:20]}, "
+            f"extra={extra[:20]}"
+        )
+
+
+    if measured.columns.tolist() != original_gene_order:
+
+        print(
+            f"{donor}: reordering ENVI measured 300 genes "
+            "to canonical order"
+        )
+
+        measured = measured.reindex(
+            columns=original_gene_order
+        )
+
+
+    # ----------------------------
+    # ENVI full 34,987 genes
+    # ----------------------------
+
+    if full_gene_order is None:
+
+        full_gene_order = full_cols
+
+    else:
+
+        canonical_full_set = set(full_gene_order)
+        donor_full_set = set(full_cols)
+
+        if donor_full_set != canonical_full_set:
+
+            missing = sorted(
+                canonical_full_set - donor_full_set
+            )
+
+            extra = sorted(
+                donor_full_set - canonical_full_set
+            )
+
+            raise RuntimeError(
+                f"{donor}: full 34987 gene SET differs; "
+                f"missing={missing[:20]}, "
+                f"extra={extra[:20]}"
+            )
+
+
+        if full_cols != full_gene_order:
+
+            print(
+                f"{donor}: reordering full 34,987 genes "
+                "to canonical order"
+            )
+
+            full = full.reindex(
+                columns=full_gene_order
+            )
+
+
+    # -------------------------------------------------------------------------
+    # Critical control:
+    # ENVI measured genes must exactly equal original Xenium
+    # -------------------------------------------------------------------------
+
+    if not np.array_equal(
+        original.to_numpy(),
+        measured.to_numpy(),
+    ):
+        maxdiff = np.max(
+            np.abs(
+                original.to_numpy()
+                - measured.to_numpy()
+            )
+        )
+
+        raise RuntimeError(
+            f"{donor}: original != ENVI measured; "
+            f"max abs diff={maxdiff}"
+        )
+
+
+    # -------------------------------------------------------------------------
+    # Metadata donor check
+    # -------------------------------------------------------------------------
+
+    if set(
+        md["BrNum"].astype(str)
+    ) != {donor}:
+        raise RuntimeError(
+            f"{donor}: incorrect BrNum in PB metadata"
+        )
+
+
+    original_list.append(
+        original
+    )
+
+    measured_list.append(
+        measured
+    )
+
+    full_list.append(
+        full
+    )
+
+    metadata_list.append(
+        md
+    )
+
+
+    print(
+        f"{donor}: PASS "
+        f"| PB=12 "
+        f"| original=measured EXACT"
+    )
+
+
+# =============================================================================
+# CONCATENATE
+# =============================================================================
+
+section("CONCATENATE")
+
+original_all = pd.concat(
+    original_list,
+    axis=0,
+)
+
+measured_all = pd.concat(
+    measured_list,
+    axis=0,
+)
+
+full_all = pd.concat(
+    full_list,
+    axis=0,
+)
+
+metadata_all = pd.concat(
+    metadata_list,
+    axis=0,
+    ignore_index=True,
+)
+
+
+print(
+    "Original:",
+    original_all.shape
+)
+
+print(
+    "ENVI measured:",
+    measured_all.shape
+)
+
+print(
+    "ENVI full:",
+    full_all.shape
+)
+
+print(
+    "Metadata:",
+    metadata_all.shape
+)
+
+
+# =============================================================================
+# GLOBAL VALIDATION
+# =============================================================================
+
+section("GLOBAL VALIDATION")
+
+
+if original_all.shape != (276, 300):
+    raise RuntimeError(
+        f"Expected original (276,300); "
+        f"found {original_all.shape}"
+    )
+
+if measured_all.shape != (276, 300):
+    raise RuntimeError(
+        f"Expected measured (276,300); "
+        f"found {measured_all.shape}"
+    )
+
+if full_all.shape != (276, 34987):
+    raise RuntimeError(
+        f"Expected full (276,34987); "
+        f"found {full_all.shape}"
+    )
+
+if len(metadata_all) != 276:
+    raise RuntimeError(
+        f"Expected 276 metadata rows; "
+        f"found {len(metadata_all)}"
+    )
+
+
+if original_all.index.duplicated().any():
+    raise RuntimeError(
+        "Duplicate original pseudobulk IDs"
+    )
+
+if full_all.index.duplicated().any():
+    raise RuntimeError(
+        "Duplicate full pseudobulk IDs"
+    )
+
+if metadata_all[
+    "pseudobulk_id"
+].duplicated().any():
+    raise RuntimeError(
+        "Duplicate metadata pseudobulk IDs"
+    )
+
+
+if set(
+    original_all.index.astype(str)
+) != set(
+    metadata_all["pseudobulk_id"].astype(str)
+):
+    raise RuntimeError(
+        "Matrix and metadata PB IDs differ"
+    )
+
+
+if not np.array_equal(
+    original_all.to_numpy(),
+    measured_all.to_numpy(),
+):
+    raise RuntimeError(
+        "Global original != ENVI measured"
+    )
+
+
+# donor coverage
+donor_counts = (
+    metadata_all[
+        "BrNum"
+    ]
+    .astype(str)
+    .value_counts()
+)
+
+if not (
+    donor_counts == 12
+).all():
+    raise RuntimeError(
+        "Each donor must have exactly 12 PBs"
+    )
+
+
+# cell-type coverage
+ct_counts = (
+    metadata_all[
+        "cell_type"
+    ]
+    .value_counts()
+)
+
+if len(ct_counts) != 12:
+    raise RuntimeError(
+        f"Expected 12 cell types; found {len(ct_counts)}"
+    )
+
+if not (
+    ct_counts == 23
+).all():
+    raise RuntimeError(
+        "Each cell type must contain exactly 23 donors"
+    )
+
+
+# diagnosis coverage
+dx_pb = (
+    metadata_all[
+        "Dx"
+    ]
+    .value_counts()
+    .to_dict()
+)
+
+if dx_pb != {
+    "NTC": 132,
+    "SCZ": 144,
+}:
+    raise RuntimeError(
+        f"Unexpected diagnosis PB counts: {dx_pb}"
+    )
+
+
+print("23 donors × 12 cell types: PASS")
+print("Unique pseudobulk IDs: 276")
+print("NTC pseudobulks: 132")
+print("SCZ pseudobulks: 144")
+print("Original == ENVI measured: EXACT")
+
+
+# =============================================================================
+# GENE SOURCE INFORMATION
+# =============================================================================
+
+section("GENE INFORMATION")
+
+measured_set = set(
+    original_gene_order
+)
+
+gene_info = pd.DataFrame(
+    {
+        "gene": full_gene_order,
+    }
+)
+
+gene_info["expression_source"] = np.where(
+    gene_info["gene"].isin(
+        measured_set
+    ),
+    "measured_xenium",
+    "envi_imputed",
+)
+
+
+print(
+    gene_info[
+        "expression_source"
+    ]
+    .value_counts()
+)
+
+
+if (
+    gene_info[
+        "expression_source"
+    ]
+    == "measured_xenium"
+).sum() != 300:
+    raise RuntimeError(
+        "Expected 300 measured genes"
+    )
+
+if (
+    gene_info[
+        "expression_source"
+    ]
+    == "envi_imputed"
+).sum() != 34687:
+    raise RuntimeError(
+        "Expected 34,687 imputed genes"
+    )
+
+
+# =============================================================================
+# SAVE
+# =============================================================================
+
+section("SAVE")
+
+
+original_out = (
+    OUT
+    / "original_xenium_300gene_donor_celltype_pseudobulk.csv.gz"
+)
+
+measured_out = (
+    OUT
+    / "ENVI_measured300_donor_celltype_pseudobulk.csv.gz"
+)
+
+full_out = (
+    OUT
+    / "ENVI_full34987_donor_celltype_pseudobulk_countscale.csv.gz"
+)
+
+metadata_out = (
+    OUT
+    / "N23_donor_celltype_pseudobulk_metadata.csv"
+)
+
+gene_info_out = (
+    OUT
+    / "ENVI_full34987_gene_info.csv"
+)
+
+original_gene_out = (
+    OUT
+    / "original_xenium_300gene_order.txt"
+)
+
+full_gene_out = (
+    OUT
+    / "ENVI_full34987_gene_order.txt"
+)
+
+
+original_all.to_csv(
+    original_out,
+    compression="gzip",
+)
+
+measured_all.to_csv(
+    measured_out,
+    compression="gzip",
+)
+
+full_all.to_csv(
+    full_out,
+    compression="gzip",
+)
+
+metadata_all.to_csv(
+    metadata_out,
+    index=False,
+)
+
+gene_info.to_csv(
+    gene_info_out,
+    index=False,
+)
+
+original_gene_out.write_text(
+    "\n".join(
+        original_gene_order
+    )
+    + "\n"
+)
+
+full_gene_out.write_text(
+    "\n".join(
+        full_gene_order
+    )
+    + "\n"
+)
+
+
+print(original_out)
+print(measured_out)
+print(full_out)
+print(metadata_out)
+print(gene_info_out)
+
+
+# =============================================================================
+# FINAL
+# =============================================================================
+
+section("FINAL STATUS")
+
+print("Donors: 23")
+print("Cell types: 12")
+print("Pseudobulks: 276")
+
+print(
+    "Original Xenium:",
+    original_all.shape
+)
+
+print(
+    "ENVI measured:",
+    measured_all.shape
+)
+
+print(
+    "ENVI full:",
+    full_all.shape
+)
+
+print("Measured genes: 300")
+print("Imputed genes: 34687")
+print("Original == ENVI measured: EXACT")
+
+print(
+    "\nFINAL STATUS: "
+    "N23 CELL-TYPE PSEUDOBULK AGGREGATION PASS"
+)

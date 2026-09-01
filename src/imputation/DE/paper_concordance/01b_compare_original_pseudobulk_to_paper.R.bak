@@ -1,0 +1,1061 @@
+#!/usr/bin/env Rscript
+
+suppressPackageStartupMessages({
+    library(SingleCellExperiment)
+    library(SpatialExperiment)
+    library(SummarizedExperiment)
+    library(S4Vectors)
+})
+
+ROOT <- "/beegfs/labs/hulab/projects/mjabin/GeneBridge"
+
+PAPER_RDS <- file.path(
+    ROOT,
+    "data/reference/paper_xenium",
+    "spe_pseudo_donor_domain_spaTransfer_k50_smoothed_predictions.rds"
+)
+
+OUR_COUNTS <- file.path(
+    ROOT,
+    "outputs/imputation_full/DE/paper_concordance",
+    "original_layer_pseudobulk",
+    "original_xenium_300gene_donor_layer_pseudobulk_counts.csv.gz"
+)
+
+OUR_META <- file.path(
+    ROOT,
+    "outputs/imputation_full/DE/paper_concordance",
+    "original_layer_pseudobulk",
+    "original_xenium_300gene_donor_layer_pseudobulk_metadata.csv"
+)
+
+OUT <- file.path(
+    ROOT,
+    "outputs/imputation_full/DE/paper_concordance",
+    "original_layer_pseudobulk",
+    "paper_raw_comparison"
+)
+
+dir.create(
+    OUT,
+    recursive = TRUE,
+    showWarnings = FALSE
+)
+
+
+section <- function(title) {
+    cat("\n", strrep("=", 100), "\n", sep = "")
+    cat(title, "\n")
+    cat(strrep("=", 100), "\n", sep = "")
+}
+
+
+section("COMPARE PAPER vs GENEBRIDGE RAW DONOR × DOMAIN PSEUDOBULK")
+
+
+# =============================================================================
+# Check files
+# =============================================================================
+
+for (f in c(PAPER_RDS, OUR_COUNTS, OUR_META)) {
+    if (!file.exists(f)) {
+        stop("Missing file: ", f)
+    }
+}
+
+
+cat("Paper RDS:\n", PAPER_RDS, "\n\n", sep = "")
+cat("Our counts:\n", OUR_COUNTS, "\n\n", sep = "")
+cat("Our metadata:\n", OUR_META, "\n", sep = "")
+
+
+# =============================================================================
+# Load paper pseudobulk
+# =============================================================================
+
+section("LOAD PAPER PSEUDOBULK")
+
+paper <- readRDS(PAPER_RDS)
+
+cat("Paper object class:\n")
+print(class(paper))
+
+cat("\nPaper dimensions:\n")
+print(dim(paper))
+
+paper_counts <- as.matrix(
+    SummarizedExperiment::assay(
+        paper,
+        "counts"
+    )
+)
+
+paper_meta <- as.data.frame(
+    SummarizedExperiment::colData(
+        paper
+    )
+)
+
+paper_gene_meta <- as.data.frame(
+    SummarizedExperiment::rowData(
+        paper
+    )
+)
+
+
+cat(
+    "\nPaper raw count matrix:",
+    nrow(paper_counts),
+    "genes x",
+    ncol(paper_counts),
+    "pseudobulks\n"
+)
+
+cat("\nPaper colData columns:\n")
+print(colnames(paper_meta))
+
+cat("\nPaper rowData columns:\n")
+print(colnames(paper_gene_meta))
+
+
+# =============================================================================
+# Load our pseudobulk
+# =============================================================================
+
+section("LOAD GENEBRIDGE PSEUDOBULK")
+
+ours <- read.csv(
+    OUR_COUNTS,
+    row.names = 1,
+    check.names = FALSE
+)
+
+our_meta <- read.csv(
+    OUR_META,
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+)
+
+
+cat(
+    "Our raw count matrix:",
+    nrow(ours),
+    "pseudobulks x",
+    ncol(ours),
+    "genes\n"
+)
+
+cat(
+    "Our metadata:",
+    nrow(our_meta),
+    "rows\n"
+)
+
+
+if (!"pseudobulk_id" %in% colnames(our_meta)) {
+    stop("Our metadata lacks pseudobulk_id.")
+}
+
+if (!identical(
+    rownames(ours),
+    our_meta$pseudobulk_id
+)) {
+    stop(
+        "Our count matrix rows do not match metadata pseudobulk_id order."
+    )
+}
+
+
+# =============================================================================
+# Required metadata
+# =============================================================================
+
+paper_required <- c(
+    "BrNum",
+    "predictions_smooth"
+)
+
+our_required <- c(
+    "BrNum",
+    "predictions_smooth",
+    "layer_annotation",
+    "n_cells"
+)
+
+
+missing_paper <- setdiff(
+    paper_required,
+    colnames(paper_meta)
+)
+
+missing_ours <- setdiff(
+    our_required,
+    colnames(our_meta)
+)
+
+
+if (length(missing_paper) > 0) {
+    stop(
+        "Paper metadata missing: ",
+        paste(missing_paper, collapse = ", ")
+    )
+}
+
+if (length(missing_ours) > 0) {
+    stop(
+        "Our metadata missing: ",
+        paste(missing_ours, collapse = ", ")
+    )
+}
+
+
+# =============================================================================
+# Find paper gene symbols
+# =============================================================================
+
+section("ALIGN 300 GENES")
+
+gene_candidates <- c(
+    "Symbol",
+    "symbol",
+    "gene",
+    "gene_name"
+)
+
+gene_col <- gene_candidates[
+    gene_candidates %in% colnames(paper_gene_meta)
+]
+
+
+if (length(gene_col) > 0) {
+
+    gene_col <- gene_col[1]
+
+    paper_genes <- as.character(
+        paper_gene_meta[[gene_col]]
+    )
+
+    cat(
+        "Using paper rowData gene column:",
+        gene_col,
+        "\n"
+    )
+
+} else {
+
+    paper_genes <- rownames(paper)
+
+    cat(
+        "No symbol column identified; using paper rownames.\n"
+    )
+}
+
+
+if (anyDuplicated(paper_genes)) {
+    stop("Duplicated paper gene symbols detected.")
+}
+
+if (anyDuplicated(colnames(ours))) {
+    stop("Duplicated GeneBridge gene names detected.")
+}
+
+
+our_genes <- colnames(ours)
+
+shared_genes <- intersect(
+    our_genes,
+    paper_genes
+)
+
+
+cat("Paper genes     :", length(paper_genes), "\n")
+cat("GeneBridge genes:", length(our_genes), "\n")
+cat("Shared genes    :", length(shared_genes), "\n")
+
+
+paper_only_genes <- setdiff(
+    paper_genes,
+    our_genes
+)
+
+our_only_genes <- setdiff(
+    our_genes,
+    paper_genes
+)
+
+
+cat("Paper-only genes:", length(paper_only_genes), "\n")
+cat("Our-only genes  :", length(our_only_genes), "\n")
+
+
+if (length(shared_genes) != 300) {
+
+    if (length(paper_only_genes) > 0) {
+        cat(
+            "\nPaper-only genes:\n",
+            paste(paper_only_genes, collapse = ", "),
+            "\n"
+        )
+    }
+
+    if (length(our_only_genes) > 0) {
+        cat(
+            "\nOur-only genes:\n",
+            paste(our_only_genes, collapse = ", "),
+            "\n"
+        )
+    }
+
+    stop("Expected exactly 300 shared genes.")
+}
+
+
+# Align paper genes into exactly our gene order.
+
+paper_gene_index <- match(
+    our_genes,
+    paper_genes
+)
+
+stopifnot(
+    !any(is.na(paper_gene_index))
+)
+
+
+paper_counts <- paper_counts[
+    paper_gene_index,
+    ,
+    drop = FALSE
+]
+
+rownames(paper_counts) <- our_genes
+
+
+# =============================================================================
+# Subset paper to GeneBridge 23 donors
+# =============================================================================
+
+section("SUBSET PAPER N24 → GENEBRIDGE N23")
+
+our_donors <- unique(
+    as.character(
+        our_meta$BrNum
+    )
+)
+
+paper_donors_all <- unique(
+    as.character(
+        paper_meta$BrNum
+    )
+)
+
+
+cat("Paper donors total     :", length(paper_donors_all), "\n")
+cat("GeneBridge donors      :", length(our_donors), "\n")
+
+
+paper_only_donors <- setdiff(
+    paper_donors_all,
+    our_donors
+)
+
+cat(
+    "Paper donors excluded from N23 comparison:",
+    paste(paper_only_donors, collapse = ", "),
+    "\n"
+)
+
+
+keep_paper_samples <- (
+    as.character(paper_meta$BrNum)
+    %in%
+    our_donors
+)
+
+paper_counts_23 <- paper_counts[
+    ,
+    keep_paper_samples,
+    drop = FALSE
+]
+
+paper_meta_23 <- paper_meta[
+    keep_paper_samples,
+    ,
+    drop = FALSE
+]
+
+
+cat(
+    "Paper pseudobulks after N23 subset:",
+    ncol(paper_counts_23),
+    "\n"
+)
+
+cat(
+    "Our pseudobulks:",
+    nrow(ours),
+    "\n"
+)
+
+
+# =============================================================================
+# Create canonical sample keys
+# =============================================================================
+
+section("ALIGN DONOR × SPATIAL DOMAIN")
+
+
+paper_key <- paste(
+    as.character(paper_meta_23$BrNum),
+    as.character(paper_meta_23$predictions_smooth),
+    sep = "::"
+)
+
+our_key <- paste(
+    as.character(our_meta$BrNum),
+    as.character(our_meta$predictions_smooth),
+    sep = "::"
+)
+
+
+if (anyDuplicated(paper_key)) {
+    stop("Duplicated paper donor-domain keys.")
+}
+
+if (anyDuplicated(our_key)) {
+    stop("Duplicated GeneBridge donor-domain keys.")
+}
+
+
+paper_only_keys <- setdiff(
+    paper_key,
+    our_key
+)
+
+our_only_keys <- setdiff(
+    our_key,
+    paper_key
+)
+
+
+cat("Paper N23 donor-domain keys:", length(paper_key), "\n")
+cat("Our donor-domain keys      :", length(our_key), "\n")
+
+cat("Paper-only keys:", length(paper_only_keys), "\n")
+cat("Our-only keys  :", length(our_only_keys), "\n")
+
+
+if (length(paper_only_keys) > 0) {
+    cat(
+        "\nPaper-only sample keys:\n",
+        paste(paper_only_keys, collapse = "\n"),
+        "\n"
+    )
+}
+
+if (length(our_only_keys) > 0) {
+    cat(
+        "\nOur-only sample keys:\n",
+        paste(our_only_keys, collapse = "\n"),
+        "\n"
+    )
+}
+
+
+if (
+    length(paper_only_keys) > 0 ||
+    length(our_only_keys) > 0
+) {
+    stop("Donor-domain sample universe does not match.")
+}
+
+
+# Reorder paper samples to exact GeneBridge order.
+
+paper_sample_index <- match(
+    our_key,
+    paper_key
+)
+
+stopifnot(
+    !any(is.na(paper_sample_index))
+)
+
+
+paper_counts_aligned <- paper_counts_23[
+    ,
+    paper_sample_index,
+    drop = FALSE
+]
+
+paper_meta_aligned <- paper_meta_23[
+    paper_sample_index,
+    ,
+    drop = FALSE
+]
+
+
+# Convert paper to samples × genes, exactly like ours.
+
+paper_matrix <- t(
+    paper_counts_aligned
+)
+
+colnames(paper_matrix) <- our_genes
+rownames(paper_matrix) <- rownames(ours)
+
+
+our_matrix <- as.matrix(
+    ours[
+        ,
+        our_genes,
+        drop = FALSE
+    ]
+)
+
+
+storage.mode(paper_matrix) <- "double"
+storage.mode(our_matrix) <- "double"
+
+
+stopifnot(
+    identical(
+        dim(paper_matrix),
+        dim(our_matrix)
+    )
+)
+
+
+# =============================================================================
+# Compare spatial labels
+# =============================================================================
+
+section("COMPARE SPATIAL LABELS")
+
+label_compare <- data.frame(
+    pseudobulk_id = our_meta$pseudobulk_id,
+    BrNum = our_meta$BrNum,
+    paper_predictions_smooth =
+        as.character(
+            paper_meta_aligned$predictions_smooth
+        ),
+    our_predictions_smooth =
+        as.character(
+            our_meta$predictions_smooth
+        ),
+    our_layer_annotation =
+        as.character(
+            our_meta$layer_annotation
+        ),
+    stringsAsFactors = FALSE
+)
+
+
+label_compare$prediction_match <- (
+    label_compare$paper_predictions_smooth
+    ==
+    label_compare$our_predictions_smooth
+)
+
+
+cat(
+    "Spatial-domain labels identical:",
+    all(label_compare$prediction_match),
+    "\n"
+)
+
+
+# =============================================================================
+# Compare number of cells
+# =============================================================================
+
+section("COMPARE NUMBER OF CELLS PER PSEUDOBULK")
+
+paper_ncells_col <- NULL
+
+for (candidate in c("ncells", "n_cells")) {
+
+    if (candidate %in% colnames(paper_meta_aligned)) {
+        paper_ncells_col <- candidate
+        break
+    }
+}
+
+
+if (!is.null(paper_ncells_col)) {
+
+    paper_ncells <- as.numeric(
+        paper_meta_aligned[[paper_ncells_col]]
+    )
+
+    our_ncells <- as.numeric(
+        our_meta$n_cells
+    )
+
+    ncells_match <- (
+        paper_ncells == our_ncells
+    )
+
+    ncells_compare <- data.frame(
+        pseudobulk_id =
+            our_meta$pseudobulk_id,
+        BrNum =
+            our_meta$BrNum,
+        predictions_smooth =
+            our_meta$predictions_smooth,
+        layer_annotation =
+            our_meta$layer_annotation,
+        paper_ncells =
+            paper_ncells,
+        our_ncells =
+            our_ncells,
+        difference =
+            our_ncells - paper_ncells,
+        exact_match =
+            ncells_match
+    )
+
+
+    cat(
+        "Paper ncells column:",
+        paper_ncells_col,
+        "\n"
+    )
+
+    cat(
+        "Exact n_cells matches:",
+        sum(ncells_match),
+        "/",
+        length(ncells_match),
+        "\n"
+    )
+
+    cat(
+        "All donor-domain n_cells identical:",
+        all(ncells_match),
+        "\n"
+    )
+
+
+    write.csv(
+        ncells_compare,
+        file.path(
+            OUT,
+            "paper_vs_genebridge_ncells.csv"
+        ),
+        row.names = FALSE
+    )
+
+} else {
+
+    warning(
+        "Could not find ncells column in paper pseudobulk metadata."
+    )
+
+    ncells_match <- rep(
+        NA,
+        nrow(ours)
+    )
+}
+
+
+# =============================================================================
+# RAW COUNT COMPARISON
+# =============================================================================
+
+section("COMPARE RAW PSEUDOBULK COUNTS")
+
+
+difference <- (
+    our_matrix
+    -
+    paper_matrix
+)
+
+
+exact_matrix <- (
+    difference == 0
+)
+
+
+n_total <- length(
+    difference
+)
+
+n_exact <- sum(
+    exact_matrix
+)
+
+n_mismatch <- n_total - n_exact
+
+
+cat(
+    "Entries compared:",
+    n_total,
+    "\n"
+)
+
+cat(
+    "Exact entries:",
+    n_exact,
+    "\n"
+)
+
+cat(
+    "Mismatched entries:",
+    n_mismatch,
+    "\n"
+)
+
+cat(
+    "Exact fraction:",
+    sprintf(
+        "%.8f",
+        n_exact / n_total
+    ),
+    "\n"
+)
+
+cat(
+    "Maximum absolute count difference:",
+    max(abs(difference)),
+    "\n"
+)
+
+cat(
+    "Total absolute count difference:",
+    sum(abs(difference)),
+    "\n"
+)
+
+
+raw_counts_identical <- (
+    n_mismatch == 0
+)
+
+
+cat(
+    "\nRAW COUNTS IDENTICAL:",
+    raw_counts_identical,
+    "\n"
+)
+
+
+# =============================================================================
+# Per-pseudobulk diagnostics
+# =============================================================================
+
+paper_totals <- rowSums(
+    paper_matrix
+)
+
+our_totals <- rowSums(
+    our_matrix
+)
+
+
+sample_summary <- data.frame(
+    pseudobulk_id =
+        our_meta$pseudobulk_id,
+
+    BrNum =
+        our_meta$BrNum,
+
+    predictions_smooth =
+        our_meta$predictions_smooth,
+
+    layer_annotation =
+        our_meta$layer_annotation,
+
+    paper_total_counts =
+        paper_totals,
+
+    our_total_counts =
+        our_totals,
+
+    total_difference =
+        our_totals - paper_totals,
+
+    n_gene_mismatches =
+        rowSums(!exact_matrix),
+
+    max_abs_gene_difference =
+        apply(
+            abs(difference),
+            1,
+            max
+        ),
+
+    exact_match =
+        rowSums(!exact_matrix) == 0,
+
+    stringsAsFactors = FALSE
+)
+
+
+write.csv(
+    sample_summary,
+    file.path(
+        OUT,
+        "paper_vs_genebridge_per_pseudobulk_summary.csv"
+    ),
+    row.names = FALSE
+)
+
+
+# =============================================================================
+# Per-gene diagnostics
+# =============================================================================
+
+gene_summary <- data.frame(
+    gene =
+        our_genes,
+
+    paper_total =
+        colSums(paper_matrix),
+
+    our_total =
+        colSums(our_matrix),
+
+    total_difference =
+        colSums(our_matrix)
+        -
+        colSums(paper_matrix),
+
+    n_sample_mismatches =
+        colSums(!exact_matrix),
+
+    max_abs_sample_difference =
+        apply(
+            abs(difference),
+            2,
+            max
+        ),
+
+    exact_match =
+        colSums(!exact_matrix) == 0,
+
+    stringsAsFactors = FALSE
+)
+
+
+write.csv(
+    gene_summary,
+    file.path(
+        OUT,
+        "paper_vs_genebridge_per_gene_summary.csv"
+    ),
+    row.names = FALSE
+)
+
+
+# =============================================================================
+# Long mismatch table
+# =============================================================================
+
+if (n_mismatch > 0) {
+
+    idx <- which(
+        !exact_matrix,
+        arr.ind = TRUE
+    )
+
+
+    mismatch_table <- data.frame(
+        pseudobulk_id =
+            rownames(our_matrix)[
+                idx[, 1]
+            ],
+
+        gene =
+            colnames(our_matrix)[
+                idx[, 2]
+            ],
+
+        paper_count =
+            paper_matrix[idx],
+
+        our_count =
+            our_matrix[idx],
+
+        difference =
+            difference[idx],
+
+        stringsAsFactors = FALSE
+    )
+
+
+    write.csv(
+        mismatch_table,
+        file.path(
+            OUT,
+            "paper_vs_genebridge_raw_count_mismatches.csv.gz"
+        ),
+        row.names = FALSE
+    )
+
+}
+
+
+# =============================================================================
+# Correlation for diagnostic purposes
+# =============================================================================
+
+flat_paper <- as.vector(
+    paper_matrix
+)
+
+flat_ours <- as.vector(
+    our_matrix
+)
+
+
+pearson_counts <- suppressWarnings(
+    cor(
+        flat_paper,
+        flat_ours,
+        method = "pearson"
+    )
+)
+
+
+spearman_counts <- suppressWarnings(
+    cor(
+        flat_paper,
+        flat_ours,
+        method = "spearman"
+    )
+)
+
+
+# =============================================================================
+# Final summary
+# =============================================================================
+
+section("FINAL SUMMARY")
+
+
+summary_df <- data.frame(
+    paper_donors_total =
+        length(paper_donors_all),
+
+    compared_donors =
+        length(our_donors),
+
+    paper_excluded_donors =
+        paste(
+            paper_only_donors,
+            collapse = ";"
+        ),
+
+    compared_domains =
+        length(
+            unique(
+                our_meta$predictions_smooth
+            )
+        ),
+
+    compared_pseudobulks =
+        nrow(our_matrix),
+
+    compared_genes =
+        ncol(our_matrix),
+
+    compared_entries =
+        n_total,
+
+    exact_count_entries =
+        n_exact,
+
+    mismatched_count_entries =
+        n_mismatch,
+
+    exact_count_fraction =
+        n_exact / n_total,
+
+    max_abs_count_difference =
+        max(abs(difference)),
+
+    total_abs_count_difference =
+        sum(abs(difference)),
+
+    pearson_raw_counts =
+        pearson_counts,
+
+    spearman_raw_counts =
+        spearman_counts,
+
+    raw_counts_identical =
+        raw_counts_identical,
+
+    spatial_labels_identical =
+        all(
+            label_compare$prediction_match
+        ),
+
+    ncells_identical =
+        if (
+            all(is.na(ncells_match))
+        ) {
+            NA
+        } else {
+            all(ncells_match)
+        }
+)
+
+
+print(
+    summary_df,
+    row.names = FALSE
+)
+
+
+write.csv(
+    summary_df,
+    file.path(
+        OUT,
+        "paper_vs_genebridge_raw_pseudobulk_summary.csv"
+    ),
+    row.names = FALSE
+)
+
+
+if (
+    isTRUE(raw_counts_identical) &&
+    isTRUE(
+        all(
+            label_compare$prediction_match
+        )
+    ) &&
+    (
+        all(is.na(ncells_match)) ||
+        isTRUE(all(ncells_match))
+    )
+) {
+
+    cat(
+        "\nFINAL STATUS: PASS — "
+    )
+
+    cat(
+        "GeneBridge N23 raw donor-domain pseudobulk "
+    )
+
+    cat(
+        "exactly matches the paper N23 subset.\n"
+    )
+
+} else {
+
+    cat(
+        "\nFINAL STATUS: MISMATCH — "
+    )
+
+    cat(
+        "GeneBridge pseudobulk differs from the paper. "
+    )
+
+    cat(
+        "Inspect diagnostic CSV files before DE analysis.\n"
+    )
+}

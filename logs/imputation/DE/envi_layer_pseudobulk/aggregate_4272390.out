@@ -1,0 +1,69 @@
+====================================================================================================
+AGGREGATE 23 PARALLEL ENVI DONOR × LAYER RESULTS
+====================================================================================================
+[01/23] Br2039
+[02/23] Br2719
+    reordering full genes to canonical order
+[03/23] Br1113
+    reordering full genes to canonical order
+[04/23] Br5373
+    reordering full genes to canonical order
+[05/23] Br5590
+    reordering full genes to canonical order
+[06/23] Br5400
+    reordering full genes to canonical order
+[07/23] Br5622
+    reordering full genes to canonical order
+[08/23] Br6437
+    reordering full genes to canonical order
+[09/23] Br5314
+    reordering full genes to canonical order
+[10/23] Br5588
+    reordering full genes to canonical order
+[11/23] Br5746
+    reordering full genes to canonical order
+[12/23] Br5639
+    reordering full genes to canonical order
+[13/23] Br8433
+    reordering full genes to canonical order
+[14/23] Br8772
+    reordering full genes to canonical order
+[15/23] Br1139
+    reordering full genes to canonical order
+[16/23] Br5973
+    reordering full genes to canonical order
+[17/23] Br8667
+    reordering full genes to canonical order
+[18/23] Br5436
+    reordering full genes to canonical order
+[19/23] Br5931
+    reordering full genes to canonical order
+[20/23] Br6496
+    reordering full genes to canonical order
+[21/23] Br2421
+    reordering full genes to canonical order
+[22/23] Br6032
+    reordering full genes to canonical order
+[23/23] Br6389
+    reordering full genes to canonical order
+
+====================================================================================================
+FINAL SUMMARY
+====================================================================================================
+Donors: 23
+Layers: 7
+Pseudobulk samples: 161
+Measured matrix: (161, 300)
+Full matrix: (161, 34987)
+ENVI-imputed genes: 34687
+Minimum donor-layer cells: 743
+Maximum donor-layer cells: 26781
+Excluded cells: 3
+All measured donor validations: True
+All full donor validations: True
+
+Original and ENVI pseudobulk IDs: IDENTICAL
+Original and ENVI donor/layer cell counts: IDENTICAL
+Original and ENVI covariates: IDENTICAL
+
+FINAL STATUS: PASS — 23 parallel donor outputs successfully aggregated.

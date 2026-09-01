@@ -1,0 +1,115 @@
+==========================================
+Dataset     : envi_measured
+Job ID      : 4272422
+Array task  : 2
+Node        : node06.hgcc.emory.edu
+CPUs        : 16
+Memory      : 200G
+==========================================
+====================================================================================================
+PAPER-MATCHED XENIUM LAYER-ADJUSTED SCZ DE
+====================================================================================================
+Dataset: envi_measured 
+Counts : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/envi_layer_pseudobulk/ENVI_measured300_donor_layer_pseudobulk.csv.gz 
+Meta   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/envi_layer_pseudobulk/ENVI_donor_layer_pseudobulk_metadata.csv 
+
+Raw pseudobulk shape:
+samples = 161 
+genes   = 300 
+
+Diagnosis by donor:
+
+NTC SCZ 
+ 11  12 
+
+Spatial-domain samples:
+
+spd01 spd02 spd03 spd04 spd05 spd06 spd07 
+   23    23    23    23    23    23    23 
+
+====================================================================================================
+FILTER LOWLY EXPRESSED GENES
+====================================================================================================
+Genes before filterByExpr: 300 
+Genes retained: 300 
+Genes removed: 0 
+
+====================================================================================================
+TMM + LOG2-CPM NORMALIZATION
+====================================================================================================
+Normalized matrix: 300 genes × 161 pseudobulks
+
+====================================================================================================
+BUILD PAPER-MATCHED MODEL
+====================================================================================================
+
+Model matrix dimensions:
+[1] 161  17
+
+Model columns:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd02"           "predictions_smoothspd03"          
+ [5] "predictions_smoothspd04"           "predictions_smoothspd05"          
+ [7] "predictions_smoothspd06"           "predictions_smoothspd07"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Model rank: 17 / 17 
+
+====================================================================================================
+ESTIMATE WITHIN-DONOR BLOCK CORRELATION
+====================================================================================================
+
+Estimated donor block correlation: 0.6090113 
+
+====================================================================================================
+RUN SCZ DIFFERENTIAL EXPRESSION
+====================================================================================================
+
+====================================================================================================
+FINAL SUMMARY
+====================================================================================================
+       dataset donors donor_layer_samples genes_input genes_after_filterByExpr
+ envi_measured     23                 161         300                      300
+ block_correlation nominal_p05 fdr_lt_010 fdr_lt_005 up_fdr010 down_fdr010
+         0.6090113          53          9          2         4           5
+
+Top 20 genes by FDR:
+     gene  logFC_SCZ t_stat_SCZ  p_value_SCZ     fdr_SCZ
+    XRRA1 -0.3900011  -4.548792 1.113626e-05 0.003340878
+ SERPINA3  1.2604385   4.029458 8.900261e-05 0.013350392
+    FKBP5  0.5202427   3.426028 7.924722e-04 0.079247221
+    GSTM5  0.6123699   3.316976 1.144383e-03 0.085828751
+     ANLN -0.5536185  -3.161544 1.903082e-03 0.095154080
+   IFITM3 -0.6565319  -3.179407 1.796675e-03 0.095154080
+   CHI3L1  0.7612605   3.027740 2.906251e-03 0.096875030
+   RNASE1 -0.4975162  -3.034952 2.841658e-03 0.096875030
+  TNFSF10 -0.5732105  -3.050789 2.704434e-03 0.096875030
+    ENPP2 -0.5414378  -2.890136 4.428865e-03 0.110484171
+    EVI2A -0.5279786  -2.900161 4.297102e-03 0.110484171
+  SLC44A1 -0.4448705  -2.879082 4.578451e-03 0.110484171
+     UGT8 -0.5130893  -2.864163 4.787647e-03 0.110484171
+     KLF2 -0.4236724  -2.808011 5.655768e-03 0.121195038
+    ABCG2 -0.4437039  -2.713720 7.441092e-03 0.139520483
+    NPTX2 -0.4832406  -2.735571 6.987019e-03 0.139520483
+     SCG3 -0.2958381  -2.552190 1.171572e-02 0.206748074
+    RPS26 -0.2585761  -2.515707 1.294392e-02 0.215732059
+     PLP1 -0.4500479  -2.488918 1.391772e-02 0.219753536
+      A2M -0.3086559  -2.155799 3.271144e-02 0.238075111
+
+FDR < 0.10 genes:
+     gene  logFC_SCZ  p_value_SCZ     fdr_SCZ
+    XRRA1 -0.3900011 1.113626e-05 0.003340878
+ SERPINA3  1.2604385 8.900261e-05 0.013350392
+    FKBP5  0.5202427 7.924722e-04 0.079247221
+    GSTM5  0.6123699 1.144383e-03 0.085828751
+     ANLN -0.5536185 1.903082e-03 0.095154080
+   IFITM3 -0.6565319 1.796675e-03 0.095154080
+   CHI3L1  0.7612605 2.906251e-03 0.096875030
+   RNASE1 -0.4975162 2.841658e-03 0.096875030
+  TNFSF10 -0.5732105 2.704434e-03 0.096875030
+
+FINAL STATUS: PASS — envi_measured paper-matched layer-adjusted SCZ DE completed.

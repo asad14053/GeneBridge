@@ -11,7 +11,7 @@ from scipy import sparse, stats
 ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 MANIFEST = ROOT / "data/metadata/envi_production_23donors.tsv"
-META = ROOT / "data/metadata/xenium_DE_metadata_23.csv"
+META = ROOT / "data/metadata/patient_xenium_visium_24_common_with_dx.csv"
 
 OUT = ROOT / "outputs/imputation_full/DE/after_imputation_measured300"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -395,168 +395,71 @@ pb.to_csv(
 
 # =============================================================================
 # Metadata for DE
-#
-# Canonical 23-donor metadata containing exact PI slide/run information.
 # =============================================================================
 
 meta = pd.read_csv(META)
 
-required_meta = {
-    "BrNum",
-    "Dx",
-    "Age",
-    "Sex",
-    "slide_id",
-    "run_date",
-}
+patient_col = (
+    "patient_id"
+    if "patient_id" in meta.columns
+    else "BrNum"
+)
 
-missing_meta = required_meta - set(meta.columns)
+age_col = (
+    "AGE"
+    if "AGE" in meta.columns
+    else "Age"
+)
 
-if missing_meta:
-    raise RuntimeError(
-        "Canonical metadata missing columns: "
-        f"{sorted(missing_meta)}"
-    )
+sex_col = (
+    "SEX"
+    if "SEX" in meta.columns
+    else "Sex"
+)
 
+meta[patient_col] = (
+    meta[patient_col]
+    .astype(str)
+    .str.strip()
+)
 
-meta = meta[
-    [
-        "BrNum",
-        "Dx",
-        "Age",
-        "Sex",
-        "slide_id",
-        "run_date",
-    ]
+meta = meta.set_index(
+    patient_col
+)
+
+donor_meta = manifest[
+    ["donor", "Dx"]
 ].copy()
 
+donor_meta["Age"] = [
+    meta.loc[d, age_col]
+    for d in donor_meta["donor"]
+]
 
-meta = meta.rename(
-    columns={
-        "BrNum": "donor",
-    }
-)
+donor_meta["Sex"] = [
+    meta.loc[d, sex_col]
+    for d in donor_meta["donor"]
+]
 
-
-meta["donor"] = (
-    meta["donor"]
-    .astype(str)
-    .str.strip()
-)
-
-meta["Dx"] = (
-    meta["Dx"]
-    .astype(str)
-    .str.strip()
-    .str.upper()
-)
-
-meta["Sex"] = (
-    meta["Sex"]
-    .astype(str)
-    .str.strip()
-    .str.upper()
-)
-
-meta["Age"] = pd.to_numeric(
-    meta["Age"],
+donor_meta["Age"] = pd.to_numeric(
+    donor_meta["Age"],
     errors="coerce",
 )
 
-
-if len(meta) != 23 or meta["donor"].nunique() != 23:
-    raise RuntimeError(
-        "Canonical metadata must contain exactly 23 unique donors."
-    )
-
-
-if "Br6432" in set(meta["donor"]):
-    raise RuntimeError(
-        "Br6432 must not be present in canonical DE metadata."
-    )
-
-
-manifest_meta = (
-    manifest[
-        ["donor", "Dx"]
-    ]
-    .rename(
-        columns={
-            "Dx": "manifest_Dx"
-        }
-    )
+donor_meta["Sex"] = (
+    donor_meta["Sex"]
+    .astype(str)
+    .str.strip()
+    .str.upper()
 )
 
-
-donor_meta = manifest_meta.merge(
-    meta,
-    on="donor",
-    how="left",
-    validate="one_to_one",
-)
-
-
-if donor_meta[
-    [
-        "Dx",
-        "Age",
-        "Sex",
-        "slide_id",
-        "run_date",
-    ]
-].isna().any().any():
-
+if donor_meta["Age"].isna().any():
     raise RuntimeError(
-        "Missing canonical metadata after manifest merge:\n"
-        + donor_meta[
-            donor_meta[
-                [
-                    "Dx",
-                    "Age",
-                    "Sex",
-                    "slide_id",
-                    "run_date",
-                ]
-            ]
-            .isna()
-            .any(axis=1)
-        ].to_string(index=False)
-    )
-
-
-dx_mismatch = (
-    donor_meta["manifest_Dx"]
-    != donor_meta["Dx"]
-)
-
-if dx_mismatch.any():
-    raise RuntimeError(
-        "Diagnosis mismatch between ENVI manifest and "
-        "canonical metadata:\n"
+        "Missing Age values:\n"
         + donor_meta.loc[
-            dx_mismatch,
-            ["donor", "manifest_Dx", "Dx"]
+            donor_meta["Age"].isna()
         ].to_string(index=False)
     )
-
-
-donor_meta = donor_meta[
-    [
-        "donor",
-        "Dx",
-        "Age",
-        "Sex",
-        "slide_id",
-        "run_date",
-    ]
-].copy()
-
-
-assert (donor_meta["Dx"] == "NTC").sum() == 11
-assert (donor_meta["Dx"] == "SCZ").sum() == 12
-assert donor_meta["slide_id"].nunique() == 8
-assert donor_meta["run_date"].nunique() == 4
-
 
 donor_meta.to_csv(
     OUT / "after_ENVI_measured300_donor_metadata.csv",
@@ -601,12 +504,7 @@ pd.DataFrame(
 
 
 # =============================================================================
-# PI-compatible donor-level model:
-#
-# expression ~ Dx + Age + Sex + slide_id
-#
-# run_date is retained for provenance/QC but is not included in the
-# statistical model because it is redundant with slide_id.
+# expression ~ Dx + Age + Sex
 # =============================================================================
 
 dx = (
@@ -616,9 +514,8 @@ dx = (
     .to_numpy()
 )
 
-age = (
-    donor_meta["Age"]
-    .to_numpy(dtype=float)
+age = donor_meta["Age"].to_numpy(
+    dtype=float
 )
 
 age = age - age.mean()
@@ -630,79 +527,27 @@ sex_m = (
     .to_numpy()
 )
 
-
-slide_levels = sorted(
-    donor_meta["slide_id"]
-    .astype(str)
-    .unique()
-)
-
-slide_reference = slide_levels[0]
-
-slide_factor = pd.Categorical(
-    donor_meta["slide_id"].astype(str),
-    categories=slide_levels,
-)
-
-slide_dummies = pd.get_dummies(
-    slide_factor,
-    prefix="slide",
-    drop_first=True,
-    dtype=float,
-)
-
-
-if slide_dummies.shape[1] != 7:
-    raise RuntimeError(
-        f"Expected 7 slide dummy variables, "
-        f"found {slide_dummies.shape[1]}."
-    )
-
-
-X = np.column_stack(
-    [
-        np.ones(len(donor_meta)),
-        dx,
-        age,
-        sex_m,
-        slide_dummies.to_numpy(dtype=float),
-    ]
-)
-
-
-design_columns = [
-    "Intercept",
-    "Dx_SCZ",
-    "Age_centered",
-    "Sex_M",
-] + slide_dummies.columns.tolist()
-
+X = np.column_stack([
+    np.ones(len(donor_meta)),
+    dx,
+    age,
+    sex_m,
+])
 
 design = pd.DataFrame(
     X,
     index=donor_meta["donor"],
-    columns=design_columns,
+    columns=[
+        "Intercept",
+        "Dx_SCZ",
+        "Age_centered",
+        "Sex_M",
+    ],
 )
-
 
 design.to_csv(
     OUT / "after_ENVI_measured300_design_matrix.csv"
 )
-
-
-print("\nPI-compatible AFTER-ENVI design:")
-print("  Model: expression ~ Dx + Age + Sex + slide_id")
-print("  Slide reference:", slide_reference)
-print("  Donors:", len(donor_meta))
-print("  Slides:", len(slide_levels))
-print("  Design columns:", X.shape[1])
-print("  Design rank:", np.linalg.matrix_rank(X))
-
-
-if np.linalg.matrix_rank(X) != X.shape[1]:
-    raise RuntimeError(
-        "AFTER-ENVI DE design matrix is rank deficient."
-    )
 
 
 rank = np.linalg.matrix_rank(X)

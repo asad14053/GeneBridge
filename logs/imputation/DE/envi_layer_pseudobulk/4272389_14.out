@@ -1,0 +1,50 @@
+==========================================
+Job ID      : 4272404
+Array task  : 14
+Node        : node12.hgcc.emory.edu
+CPUs        : 16
+Memory      : 200G
+==========================================
+====================================================================================================
+ENVI PAPER-CONCORDANCE DONOR × LAYER PSEUDOBULK
+====================================================================================================
+Array index: 14
+Donor: Br8772
+Dx: SCZ
+Experiment: ex2_scz
+
+Loading cell annotations...
+Annotated donor cells: 54456
+Target cells: 54456
+Target-only unannotated: 0
+Annotated-only: 0
+
+Aggregating cells...
+cells 512/54,456
+cells 10,752/54,456
+cells 20,992/54,456
+cells 31,232/54,456
+cells 41,472/54,456
+cells 51,712/54,456
+cells 54,456/54,456
+
+Layer counts:
+L1/M: 8,838
+L2/3: 10,179
+L3/4: 1,727
+L5  : 19,851
+L6  : 5,084
+WMtz: 1,349
+WM  : 7,428
+
+====================================================================================================
+FINAL SUMMARY
+====================================================================================================
+Donor: Br8772
+Measured matrix: (7, 300)
+Full matrix: (7, 34987)
+Excluded cells: 0
+Measured layer sum validation: PASS
+Full layer sum validation: PASS
+
+FINAL STATUS: PASS — Br8772

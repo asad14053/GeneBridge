@@ -1,0 +1,18 @@
+==========================================
+Dataset     : envi_measured
+Job ID      : 4272419
+Array task  : 2
+Node        : node06.hgcc.emory.edu
+CPUs        : 16
+Memory      : 200G
+==========================================
+====================================================================================================
+PAPER-MATCHED XENIUM LAYER-ADJUSTED SCZ DE
+====================================================================================================
+Dataset: envi_measured 
+Counts : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/envi_layer_pseudobulk/ENVI_measured300_donor_layer_pseudobulk.csv.gz 
+Meta   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/paper_concordance/envi_layer_pseudobulk/ENVI_donor_layer_pseudobulk_metadata.csv 
+
+Raw pseudobulk shape:
+samples = 161 
+genes   = 300 

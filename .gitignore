@@ -68,6 +68,7 @@ outputs
 outputs/
 outputs_HOME_BACKUP/
 data_HOME_BACKUP/
+backups/
 
 # VISTA generated install/build artifacts
 src/imputation/VISTA/build/

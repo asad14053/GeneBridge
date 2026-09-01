@@ -175,14 +175,6 @@ BANKSY_TO_CELLTYPE_MARKER_HEATMAP = {
     "9": "CGE",
 }
 
-# Exact mapping used in:
-# code/analysis/07_cell_type_de/01_create_cell_type_pseudobulk_spe.R
-BANKSY_TO_CELLTYPE_PAPER_CELLTYPE_DE = {
-    **BANKSY_TO_CELLTYPE_PLOT_CLUSTERS,
-    "12": "In: VIP, LAMP5",
-    "9": "In: SST, PVALB",
-}
-
 # This is the earlier exploratory subtype naming.
 BANKSY_TO_CELLTYPE_EXPLORE_SUBTYPES = {
     **BANKSY_TO_CELLTYPE_PLOT_CLUSTERS,
@@ -195,8 +187,6 @@ CELLTYPE_ORDER = [
     "L4/5 Ex",
     "L5 Ex",
     "L6 Ex",
-    "In: VIP, LAMP5",
-    "In: SST, PVALB",
     "MGE",
     "CGE",
     "In: VIP+, LAMP5",
@@ -216,8 +206,6 @@ CELLTYPE_COLORS = {
     "L4/5 Ex": "#aec7e8",
     "L5 Ex": "#2ca02c",
     "L6 Ex": "#d62728",
-    "In: VIP, LAMP5": "#ffbb78",
-    "In: SST, PVALB": "#c5b0d5",
     "MGE": "#9467bd",
     "CGE": "#ff7f0e",
     "In: VIP+, LAMP5": "#ffbb78",
@@ -344,9 +332,6 @@ def get_mapping(inhibitory_mode: str) -> dict[str, str]:
 
     if inhibitory_mode == "marker_heatmap":
         return BANKSY_TO_CELLTYPE_MARKER_HEATMAP
-
-    if inhibitory_mode == "paper_celltype_de":
-        return BANKSY_TO_CELLTYPE_PAPER_CELLTYPE_DE
 
     if inhibitory_mode == "explore_subtypes":
         return BANKSY_TO_CELLTYPE_EXPLORE_SUBTYPES
@@ -1188,13 +1173,8 @@ def main() -> None:
 
     parser.add_argument(
         "--inhibitory-mode",
-        default="paper_celltype_de",
-        choices=[
-            "paper_celltype_de",
-            "plot_clusters",
-            "marker_heatmap",
-            "explore_subtypes",
-        ],
+        default="plot_clusters",
+        choices=["plot_clusters", "marker_heatmap", "explore_subtypes"],
         help=(
             "How to map BANKSY clusters 9 and 12. "
             "plot_clusters: 12=CGE, 9=MGE. "

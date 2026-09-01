@@ -11,7 +11,7 @@ ROOT = Path("/beegfs/labs/hulab/projects/mjabin/GeneBridge")
 
 META = (
     ROOT
-    / "data/metadata/xenium_DE_metadata_23.csv"
+    / "data/metadata/patient_xenium_visium_24_common_with_dx.csv"
 )
 
 EX1_DIR = (
@@ -523,126 +523,13 @@ pd.DataFrame(
 # ============================================================
 # Design matrix:
 #
-# PI-compatible donor-level model:
-#
-# expression ~ Dx + Age + Sex + slide_id
-#
-# run_date is retained in canonical metadata for provenance/QC,
-# but is NOT included because it is nested/redundant with slide_id.
+# expression ~ Dx + Age + Sex
 #
 # NTC = reference
 # SCZ coefficient = adjusted SCZ-vs-NTC log2FC
 # ============================================================
 
 section("BUILD DE DESIGN MATRIX")
-
-
-# Add exact PI slide metadata to donor table.
-required_meta_cols = {
-    "patient_id",
-    "Dx",
-    "Age",
-    "Sex",
-    "slide_id",
-    "run_date",
-}
-
-missing_meta_cols = required_meta_cols - set(meta.columns)
-
-if missing_meta_cols:
-    raise RuntimeError(
-        "Canonical DE metadata missing columns: "
-        f"{sorted(missing_meta_cols)}"
-    )
-
-
-slide_lookup = (
-    meta
-    .set_index("patient_id")["slide_id"]
-)
-
-run_lookup = (
-    meta
-    .set_index("patient_id")["run_date"]
-)
-
-donors["slide_id"] = (
-    donors["patient_id"]
-    .map(slide_lookup)
-)
-
-donors["run_date"] = (
-    donors["patient_id"]
-    .map(run_lookup)
-)
-
-
-if donors["slide_id"].isna().any():
-    raise RuntimeError(
-        "Missing slide_id for donors:\n"
-        + donors.loc[
-            donors["slide_id"].isna(),
-            ["patient_id"]
-        ].to_string(index=False)
-    )
-
-
-if donors["run_date"].isna().any():
-    raise RuntimeError(
-        "Missing run_date for donors:\n"
-        + donors.loc[
-            donors["run_date"].isna(),
-            ["patient_id"]
-        ].to_string(index=False)
-    )
-
-
-if donors["patient_id"].nunique() != 23:
-    raise RuntimeError(
-        f"Expected 23 donors, found "
-        f"{donors['patient_id'].nunique()}."
-    )
-
-
-if donors["slide_id"].nunique() != 8:
-    raise RuntimeError(
-        f"Expected 8 slide IDs, found "
-        f"{donors['slide_id'].nunique()}."
-    )
-
-
-if donors["run_date"].nunique() != 4:
-    raise RuntimeError(
-        f"Expected 4 run dates, found "
-        f"{donors['run_date'].nunique()}."
-    )
-
-
-# Ensure numeric age.
-donors["Age"] = pd.to_numeric(
-    donors["Age"],
-    errors="coerce",
-)
-
-
-valid = donors["Age"].notna().to_numpy()
-
-if not valid.all():
-
-    print(
-        "WARNING: dropping donors "
-        "with missing Age."
-    )
-
-    donors = (
-        donors.loc[valid]
-        .reset_index(drop=True)
-    )
-
-    log2cpm = log2cpm[
-        valid,
-        :
-    ]
 
 
 dx_scz = (
@@ -659,7 +546,12 @@ age = (
     .to_numpy()
 )
 
-age = age - age.mean()
+
+# center age for numerical stability
+age = (
+    age
+    - np.nanmean(age)
+)
 
 
 sex_m = (
@@ -670,43 +562,58 @@ sex_m = (
 )
 
 
-# Deterministic slide coding.
-# Alphabetically first slide is reference.
-slide_levels = sorted(
-    donors["slide_id"]
-    .astype(str)
-    .unique()
-)
-
-slide_reference = slide_levels[0]
-
-slide_factor = pd.Categorical(
-    donors["slide_id"].astype(str),
-    categories=slide_levels,
-)
-
-slide_dummies = pd.get_dummies(
-    slide_factor,
-    prefix="slide",
-    drop_first=True,
-    dtype=float,
+valid = (
+    np.isfinite(age)
 )
 
 
-if slide_dummies.shape[1] != 7:
-    raise RuntimeError(
-        f"Expected 7 slide dummy variables, "
-        f"found {slide_dummies.shape[1]}."
+if not valid.all():
+
+    print(
+        "WARNING: dropping donors "
+        "with missing Age."
     )
+
+    donors = (
+        donors.loc[
+            valid
+        ]
+        .reset_index(
+            drop=True
+        )
+    )
+
+    log2cpm = (
+        log2cpm[
+            valid,
+            :
+        ]
+    )
+
+    dx_scz = dx_scz[
+        valid
+    ]
+
+    age = age[
+        valid
+    ]
+
+    sex_m = sex_m[
+        valid
+    ]
 
 
 X = np.column_stack(
     [
-        np.ones(len(donors)),
+        np.ones(
+            len(donors)
+        ),
+
         dx_scz,
+
         age,
+
         sex_m,
-        slide_dummies.to_numpy(dtype=float),
     ]
 )
 
@@ -716,29 +623,16 @@ design_columns = [
     "Dx_SCZ",
     "Age_centered",
     "Sex_M",
-] + slide_dummies.columns.tolist()
+]
 
 
 design = pd.DataFrame(
     X,
-    index=donors["patient_id"],
+    index=donors[
+        "patient_id"
+    ],
     columns=design_columns,
 )
-
-
-print("\nPI-compatible DE design:")
-print("  Model: expression ~ Dx + Age + Sex + slide_id")
-print("  Slide reference:", slide_reference)
-print("  Donors:", len(donors))
-print("  Slides:", len(slide_levels))
-print("  Design columns:", X.shape[1])
-print("  Design rank:", np.linalg.matrix_rank(X))
-
-
-if np.linalg.matrix_rank(X) != X.shape[1]:
-    raise RuntimeError(
-        "DE design matrix is rank deficient."
-    )
 
 
 design.to_csv(
