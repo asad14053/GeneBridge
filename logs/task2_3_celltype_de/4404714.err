@@ -1,5 +1,0 @@
-2026-09-10 14:11:22.465635 create model matrix
-Error in `contrasts<-`(`*tmp*`, value = contr.funs[1 + isOF[nn]]) : 
-  contrasts can be applied only to factors with 2 or more levels
-Calls: <Anonymous> ... model.matrix -> model.matrix.default -> contrasts<-
-Execution halted

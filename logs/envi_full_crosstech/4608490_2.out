@@ -1,92 +1,0 @@
-============================================================
-BR=Br5314
-SLURM_ARRAY_TASK_ID=2
-CPUS=16
-============================================================
-================================================================================
-ENVI FULL-TRANSCRIPTOME CROSS-TECH: Br5314
-================================================================================
-ENVI   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex1_ntc/envi/Br5314/spatial_data_xenium_Br5314_ENVI_full_transcriptome.h5ad
-STalign: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/stalign_results_update/Br5314_STalign_result
-Visium : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5314/GSM9223438_Br5314-V13F27-294_C1_matrix.mtx.gz
-
-ENVI shape: (45585, 34987)
-STalign cells: 48539
-STalign Visium spots: 4149
-
-Best cell-ID mapping: ENVI obs_names <-> STalign lieber_key
-overlap: 45585 / 45585
-
-ENVI cells assigned to Visium spots: 13174
-occupied pseudospots: 3666 / 4149 (88.4%)
-
-Raw Visium: (4149, 36601)
-
-ENVI genes: 34987
-shared with Visium: 34978
-shared measured: 300
-shared imputed-only: 34678
-
-================================================================================
-FAST PARALLEL MODE
-================================================================================
-CPUs                 : 16
-matched ENVI cells   : 13174
-shared genes         : 34978
-aggregation chunk    : 1024
-metric chunk         : 512
-
-Loading count_scale for matched cells once...
-ENVI matched matrix: (13174, 34978) float32
-ENVI matrix memory  : 1.72 GB
-
-Aggregating ENVI cells into Visium pseudospots...
-  aggregation:  1024/34978  aggregation:  2048/34978  aggregation:  3072/34978  aggregation:  4096/34978  aggregation:  5120/34978  aggregation:  6144/34978  aggregation:  7168/34978  aggregation:  8192/34978  aggregation:  9216/34978  aggregation: 10240/34978  aggregation: 11264/34978  aggregation: 12288/34978  aggregation: 13312/34978  aggregation: 14336/34978  aggregation: 15360/34978  aggregation: 16384/34978  aggregation: 17408/34978  aggregation: 18432/34978  aggregation: 19456/34978  aggregation: 19618/34978  aggregation: 20642/34978  aggregation: 21666/34978  aggregation: 22690/34978  aggregation: 23714/34978  aggregation: 24738/34978  aggregation: 25762/34978  aggregation: 26786/34978  aggregation: 27810/34978  aggregation: 28834/34978  aggregation: 29858/34978  aggregation: 30882/34978  aggregation: 31906/34978  aggregation: 32930/34978  aggregation: 33954/34978  aggregation: 34978/34978
-Pseudospot matrix: (3666, 34978)
-Pseudospot memory: 0.48 GB
-
-Loading corresponding raw Visium matrix once...
-Visium matrix: (3666, 34978)
-Visium memory: 0.48 GB
-
-Computing expression eligibility...
-basic evaluable genes: 21250
-high-confidence Visium-expressed: 840
-
-Computing CPM library sizes...
-
-Visium graph spots: 3666
-estimated pitch: 100.28 um
-
-Computing correspondence + Moran using 16 threads...
-  metrics:   512/34978  metrics:  1024/34978  metrics:  1536/34978  metrics:  2048/34978  metrics:  2560/34978  metrics:  3072/34978  metrics:  3584/34978  metrics:  4096/34978  metrics:  4608/34978  metrics:  5120/34978  metrics:  5632/34978  metrics:  6144/34978  metrics:  6656/34978  metrics:  7168/34978  metrics:  7680/34978  metrics:  8192/34978  metrics:  8704/34978  metrics:  9216/34978  metrics:  9728/34978  metrics: 10240/34978  metrics: 10752/34978  metrics: 11264/34978  metrics: 11776/34978  metrics: 12288/34978  metrics: 12800/34978  metrics: 13312/34978  metrics: 13824/34978  metrics: 14336/34978  metrics: 14848/34978  metrics: 15360/34978  metrics: 15872/34978  metrics: 16384/34978  metrics: 16896/34978  metrics: 17408/34978  metrics: 17920/34978  metrics: 18432/34978  metrics: 18944/34978  metrics: 19456/34978  metrics: 19968/34978  metrics: 20480/34978  metrics: 20992/34978  metrics: 21504/34978  metrics: 22016/34978  metrics: 22528/34978  metrics: 23040/34978  metrics: 23552/34978  metrics: 24064/34978  metrics: 24576/34978  metrics: 25088/34978  metrics: 25600/34978  metrics: 26112/34978  metrics: 26624/34978  metrics: 27136/34978  metrics: 27648/34978  metrics: 28160/34978  metrics: 28672/34978  metrics: 29184/34978  metrics: 29696/34978  metrics: 29858/34978  metrics: 30370/34978  metrics: 30882/34978  metrics: 31394/34978  metrics: 31906/34978  metrics: 32418/34978  metrics: 32930/34978  metrics: 33442/34978  metrics: 33954/34978  metrics: 34466/34978  metrics: 34978/34978
-
-================================================================================
-RESULTS
-================================================================================
-BrNum                                 Br5314
-n_envi_cells                           45585
-n_stalign_cells                        48539
-n_cells_used                           13174
-n_visium_spots                          4149
-n_occupied_pseudospots                  3666
-pseudospot_coverage                 0.883586
-n_envi_genes                           34987
-n_shared_genes                         34978
-n_evaluable_genes                      21250
-n_measured_evaluable                     298
-n_imputed_evaluable                    20952
-n_patterned_total                       2513
-n_patterned_measured                     157
-n_patterned_imputed                     2356
-median_cosine_measured              0.311706
-median_cosine_imputed               0.163691
-median_cosine_patterned_measured    0.497791
-median_cosine_patterned_imputed     0.454761
-median_spearman_patterned_measured   0.09809
-median_spearman_patterned_imputed   0.060117
-n_highconf_imputed                       772
-median_cosine_highconf_imputed      0.761884
-
-Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5314/Br5314_ENVI_fulltranscriptome_gene_metrics.csv.gz
-Summary     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5314/Br5314_ENVI_fulltranscriptome_summary.csv

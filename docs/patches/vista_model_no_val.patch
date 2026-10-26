@@ -1,0 +1,16 @@
+diff --git a/src/imputation/VISTA/vista/_model.py b/src/imputation/VISTA/vista/_model.py
+index 209dc9f..5b6072a 100644
+--- a/src/imputation/VISTA/vista/_model.py
++++ b/src/imputation/VISTA/vista/_model.py
+@@ -228,8 +228,9 @@ class GIMVI_GCN(VAEMixin, BaseModelClass):
+             train_dls.append(ds.train_dataloader())
+             test_dls.append(ds.test_dataloader())
+             val = ds.val_dataloader()
+-            val_dls.append(val)
+-            val.mode = i
++            if val is not None:
++                val_dls.append(val)
++                val.mode = i
+             self.train_indices_.append(ds.train_idx)
+             self.test_indices_.append(ds.test_idx)
+             self.validation_indices_.append(ds.val_idx)

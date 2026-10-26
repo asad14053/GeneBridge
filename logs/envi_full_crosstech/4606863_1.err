@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/06_envi_fulltranscriptome_crosstech.py", line 608, in <module>
-    raise FileNotFoundError(
-FileNotFoundError: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/stalign_results_update/Br2719_STalign_result/Br2719_aligned_coordinates.csv

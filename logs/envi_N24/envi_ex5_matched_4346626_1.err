@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/ENVI/run_envi_fold.py", line 2654, in <module>
-    main()
-  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/ENVI/run_envi_fold.py", line 1012, in main
-    raise ValueError(
-ValueError: Benchmark genes all-zero in ENVI reference: ['C4A', 'ISLR', 'KRT17']

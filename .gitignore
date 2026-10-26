@@ -24,6 +24,7 @@ data/
 # Outputs
 outputs/
 results/
+logs/
 
 # VS Code
 .vscode/
@@ -35,6 +36,7 @@ Thumbs.db
 
 data/
 outputs/
+software/
 models/
 checkpoints/
 processed-data/

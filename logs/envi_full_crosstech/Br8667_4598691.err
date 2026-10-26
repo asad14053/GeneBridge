@@ -1,6 +1,0 @@
-/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/06_envi_fulltranscriptome_crosstech.py:670: DtypeWarning: Columns (13) have mixed types. Specify dtype option on import or set low_memory=False.
-  aa = pd.read_csv(
-Traceback (most recent call last):
-  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/06_envi_fulltranscriptome_crosstech.py", line 1230, in <module>
-    E = e.layers[
-IndexError: shape mismatch: indexing arrays could not be broadcast together with shapes (15477,) (256,) 

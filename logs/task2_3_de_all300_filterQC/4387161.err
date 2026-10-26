@@ -1,6 +1,0 @@
-2026-09-10 02:08:44.554471 create model matrix
-2026-09-10 02:08:44.588953 run duplicateCorrelation()
-2026-09-10 02:08:45.113556 The estimated correlation is: 0.354074079670483
-Error in spatialLIBD::registration_stats_enrichment(spe_pseudo, block_cor = dx_block_cor,  : 
-  formal argument "var_sample_id" matched by multiple actual arguments
-Execution halted
