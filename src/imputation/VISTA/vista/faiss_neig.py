@@ -2,45 +2,135 @@ import numpy as np
 import faiss
 from scipy.sparse import csr_matrix
 
+
 def knn_graph(data, n_neighbors=5):
     """
-    Computes the k-nearest neighbor graph using faiss and returns a sparse matrix.
-    
-    Parameters:
-    - data: ndarray, shape (n_samples, n_features)
-        Input data points
-    - k: int
-        Number of neighbors to retrieve
-        
-    Returns:
-    - sparse_matrix: csr_matrix, shape (n_samples, n_samples)
-        Sparse matrix where each row represents a data point and the non-zero columns in that row 
-        are the k-nearest neighbors. The values are the distances to the neighbors.
+    Compute a k-nearest-neighbor graph using FAISS.
+
+    The query point itself is excluded.
+
+    Important:
+        At most n_samples - 1 non-self neighbors can exist.
+        This function therefore safely clamps k for small minibatches.
     """
-    
-    k = n_neighbors
-    # Convert data to float32 (required by Faiss)
-    data = data.astype(np.float32)
-    
-    # Build the Faiss index (using the L2 distance)
-    d = data.shape[1]  # data dimensionality
-    index = faiss.IndexFlatL2(d)
-    index.add(data)
-    
-    # Query the index to get the k+1 nearest neighbors (k+1 because the point itself is included)
-    distances, indices = index.search(data, k + 1)
-    
-    # Convert to sparse matrix format
-    n_samples = data.shape[0]
-    
-    # Prepare data for CSR format
-    row_indices = np.repeat(np.arange(n_samples), k)
-    col_indices = indices[:, 1:].flatten()  # Exclude the first column (point itself)
-    distance_data = np.sqrt(distances[:, 1:].flatten())  # Convert squared L2 distances to L2 distances
-    
-    # distance_data = (distance_data > 0)*1
-    
-    # Create the CSR matrix
-    sparse_matrix = csr_matrix((distance_data, (row_indices, col_indices)), shape=(n_samples, n_samples))
-    
+
+    data = np.asarray(
+        data,
+        dtype=np.float32,
+    )
+
+    if data.ndim != 2:
+        raise ValueError(
+            f"Expected 2D data, got shape {data.shape}"
+        )
+
+    n_samples, n_features = data.shape
+
+    if n_samples == 0:
+        return csr_matrix(
+            (0, 0),
+            dtype=np.float32,
+        )
+
+    # A one-cell minibatch has no non-self neighbors.
+    if n_samples == 1:
+        return csr_matrix(
+            (1, 1),
+            dtype=np.float32,
+        )
+
+    requested_k = int(n_neighbors)
+
+    if requested_k <= 0:
+        return csr_matrix(
+            (n_samples, n_samples),
+            dtype=np.float32,
+        )
+
+    # Maximum possible number of NON-SELF neighbors.
+    k = min(
+        requested_k,
+        n_samples - 1,
+    )
+
+    index = faiss.IndexFlatL2(
+        n_features
+    )
+
+    index.add(
+        data
+    )
+
+    # k neighbors + the point itself.
+    distances, indices = index.search(
+        data,
+        k + 1,
+    )
+
+    # Remove self-neighbor.
+    neighbor_indices = (
+        indices[:, 1:k + 1]
+    )
+
+    neighbor_distances = np.sqrt(
+        distances[:, 1:k + 1]
+    )
+
+    # Defensive protection against invalid FAISS indices.
+    valid = (
+        neighbor_indices >= 0
+    )
+
+    rows = np.repeat(
+        np.arange(
+            n_samples
+        ),
+        k,
+    )
+
+    cols = (
+        neighbor_indices
+        .reshape(-1)
+    )
+
+    values = (
+        neighbor_distances
+        .reshape(-1)
+        .astype(
+            np.float32,
+            copy=False,
+        )
+    )
+
+    valid_flat = (
+        valid.reshape(-1)
+    )
+
+    rows = rows[
+        valid_flat
+    ]
+
+    cols = cols[
+        valid_flat
+    ]
+
+    values = values[
+        valid_flat
+    ]
+
+    sparse_matrix = csr_matrix(
+        (
+            values,
+            (
+                rows,
+                cols,
+            ),
+        ),
+        shape=(
+            n_samples,
+            n_samples,
+        ),
+        dtype=np.float32,
+    )
+
     return sparse_matrix

@@ -1,0 +1,30 @@
+================================================================================
+TASK 2.3 — ALL 6 MODELS / N24 OOF / CELL-TYPE-ADJUSTED DE
+================================================================================
+Started: Thu Sep 10 14:07:01 EDT 2026
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+
+
+==============================================================================================================
+TASK 2.3 — DONOR × CELL-TYPE ADJUSTED DE / ALL SIX MODELS
+==============================================================================================================
+
+==============================================================================================================
+MODEL: VISTA
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/celltype_pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_celltype_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/celltype_pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_celltype_pseudobulk_metadata.csv
+
+PB matrix: 288 samples x 300 genes
+Metadata: 288 rows
+
+Donors : 24 
+NTC    : 0 
+SCZ    : 0 
+Cell types: 12 
+Pseudobulks: 288 
+Slides: 8 

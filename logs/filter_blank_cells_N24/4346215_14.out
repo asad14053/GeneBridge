@@ -1,0 +1,76 @@
+============================================================
+Job ID : 4346250
+Task   : 14
+Donor  : Br5746
+============================================================
+====================================================================================================
+COMMON NONEMPTY-CELL FILTER
+====================================================================================================
+Donor: Br5746
+Fold directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5746
+
+====================================================================================================
+CREATE / VERIFY BACKUPS
+====================================================================================================
+Creating backup: fold_1_observed_genes.h5ad
+Creating backup: fold_1_heldout_genes.h5ad
+Creating backup: fold_2_observed_genes.h5ad
+Creating backup: fold_2_heldout_genes.h5ad
+Creating backup: fold_3_observed_genes.h5ad
+Creating backup: fold_3_heldout_genes.h5ad
+
+====================================================================================================
+AUDIT ALL THREE FOLDS
+====================================================================================================
+
+Br5746 | Fold 1
+Observed shape: (43025, 200)
+Held-out shape: (43025, 100)
+Blank observed cells: 2
+Library-size percentiles: [0.0, 51.0, 198.0, 342.0, 574.0, 1070.0, 1190.0]
+
+Br5746 | Fold 2
+Observed shape: (43025, 200)
+Held-out shape: (43025, 100)
+Blank observed cells: 2
+Library-size percentiles: [0.0, 47.0, 164.0, 274.0, 461.0, 922.0, 1106.0]
+
+Br5746 | Fold 3
+Observed shape: (43025, 200)
+Held-out shape: (43025, 100)
+Blank observed cells: 0
+Library-size percentiles: [1.0, 67.0, 236.0, 378.0, 603.0, 1066.760000000002, 1239.0]
+
+====================================================================================================
+COMMON MASK
+====================================================================================================
+Original cells: 43025
+Retained cells: 43021
+Removed cells: 4
+
+====================================================================================================
+REWRITE FILTERED H5AD FILES
+====================================================================================================
+Fold 1: (43021, 200) / (43021, 100)
+Fold 2: (43021, 200) / (43021, 100)
+Fold 3: (43021, 200) / (43021, 100)
+
+====================================================================================================
+FINAL ON-DISK VALIDATION
+====================================================================================================
+Fold 1: observed=(43021, 200), heldout=(43021, 100), blank=0
+Fold 2: observed=(43021, 200), heldout=(43021, 100), blank=0
+Fold 3: observed=(43021, 200), heldout=(43021, 100), blank=0
+
+====================================================================================================
+SUCCESS
+====================================================================================================
+Donor: Br5746
+Common retained cells: 43021
+Removed cells: 4
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5746/blank_cell_filter_manifest.json
+All three observed folds now contain zero blank cells.
+
+FINAL STATUS: PASS
+
+DONE: Br5746

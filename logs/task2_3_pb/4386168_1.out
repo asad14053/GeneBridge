@@ -1,0 +1,295 @@
+================================================================================
+TASK 2.3 — OOF DONOR-DOMAIN PSEUDOBULK
+================================================================================
+Task ID : 1
+Model   : VISTA
+Python  : /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Started : Thu Sep 10 00:49:34 EDT 2026
+
+
+==============================================================================================================
+LOAD METADATA — VISTA
+==============================================================================================================
+Donors: 24
+Dx: {'SCZ': 12, 'NTC': 12}
+
+==============================================================================================================
+BUILD VISTA NTC-TRAINED OOF DONOR × SPATIAL-DOMAIN PSEUDOBULK
+==============================================================================================================
+
+[01/24] VISTA    | Br2039 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  3775 | library=892362.329
+    spd06 | L2/3 | cells=  3531 | library=1782495.034
+    spd02 | L3/4 | cells=  1892 | library=766471.902
+    spd05 | L5   | cells=  5271 | library=2372743.054
+    spd03 | L6   | cells=  5448 | library=2139741.550
+    spd01 | WMtz | cells=  1337 | library=417810.470
+    spd04 | WM   | cells= 19846 | library=2696133.748
+
+[02/24] VISTA    | Br2719 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  5498 | library=1498027.125
+    spd06 | L2/3 | cells= 10982 | library=7028156.682
+    spd02 | L3/4 | cells=  4260 | library=2241748.544
+    spd05 | L5   | cells= 18576 | library=11940071.653
+    spd03 | L6   | cells=  5112 | library=2856507.957
+    spd01 | WMtz | cells=  1418 | library=778787.766
+    spd04 | WM   | cells= 12087 | library=4214221.608
+
+[03/24] VISTA    | Br6432 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6067 | library=1473316.781
+    spd06 | L2/3 | cells= 10999 | library=6586762.724
+    spd02 | L3/4 | cells=  1110 | library=407719.994
+    spd05 | L5   | cells=  9915 | library=5863572.845
+    spd03 | L6   | cells=  3704 | library=1923879.641
+    spd01 | WMtz | cells=   610 | library=259122.207
+    spd04 | WM   | cells=  6104 | library=1955155.850
+
+[04/24] VISTA    | Br1113 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4992 | library=1418182.472
+    spd06 | L2/3 | cells= 15228 | library=10452041.005
+    spd02 | L3/4 | cells=  3282 | library=1890394.126
+    spd05 | L5   | cells= 18879 | library=12465282.874
+    spd03 | L6   | cells=  4371 | library=2437516.138
+    spd01 | WMtz | cells=  1309 | library=561710.897
+    spd04 | WM   | cells=  6524 | library=2020665.099
+
+[05/24] VISTA    | Br5373 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells= 10479 | library=2809226.542
+    spd06 | L2/3 | cells= 12467 | library=10730627.983
+    spd02 | L3/4 | cells=  1346 | library=786506.222
+    spd05 | L5   | cells= 22257 | library=17111558.119
+    spd03 | L6   | cells=  4213 | library=2798575.349
+    spd01 | WMtz | cells=   979 | library=534674.112
+    spd04 | WM   | cells= 11608 | library=2598589.502
+
+[06/24] VISTA    | Br5590 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  9106 | library=1624120.788
+    spd06 | L2/3 | cells= 10515 | library=6713602.922
+    spd02 | L3/4 | cells=  2873 | library=1163619.341
+    spd05 | L5   | cells= 14586 | library=8307362.394
+    spd03 | L6   | cells=  3630 | library=1614768.435
+    spd01 | WMtz | cells=   799 | library=228722.075
+    spd04 | WM   | cells= 12067 | library=1599066.390
+
+[07/24] VISTA    | Br5400 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4239 | library=1188292.951
+    spd06 | L2/3 | cells= 12006 | library=8251638.137
+    spd02 | L3/4 | cells=  1937 | library=965591.837
+    spd05 | L5   | cells= 18063 | library=12327508.361
+    spd03 | L6   | cells=  5621 | library=3441683.354
+    spd01 | WMtz | cells=   931 | library=530181.714
+    spd04 | WM   | cells=  1486 | library=815586.393
+
+[08/24] VISTA    | Br5622 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6461 | library=1819102.226
+    spd06 | L2/3 | cells= 26781 | library=19281852.869
+    spd02 | L3/4 | cells=  2214 | library=1250086.165
+    spd05 | L5   | cells= 18704 | library=12735927.080
+    spd03 | L6   | cells=  7349 | library=4396868.914
+    spd01 | WMtz | cells=  1074 | library=501754.137
+    spd04 | WM   | cells=  5637 | library=1630036.963
+
+[09/24] VISTA    | Br6437 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  6308 | library=1392786.466
+    spd06 | L2/3 | cells= 11082 | library=5782936.527
+    spd02 | L3/4 | cells=  3018 | library=1199402.472
+    spd05 | L5   | cells= 15957 | library=8262459.181
+    spd03 | L6   | cells=  5504 | library=2488714.340
+    spd01 | WMtz | cells=  1538 | library=667323.642
+    spd04 | WM   | cells= 12363 | library=3537382.091
+
+[10/24] VISTA    | Br5314 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6646 | library=1390085.665
+    spd06 | L2/3 | cells=  7505 | library=4834309.319
+    spd02 | L3/4 | cells=  1437 | library=753320.506
+    spd05 | L5   | cells= 13600 | library=8431901.290
+    spd03 | L6   | cells=  2590 | library=1437987.571
+    spd01 | WMtz | cells=  1112 | library=507296.934
+    spd04 | WM   | cells= 12693 | library=3810512.754
+
+[11/24] VISTA    | Br5588 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  9352 | library=2554222.206
+    spd06 | L2/3 | cells= 14489 | library=9848394.397
+    spd02 | L3/4 | cells=  1279 | library=545633.090
+    spd05 | L5   | cells= 20893 | library=12459158.408
+    spd03 | L6   | cells=  6271 | library=3079450.742
+    spd01 | WMtz | cells=  1602 | library=640119.790
+    spd04 | WM   | cells=  5808 | library=1446772.087
+
+[12/24] VISTA    | Br5746 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  4508 | library=975353.341
+    spd06 | L2/3 | cells=  5408 | library=3186746.603
+    spd02 | L3/4 | cells=   810 | library=253761.815
+    spd05 | L5   | cells= 14655 | library=8081323.923
+    spd03 | L6   | cells=  5001 | library=2314775.823
+    spd01 | WMtz | cells=  1237 | library=349778.154
+    spd04 | WM   | cells= 11402 | library=2601017.924
+
+[13/24] VISTA    | Br5639 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  9694 | library=2143143.072
+    spd06 | L2/3 | cells= 13251 | library=8344624.153
+    spd02 | L3/4 | cells=  2831 | library=1027095.742
+    spd05 | L5   | cells= 17359 | library=9278821.996
+    spd03 | L6   | cells=  4369 | library=1986981.413
+    spd01 | WMtz | cells=  2254 | library=925903.221
+    spd04 | WM   | cells=  9213 | library=2135540.634
+
+[14/24] VISTA    | Br8433 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells= 11346 | library=3614289.190
+    spd06 | L2/3 | cells= 15619 | library=12858422.009
+    spd02 | L3/4 | cells=   971 | library=607077.742
+    spd05 | L5   | cells= 15418 | library=12214324.039
+    spd03 | L6   | cells=  5303 | library=3833383.993
+    spd01 | WMtz | cells=   739 | library=362622.505
+    spd04 | WM   | cells=  8635 | library=2186854.471
+
+[15/24] VISTA    | Br8772 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  8837 | library=1986413.761
+    spd06 | L2/3 | cells= 10179 | library=7988066.346
+    spd02 | L3/4 | cells=  1727 | library=1034407.595
+    spd05 | L5   | cells= 19850 | library=14538730.799
+    spd03 | L6   | cells=  5084 | library=3343610.624
+    spd01 | WMtz | cells=  1349 | library=594473.113
+    spd04 | WM   | cells=  7428 | library=2328211.362
+
+[16/24] VISTA    | Br1139 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  8949 | library=1622340.965
+    spd06 | L2/3 | cells= 13384 | library=8580177.361
+    spd02 | L3/4 | cells=  3434 | library=1365023.662
+    spd05 | L5   | cells= 15040 | library=8739134.491
+    spd03 | L6   | cells=  3971 | library=1855402.558
+    spd01 | WMtz | cells=  1186 | library=398697.735
+    spd04 | WM   | cells= 10653 | library=1408025.995
+
+[17/24] VISTA    | Br5973 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  5433 | library=1190217.832
+    spd06 | L2/3 | cells=  8671 | library=4709686.074
+    spd02 | L3/4 | cells=  1706 | library=741546.382
+    spd05 | L5   | cells= 12481 | library=7044805.365
+    spd03 | L6   | cells=  3091 | library=1507366.476
+    spd01 | WMtz | cells=  1287 | library=623084.943
+    spd04 | WM   | cells=  9224 | library=2733651.939
+
+[18/24] VISTA    | Br8667 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  7177 | library=2296584.530
+    spd06 | L2/3 | cells= 16405 | library=14239962.075
+    spd02 | L3/4 | cells=  2276 | library=1603412.855
+    spd05 | L5   | cells= 20279 | library=16076345.502
+    spd03 | L6   | cells=  5948 | library=4209271.178
+    spd01 | WMtz | cells=  1775 | library=1073597.665
+    spd04 | WM   | cells= 12288 | library=4104219.570
+
+[19/24] VISTA    | Br5436 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  5121 | library=1544489.374
+    spd06 | L2/3 | cells= 13077 | library=10923413.838
+    spd02 | L3/4 | cells=  2558 | library=1817386.594
+    spd05 | L5   | cells= 14407 | library=11695620.709
+    spd03 | L6   | cells=  3775 | library=2831105.645
+    spd01 | WMtz | cells=  1912 | library=1172786.446
+    spd04 | WM   | cells=  3580 | library=1706782.815
+
+[20/24] VISTA    | Br5931 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4888 | library=1247603.588
+    spd06 | L2/3 | cells= 11677 | library=8605254.479
+    spd02 | L3/4 | cells=  2342 | library=1347872.877
+    spd05 | L5   | cells= 14897 | library=10363113.660
+    spd03 | L6   | cells=  4717 | library=2870449.586
+    spd01 | WMtz | cells=  1008 | library=517898.307
+    spd04 | WM   | cells=  3992 | library=1424385.701
+
+[21/24] VISTA    | Br6496 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  3571 | library=1101534.017
+    spd06 | L2/3 | cells= 15353 | library=9226040.133
+    spd02 | L3/4 | cells=  1455 | library=660321.570
+    spd05 | L5   | cells= 14847 | library=9634062.630
+    spd03 | L6   | cells=  4459 | library=2591105.828
+    spd01 | WMtz | cells=   979 | library=502016.156
+    spd04 | WM   | cells= 15545 | library=4370219.790
+
+[22/24] VISTA    | Br2421 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells= 10984 | library=2096101.298
+    spd06 | L2/3 | cells= 14564 | library=9111180.682
+    spd02 | L3/4 | cells=  1959 | library=910673.168
+    spd05 | L5   | cells= 14758 | library=8795966.438
+    spd03 | L6   | cells=  6342 | library=3150473.374
+    spd01 | WMtz | cells=  1460 | library=605320.235
+    spd04 | WM   | cells= 12004 | library=2996271.401
+
+[23/24] VISTA    | Br6032 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  1839 | library=619113.791
+    spd06 | L2/3 | cells=  9401 | library=6587920.479
+    spd02 | L3/4 | cells=  2161 | library=1247087.802
+    spd05 | L5   | cells= 20410 | library=14974343.360
+    spd03 | L6   | cells=  8411 | library=5404166.330
+    spd01 | WMtz | cells=   993 | library=568413.232
+    spd04 | WM   | cells=  1454 | library=788727.500
+
+[24/24] VISTA    | Br6389 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  7338 | library=1589042.084
+    spd06 | L2/3 | cells= 12092 | library=7508835.281
+    spd02 | L3/4 | cells=  1535 | library=746396.095
+    spd05 | L5   | cells= 13386 | library=8776925.161
+    spd03 | L6   | cells=  3120 | library=1788109.967
+    spd01 | WMtz | cells=  1492 | library=730317.041
+    spd04 | WM   | cells= 10577 | library=2909301.463
+
+==============================================================================================================
+ASSEMBLE — VISTA
+==============================================================================================================
+Matrix  : (168, 300)
+Metadata: (168, 15)
+
+==============================================================================================================
+SAVE — VISTA
+==============================================================================================================
+
+==============================================================================================================
+FINAL SUMMARY — VISTA
+==============================================================================================================
+Model              : VISTA
+Donors             : 24
+NTC donors         : 12
+SCZ donors         : 12
+Spatial domains    : 7
+Pseudobulk samples : 168
+Genes              : 300
+Minimum cells / PB : 610
+Maximum cells / PB : 26781
+All donor layer sums match: True
+
+Output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_validation.csv
+
+FINAL STATUS: PASS — VISTA NTC-trained OOF 24-donor × 7-domain pseudobulk created.
+
+================================================================================
+MODEL: VISTA
+SLURM STATUS: PASS
+Finished: Thu Sep 10 00:50:43 EDT 2026
+================================================================================

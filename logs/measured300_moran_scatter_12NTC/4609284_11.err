@@ -1,0 +1,2 @@
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/13_plot_measured300_patterned_scatter.py:98: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  df["visium_patterned"] = df["visium_patterned"].fillna(False)

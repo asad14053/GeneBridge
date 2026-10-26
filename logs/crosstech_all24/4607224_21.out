@@ -1,0 +1,90 @@
+Total donors detected: 24
+SLURM task: 21
+Running donor: Br6496
+================================================================================
+STALIGN
+================================================================================
+aligned cells : 59437
+Visium spots  : 4605
+
+================================================================================
+XENIUM SOURCE SELECTION
+================================================================================
+Br6496.h5ad                                             obs_names          -> cell_id     : 0
+Br6496.h5ad                                             obs_names          -> lieber_key  : 59437
+Br6496.h5ad                                             cell_id            -> cell_id     : 59437
+Br6496.h5ad                                             cell_id            -> lieber_key  : 0
+Br6496.h5ad                                             original_cell_id   -> cell_id     : 59437
+Br6496.h5ad                                             original_cell_id   -> lieber_key  : 0
+Br6496.h5ad                                             donor_cell_id      -> cell_id     : 0
+Br6496.h5ad                                             donor_cell_id      -> lieber_key  : 59437
+
+SELECTED XENIUM:
+ file       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6496.h5ad
+ shape      : (59438, 541)
+ ID source  : obs_names
+ align col  : lieber_key
+ overlap    : 59437
+STalign cells with expression: 59437 / 59437
+Xenium count source: layers['counts']
+
+================================================================================
+VISIUM — EXACT STALIGN TARGET
+================================================================================
+raw MTX shape       : (36601, 4992)
+raw barcodes        : 4992
+raw features        : 36601
+STalign target spots: 4605
+barcode overlap     : 4605 / 4605
+Br6496: exact STalign Visium target recovered: 4605 / 4605 spots
+paired capture       : GSM9223460_Br6496-V13M06-344_A1
+usable target spots  : 4605
+Visium count source  : raw 10x matrix
+
+================================================================================
+SHARED GENES
+================================================================================
+shared genes: 300
+
+================================================================================
+PSEUDOSPOTS
+================================================================================
+cells with expression       : 59437
+matched > 0.85          : 48460
+matched + inside spot       : 17925
+occupied pseudospots        : 4244 / 4605 (92.2%)
+cells/pseudospot median    : 4
+cells/pseudospot IQR       : 2–6
+assigned distance max (um) : 32.50
+
+genes retained: 299 / 300
+
+================================================================================
+VISIUM SPATIAL PATTERNING
+================================================================================
+mean neighbours/spot: 5.67
+spatially patterned: 185 / 299
+
+patterned median cosine     : 0.494
+non-patterned median cosine : 0.154
+patterned median Spearman   : 0.087
+Wilcoxon patterned > non    : 2.15e-24
+
+================================================================================
+DISPLAY GENES
+================================================================================
+depth requirement: Visium detected >= 20% and max count >= 10
+eligible patterned: 66
+eligible non-patterned: 0
+patterned, highest cosine    CAMK2N1      Moran=0.409 q=0 cos=0.992 rho=+0.365
+patterned, median cosine     DBNDD2       Moran=0.477 q=0 cos=0.692 rho=+0.424
+patterned, lowest cosine     GAD1         Moran=0.040 q=8.75e-06 cos=0.352 rho=+0.053
+
+================================================================================
+DONE
+================================================================================
+figure PNG : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br6496/fig_crosstech_Br6496.png
+figure PDF : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br6496/fig_crosstech_Br6496.pdf
+gene table : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br6496/Br6496_measured300_gene_metrics.csv
+selection  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br6496/Br6496_selected_display_genes.csv
+summary    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br6496/Br6496_crosstech_summary.csv

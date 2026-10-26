@@ -1,0 +1,138 @@
+====================================================================================================
+GENEBRIDGE: 24-DONOR XENIUM + VISIUM DOWNLOAD
+====================================================================================================
+Job ID       : 4340230
+Array task   : 16
+Donor        : Br5973
+Node         : node14.hgcc.emory.edu
+CPUs         : 16
+Memory       : 200G
+Started      : Wed Sep  2 15:17:51 EDT 2026
+====================================================================================================
+
+====================================================================================================
+GeneBridge GEO downloader
+====================================================================================================
+Project root          : /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Donor                 : Br5973
+Modality              : both
+Include heavy Xenium  : True
+Include Visium images : False
+Force redownload      : False
+Dry run               : False
+Max retries           : 10
+Started               : Wed Sep  2 15:17:52 2026
+
+====================================================================================================
+Reading GEO series file lists
+====================================================================================================
+Parsed Xenium files: 144
+Parsed Visium files: 567
+
+====================================================================================================
+P17 / Br5973
+====================================================================================================
+
+====================================================================================================
+Br5973 | XENIUM | GSM9223484
+====================================================================================================
+Files selected: 6
+Expected total: 7.09 GB
+      11.42 MB  GSM9223484_Br5973-cell_boundaries.csv.gz
+       4.65 MB  GSM9223484_Br5973-cell_feature_matrix.h5
+     927.87 KB  GSM9223484_Br5973-cells.parquet.gz
+       5.65 GB  GSM9223484_Br5973-morphology.ome.tif.gz
+      10.53 MB  GSM9223484_Br5973-nucleus_boundaries.csv.gz
+       1.42 GB  GSM9223484_Br5973-transcripts.zarr.zip
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cell_boundaries.csv.gz
+  local:    11.42 MB
+  expected: 11.42 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cell_feature_matrix.h5
+  local:    4.65 MB
+  expected: 4.65 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cells.parquet.gz
+  local:    927.87 KB
+  expected: 927.87 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-morphology.ome.tif.gz
+  local:    5.65 GB
+  expected: 5.65 GB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-nucleus_boundaries.csv.gz
+  local:    10.53 MB
+  expected: 10.53 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-transcripts.zarr.zip
+  local:    1.42 GB
+  expected: 1.42 GB
+Size matches GEO filelist -> SKIP
+
+====================================================================================================
+Br5973 | VISIUM | GSM9223459
+====================================================================================================
+Files selected: 7
+Expected total: 47.27 MB
+      178.00 B  GSM9223459_Br5973-V13M06-343_D1-scalefactors_json.json.gz
+       4.97 MB  GSM9223459_Br5973-V13M06-343_D1-tissue_hires_image.png.gz
+     547.27 KB  GSM9223459_Br5973-V13M06-343_D1-tissue_lowres_image.png.gz
+      59.30 KB  GSM9223459_Br5973-V13M06-343_D1-tissue_positions.csv.gz
+      28.25 KB  GSM9223459_Br5973-V13M06-343_D1_barcodes.tsv.gz
+     287.58 KB  GSM9223459_Br5973-V13M06-343_D1_features.tsv.gz
+      41.40 MB  GSM9223459_Br5973-V13M06-343_D1_matrix.mtx.gz
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1-scalefactors_json.json.gz
+  local:    178.00 B
+  expected: 178.00 B
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1-tissue_hires_image.png.gz
+  local:    4.97 MB
+  expected: 4.97 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1-tissue_lowres_image.png.gz
+  local:    547.27 KB
+  expected: 547.27 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1-tissue_positions.csv.gz
+  local:    59.30 KB
+  expected: 59.30 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1_barcodes.tsv.gz
+  local:    28.25 KB
+  expected: 28.25 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1_features.tsv.gz
+  local:    287.58 KB
+  expected: 287.58 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br5973/GSM9223459_Br5973-V13M06-343_D1_matrix.mtx.gz
+  local:    41.40 MB
+  expected: 41.40 MB
+Size matches GEO filelist -> SKIP
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/download_manifests_24_common/download_manifest_Br5973.csv
+
+====================================================================================================
+DONE
+====================================================================================================
+Finished: Wed Sep  2 15:17:52 2026
+
+====================================================================================================
+FINISHED
+====================================================================================================
+Donor       : Br5973
+Exit status : 0
+Finished    : Wed Sep  2 15:17:52 EDT 2026
+====================================================================================================

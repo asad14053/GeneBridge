@@ -1,0 +1,34 @@
+============================================================
+BR8667 THREE-SOURCE VALIDATION FIGURES
+============================================================
+A = Visium
+B = Measured Xenium
+C = ENVI OOF
+
+Generating:
+  A vs B
+  A vs C
+  B vs C
+
+Each:
+  a = source 1 map
+  b = source 2 map
+  c = normalized-expression correspondence
+  d = Moran's-I correspondence
+  e = patterned raw-cosine distribution
+  f = non-patterned raw-cosine distribution
+============================================================
+====================================================================================================
+BR8667 THREE-SOURCE FIGURE GENERATOR
+====================================================================================================
+Genes: 300
+Occupied spots: 4350
+Aligned cells inside physical Visium spots: 15476
+
+====================================================================================================
+A_vs_B : Visium vs Measured Xenium
+====================================================================================================
+patterned, highest raw cosine        MT-ND2          cos=0.999 sp=+0.032
+patterned, median raw cosine         EGR3            cos=0.424 sp=+0.053
+patterned, lowest raw cosine         NXPH4           cos=0.032 sp=+0.007
+not patterned control                ELMSAN1         cos=0.156 sp=+0.003

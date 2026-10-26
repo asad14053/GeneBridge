@@ -1,0 +1,76 @@
+============================================================
+Job ID : 4346215
+Task   : 24
+Donor  : Br8772
+============================================================
+====================================================================================================
+COMMON NONEMPTY-CELL FILTER
+====================================================================================================
+Donor: Br8772
+Fold directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8772
+
+====================================================================================================
+CREATE / VERIFY BACKUPS
+====================================================================================================
+Creating backup: fold_1_observed_genes.h5ad
+Creating backup: fold_1_heldout_genes.h5ad
+Creating backup: fold_2_observed_genes.h5ad
+Creating backup: fold_2_heldout_genes.h5ad
+Creating backup: fold_3_observed_genes.h5ad
+Creating backup: fold_3_heldout_genes.h5ad
+
+====================================================================================================
+AUDIT ALL THREE FOLDS
+====================================================================================================
+
+Br8772 | Fold 1
+Observed shape: (54456, 200)
+Held-out shape: (54456, 100)
+Blank observed cells: 1
+Library-size percentiles: [0.0, 53.0, 284.0, 513.0, 824.0, 1542.0, 1740.0]
+
+Br8772 | Fold 2
+Observed shape: (54456, 200)
+Held-out shape: (54456, 100)
+Blank observed cells: 1
+Library-size percentiles: [0.0, 55.0, 243.0, 418.0, 680.0, 1316.0, 1545.0]
+
+Br8772 | Fold 3
+Observed shape: (54456, 200)
+Held-out shape: (54456, 100)
+Blank observed cells: 0
+Library-size percentiles: [1.0, 76.0, 330.0, 554.0, 867.0, 1567.0, 1763.0]
+
+====================================================================================================
+COMMON MASK
+====================================================================================================
+Original cells: 54456
+Retained cells: 54454
+Removed cells: 2
+
+====================================================================================================
+REWRITE FILTERED H5AD FILES
+====================================================================================================
+Fold 1: (54454, 200) / (54454, 100)
+Fold 2: (54454, 200) / (54454, 100)
+Fold 3: (54454, 200) / (54454, 100)
+
+====================================================================================================
+FINAL ON-DISK VALIDATION
+====================================================================================================
+Fold 1: observed=(54454, 200), heldout=(54454, 100), blank=0
+Fold 2: observed=(54454, 200), heldout=(54454, 100), blank=0
+Fold 3: observed=(54454, 200), heldout=(54454, 100), blank=0
+
+====================================================================================================
+SUCCESS
+====================================================================================================
+Donor: Br8772
+Common retained cells: 54454
+Removed cells: 2
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8772/blank_cell_filter_manifest.json
+All three observed folds now contain zero blank cells.
+
+FINAL STATUS: PASS
+
+DONE: Br8772

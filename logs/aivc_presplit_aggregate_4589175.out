@@ -1,0 +1,51 @@
+====================================================================================================
+AIVC PRE-SPLIT AUDIT AGGREGATION
+====================================================================================================
+Per-donor audit files: 24
+AIVC BETA PRE-SPLIT AUDIT
+====================================================================================================
+
+Donors: 24
+NTC: 12
+SCZ: 12
+Total cells: 1262963
+
+CHECKS
+----------------------------------------------------------------------------------------------------
+PASS  | 24 ENVI donors                      | found=24
+PASS  | 12 NTC + 12 SCZ                     | {'NTC': 12, 'SCZ': 12}
+PASS  | Donor identity per H5AD             | 24/24
+FAIL  | Exact ENVI-annotation join          | minimum=99.9953%
+PASS  | Unique ENVI cell IDs                | duplicates=0
+PASS  | Spatial coordinates finite          | 24/24
+FAIL  | Same gene order                     | unique_gene_hashes=24
+WARN  | snRNA donor overlap                 | Br6432,Br8667
+PASS  | Expression sampled values finite    | 72/72
+
+REFERENCE OVERLAP
+----------------------------------------------------------------------------------------------------
+Br6432, Br8667
+
+CELL-TYPE COVERAGE
+----------------------------------------------------------------------------------------------------
+     cell_type  total_cells  donors_present  NTC_donors_present  SCZ_donors_present  NTC_cells  SCZ_cells  min_cells_when_present
+         Oligo       296217              24                  12                  12     136020     160197                    7272
+          Endo       253934              24                  12                  12     130409     123525                    5052
+           Ast       164491              24                  12                  12      84128      80363                    4119
+       L2/3 Ex       133496              24                  12                  12      73234      60262                    1593
+           Mic        81016              24                  12                  12      41006      40010                    2177
+In: SST, PVALB        66513              24                  12                  12      35668      30845                    1168
+         L6 Ex        45636              24                  12                  12      21196      24440                    1050
+ Ambig/In/Endo        45601              24                  12                  12      23157      22444                    1189
+       L4/5 Ex        55668              24                  12                  12      28206      27462                     994
+In: VIP, LAMP5        51567              24                  12                  12      27834      23733                     590
+   Ambig/Oligo        63996              24                  12                  12      26684      37312                     870
+         L5 Ex         4825              24                  12                  12       2434       2391                      80
+
+TECHNICAL × DX
+----------------------------------------------------------------------------------------------------
+   variable  NTC_levels  SCZ_levels  shared_levels shared_values
+   slide_id           0           0              0              
+   run_date           0           0              0              
+CaptureArea           1           1              1       unknown
+

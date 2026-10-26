@@ -26,7 +26,6 @@ Filtering rule:
         2. have non-missing layer_annotation
         3. have non-missing cell_type_annotation
 
-Br6432 is intentionally excluded.
 
 The expression matrix always comes from the imputation-ready object.
 The annotation object contributes metadata only.
@@ -50,7 +49,7 @@ ROOT = Path(
 
 EXPRESSION_SOURCE = (
     ROOT
-    / "data/processed/xenium/xenium_N24_imputation_ready.h5ad"
+    / "data/processed/xenium/xenium_N24_layer_celltype_annotated.h5ad"
 )
 
 ANNOTATION_SOURCE = (
@@ -244,11 +243,6 @@ def main():
     )
 
 
-    # Corrupted donor.
-    meta = meta.loc[
-        meta["patient_id"] != "Br6432"
-    ].copy()
-
 
     meta = meta.loc[
         meta["Dx"].isin(
@@ -260,10 +254,10 @@ def main():
     ].copy()
 
 
-    if len(meta) != 23:
+    if len(meta) != 24:
 
         raise RuntimeError(
-            f"Expected 23 usable donors; found {len(meta)}"
+            f"Expected 24 usable donors; found {len(meta)}"
         )
 
 
@@ -271,11 +265,11 @@ def main():
         meta["Dx"]
         .eq("NTC")
         .sum()
-        != 11
+        != 12
     ):
 
         raise RuntimeError(
-            "Expected 11 NTC donors."
+            "Expected 12 NTC donors."
         )
 
 
@@ -465,7 +459,7 @@ def main():
     # =========================================================================
 
     section(
-        "PREPARE 23 DONOR TARGETS"
+        "PREPARE 24 DONOR TARGETS"
     )
 
     summary_rows = []
@@ -509,7 +503,7 @@ def main():
 
 
         print(
-            f"\n[{i:02d}/23] "
+            f"\n[{i:02d}/24] "
             f"{donor} | {dx} | {experiment}",
             flush=True
         )

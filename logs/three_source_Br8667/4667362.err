@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/18_plot_Br8667_three_source_all_template.py", line 1884, in <module>
+    plot_cosine_hist(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/18_plot_Br8667_three_source_all_template.py", line 551, in plot_cosine_hist
+    desc.startswith(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/lib/python3.10/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'Series' object has no attribute 'startswith'

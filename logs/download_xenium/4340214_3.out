@@ -1,0 +1,138 @@
+====================================================================================================
+GENEBRIDGE: 24-DONOR XENIUM + VISIUM DOWNLOAD
+====================================================================================================
+Job ID       : 4340217
+Array task   : 3
+Donor        : Br2039
+Node         : node04.hgcc.emory.edu
+CPUs         : 16
+Memory       : 200G
+Started      : Wed Sep  2 15:17:40 EDT 2026
+====================================================================================================
+
+====================================================================================================
+GeneBridge GEO downloader
+====================================================================================================
+Project root          : /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Donor                 : Br2039
+Modality              : both
+Include heavy Xenium  : True
+Include Visium images : False
+Force redownload      : False
+Dry run               : False
+Max retries           : 10
+Started               : Wed Sep  2 15:17:41 2026
+
+====================================================================================================
+Reading GEO series file lists
+====================================================================================================
+Parsed Xenium files: 144
+Parsed Visium files: 567
+
+====================================================================================================
+P1 / Br2039
+====================================================================================================
+
+====================================================================================================
+Br2039 | XENIUM | GSM9223468
+====================================================================================================
+Files selected: 6
+Expected total: 5.98 GB
+      11.72 MB  GSM9223468_Br2039-cell_boundaries.csv.gz
+       4.19 MB  GSM9223468_Br2039-cell_feature_matrix.h5
+     942.92 KB  GSM9223468_Br2039-cells.parquet.gz
+       4.98 GB  GSM9223468_Br2039-morphology.ome.tif.gz
+      10.85 MB  GSM9223468_Br2039-nucleus_boundaries.csv.gz
+    1002.67 MB  GSM9223468_Br2039-transcripts.zarr.zip
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_boundaries.csv.gz
+  local:    11.72 MB
+  expected: 11.72 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_feature_matrix.h5
+  local:    4.19 MB
+  expected: 4.19 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cells.parquet.gz
+  local:    942.92 KB
+  expected: 942.92 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-morphology.ome.tif.gz
+  local:    4.98 GB
+  expected: 4.98 GB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-nucleus_boundaries.csv.gz
+  local:    10.85 MB
+  expected: 10.85 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-transcripts.zarr.zip
+  local:    1002.67 MB
+  expected: 1002.67 MB
+Size matches GEO filelist -> SKIP
+
+====================================================================================================
+Br2039 | VISIUM | GSM9223410
+====================================================================================================
+Files selected: 7
+Expected total: 42.60 MB
+      177.00 B  GSM9223410_Br2039-V12F14-057_C1-scalefactors_json.json.gz
+       3.65 MB  GSM9223410_Br2039-V12F14-057_C1-tissue_hires_image.png.gz
+     406.69 KB  GSM9223410_Br2039-V12F14-057_C1-tissue_lowres_image.png.gz
+      64.15 KB  GSM9223410_Br2039-V12F14-057_C1-tissue_positions.csv.gz
+      28.25 KB  GSM9223410_Br2039-V12F14-057_C1_barcodes.tsv.gz
+     287.58 KB  GSM9223410_Br2039-V12F14-057_C1_features.tsv.gz
+      38.17 MB  GSM9223410_Br2039-V12F14-057_C1_matrix.mtx.gz
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-scalefactors_json.json.gz
+  local:    177.00 B
+  expected: 177.00 B
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-tissue_hires_image.png.gz
+  local:    3.65 MB
+  expected: 3.65 MB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-tissue_lowres_image.png.gz
+  local:    406.69 KB
+  expected: 406.69 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1-tissue_positions.csv.gz
+  local:    64.15 KB
+  expected: 64.15 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1_barcodes.tsv.gz
+  local:    28.25 KB
+  expected: 28.25 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1_features.tsv.gz
+  local:    287.58 KB
+  expected: 287.58 KB
+Size matches GEO filelist -> SKIP
+Existing final file:
+  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br2039/GSM9223410_Br2039-V12F14-057_C1_matrix.mtx.gz
+  local:    38.17 MB
+  expected: 38.17 MB
+Size matches GEO filelist -> SKIP
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/download_manifests_24_common/download_manifest_Br2039.csv
+
+====================================================================================================
+DONE
+====================================================================================================
+Finished: Wed Sep  2 15:17:41 2026
+
+====================================================================================================
+FINISHED
+====================================================================================================
+Donor       : Br2039
+Exit status : 0
+Finished    : Wed Sep  2 15:17:41 EDT 2026
+====================================================================================================

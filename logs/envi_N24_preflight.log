@@ -1,0 +1,104 @@
+====================================================================================================
+1. REFERENCE AUDIT
+====================================================================================================
+
+ex5_1_full10
+--------------------------------------------------------------------------------
+Path  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Shape : (77604, 36601)
+Genes : 36601
+Brains: ['Br2720', 'Br2743', 'Br3942', 'Br6423', 'Br6432', 'Br6471', 'Br6522', 'Br8325', 'Br8492', 'Br8667']
+N brain: 10
+
+ex5_Br6432
+--------------------------------------------------------------------------------
+Path  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432.h5ad
+Shape : (3059, 36601)
+Genes : 36601
+Brains: ['Br6432']
+N brain: 1
+
+ex5_3_Br6432
+--------------------------------------------------------------------------------
+Path  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_9brains_excluding_Br6432.h5ad
+Shape : (74545, 36601)
+Genes : 36601
+Brains: ['Br2720', 'Br2743', 'Br3942', 'Br6423', 'Br6471', 'Br6522', 'Br8325', 'Br8492', 'Br8667']
+N brain: 9
+
+ex5_Br8667
+--------------------------------------------------------------------------------
+Path  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_Br8667.h5ad
+Shape : (9897, 36601)
+Genes : 36601
+Brains: ['Br8667']
+N brain: 1
+
+ex5_3_Br8667
+--------------------------------------------------------------------------------
+Path  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+Shape : (67707, 36601)
+Genes : 36601
+Brains: ['Br2720', 'Br2743', 'Br3942', 'Br6423', 'Br6432', 'Br6471', 'Br6522', 'Br8325', 'Br8492']
+N brain: 9
+
+====================================================================================================
+2. REFERENCE GENE-UNIVERSE CONSISTENCY
+====================================================================================================
+ex5_1_full10 vs ex5_Br6432: True
+ex5_1_full10 vs ex5_3_Br6432: True
+ex5_1_full10 vs ex5_Br8667: True
+ex5_1_full10 vs ex5_3_Br8667: True
+
+REFERENCE GENE UNIVERSE: PASS
+
+====================================================================================================
+3. N24 DONOR × FOLD AUDIT
+====================================================================================================
+Br1113: cells=54,585 | 3 folds PASS | 300/300 reference genes PASS
+Br1139: cells=56,617 | 3 folds PASS | 300/300 reference genes PASS
+Br2039: cells=41,100 | 3 folds PASS | 300/300 reference genes PASS
+Br2421: cells=62,071 | 3 folds PASS | 300/300 reference genes PASS
+Br2719: cells=57,933 | 3 folds PASS | 300/300 reference genes PASS
+Br5314: cells=45,583 | 3 folds PASS | 300/300 reference genes PASS
+Br5373: cells=63,349 | 3 folds PASS | 300/300 reference genes PASS
+Br5400: cells=44,283 | 3 folds PASS | 300/300 reference genes PASS
+Br5436: cells=44,430 | 3 folds PASS | 300/300 reference genes PASS
+Br5588: cells=59,694 | 3 folds PASS | 300/300 reference genes PASS
+Br5590: cells=53,576 | 3 folds PASS | 300/300 reference genes PASS
+Br5622: cells=68,220 | 3 folds PASS | 300/300 reference genes PASS
+Br5639: cells=58,971 | 3 folds PASS | 300/300 reference genes PASS
+Br5746: cells=43,021 | 3 folds PASS | 300/300 reference genes PASS
+Br5931: cells=43,521 | 3 folds PASS | 300/300 reference genes PASS
+Br5973: cells=41,893 | 3 folds PASS | 300/300 reference genes PASS
+Br6032: cells=44,669 | 3 folds PASS | 300/300 reference genes PASS
+Br6389: cells=49,540 | 3 folds PASS | 300/300 reference genes PASS
+Br6432: cells=38,509 | 3 folds PASS | 300/300 reference genes PASS
+Br6437: cells=55,770 | 3 folds PASS | 300/300 reference genes PASS
+Br6496: cells=56,209 | 3 folds PASS | 300/300 reference genes PASS
+Br8433: cells=58,031 | 3 folds PASS | 300/300 reference genes PASS
+Br8667: cells=66,148 | 3 folds PASS | 300/300 reference genes PASS
+Br8772: cells=54,454 | 3 folds PASS | 300/300 reference genes PASS
+
+====================================================================================================
+4. SUMMARY
+====================================================================================================
+Donors: 24
+Donor-fold target inputs: 72
+Observed genes per run: [200]
+Heldout genes per run: [100]
+Remaining blank observed cells: 0
+Maximum missing reference genes: 0
+
+Expected primary Ex-5.1 runs:
+  24 donors × 3 folds = 72 ENVI runs
+
+Matched-reference experiments:
+  Br6432 Ex-5   : READY
+  Br6432 Ex-5.3 : READY
+  Br8667 Ex-5   : READY
+  Br8667 Ex-5.3 : READY
+
+====================================================================================================
+FINAL STATUS: PASS — ALL N24 ENVI INPUTS ARE READY
+====================================================================================================

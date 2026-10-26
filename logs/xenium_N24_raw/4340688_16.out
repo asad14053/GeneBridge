@@ -1,0 +1,49 @@
+====================================================================================================
+XENIUM DONOR RAW BUILD
+====================================================================================================
+Job ID       : 4340723
+Array task   : 16
+Donor        : Br5973
+Node         : node11.hgcc.emory.edu
+CPUs         : 16
+Started      : Wed Sep  2 17:25:43 EDT 2026
+====================================================================================================
+
+====================================================================================================
+BUILD SINGLE XENIUM DONOR: Br5973
+====================================================================================================
+
+==========================================================================================
+Loading Br5973
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br5973/GSM9223484_Br5973-cells.parquet.gz
+Cells in H5 matrix:      44655
+Cells in cells metadata: 44655
+Matched cell IDs:        44655
+AnnData object with n_obs × n_vars = 44655 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+====================================================================================================
+SAVE DONOR
+====================================================================================================
+Output:   /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5973.h5ad
+Cells:    44655
+Features: 541
+
+====================================================================================================
+PASS
+====================================================================================================
+Donor:    Br5973
+Cells:    44655
+Features: 541
+H5AD:     /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5973.h5ad
+
+====================================================================================================
+PASS
+Donor     : Br5973
+Completed : Wed Sep  2 17:27:52 EDT 2026
+====================================================================================================

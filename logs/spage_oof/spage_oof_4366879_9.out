@@ -1,0 +1,65 @@
+====================================================================================================
+SpaGE OOF 300-GENE STITCH
+====================================================================================================
+Job        : 4366911_9
+Donor      : Br5436
+Experiment : ex5_1
+Node       : node05.hgcc.emory.edu
+Started    : Tue Sep  8 18:47:50 EDT 2026
+====================================================================================================
+==============================================================================================================
+STITCH SpaGE 3-FOLD OOF PREDICTIONS
+==============================================================================================================
+Donor      : Br5436
+Experiment : ex5_1
+Fold root  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5436
+SpaGE root  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage
+Output     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage/oof_300/oof_predicted_300genes.h5ad
+==============================================================================================================
+
+==============================================================================================================
+FOLD 1
+==============================================================================================================
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage/fold_1/predicted_heldout_genes.h5ad
+Truth     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5436/fold_1_heldout_genes.h5ad
+Prediction shape: (44430, 100)
+Truth shape     : (44430, 100)
+Fold 1: PASS
+
+==============================================================================================================
+FOLD 2
+==============================================================================================================
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage/fold_2/predicted_heldout_genes.h5ad
+Truth     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5436/fold_2_heldout_genes.h5ad
+Prediction shape: (44430, 100)
+Truth shape     : (44430, 100)
+Fold 2: PASS
+
+==============================================================================================================
+FOLD 3
+==============================================================================================================
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage/fold_3/predicted_heldout_genes.h5ad
+Truth     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5436/fold_3_heldout_genes.h5ad
+Prediction shape: (44430, 100)
+Truth shape     : (44430, 100)
+Fold 3: PASS
+
+==============================================================================================================
+WRITING
+==============================================================================================================
+Shape                    : (44430, 300)
+Primary X                : SpaGE count_scale
+Prediction layers        : ['count_scale', 'log1p', 'native']
+Truth layers             : ['ground_truth_counts', 'ground_truth_log1p_norm']
+Fold counts              : {1: 100, 2: 100, 3: 100}
+Output                   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage/oof_300/oof_predicted_300genes.h5ad
+Summary                  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br5436/ex5_1/spage/oof_300/oof_stitch_summary.json
+
+FINAL STATUS: PASS
+
+====================================================================================================
+SLURM STATUS: PASS
+Donor      : Br5436
+Experiment : ex5_1
+Completed  : Tue Sep  8 18:48:17 EDT 2026
+====================================================================================================

@@ -1,0 +1,295 @@
+================================================================================
+TASK 2.3 — OOF DONOR-DOMAIN PSEUDOBULK
+================================================================================
+Task ID : 4
+Model   : TransImp
+Python  : /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Started : Wed Sep  9 20:18:28 EDT 2026
+
+
+==============================================================================================================
+LOAD METADATA — TransImp
+==============================================================================================================
+Donors: 24
+Dx: {'SCZ': 12, 'NTC': 12}
+
+==============================================================================================================
+BUILD TransImp NTC-TRAINED OOF DONOR × SPATIAL-DOMAIN PSEUDOBULK
+==============================================================================================================
+
+[01/24] TransImp | Br2039 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  3775 | library=1993624011.649
+    spd06 | L2/3 | cells=  3531 | library=14433097754.331
+    spd02 | L3/4 | cells=  1892 | library=6252675627.614
+    spd05 | L5   | cells=  5271 | library=18550191818.217
+    spd03 | L6   | cells=  5448 | library=13187549609.826
+    spd01 | WMtz | cells=  1337 | library=3921971016.645
+    spd04 | WM   | cells= 19846 | library=4194382969.646
+
+[02/24] TransImp | Br2719 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  5498 | library=407177151.418
+    spd06 | L2/3 | cells= 10982 | library=6067353695.642
+    spd02 | L3/4 | cells=  4260 | library=1618202529.074
+    spd05 | L5   | cells= 18576 | library=8697830545.310
+    spd03 | L6   | cells=  5112 | library=1958794341.136
+    spd01 | WMtz | cells=  1418 | library=408577621.289
+    spd04 | WM   | cells= 12087 | library=1059643306.735
+
+[03/24] TransImp | Br6432 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6067 | library=402242017.613
+    spd06 | L2/3 | cells= 10999 | library=4661905656.172
+    spd02 | L3/4 | cells=  1110 | library=185940045.379
+    spd05 | L5   | cells=  9915 | library=4769693979.908
+    spd03 | L6   | cells=  3704 | library=1441255872.336
+    spd01 | WMtz | cells=   610 | library=125995226.760
+    spd04 | WM   | cells=  6104 | library=715495612.998
+
+[04/24] TransImp | Br1113 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4992 | library=282977729.655
+    spd06 | L2/3 | cells= 15228 | library=5171645562.257
+    spd02 | L3/4 | cells=  3282 | library=839431415.643
+    spd05 | L5   | cells= 18879 | library=6329962521.358
+    spd03 | L6   | cells=  4371 | library=1140984113.885
+    spd01 | WMtz | cells=  1309 | library=233610103.954
+    spd04 | WM   | cells=  6524 | library=486972686.585
+
+[05/24] TransImp | Br5373 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells= 10479 | library=422355461.921
+    spd06 | L2/3 | cells= 12467 | library=7755268982.803
+    spd02 | L3/4 | cells=  1346 | library=641023256.266
+    spd05 | L5   | cells= 22257 | library=14756138774.579
+    spd03 | L6   | cells=  4213 | library=2103790422.348
+    spd01 | WMtz | cells=   979 | library=376980970.658
+    spd04 | WM   | cells= 11608 | library=810784750.756
+
+[06/24] TransImp | Br5590 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  9106 | library=848397079.272
+    spd06 | L2/3 | cells= 10515 | library=15609126102.194
+    spd02 | L3/4 | cells=  2873 | library=2546767229.512
+    spd05 | L5   | cells= 14586 | library=19982819977.660
+    spd03 | L6   | cells=  3630 | library=2895650466.979
+    spd01 | WMtz | cells=   799 | library=452317011.061
+    spd04 | WM   | cells= 12067 | library=1306943035.873
+
+[07/24] TransImp | Br5400 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4239 | library=278973609.691
+    spd06 | L2/3 | cells= 12006 | library=3833601345.027
+    spd02 | L3/4 | cells=  1937 | library=488586112.014
+    spd05 | L5   | cells= 18063 | library=6479847233.067
+    spd03 | L6   | cells=  5621 | library=1839918188.412
+    spd01 | WMtz | cells=   931 | library=291950680.298
+    spd04 | WM   | cells=  1486 | library=206069093.987
+
+[08/24] TransImp | Br5622 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6461 | library=328193587.780
+    spd06 | L2/3 | cells= 26781 | library=12412054380.879
+    spd02 | L3/4 | cells=  2214 | library=538628113.232
+    spd05 | L5   | cells= 18704 | library=6210030584.350
+    spd03 | L6   | cells=  7349 | library=2527905217.668
+    spd01 | WMtz | cells=  1074 | library=311104879.415
+    spd04 | WM   | cells=  5637 | library=401709892.632
+
+[09/24] TransImp | Br6437 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  6308 | library=367806468.742
+    spd06 | L2/3 | cells= 11082 | library=4833071571.147
+    spd02 | L3/4 | cells=  3018 | library=807400990.208
+    spd05 | L5   | cells= 15957 | library=6776820216.912
+    spd03 | L6   | cells=  5504 | library=1655724136.535
+    spd01 | WMtz | cells=  1538 | library=443886718.778
+    spd04 | WM   | cells= 12363 | library=1119190513.719
+
+[10/24] TransImp | Br5314 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6646 | library=380333034.331
+    spd06 | L2/3 | cells=  7505 | library=8123494062.806
+    spd02 | L3/4 | cells=  1437 | library=1253054711.868
+    spd05 | L5   | cells= 13600 | library=15136892569.141
+    spd03 | L6   | cells=  2590 | library=2061873231.827
+    spd01 | WMtz | cells=  1112 | library=583690997.287
+    spd04 | WM   | cells= 12693 | library=2025329991.879
+
+[11/24] TransImp | Br5588 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  9352 | library=1391295032.891
+    spd06 | L2/3 | cells= 14489 | library=16298654141.573
+    spd02 | L3/4 | cells=  1279 | library=863137475.198
+    spd05 | L5   | cells= 20893 | library=24119407143.971
+    spd03 | L6   | cells=  6271 | library=4600163646.132
+    spd01 | WMtz | cells=  1602 | library=787859000.106
+    spd04 | WM   | cells=  5808 | library=484635231.482
+
+[12/24] TransImp | Br5746 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  4508 | library=317045002.434
+    spd06 | L2/3 | cells=  5408 | library=4487035614.872
+    spd02 | L3/4 | cells=   810 | library=153803327.027
+    spd05 | L5   | cells= 14655 | library=10061899912.196
+    spd03 | L6   | cells=  5001 | library=2908263963.693
+    spd01 | WMtz | cells=  1237 | library=160451062.808
+    spd04 | WM   | cells= 11402 | library=1028399487.024
+
+[13/24] TransImp | Br5639 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  9694 | library=675208565.031
+    spd06 | L2/3 | cells= 13251 | library=10511959175.388
+    spd02 | L3/4 | cells=  2831 | library=987072016.727
+    spd05 | L5   | cells= 17359 | library=12116293286.275
+    spd03 | L6   | cells=  4369 | library=2003388393.797
+    spd01 | WMtz | cells=  2254 | library=1386212808.174
+    spd04 | WM   | cells=  9213 | library=885722294.016
+
+[14/24] TransImp | Br8433 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells= 11346 | library=1323871599.899
+    spd06 | L2/3 | cells= 15619 | library=10281283332.003
+    spd02 | L3/4 | cells=   971 | library=545772525.316
+    spd05 | L5   | cells= 15418 | library=11791671224.447
+    spd03 | L6   | cells=  5303 | library=3172716382.674
+    spd01 | WMtz | cells=   739 | library=130161492.464
+    spd04 | WM   | cells=  8635 | library=639004065.966
+
+[15/24] TransImp | Br8772 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  8837 | library=577675680.395
+    spd06 | L2/3 | cells= 10179 | library=8390318006.686
+    spd02 | L3/4 | cells=  1727 | library=1218930285.517
+    spd05 | L5   | cells= 19850 | library=17199002201.522
+    spd03 | L6   | cells=  5084 | library=3599992282.677
+    spd01 | WMtz | cells=  1349 | library=447682912.807
+    spd04 | WM   | cells=  7428 | library=846880779.491
+
+[16/24] TransImp | Br1139 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  8949 | library=841318118.761
+    spd06 | L2/3 | cells= 13384 | library=13050690800.680
+    spd02 | L3/4 | cells=  3434 | library=1960325679.613
+    spd05 | L5   | cells= 15040 | library=14411942956.131
+    spd03 | L6   | cells=  3971 | library=2709361451.315
+    spd01 | WMtz | cells=  1186 | library=565887545.919
+    spd04 | WM   | cells= 10653 | library=872958747.180
+
+[17/24] TransImp | Br5973 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  5433 | library=357208148.066
+    spd06 | L2/3 | cells=  8671 | library=4980280348.603
+    spd02 | L3/4 | cells=  1706 | library=833079020.217
+    spd05 | L5   | cells= 12481 | library=9206749379.092
+    spd03 | L6   | cells=  3091 | library=1457499356.231
+    spd01 | WMtz | cells=  1287 | library=460016677.521
+    spd04 | WM   | cells=  9224 | library=827422554.928
+
+[18/24] TransImp | Br8667 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  7177 | library=507632171.543
+    spd06 | L2/3 | cells= 16405 | library=10601648591.365
+    spd02 | L3/4 | cells=  2276 | library=1374336529.565
+    spd05 | L5   | cells= 20279 | library=14983695885.647
+    spd03 | L6   | cells=  5948 | library=3403339225.903
+    spd01 | WMtz | cells=  1775 | library=801270724.348
+    spd04 | WM   | cells= 12288 | library=1170620645.494
+
+[19/24] TransImp | Br5436 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  5121 | library=334503805.648
+    spd06 | L2/3 | cells= 13077 | library=8223716148.586
+    spd02 | L3/4 | cells=  2558 | library=1365004002.910
+    spd05 | L5   | cells= 14407 | library=11532723837.405
+    spd03 | L6   | cells=  3775 | library=2098029657.340
+    spd01 | WMtz | cells=  1912 | library=1398673948.304
+    spd04 | WM   | cells=  3580 | library=527480106.228
+
+[20/24] TransImp | Br5931 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4888 | library=271180209.359
+    spd06 | L2/3 | cells= 11677 | library=8036159733.297
+    spd02 | L3/4 | cells=  2342 | library=1364736851.607
+    spd05 | L5   | cells= 14897 | library=14051905069.190
+    spd03 | L6   | cells=  4717 | library=3279648901.313
+    spd01 | WMtz | cells=  1008 | library=391144236.325
+    spd04 | WM   | cells=  3992 | library=460468960.958
+
+[21/24] TransImp | Br6496 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  3571 | library=318113924.450
+    spd06 | L2/3 | cells= 15353 | library=5508870479.950
+    spd02 | L3/4 | cells=  1455 | library=353306824.860
+    spd05 | L5   | cells= 14847 | library=7313699521.224
+    spd03 | L6   | cells=  4459 | library=1727391336.113
+    spd01 | WMtz | cells=   979 | library=240255788.034
+    spd04 | WM   | cells= 15545 | library=1017731653.298
+
+[22/24] TransImp | Br2421 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells= 10984 | library=551212079.686
+    spd06 | L2/3 | cells= 14564 | library=10493787083.961
+    spd02 | L3/4 | cells=  1959 | library=1214650121.479
+    spd05 | L5   | cells= 14758 | library=12874340710.131
+    spd03 | L6   | cells=  6342 | library=3662803804.259
+    spd01 | WMtz | cells=  1460 | library=643014202.804
+    spd04 | WM   | cells= 12004 | library=1363271881.495
+
+[23/24] TransImp | Br6032 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  1839 | library=152308502.966
+    spd06 | L2/3 | cells=  9401 | library=3214671857.392
+    spd02 | L3/4 | cells=  2161 | library=600132082.781
+    spd05 | L5   | cells= 20410 | library=9268513844.262
+    spd03 | L6   | cells=  8411 | library=3506148516.461
+    spd01 | WMtz | cells=   993 | library=303243068.420
+    spd04 | WM   | cells=  1454 | library=336880100.215
+
+[24/24] TransImp | Br6389 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  7338 | library=536000058.517
+    spd06 | L2/3 | cells= 12092 | library=7376958712.710
+    spd02 | L3/4 | cells=  1535 | library=1017046915.724
+    spd05 | L5   | cells= 13386 | library=12269785742.441
+    spd03 | L6   | cells=  3120 | library=2472989395.789
+    spd01 | WMtz | cells=  1492 | library=1138927600.047
+    spd04 | WM   | cells= 10577 | library=766296266.628
+
+==============================================================================================================
+ASSEMBLE — TransImp
+==============================================================================================================
+Matrix  : (168, 300)
+Metadata: (168, 15)
+
+==============================================================================================================
+SAVE — TransImp
+==============================================================================================================
+
+==============================================================================================================
+FINAL SUMMARY — TransImp
+==============================================================================================================
+Model              : TransImp
+Donors             : 24
+NTC donors         : 12
+SCZ donors         : 12
+Spatial domains    : 7
+Pseudobulk samples : 168
+Genes              : 300
+Minimum cells / PB : 610
+Maximum cells / PB : 26781
+All donor layer sums match: True
+
+Output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/TransImp/TransImp_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/TransImp/TransImp_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/TransImp/TransImp_NTCtrained_OOF_donor_domain_validation.csv
+
+FINAL STATUS: PASS — TransImp NTC-trained OOF 24-donor × 7-domain pseudobulk created.
+
+================================================================================
+MODEL: TransImp
+SLURM STATUS: PASS
+Finished: Wed Sep  9 20:19:52 EDT 2026
+================================================================================

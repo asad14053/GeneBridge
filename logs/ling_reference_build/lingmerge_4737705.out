@@ -1,0 +1,112 @@
+Cells: 77604
+Genes: 31491
+Libraries: 87
+00/86 cells=670 nnz=2,958,328
+01/86 cells=667 nnz=3,108,638
+02/86 cells=641 nnz=2,943,657
+03/86 cells=517 nnz=2,596,803
+04/86 cells=619 nnz=2,942,114
+05/86 cells=732 nnz=3,569,989
+06/86 cells=678 nnz=3,158,941
+07/86 cells=1,270 nnz=5,034,185
+08/86 cells=1,109 nnz=4,860,525
+09/86 cells=1,227 nnz=4,928,412
+10/86 cells=1,272 nnz=5,126,216
+11/86 cells=1,262 nnz=5,418,549
+12/86 cells=1,082 nnz=4,509,022
+13/86 cells=1,165 nnz=5,011,555
+14/86 cells=1,223 nnz=5,145,126
+15/86 cells=998 nnz=4,147,862
+16/86 cells=822 nnz=3,687,231
+17/86 cells=1,001 nnz=4,118,042
+18/86 cells=921 nnz=3,775,224
+19/86 cells=945 nnz=3,966,180
+20/86 cells=821 nnz=3,907,399
+21/86 cells=1,028 nnz=4,421,545
+22/86 cells=1,057 nnz=4,001,155
+23/86 cells=907 nnz=3,222,932
+24/86 cells=962 nnz=3,436,443
+25/86 cells=911 nnz=3,214,661
+26/86 cells=983 nnz=3,210,028
+27/86 cells=963 nnz=3,261,641
+28/86 cells=1,000 nnz=3,314,260
+29/86 cells=998 nnz=3,268,300
+30/86 cells=931 nnz=3,299,509
+31/86 cells=836 nnz=2,870,759
+32/86 cells=843 nnz=4,536,639
+33/86 cells=860 nnz=4,411,926
+34/86 cells=855 nnz=4,260,680
+35/86 cells=842 nnz=4,195,303
+36/86 cells=882 nnz=3,822,666
+37/86 cells=981 nnz=4,588,209
+38/86 cells=908 nnz=4,218,665
+39/86 cells=815 nnz=4,000,173
+40/86 cells=908 nnz=4,132,916
+41/86 cells=875 nnz=4,126,310
+42/86 cells=885 nnz=3,992,860
+43/86 cells=833 nnz=3,959,477
+44/86 cells=860 nnz=3,973,232
+45/86 cells=887 nnz=4,092,811
+46/86 cells=874 nnz=3,950,187
+47/86 cells=695 nnz=2,780,718
+48/86 cells=696 nnz=2,927,504
+49/86 cells=762 nnz=3,524,813
+50/86 cells=724 nnz=2,894,777
+51/86 cells=728 nnz=2,839,464
+52/86 cells=697 nnz=2,885,053
+53/86 cells=703 nnz=3,016,905
+54/86 cells=773 nnz=2,161,228
+55/86 cells=701 nnz=3,425,401
+56/86 cells=647 nnz=3,962,954
+57/86 cells=735 nnz=3,802,455
+58/86 cells=701 nnz=3,592,735
+59/86 cells=689 nnz=3,826,232
+60/86 cells=706 nnz=3,261,139
+61/86 cells=692 nnz=3,689,940
+62/86 cells=644 nnz=2,771,181
+63/86 cells=993 nnz=3,326,547
+64/86 cells=900 nnz=3,111,957
+65/86 cells=981 nnz=3,136,953
+66/86 cells=889 nnz=2,862,838
+67/86 cells=968 nnz=3,128,526
+68/86 cells=887 nnz=2,743,129
+69/86 cells=962 nnz=2,811,572
+70/86 cells=956 nnz=2,978,512
+71/86 cells=878 nnz=3,214,055
+72/86 cells=759 nnz=3,240,707
+73/86 cells=775 nnz=3,028,516
+74/86 cells=798 nnz=3,064,409
+75/86 cells=792 nnz=3,129,705
+76/86 cells=725 nnz=2,981,248
+77/86 cells=594 nnz=2,525,475
+78/86 cells=707 nnz=2,454,361
+79/86 cells=1,190 nnz=5,215,573
+80/86 cells=1,144 nnz=4,897,716
+81/86 cells=1,100 nnz=4,891,075
+82/86 cells=1,174 nnz=4,766,640
+83/86 cells=1,145 nnz=4,855,544
+84/86 cells=1,167 nnz=5,282,646
+85/86 cells=1,169 nnz=5,188,924
+86/86 cells=1,332 nnz=5,187,813
+
+Mean library size: 13314.749961342199
+Mean sizeFactor: 1.0
+logcounts 512/77,604
+logcounts 5,632/77,604
+logcounts 10,752/77,604
+logcounts 15,872/77,604
+logcounts 20,992/77,604
+logcounts 26,112/77,604
+logcounts 31,232/77,604
+logcounts 36,352/77,604
+logcounts 41,472/77,604
+logcounts 46,592/77,604
+logcounts 51,712/77,604
+logcounts 56,832/77,604
+logcounts 61,952/77,604
+logcounts 67,072/77,604
+logcounts 72,192/77,604
+logcounts 77,312/77,604
+
+Writing:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/ling_compatible/ling_snrna_reference_full_allgenes.h5ad

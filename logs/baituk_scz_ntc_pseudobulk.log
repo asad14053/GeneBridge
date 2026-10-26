@@ -1,0 +1,519 @@
+
+==============================================================================================================
+LOAD BAITUK MED.CLEAN CELL ANNOTATIONS
+==============================================================================================================
+Annotation shape: (235904, 2)
+Columns: ['cell_id', 'cell_type']
+
+Cell types:
+cell_type
+L2_CUX2_LAMP5       31998
+SST                 28199
+L2_3_CUX2_FREM3     23802
+PVALB               23680
+VIP                 22683
+L4_5_FEZF2_LRRK1    20774
+L4_RORB_SCHLAP1     19829
+L5_6_FEZF2_TLE4     15033
+ID2_LAMP5           14785
+L5_6_THEMIS         13928
+L3_CUX2_PRSS12      12852
+ID2_NCKAP5           3959
+ID2_PAX6             3350
+L5_FEZF2_ADRA1A      1032
+
+==============================================================================================================
+DETECT ANNOTATION CELL-ID COLUMN
+==============================================================================================================
+cell_id                                  overlap with SCZ original_cell_id = 81817
+
+Selected annotation ID column: cell_id
+SCZ overlap: 81817
+
+==============================================================================================================
+PROCESS SCZ
+==============================================================================================================
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_SCZ_full_allgenes.h5ad
+Shape: (81817, 60617)
+Genes: 60617
+
+==============================================================================================================
+SCZ: DONOR-LEVEL PSEUDOBULK
+==============================================================================================================
+pseudobulk_id donor_id diagnosis  n_cells   samples
+  donor::MB10     MB10       SCZ     8750      MB10
+  donor::MB12     MB12       SCZ    10487      MB12
+  donor::MB14     MB14       SCZ     9989      MB14
+  donor::MB22     MB22       SCZ     8816      MB22
+  donor::MB23     MB23       SCZ    10599      MB23
+  donor::MB54     MB54       SCZ     7005      MB54
+  donor::MB56     MB56       SCZ     6156      MB56
+   donor::MB6      MB6       SCZ     8183       MB6
+   donor::MB8      MB8       SCZ    11832 MB8;MB8-2
+
+==============================================================================================================
+SCZ: ATTACH MED.CLEAN CELL TYPES
+==============================================================================================================
+Cells total   : 81817
+Cells matched : 81817
+Match fraction: 100.0000%
+
+Cell-type counts:
+cell_type
+L2_CUX2_LAMP5       11837
+L2_3_CUX2_FREM3      9875
+L4_5_FEZF2_LRRK1     8342
+L4_RORB_SCHLAP1      7220
+PVALB                7213
+VIP                  7205
+L5_6_FEZF2_TLE4      5846
+SST                  5495
+L3_CUX2_PRSS12       5414
+L5_6_THEMIS          5402
+ID2_LAMP5            4951
+ID2_NCKAP5           1356
+ID2_PAX6             1197
+L5_FEZF2_ADRA1A       464
+
+==============================================================================================================
+SCZ: DONOR × MED.CLEAN CELL-TYPE PSEUDOBULK
+==============================================================================================================
+donor_id diagnosis        cell_type  n_cells
+    MB10       SCZ        ID2_LAMP5      420
+    MB12       SCZ        ID2_LAMP5      558
+    MB14       SCZ        ID2_LAMP5      537
+    MB22       SCZ        ID2_LAMP5      571
+    MB23       SCZ        ID2_LAMP5      533
+    MB54       SCZ        ID2_LAMP5      500
+    MB56       SCZ        ID2_LAMP5      656
+     MB6       SCZ        ID2_LAMP5      450
+     MB8       SCZ        ID2_LAMP5      726
+    MB10       SCZ       ID2_NCKAP5      111
+    MB12       SCZ       ID2_NCKAP5      107
+    MB14       SCZ       ID2_NCKAP5      148
+    MB22       SCZ       ID2_NCKAP5      174
+    MB23       SCZ       ID2_NCKAP5       87
+    MB54       SCZ       ID2_NCKAP5       43
+    MB56       SCZ       ID2_NCKAP5      328
+     MB6       SCZ       ID2_NCKAP5      103
+     MB8       SCZ       ID2_NCKAP5      255
+    MB10       SCZ         ID2_PAX6      104
+    MB12       SCZ         ID2_PAX6      104
+    MB14       SCZ         ID2_PAX6      102
+    MB22       SCZ         ID2_PAX6      151
+    MB23       SCZ         ID2_PAX6       79
+    MB54       SCZ         ID2_PAX6       87
+    MB56       SCZ         ID2_PAX6      204
+     MB6       SCZ         ID2_PAX6      132
+     MB8       SCZ         ID2_PAX6      234
+    MB10       SCZ  L2_3_CUX2_FREM3     1244
+    MB12       SCZ  L2_3_CUX2_FREM3     1593
+    MB14       SCZ  L2_3_CUX2_FREM3     1503
+    MB22       SCZ  L2_3_CUX2_FREM3     1185
+    MB23       SCZ  L2_3_CUX2_FREM3     1434
+    MB54       SCZ  L2_3_CUX2_FREM3      649
+    MB56       SCZ  L2_3_CUX2_FREM3      293
+     MB6       SCZ  L2_3_CUX2_FREM3     1115
+     MB8       SCZ  L2_3_CUX2_FREM3      859
+    MB10       SCZ    L2_CUX2_LAMP5     1272
+    MB12       SCZ    L2_CUX2_LAMP5     1041
+    MB14       SCZ    L2_CUX2_LAMP5     1035
+    MB22       SCZ    L2_CUX2_LAMP5     1422
+    MB23       SCZ    L2_CUX2_LAMP5      558
+    MB54       SCZ    L2_CUX2_LAMP5      886
+    MB56       SCZ    L2_CUX2_LAMP5     1313
+     MB6       SCZ    L2_CUX2_LAMP5     1190
+     MB8       SCZ    L2_CUX2_LAMP5     3120
+    MB10       SCZ   L3_CUX2_PRSS12      819
+    MB12       SCZ   L3_CUX2_PRSS12      635
+    MB14       SCZ   L3_CUX2_PRSS12      666
+    MB22       SCZ   L3_CUX2_PRSS12      608
+    MB23       SCZ   L3_CUX2_PRSS12      746
+    MB54       SCZ   L3_CUX2_PRSS12      501
+    MB56       SCZ   L3_CUX2_PRSS12      245
+     MB6       SCZ   L3_CUX2_PRSS12      580
+     MB8       SCZ   L3_CUX2_PRSS12      614
+    MB10       SCZ L4_5_FEZF2_LRRK1      965
+    MB12       SCZ L4_5_FEZF2_LRRK1      653
+    MB14       SCZ L4_5_FEZF2_LRRK1      936
+    MB22       SCZ L4_5_FEZF2_LRRK1      797
+    MB23       SCZ L4_5_FEZF2_LRRK1     1463
+    MB54       SCZ L4_5_FEZF2_LRRK1      742
+    MB56       SCZ L4_5_FEZF2_LRRK1      460
+     MB6       SCZ L4_5_FEZF2_LRRK1      794
+     MB8       SCZ L4_5_FEZF2_LRRK1     1532
+    MB10       SCZ  L4_RORB_SCHLAP1      762
+    MB12       SCZ  L4_RORB_SCHLAP1      674
+    MB14       SCZ  L4_RORB_SCHLAP1      812
+    MB22       SCZ  L4_RORB_SCHLAP1      514
+    MB23       SCZ  L4_RORB_SCHLAP1      921
+    MB54       SCZ  L4_RORB_SCHLAP1      649
+    MB56       SCZ  L4_RORB_SCHLAP1      639
+     MB6       SCZ  L4_RORB_SCHLAP1      773
+     MB8       SCZ  L4_RORB_SCHLAP1     1476
+    MB10       SCZ  L5_6_FEZF2_TLE4      610
+    MB12       SCZ  L5_6_FEZF2_TLE4     1257
+    MB14       SCZ  L5_6_FEZF2_TLE4      854
+    MB22       SCZ  L5_6_FEZF2_TLE4      429
+    MB23       SCZ  L5_6_FEZF2_TLE4      959
+    MB54       SCZ  L5_6_FEZF2_TLE4      834
+    MB56       SCZ  L5_6_FEZF2_TLE4      103
+     MB6       SCZ  L5_6_FEZF2_TLE4      496
+     MB8       SCZ  L5_6_FEZF2_TLE4      304
+    MB10       SCZ      L5_6_THEMIS      697
+    MB12       SCZ      L5_6_THEMIS      991
+    MB14       SCZ      L5_6_THEMIS      962
+    MB22       SCZ      L5_6_THEMIS      322
+    MB23       SCZ      L5_6_THEMIS      851
+    MB54       SCZ      L5_6_THEMIS      836
+    MB56       SCZ      L5_6_THEMIS      104
+     MB6       SCZ      L5_6_THEMIS      373
+     MB8       SCZ      L5_6_THEMIS      266
+    MB10       SCZ  L5_FEZF2_ADRA1A       40
+    MB12       SCZ  L5_FEZF2_ADRA1A       82
+    MB14       SCZ  L5_FEZF2_ADRA1A       71
+    MB22       SCZ  L5_FEZF2_ADRA1A       39
+    MB23       SCZ  L5_FEZF2_ADRA1A      185
+    MB54       SCZ  L5_FEZF2_ADRA1A        6
+    MB56       SCZ  L5_FEZF2_ADRA1A        4
+     MB6       SCZ  L5_FEZF2_ADRA1A        9
+     MB8       SCZ  L5_FEZF2_ADRA1A       28
+    MB10       SCZ            PVALB      843
+    MB12       SCZ            PVALB     1096
+    MB14       SCZ            PVALB      937
+    MB22       SCZ            PVALB      956
+    MB23       SCZ            PVALB     1126
+    MB54       SCZ            PVALB      415
+    MB56       SCZ            PVALB      599
+     MB6       SCZ            PVALB      907
+     MB8       SCZ            PVALB      334
+    MB10       SCZ              SST      359
+    MB12       SCZ              SST      899
+    MB14       SCZ              SST      685
+    MB22       SCZ              SST      844
+    MB23       SCZ              SST      927
+    MB54       SCZ              SST      310
+    MB56       SCZ              SST      476
+     MB6       SCZ              SST      529
+     MB8       SCZ              SST      466
+    MB10       SCZ              VIP      504
+    MB12       SCZ              VIP      797
+    MB14       SCZ              VIP      741
+    MB22       SCZ              VIP      804
+    MB23       SCZ              VIP      730
+    MB54       SCZ              VIP      547
+    MB56       SCZ              VIP      732
+     MB6       SCZ              VIP      732
+     MB8       SCZ              VIP     1618
+
+==============================================================================================================
+PROCESS NTC
+==============================================================================================================
+Input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/Baituk/baituk_snrna_reference_NTC_full_allgenes.h5ad
+Shape: (127236, 60617)
+Genes: 60617
+
+==============================================================================================================
+NTC: DONOR-LEVEL PSEUDOBULK
+==============================================================================================================
+pseudobulk_id donor_id diagnosis  n_cells samples
+  donor::MB11     MB11       NTC    11580    MB11
+  donor::MB13     MB13       NTC     9253    MB13
+  donor::MB15     MB15       NTC    10439    MB15
+  donor::MB16     MB16       NTC     7564    MB16
+  donor::MB17     MB17       NTC     9846    MB17
+donor::MB18-2   MB18-2       NTC    10176  MB18-2
+  donor::MB19     MB19       NTC     9792    MB19
+  donor::MB21     MB21       NTC     9890    MB21
+  donor::MB51     MB51       NTC     4633    MB51
+  donor::MB53     MB53       NTC     7879    MB53
+  donor::MB55     MB55       NTC     8315    MB55
+  donor::MB57     MB57       NTC     7379    MB57
+   donor::MB7      MB7       NTC     9838     MB7
+   donor::MB9      MB9       NTC    10652     MB9
+
+==============================================================================================================
+NTC: ATTACH MED.CLEAN CELL TYPES
+==============================================================================================================
+Cells total   : 127236
+Cells matched : 127236
+Match fraction: 100.0000%
+
+Cell-type counts:
+cell_type
+L2_CUX2_LAMP5       18111
+SST                 17512
+PVALB               14712
+VIP                 12905
+L2_3_CUX2_FREM3     11887
+L4_RORB_SCHLAP1      9736
+L4_5_FEZF2_LRRK1     9402
+ID2_LAMP5            8626
+L3_CUX2_PRSS12       6643
+L5_6_FEZF2_TLE4      6441
+L5_6_THEMIS          6348
+ID2_NCKAP5           2463
+ID2_PAX6             1941
+L5_FEZF2_ADRA1A       509
+
+==============================================================================================================
+NTC: DONOR × MED.CLEAN CELL-TYPE PSEUDOBULK
+==============================================================================================================
+donor_id diagnosis        cell_type  n_cells
+    MB11       NTC        ID2_LAMP5      905
+    MB13       NTC        ID2_LAMP5      672
+    MB15       NTC        ID2_LAMP5      642
+    MB16       NTC        ID2_LAMP5      424
+    MB17       NTC        ID2_LAMP5      777
+  MB18-2       NTC        ID2_LAMP5      563
+    MB19       NTC        ID2_LAMP5      657
+    MB21       NTC        ID2_LAMP5      479
+    MB51       NTC        ID2_LAMP5      318
+    MB53       NTC        ID2_LAMP5      944
+    MB55       NTC        ID2_LAMP5      457
+    MB57       NTC        ID2_LAMP5      437
+     MB7       NTC        ID2_LAMP5      614
+     MB9       NTC        ID2_LAMP5      737
+    MB11       NTC       ID2_NCKAP5      306
+    MB13       NTC       ID2_NCKAP5      158
+    MB15       NTC       ID2_NCKAP5      137
+    MB16       NTC       ID2_NCKAP5      107
+    MB17       NTC       ID2_NCKAP5      198
+  MB18-2       NTC       ID2_NCKAP5      208
+    MB19       NTC       ID2_NCKAP5      139
+    MB21       NTC       ID2_NCKAP5      152
+    MB51       NTC       ID2_NCKAP5       48
+    MB53       NTC       ID2_NCKAP5      257
+    MB55       NTC       ID2_NCKAP5      212
+    MB57       NTC       ID2_NCKAP5       65
+     MB7       NTC       ID2_NCKAP5      245
+     MB9       NTC       ID2_NCKAP5      231
+    MB11       NTC         ID2_PAX6      201
+    MB13       NTC         ID2_PAX6      146
+    MB15       NTC         ID2_PAX6      121
+    MB16       NTC         ID2_PAX6       94
+    MB17       NTC         ID2_PAX6      150
+  MB18-2       NTC         ID2_PAX6      143
+    MB19       NTC         ID2_PAX6      216
+    MB21       NTC         ID2_PAX6       91
+    MB51       NTC         ID2_PAX6       36
+    MB53       NTC         ID2_PAX6      165
+    MB55       NTC         ID2_PAX6      124
+    MB57       NTC         ID2_PAX6       80
+     MB7       NTC         ID2_PAX6      203
+     MB9       NTC         ID2_PAX6      171
+    MB11       NTC  L2_3_CUX2_FREM3     1125
+    MB13       NTC  L2_3_CUX2_FREM3     1014
+    MB15       NTC  L2_3_CUX2_FREM3     1088
+    MB16       NTC  L2_3_CUX2_FREM3      790
+    MB17       NTC  L2_3_CUX2_FREM3      874
+  MB18-2       NTC  L2_3_CUX2_FREM3     1315
+    MB19       NTC  L2_3_CUX2_FREM3      229
+    MB21       NTC  L2_3_CUX2_FREM3     1326
+    MB51       NTC  L2_3_CUX2_FREM3       84
+    MB53       NTC  L2_3_CUX2_FREM3       52
+    MB55       NTC  L2_3_CUX2_FREM3      985
+    MB57       NTC  L2_3_CUX2_FREM3      799
+     MB7       NTC  L2_3_CUX2_FREM3     1352
+     MB9       NTC  L2_3_CUX2_FREM3      854
+    MB11       NTC    L2_CUX2_LAMP5     2273
+    MB13       NTC    L2_CUX2_LAMP5     1382
+    MB15       NTC    L2_CUX2_LAMP5     1325
+    MB16       NTC    L2_CUX2_LAMP5     1129
+    MB17       NTC    L2_CUX2_LAMP5     1164
+  MB18-2       NTC    L2_CUX2_LAMP5     1484
+    MB19       NTC    L2_CUX2_LAMP5      620
+    MB21       NTC    L2_CUX2_LAMP5      936
+    MB51       NTC    L2_CUX2_LAMP5      655
+    MB53       NTC    L2_CUX2_LAMP5      476
+    MB55       NTC    L2_CUX2_LAMP5     1427
+    MB57       NTC    L2_CUX2_LAMP5     1376
+     MB7       NTC    L2_CUX2_LAMP5     2639
+     MB9       NTC    L2_CUX2_LAMP5     1225
+    MB11       NTC   L3_CUX2_PRSS12      507
+    MB13       NTC   L3_CUX2_PRSS12      455
+    MB15       NTC   L3_CUX2_PRSS12      739
+    MB16       NTC   L3_CUX2_PRSS12      511
+    MB17       NTC   L3_CUX2_PRSS12      529
+  MB18-2       NTC   L3_CUX2_PRSS12      687
+    MB19       NTC   L3_CUX2_PRSS12      166
+    MB21       NTC   L3_CUX2_PRSS12      606
+    MB51       NTC   L3_CUX2_PRSS12       37
+    MB53       NTC   L3_CUX2_PRSS12      115
+    MB55       NTC   L3_CUX2_PRSS12      530
+    MB57       NTC   L3_CUX2_PRSS12      431
+     MB7       NTC   L3_CUX2_PRSS12      642
+     MB9       NTC   L3_CUX2_PRSS12      688
+    MB11       NTC L4_5_FEZF2_LRRK1      737
+    MB13       NTC L4_5_FEZF2_LRRK1      644
+    MB15       NTC L4_5_FEZF2_LRRK1      938
+    MB16       NTC L4_5_FEZF2_LRRK1      643
+    MB17       NTC L4_5_FEZF2_LRRK1      659
+  MB18-2       NTC L4_5_FEZF2_LRRK1      783
+    MB19       NTC L4_5_FEZF2_LRRK1      602
+    MB21       NTC L4_5_FEZF2_LRRK1      974
+    MB51       NTC L4_5_FEZF2_LRRK1      426
+    MB53       NTC L4_5_FEZF2_LRRK1      184
+    MB55       NTC L4_5_FEZF2_LRRK1      835
+    MB57       NTC L4_5_FEZF2_LRRK1      792
+     MB7       NTC L4_5_FEZF2_LRRK1      343
+     MB9       NTC L4_5_FEZF2_LRRK1      842
+    MB11       NTC  L4_RORB_SCHLAP1      651
+    MB13       NTC  L4_RORB_SCHLAP1     1003
+    MB15       NTC  L4_RORB_SCHLAP1      739
+    MB16       NTC  L4_RORB_SCHLAP1      531
+    MB17       NTC  L4_RORB_SCHLAP1      596
+  MB18-2       NTC  L4_RORB_SCHLAP1      653
+    MB19       NTC  L4_RORB_SCHLAP1      926
+    MB21       NTC  L4_RORB_SCHLAP1     1223
+    MB51       NTC  L4_RORB_SCHLAP1      343
+    MB53       NTC  L4_RORB_SCHLAP1      670
+    MB55       NTC  L4_RORB_SCHLAP1      501
+    MB57       NTC  L4_RORB_SCHLAP1      629
+     MB7       NTC  L4_RORB_SCHLAP1      453
+     MB9       NTC  L4_RORB_SCHLAP1      818
+    MB11       NTC  L5_6_FEZF2_TLE4      337
+    MB13       NTC  L5_6_FEZF2_TLE4      270
+    MB15       NTC  L5_6_FEZF2_TLE4      792
+    MB16       NTC  L5_6_FEZF2_TLE4      463
+    MB17       NTC  L5_6_FEZF2_TLE4      520
+  MB18-2       NTC  L5_6_FEZF2_TLE4      768
+    MB19       NTC  L5_6_FEZF2_TLE4      665
+    MB21       NTC  L5_6_FEZF2_TLE4      730
+    MB51       NTC  L5_6_FEZF2_TLE4      184
+    MB53       NTC  L5_6_FEZF2_TLE4       63
+    MB55       NTC  L5_6_FEZF2_TLE4      408
+    MB57       NTC  L5_6_FEZF2_TLE4      289
+     MB7       NTC  L5_6_FEZF2_TLE4      285
+     MB9       NTC  L5_6_FEZF2_TLE4      667
+    MB11       NTC      L5_6_THEMIS      271
+    MB13       NTC      L5_6_THEMIS      476
+    MB15       NTC      L5_6_THEMIS      716
+    MB16       NTC      L5_6_THEMIS      599
+    MB17       NTC      L5_6_THEMIS      774
+  MB18-2       NTC      L5_6_THEMIS      686
+    MB19       NTC      L5_6_THEMIS      517
+    MB21       NTC      L5_6_THEMIS      678
+    MB51       NTC      L5_6_THEMIS      281
+    MB53       NTC      L5_6_THEMIS        8
+    MB55       NTC      L5_6_THEMIS      379
+    MB57       NTC      L5_6_THEMIS      147
+     MB7       NTC      L5_6_THEMIS      265
+     MB9       NTC      L5_6_THEMIS      551
+    MB11       NTC  L5_FEZF2_ADRA1A       30
+    MB13       NTC  L5_FEZF2_ADRA1A       35
+    MB15       NTC  L5_FEZF2_ADRA1A       48
+    MB16       NTC  L5_FEZF2_ADRA1A       70
+    MB17       NTC  L5_FEZF2_ADRA1A       89
+  MB18-2       NTC  L5_FEZF2_ADRA1A       34
+    MB19       NTC  L5_FEZF2_ADRA1A        3
+    MB21       NTC  L5_FEZF2_ADRA1A       37
+    MB53       NTC  L5_FEZF2_ADRA1A        5
+    MB55       NTC  L5_FEZF2_ADRA1A       45
+    MB57       NTC  L5_FEZF2_ADRA1A       61
+     MB7       NTC  L5_FEZF2_ADRA1A       17
+     MB9       NTC  L5_FEZF2_ADRA1A       35
+    MB11       NTC            PVALB     1346
+    MB13       NTC            PVALB     1140
+    MB15       NTC            PVALB     1199
+    MB16       NTC            PVALB      845
+    MB17       NTC            PVALB     1401
+  MB18-2       NTC            PVALB     1022
+    MB19       NTC            PVALB     1084
+    MB21       NTC            PVALB      956
+    MB51       NTC            PVALB      594
+    MB53       NTC            PVALB      819
+    MB55       NTC            PVALB      812
+    MB57       NTC            PVALB     1055
+     MB7       NTC            PVALB      933
+     MB9       NTC            PVALB     1506
+    MB11       NTC              SST     1370
+    MB13       NTC              SST      950
+    MB15       NTC              SST     1059
+    MB16       NTC              SST      742
+    MB17       NTC              SST     1032
+  MB18-2       NTC              SST      954
+    MB19       NTC              SST     3232
+    MB21       NTC              SST      856
+    MB51       NTC              SST     1154
+    MB53       NTC              SST     2548
+    MB55       NTC              SST      742
+    MB57       NTC              SST      637
+     MB7       NTC              SST      865
+     MB9       NTC              SST     1371
+    MB11       NTC              VIP     1521
+    MB13       NTC              VIP      908
+    MB15       NTC              VIP      896
+    MB16       NTC              VIP      616
+    MB17       NTC              VIP     1083
+  MB18-2       NTC              VIP      876
+    MB19       NTC              VIP      736
+    MB21       NTC              VIP      846
+    MB51       NTC              VIP      473
+    MB53       NTC              VIP     1573
+    MB55       NTC              VIP      858
+    MB57       NTC              VIP      581
+     MB7       NTC              VIP      982
+     MB9       NTC              VIP      956
+
+==============================================================================================================
+COMBINE DONOR-LEVEL PSEUDOBULK
+==============================================================================================================
+diagnosis
+NTC    14
+SCZ     9
+Name: count, dtype: int64
+Biological donors: 23
+
+==============================================================================================================
+COMBINE DONOR × CELL-TYPE PSEUDOBULK
+==============================================================================================================
+Pseudobulks: 321
+Cell types: 14
+Donors: 23
+
+Minimum cells per donor×celltype:
+count     321.000000
+mean      651.255452
+std       483.403839
+min         3.000000
+25%       265.000000
+50%       639.000000
+75%       899.000000
+max      3232.000000
+Name: n_cells, dtype: float64
+
+Coverage by cell type:
+diagnosis         NTC  SCZ
+cell_type                 
+ID2_LAMP5          14    9
+ID2_NCKAP5         14    9
+ID2_PAX6           14    9
+L2_3_CUX2_FREM3    14    9
+L2_CUX2_LAMP5      14    9
+L3_CUX2_PRSS12     14    9
+L4_5_FEZF2_LRRK1   14    9
+L4_RORB_SCHLAP1    14    9
+L5_6_FEZF2_TLE4    14    9
+L5_6_THEMIS        14    9
+L5_FEZF2_ADRA1A    13    9
+PVALB              14    9
+SST                14    9
+VIP                14    9
+
+==============================================================================================================
+SAVED
+==============================================================================================================
+Donor counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/05_baituk_scz_ntc_de/baituk_donor_pseudobulk_counts.csv.gz
+
+Donor metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/05_baituk_scz_ntc_de/baituk_donor_pseudobulk_metadata.csv
+
+Cell-type counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/05_baituk_scz_ntc_de/baituk_medclean_donor_celltype_pseudobulk_counts.csv.gz
+
+Cell-type metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/snrnaseq_branch/05_baituk_scz_ntc_de/baituk_medclean_donor_celltype_pseudobulk_metadata.csv
+
+FINAL STATUS: PASS — BAITUK SCZ/NTC DONOR + MED.CLEAN CELL-TYPE PSEUDOBULK COMPLETE

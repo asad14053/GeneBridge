@@ -1,0 +1,38 @@
+============================================================
+CENTERED COSINE PI FIGURE
+BR=Br5314
+============================================================
+================================================================================
+ENVI PI-STYLE FIGURE: Br5314
+================================================================================
+imputed evaluable: 20952
+imputed patterned: 2356
+imputed non-patterned: 18596
+
+DISPLAY GENES
+imputed, patterned, highest centered cosine CRYAB           raw_cos=0.777 centered_cos=+0.446 sp=+0.467 Moran=0.535 q=0
+imputed, patterned, median centered cosine ZBTB18          raw_cos=0.655 centered_cos=+0.096 sp=+0.096 Moran=0.066 q=8e-10
+imputed, patterned, lowest centered cosine MT3             raw_cos=0.977 centered_cos=-0.090 sp=-0.055 Moran=0.224 q=0
+imputed, not patterned (centered-cosine control) PRDX2           raw_cos=0.712 centered_cos=+0.038 sp=+0.022 Moran=0.009 q=0.63
+
+matched ENVI cells: 36595
+inside Visium spots: 13174
+occupied pseudospots: 3666 / 4149
+
+evaluable shared genes used for CPM: 21250
+
+Loading assigned-cell ENVI count_scale...
+assigned ENVI matrix: (13174, 34987) 1.72 GB
+
+Computing ENVI pseudospot library sizes...
+Computing Visium library sizes...
+Loading selected genes for aligned-cell maps...
+
+================================================================================
+OUTPUT
+================================================================================
+PNG      : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5314/fig_ENVI_fulltranscriptome_Br5314_PI_style_centered_cosine.png
+PDF      : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5314/fig_ENVI_fulltranscriptome_Br5314_PI_style_centered_cosine.pdf
+selection: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5314/Br5314_ENVI_selected_display_genes_centered_cosine.csv
+
+Br5314 FIGURE PASS

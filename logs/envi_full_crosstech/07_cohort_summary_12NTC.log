@@ -1,0 +1,22 @@
+================================================================================
+12-NTC ENVI FULL-TRANSCRIPTOME CROSS-TECH SUMMARY
+================================================================================
+patterned measured cosine    : 0.496 [IQR 0.444-0.509]
+patterned imputed cosine     : 0.458 [IQR 0.444-0.479]
+imputed - measured cosine    : -0.032 [IQR -0.047-+0.019]
+paired Wilcoxon cosine       : p=0.1294
+
+imputed > measured cosine    : 4/12
+imputed < measured cosine    : 8/12
+
+patterned measured Spearman  : 0.065 [IQR 0.044-0.096]
+patterned imputed Spearman   : 0.029 [IQR 0.024-0.039]
+paired Wilcoxon Spearman     : p=0.0004883
+
+================================================================================
+OUTPUT
+================================================================================
+PNG   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/cohort_summary_12NTC/fig_ENVI_fulltranscriptome_12NTC_summary.png
+PDF   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/cohort_summary_12NTC/fig_ENVI_fulltranscriptome_12NTC_summary.pdf
+TABLE : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/cohort_summary_12NTC/ENVI_fulltranscriptome_12NTC_donor_metrics.csv
+STATS : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/cohort_summary_12NTC/ENVI_fulltranscriptome_12NTC_cohort_statistics.csv

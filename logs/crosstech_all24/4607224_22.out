@@ -1,0 +1,98 @@
+Total donors detected: 24
+SLURM task: 22
+Running donor: Br8433
+================================================================================
+STALIGN
+================================================================================
+aligned cells : 61835
+Visium spots  : 4922
+
+================================================================================
+XENIUM SOURCE SELECTION
+================================================================================
+Br8433.h5ad                                             obs_names          -> cell_id     : 0
+Br8433.h5ad                                             obs_names          -> lieber_key  : 61835
+Br8433.h5ad                                             cell_id            -> cell_id     : 61835
+Br8433.h5ad                                             cell_id            -> lieber_key  : 0
+Br8433.h5ad                                             original_cell_id   -> cell_id     : 61835
+Br8433.h5ad                                             original_cell_id   -> lieber_key  : 0
+Br8433.h5ad                                             donor_cell_id      -> cell_id     : 0
+Br8433.h5ad                                             donor_cell_id      -> lieber_key  : 61835
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 obs_names          -> cell_id     : 0
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 obs_names          -> lieber_key  : 58195
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 cell_id            -> cell_id     : 58195
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 cell_id            -> lieber_key  : 0
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 original_cell_id   -> cell_id     : 58195
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 original_cell_id   -> lieber_key  : 0
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 donor_cell_id      -> cell_id     : 0
+spatial_data_xenium_Br8433_ex1_ntc.h5ad                 donor_cell_id      -> lieber_key  : 58195
+
+SELECTED XENIUM:
+ file       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8433.h5ad
+ shape      : (61932, 541)
+ ID source  : obs_names
+ align col  : lieber_key
+ overlap    : 61835
+STalign cells with expression: 61835 / 61835
+Xenium count source: layers['counts']
+
+================================================================================
+VISIUM — EXACT STALIGN TARGET
+================================================================================
+raw MTX shape       : (36601, 4992)
+raw barcodes        : 4992
+raw features        : 36601
+STalign target spots: 4922
+barcode overlap     : 4922 / 4922
+Br8433: exact STalign Visium target recovered: 4922 / 4922 spots
+paired capture       : GSM9223454_Br8433-V13M06-342_C1
+usable target spots  : 4922
+Visium count source  : raw 10x matrix
+
+================================================================================
+SHARED GENES
+================================================================================
+shared genes: 300
+
+================================================================================
+PSEUDOSPOTS
+================================================================================
+cells with expression       : 61835
+matched > 0.85          : 28615
+matched + inside spot       : 10726
+occupied pseudospots        : 2414 / 4922 (49.0%)
+cells/pseudospot median    : 4
+cells/pseudospot IQR       : 2–6
+assigned distance max (um) : 32.50
+
+genes retained: 298 / 300
+
+================================================================================
+VISIUM SPATIAL PATTERNING
+================================================================================
+mean neighbours/spot: 5.38
+spatially patterned: 136 / 298
+
+patterned median cosine     : 0.486
+non-patterned median cosine : 0.154
+patterned median Spearman   : 0.110
+Wilcoxon patterned > non    : 5.66e-24
+
+================================================================================
+DISPLAY GENES
+================================================================================
+depth requirement: Visium detected >= 20% and max count >= 10
+eligible patterned: 39
+eligible non-patterned: 0
+patterned, highest cosine    CAMK2N1      Moran=0.170 q=0 cos=0.929 rho=+0.235
+patterned, median cosine     NRXN1        Moran=0.075 q=2.01e-09 cos=0.713 rho=+0.134
+patterned, lowest cosine     CXCL14       Moran=0.116 q=0 cos=0.448 rho=+0.093
+
+================================================================================
+DONE
+================================================================================
+figure PNG : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8433/fig_crosstech_Br8433.png
+figure PDF : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8433/fig_crosstech_Br8433.pdf
+gene table : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8433/Br8433_measured300_gene_metrics.csv
+selection  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8433/Br8433_selected_display_genes.csv
+summary    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8433/Br8433_crosstech_summary.csv

@@ -1,0 +1,19 @@
+================================================================================
+24-DONOR CROSS-TECHNOLOGY COHORT SUMMARY
+================================================================================
+donors                         : 24
+patterned cosine              : 0.490 [IQR 0.444-0.506]
+non-patterned cosine          : 0.150 [IQR 0.138-0.162]
+patterned - non-patterned     : 0.336 [IQR 0.318-0.354]
+donors with positive delta    : 24/24
+paired Wilcoxon, patterned > non-patterned: p=5.960e-08
+pseudospot coverage           : 81.5% [IQR 72.6-88.8%]
+coverage vs patterned cosine  : Spearman rho=+0.024, p=0.91
+
+================================================================================
+OUTPUT
+================================================================================
+PNG   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/cohort_summary/fig_crosstech_cohort_24donors.png
+PDF   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/cohort_summary/fig_crosstech_cohort_24donors.pdf
+TABLE : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/cohort_summary/crosstech_cohort_donor_metrics.csv
+STATS : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/cohort_summary/crosstech_cohort_statistics.csv

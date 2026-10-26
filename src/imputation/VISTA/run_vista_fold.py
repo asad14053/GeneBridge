@@ -378,7 +378,22 @@ def main() -> None:
     seq_data_model.obs["ind_x"] = seq_data_model.obs_names.astype(str)
     spatial_observed.obs["ind_x"] = spatial_observed.obs_names.astype(str)
     if "batch" not in spatial_observed.obs.columns:
-        spatial_observed.obs["batch"] = "Br8667"
+        if "BrNum" not in spatial_observed.obs.columns:
+            raise KeyError("Observed Xenium input lacks BrNum; cannot define donor batch.")
+
+        donor_values = (
+            spatial_observed.obs["BrNum"]
+            .astype(str)
+            .unique()
+            .tolist()
+        )
+
+        if len(donor_values) != 1:
+            raise ValueError(
+                f"Expected exactly one Xenium donor per run; found {donor_values}"
+            )
+
+        spatial_observed.obs["batch"] = donor_values[0]
 
     coordinates = np.asarray(spatial_observed.obsm["spatial"], dtype=np.float32)
     if coordinates.shape[0] != spatial_observed.n_obs or coordinates.shape[1] < 2:
@@ -474,9 +489,32 @@ def main() -> None:
         )
 
     prediction_start = time.time()
+    # -------------------------------------------------------------------------
+    # Safe VISTA inference batching
+    #
+    # Training retains the canonical batch size.
+    # During inference only, avoid a terminal minibatch containing exactly
+    # one Xenium cell, which causes BatchNorm to receive a 1D tensor.
+    # -------------------------------------------------------------------------
+
+    prediction_batch_size = int(args.batch_size)
+
+    if spatial_model.n_obs % prediction_batch_size == 1:
+        prediction_batch_size = 96
+
+        print(
+            "Singleton VISTA inference batch detected:",
+            f"{spatial_model.n_obs} % {args.batch_size} = 1",
+        )
+
+        print(
+            "Using VISTA prediction batch size:",
+            prediction_batch_size,
+        )
+
     result = model.get_imputed_values(
         normalized=False,
-        batch_size=args.batch_size,
+        batch_size=prediction_batch_size,
     )
     full_native = result[0] if isinstance(result, (tuple, list)) else result
     full_native = np.asarray(full_native, dtype=np.float32)
@@ -702,6 +740,11 @@ def main() -> None:
     }
     (output_dir / "runtime_summary.json").write_text(
         json.dumps(runtime, indent=2),
+        encoding="utf-8",
+    )
+
+    (output_dir / "complete.flag").write_text(
+        f"SUCCESS {time.strftime('%Y-%m-%d %H:%M:%S')}\n",
         encoding="utf-8",
     )
 

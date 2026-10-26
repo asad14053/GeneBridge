@@ -1,0 +1,46 @@
+============================================================
+BR=Br8667
+MORAN_K=6
+============================================================
+==========================================================================================
+MORAN I CROSS-TECHNOLOGY ANALYSIS: Br8667
+==========================================================================================
+ENVI shape: (66164, 34987)
+matched cells inside physical Visium spots: 15477
+occupied spots: 4350 / 4800
+Moran graph spots: 4350
+kNN: 6
+evaluable genes for CPM denominator: 21475
+evaluable imputed-only genes for Moran comparison: 21176
+
+Loading assigned-cell ENVI count_scale matrix...
+matrix: (15477, 34987)
+memory: 2.02 GB
+
+Computing matched pseudospot / Visium library sizes...
+
+Computing gene-level Moran's I...
+  512 / 21,176
+  5,120 / 21,176
+  10,240 / 21,176
+  15,360 / 21,176
+  20,480 / 21,176
+  21,176 / 21,176
+
+==========================================================================================
+RESULT
+==========================================================================================
+Genes               : 21,176
+Spearman Moran      : 0.0642
+Pearson Moran       : 0.0765
+Median Visium I     : 0.0059
+Median ENVI I       : 0.2225
+Median delta I      : +0.2050
+Regression slope    : 0.3523
+
+Gene table: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br8667/Br8667_Visium_vs_ENVI_MoranI_imputed_genes.csv.gz
+Summary   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br8667/Br8667_Visium_vs_ENVI_MoranI_summary.csv
+PNG       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br8667/fig_Br8667_Visium_vs_ENVI_MoranI.png
+PDF       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br8667/fig_Br8667_Visium_vs_ENVI_MoranI.pdf
+
+Br8667 PASS

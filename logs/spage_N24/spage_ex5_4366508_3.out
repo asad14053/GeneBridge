@@ -1,0 +1,74 @@
+====================================================================================================
+SpaGE N24 FULLY PARALLEL BENCHMARK
+====================================================================================================
+Job ID          : 4366684
+Array task      : 3
+Node            : node13.hgcc.emory.edu
+
+Experiment      : ex5
+Experiment label: Experiment 5
+
+Target donor    : Br6432
+Fold            : 3
+
+Reference       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432_pseudocount.h5ad
+Observed        : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br6432/fold_3_observed_genes.h5ad
+Heldout         : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br6432/fold_3_heldout_genes.h5ad
+
+Output root     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432
+
+n_pv            : 50
+Min ref cells   : 10
+Variance thresh : 1e-8
+
+CPUs            : 16
+Memory          : 200G
+
+Started         : Tue Sep  8 18:03:57 EDT 2026
+====================================================================================================
+====================================================================================================
+STANDARD SpaGE 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5
+Experiment label: Experiment 5
+Fold: 3
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432_pseudocount.h5ad
+Reference raw shape: (3059, 36601)
+Reference 300-gene cells retained: (3059, 300)
+Reference zero-library cells removed: 0
+Spatial observed input: (38509, 200)
+Held-out truth: (38509, 100)
+Alignment genes retained: 183 / 200
+Requested n_pv: 50
+n_pv passed to SpaGE: 50
+SpaGE genes_to_predict: 300
+Spatial normalization median library: 469.0
+Seed: 8670
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432/ex5/spage/fold_3
+====================================================================================================
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432/ex5/spage/fold_3/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['RASGRF2', 'CORT', 'ATP2B4', 'GAD2', 'TYROBP', 'CNDP1', 'MTURN', 'HMGB2', 'ACTA2', 'NRG1']
+
+====================================================================================================
+SUCCESS
+Model: SpaGE
+Experiment: ex5
+Fold: 3
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432/ex5/spage/fold_3/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432/ex5/spage/fold_3/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432/ex5/spage/fold_3/fold_level_metrics.csv
+Alignment genes: 183
+SpaGE prediction minutes: 0.14
+Count scale min/median/max: 4.1235e-05 0.00192734 0.323156
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/SPAGE_N24/Br6432/ex5/spage/fold_3/run_complete.flag
+====================================================================================================
+
+====================================================================================================
+FOLD STATUS: PASS
+====================================================================================================
+Donor     : Br6432
+Experiment: ex5
+Fold      : 3
+Completed : Tue Sep  8 18:04:46 EDT 2026
+
+FINAL STATUS: PASS

@@ -1,0 +1,75 @@
+====================================================================================================
+TANGRAM N24 FULLY PARALLEL BENCHMARK
+====================================================================================================
+Job ID          : 4366599
+Array task      : 2
+Node            : node03.hgcc.emory.edu
+
+Experiment      : ex5
+Experiment label: Experiment 5
+
+Target donor    : Br6432
+Fold            : 2
+
+Reference       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432_pseudocount.h5ad
+Observed        : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br6432/fold_2_observed_genes.h5ad
+Heldout         : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br6432/fold_2_heldout_genes.h5ad
+
+Output root     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TANGRAM_N24/Br6432
+
+Tangram mode    : clusters
+Density prior   : uniform
+Epochs          : 500
+Device          : cpu
+
+CPUs            : 16
+Memory          : 200G
+Started         : Tue Sep  8 17:47:55 EDT 2026
+====================================================================================================
+Reference cluster label: cellType_broad_k
+Reference clusters: 7
+Removed small-cluster cells: 0
+====================================================================================================
+STANDARD Tangram 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5
+Experiment label: Experiment 5
+Fold: 2
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432_pseudocount.h5ad
+Tangram reference input: (3059, 300)
+Tangram spatial input: (38509, 200)
+Held-out truth: (38509, 100)
+Tangram mode: clusters
+Cluster label: cellType_broad_k
+Density prior: uniform
+Normalization target: 10000.0
+Epochs: 500
+Device: cpu
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TANGRAM_N24/Br6432/ex5/tangram/fold_2
+====================================================================================================
+Score: 0.397, KL reg: 0.184
+Score: 0.626, KL reg: 0.006
+Score: 0.627, KL reg: 0.006
+Score: 0.627, KL reg: 0.006
+Score: 0.627, KL reg: 0.006
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TANGRAM_N24/Br6432/ex5/tangram/fold_2/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['ITGB4', 'KCNK1', 'DDIT4', 'ENPP2', 'TNK2', 'AQP1', 'SYK', 'GPX3', 'ALCAM', 'YWHAH']
+====================================================================================================
+SUCCESS
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TANGRAM_N24/Br6432/ex5/tangram/fold_2/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TANGRAM_N24/Br6432/ex5/tangram/fold_2/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TANGRAM_N24/Br6432/ex5/tangram/fold_2/fold_level_metrics.csv
+Training minutes: 0.32
+Projection minutes: 0.00
+Scale factor min/median/max: 1.30698 91.7833 321.61
+====================================================================================================
+
+====================================================================================================
+FOLD STATUS: PASS
+====================================================================================================
+Donor     : Br6432
+Experiment: ex5
+Fold      : 2
+Completed : Tue Sep  8 17:48:56 EDT 2026
+
+FINAL STATUS: PASS

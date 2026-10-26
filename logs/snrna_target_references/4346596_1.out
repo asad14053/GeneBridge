@@ -1,0 +1,101 @@
+====================================================================================================
+CREATE TARGET-SPECIFIC snRNA REFERENCE
+====================================================================================================
+Job       : 4346597
+Array task: 1
+Donor     : Br6432
+Node      : node04.hgcc.emory.edu
+Started   : Thu Sep  3 17:36:19 EDT 2026
+
+Source:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+
+Output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432
+====================================================================================================
+====================================================================================================
+CREATE TARGET-SPECIFIC snRNA REFERENCES
+====================================================================================================
+Target donor : Br6432
+Source       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Output dir   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432
+
+====================================================================================================
+CANONICAL FULL REFERENCE
+====================================================================================================
+Shape: (77604, 36601)
+Brains: 10
+Genes : 36601
+
+Cells per brain:
+BrNum
+Br2720    9012
+Br2743    5584
+Br3942    9487
+Br6423    7965
+Br6432    3059
+Br6471    7936
+Br6522    8279
+Br8325    8727
+Br8492    7658
+Br8667    9897
+
+====================================================================================================
+SUBSET DESIGN
+====================================================================================================
+Full reference cells: 77604
+Br6432-only cells: 3059
+9-brain excluding Br6432: 74545
+Partition check: 77604
+
+====================================================================================================
+EX-5: MATCHED SINGLE-DONOR REFERENCE
+====================================================================================================
+Shape: (3059, 36601)
+Brains: ['Br6432']
+Writing: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432.h5ad
+
+====================================================================================================
+EX-5.3: NINE-BRAIN TARGET-EXCLUDED REFERENCE
+====================================================================================================
+Shape: (74545, 36601)
+Brains: ['Br2720', 'Br2743', 'Br3942', 'Br6423', 'Br6471', 'Br6522', 'Br8325', 'Br8492', 'Br8667']
+Writing: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_9brains_excluding_Br6432.h5ad
+
+====================================================================================================
+FINAL ON-DISK VALIDATION
+====================================================================================================
+
+MATCHED REFERENCE
+File  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432.h5ad
+Shape : (3059, 36601)
+Brains: ['Br6432']
+
+EXCLUDED REFERENCE
+File  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_9brains_excluding_Br6432.h5ad
+Shape : (74545, 36601)
+Brains: ['Br2720', 'Br2743', 'Br3942', 'Br6423', 'Br6471', 'Br6522', 'Br8325', 'Br8492', 'Br8667']
+
+====================================================================================================
+SUCCESS
+====================================================================================================
+Target: Br6432
+
+Ex-5 reference:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_Br6432.h5ad
+
+Ex-5.1 reference:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+
+Ex-5.3 reference:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/seq_data_huuki_snrna_9brains_excluding_Br6432.h5ad
+
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br6432/reference_preparation_manifest.json
+
+FINAL STATUS: PASS
+
+====================================================================================================
+SUCCESS
+Donor    : Br6432
+Completed: Thu Sep  3 17:41:22 EDT 2026
+====================================================================================================

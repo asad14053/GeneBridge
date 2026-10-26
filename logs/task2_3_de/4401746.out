@@ -1,0 +1,740 @@
+================================================================================
+TASK 2.3 — ALL 6 MODELS / N24 OOF / LAYER-ADJUSTED DE
+================================================================================
+Started: Thu Sep 10 12:15:27 EDT 2026
+Rscript: /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_r/bin/Rscript
+
+
+==============================================================================================================
+LOAD OFFICIAL N24 PAPER DE REFERENCE
+==============================================================================================================
+Paper file     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/reference/paper_xenium/paper_xenium_layer_adjusted_24donor.csv 
+Gene column    : gene 
+FDR column     : fdr_SCZ 
+logFC column   : logFC_SCZ 
+FDR < 0.10 genes: 19 
+
+Reported 19 genes:
+     gene paper_logFC_SCZ paper_fdr_SCZ
+    ABCG2      -0.4628641   0.062941337
+     ANLN      -0.5204533   0.062941337
+   CHI3L1       0.7302000   0.062941337
+    ENPP2      -0.5276257   0.062941337
+    EVI2A      -0.5177114   0.062941337
+    FKBP5       0.5868846   0.006334398
+    GSTM5       0.6197601   0.044308464
+    HIF3A       0.3931411   0.063397302
+   IFITM3      -0.5891149   0.063397302
+     KLF2      -0.4536007   0.062941337
+      MBP       0.4133964   0.081793346
+    NPTX2      -0.5149058   0.062941337
+   RNASE1      -0.5164358   0.053754105
+    RPS26      -0.2780001   0.072213358
+     SCG3      -0.3141893   0.071627487
+ SERPINA3       1.2370913   0.005777089
+  SLC44A1      -0.4411043   0.062941337
+  TNFSF10      -0.5731178   0.062941337
+    XRRA1      -0.3825239   0.001330035
+
+==============================================================================================================
+MODEL: VISTA
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+VISTA FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before filter: 300 
+Genes retained     : 300 
+Genes dropped      : 0 
+
+==============================================================================================================
+VISTA LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================
+
+Design matrix:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd06"           "predictions_smoothspd02"          
+ [5] "predictions_smoothspd05"           "predictions_smoothspd03"          
+ [7] "predictions_smoothspd01"           "predictions_smoothspd04"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Block correlation: 0.3540741 
+
+DE result columns:
+ [1] "t_stat_NTC"  "t_stat_SCZ"  "p_value_NTC" "p_value_SCZ" "fdr_NTC"    
+ [6] "fdr_SCZ"     "logFC_NTC"   "logFC_SCZ"   "ensembl"     "gene"       
+
+==============================================================================================================
+VISTA REPORTED 19-GENE RECOVERY
+==============================================================================================================
+
+VISTA summary:
+ model input_donors NTC_donors SCZ_donors spatial_domains pseudobulks
+ VISTA           24         12         12               7         168
+ input_genes genes_after_filter block_correlation nominal_p05 FDR_lt_010
+         300                300         0.3540741          64         38
+ FDR_lt_005 up_FDR010 down_FDR010 reported_genes reported19_nominal_p05
+         16         9          29             19                      3
+ reported19_recovered_FDR010 reported19_direction_match
+                           2                         10
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   2                0.1052632
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                       0.1737051                        0.1245614
+
+Reported 19 recovery:
+     gene paper_logFC_SCZ paper_fdr_SCZ model_logFC_SCZ  model_p_SCZ
+    ABCG2      -0.4628641   0.062941337    -0.001498365 9.796935e-01
+     ANLN      -0.5204533   0.062941337    -0.098904472 9.292600e-02
+   CHI3L1       0.7302000   0.062941337    -0.035115273 2.800302e-01
+    ENPP2      -0.5276257   0.062941337    -0.207018206 6.070652e-03
+    EVI2A      -0.5177114   0.062941337    -0.048232318 2.767509e-01
+    FKBP5       0.5868846   0.006334398    -0.034659279 3.705202e-01
+    GSTM5       0.6197601   0.044308464     0.062068661 2.179396e-01
+    HIF3A       0.3931411   0.063397302     0.106221462 2.679439e-01
+   IFITM3      -0.5891149   0.063397302     0.093120735 5.298778e-02
+     KLF2      -0.4536007   0.062941337     0.068636626 1.288979e-01
+      MBP       0.4133964   0.081793346    -0.136346420 2.606255e-02
+    NPTX2      -0.5149058   0.062941337     0.039599462 3.891143e-01
+   RNASE1      -0.5164358   0.053754105    -0.039532185 4.108477e-01
+    RPS26      -0.2780001   0.072213358     0.011935639 6.591565e-01
+     SCG3      -0.3141893   0.071627487     0.034143945 1.797647e-01
+ SERPINA3       1.2370913   0.005777089     0.043625423 2.023455e-01
+  SLC44A1      -0.4411043   0.062941337    -0.109872603 6.903544e-02
+  TNFSF10      -0.5731178   0.062941337     0.038142211 3.806700e-01
+    XRRA1      -0.3825239   0.001330035    -0.116564152 8.616073e-05
+ model_fdr_SCZ recovered_FDR010 direction_match
+   0.987537529            FALSE            TRUE
+   0.331878559            FALSE            TRUE
+   0.579372894            FALSE           FALSE
+   0.082781618             TRUE            TRUE
+   0.578791248            FALSE            TRUE
+   0.658128540            FALSE           FALSE
+   0.514817906            FALSE            TRUE
+   0.574165488            FALSE            TRUE
+   0.230750625            FALSE           FALSE
+   0.401671464            FALSE           FALSE
+   0.173750321            FALSE           FALSE
+   0.658128540            FALSE           FALSE
+   0.666239543            FALSE            TRUE
+   0.848699373            FALSE           FALSE
+   0.464908757            FALSE           FALSE
+   0.493525502            FALSE            TRUE
+   0.272508297            FALSE            TRUE
+   0.658128540            FALSE           FALSE
+   0.004308037             TRUE            TRUE
+
+STATUS: VISTA PASS
+
+==============================================================================================================
+MODEL: gimVI
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/gimVI/gimVI_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/gimVI/gimVI_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+gimVI FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before filter: 300 
+Genes retained     : 300 
+Genes dropped      : 0 
+
+==============================================================================================================
+gimVI LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================
+
+Design matrix:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd06"           "predictions_smoothspd02"          
+ [5] "predictions_smoothspd05"           "predictions_smoothspd03"          
+ [7] "predictions_smoothspd01"           "predictions_smoothspd04"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Block correlation: 0.3642462 
+
+DE result columns:
+ [1] "t_stat_NTC"  "t_stat_SCZ"  "p_value_NTC" "p_value_SCZ" "fdr_NTC"    
+ [6] "fdr_SCZ"     "logFC_NTC"   "logFC_SCZ"   "ensembl"     "gene"       
+
+==============================================================================================================
+gimVI REPORTED 19-GENE RECOVERY
+==============================================================================================================
+
+gimVI summary:
+ model input_donors NTC_donors SCZ_donors spatial_domains pseudobulks
+ gimVI           24         12         12               7         168
+ input_genes genes_after_filter block_correlation nominal_p05 FDR_lt_010
+         300                300         0.3642462          49          0
+ FDR_lt_005 up_FDR010 down_FDR010 reported_genes reported19_nominal_p05
+          0         0           0             19                      5
+ reported19_recovered_FDR010 reported19_direction_match
+                           0                         10
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   0                        0
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                      0.04929422                      0.005263158
+
+Reported 19 recovery:
+     gene paper_logFC_SCZ paper_fdr_SCZ model_logFC_SCZ model_p_SCZ
+    ABCG2      -0.4628641   0.062941337     0.091641595 0.199290041
+     ANLN      -0.5204533   0.062941337    -0.165594793 0.016767585
+   CHI3L1       0.7302000   0.062941337    -0.043912316 0.266182128
+    ENPP2      -0.5276257   0.062941337    -0.176233626 0.026548787
+    EVI2A      -0.5177114   0.062941337    -0.063556177 0.195348689
+    FKBP5       0.5868846   0.006334398    -0.111704059 0.003717190
+    GSTM5       0.6197601   0.044308464    -0.008561116 0.869791458
+    HIF3A       0.3931411   0.063397302     0.073308601 0.386963945
+   IFITM3      -0.5891149   0.063397302     0.102040129 0.095648814
+     KLF2      -0.4536007   0.062941337     0.124545317 0.029880846
+      MBP       0.4133964   0.081793346    -0.088972527 0.154085880
+    NPTX2      -0.5149058   0.062941337    -0.004982375 0.920498833
+   RNASE1      -0.5164358   0.053754105    -0.032057018 0.578463524
+    RPS26      -0.2780001   0.072213358     0.056971796 0.051936222
+     SCG3      -0.3141893   0.071627487    -0.011319805 0.703824375
+ SERPINA3       1.2370913   0.005777089     0.058321310 0.241369679
+  SLC44A1      -0.4411043   0.062941337    -0.189593510 0.003330799
+  TNFSF10      -0.5731178   0.062941337     0.041146522 0.471558497
+    XRRA1      -0.3825239   0.001330035    -0.020963856 0.426214203
+ model_fdr_SCZ recovered_FDR010 direction_match
+     0.4941075            FALSE           FALSE
+     0.2104016            FALSE            TRUE
+     0.5623566            FALSE           FALSE
+     0.2272532            FALSE            TRUE
+     0.4926072            FALSE            TRUE
+     0.1580536            FALSE           FALSE
+     0.9622106            FALSE           FALSE
+     0.6631675            FALSE            TRUE
+     0.3895880            FALSE           FALSE
+     0.2287185            FALSE           FALSE
+     0.4576808            FALSE           FALSE
+     0.9683035            FALSE            TRUE
+     0.7950441            FALSE            TRUE
+     0.2939786            FALSE           FALSE
+     0.8698077            FALSE            TRUE
+     0.5403799            FALSE            TRUE
+     0.1580536            FALSE            TRUE
+     0.7329925            FALSE           FALSE
+     0.6972777            FALSE            TRUE
+
+STATUS: gimVI PASS
+
+==============================================================================================================
+MODEL: ENVI
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/ENVI/ENVI_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/ENVI/ENVI_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+ENVI FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before filter: 300 
+Genes retained     : 300 
+Genes dropped      : 0 
+
+==============================================================================================================
+ENVI LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================
+
+Design matrix:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd06"           "predictions_smoothspd02"          
+ [5] "predictions_smoothspd05"           "predictions_smoothspd03"          
+ [7] "predictions_smoothspd01"           "predictions_smoothspd04"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Block correlation: 0.3611171 
+
+DE result columns:
+ [1] "t_stat_NTC"  "t_stat_SCZ"  "p_value_NTC" "p_value_SCZ" "fdr_NTC"    
+ [6] "fdr_SCZ"     "logFC_NTC"   "logFC_SCZ"   "ensembl"     "gene"       
+
+==============================================================================================================
+ENVI REPORTED 19-GENE RECOVERY
+==============================================================================================================
+
+ENVI summary:
+ model input_donors NTC_donors SCZ_donors spatial_domains pseudobulks
+  ENVI           24         12         12               7         168
+ input_genes genes_after_filter block_correlation nominal_p05 FDR_lt_010
+         300                300         0.3611171          21          0
+ FDR_lt_005 up_FDR010 down_FDR010 reported_genes reported19_nominal_p05
+          0         0           0             19                      2
+ reported19_recovered_FDR010 reported19_direction_match
+                           0                         12
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   0                        0
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                        0.561585                        0.4526316
+
+Reported 19 recovery:
+     gene paper_logFC_SCZ paper_fdr_SCZ model_logFC_SCZ model_p_SCZ
+    ABCG2      -0.4628641   0.062941337    -0.029889364  0.78564212
+     ANLN      -0.5204533   0.062941337    -0.149932057  0.14069254
+   CHI3L1       0.7302000   0.062941337     0.008812063  0.89785036
+    ENPP2      -0.5276257   0.062941337    -0.164547048  0.15393104
+    EVI2A      -0.5177114   0.062941337    -0.011327898  0.90182277
+    FKBP5       0.5868846   0.006334398    -0.070778629  0.35123424
+    GSTM5       0.6197601   0.044308464    -0.026218213  0.80494713
+    HIF3A       0.3931411   0.063397302    -0.133391308  0.25181899
+   IFITM3      -0.5891149   0.063397302    -0.138566501  0.15269831
+     KLF2      -0.4536007   0.062941337    -0.036958870  0.70617295
+      MBP       0.4133964   0.081793346    -0.013372040  0.88216134
+    NPTX2      -0.5149058   0.062941337     0.019104200  0.81143385
+   RNASE1      -0.5164358   0.053754105    -0.154801172  0.02897868
+    RPS26      -0.2780001   0.072213358     0.026835288  0.62246277
+     SCG3      -0.3141893   0.071627487     0.001650052  0.97294073
+ SERPINA3       1.2370913   0.005777089     0.295896472  0.26474031
+  SLC44A1      -0.4411043   0.062941337    -0.197325252  0.02172199
+  TNFSF10      -0.5731178   0.062941337    -0.017273628  0.85418057
+    XRRA1      -0.3825239   0.001330035    -0.052696932  0.31097876
+ model_fdr_SCZ recovered_FDR010 direction_match
+     0.9817914            FALSE            TRUE
+     0.8040201            FALSE            TRUE
+     0.9817914            FALSE            TRUE
+     0.8040201            FALSE            TRUE
+     0.9817914            FALSE            TRUE
+     0.8688714            FALSE           FALSE
+     0.9817914            FALSE           FALSE
+     0.8490517            FALSE           FALSE
+     0.8040201            FALSE            TRUE
+     0.9740767            FALSE            TRUE
+     0.9817914            FALSE           FALSE
+     0.9817914            FALSE           FALSE
+     0.5433502            FALSE            TRUE
+     0.9431254            FALSE           FALSE
+     0.9827684            FALSE           FALSE
+     0.8490517            FALSE            TRUE
+     0.5433502            FALSE            TRUE
+     0.9817914            FALSE            TRUE
+     0.8569427            FALSE            TRUE
+
+STATUS: ENVI PASS
+
+==============================================================================================================
+MODEL: TransImp
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/TransImp/TransImp_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/TransImp/TransImp_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+TransImp FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before filter: 300 
+Genes retained     : 296 
+Genes dropped      : 4 
+
+==============================================================================================================
+TransImp LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================
+
+Design matrix:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd06"           "predictions_smoothspd02"          
+ [5] "predictions_smoothspd05"           "predictions_smoothspd03"          
+ [7] "predictions_smoothspd01"           "predictions_smoothspd04"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Block correlation: 0.4438961 
+
+DE result columns:
+ [1] "t_stat_NTC"  "t_stat_SCZ"  "p_value_NTC" "p_value_SCZ" "fdr_NTC"    
+ [6] "fdr_SCZ"     "logFC_NTC"   "logFC_SCZ"   "ensembl"     "gene"       
+
+==============================================================================================================
+TransImp REPORTED 19-GENE RECOVERY
+==============================================================================================================
+
+NOTE: TransImp reported gene(s) removed by filterByExpr(): SERPINA3 
+These genes will be counted as NOT RECOVERED, not treated as an error.
+
+TransImp summary:
+    model input_donors NTC_donors SCZ_donors spatial_domains pseudobulks
+ TransImp           24         12         12               7         168
+ input_genes genes_after_filter block_correlation nominal_p05 FDR_lt_010
+         300                296         0.4438961          41          5
+ FDR_lt_005 up_FDR010 down_FDR010 reported_genes reported19_nominal_p05
+          5         5           0             19                      3
+ reported19_recovered_FDR010 reported19_direction_match
+                           0                         14
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   0                        0
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                       0.5799786                        0.6594427
+
+Reported 19 recovery:
+     gene paper_logFC_SCZ paper_fdr_SCZ model_logFC_SCZ model_p_SCZ
+    ABCG2      -0.4628641   0.062941337     -0.07509191 0.632921789
+     ANLN      -0.5204533   0.062941337     -0.10517453 0.447436279
+   CHI3L1       0.7302000   0.062941337      0.03450540 0.695950586
+    ENPP2      -0.5276257   0.062941337     -0.10198990 0.553884533
+    EVI2A      -0.5177114   0.062941337     -0.20230436 0.047420686
+    FKBP5       0.5868846   0.006334398     -0.05073694 0.565747446
+    GSTM5       0.6197601   0.044308464      0.07871995 0.420678288
+    HIF3A       0.3931411   0.063397302      0.11462795 0.487290217
+   IFITM3      -0.5891149   0.063397302     -0.10222619 0.452270184
+     KLF2      -0.4536007   0.062941337     -0.16509083 0.120236381
+      MBP       0.4133964   0.081793346      0.33773832 0.070212066
+    NPTX2      -0.5149058   0.062941337     -0.10432502 0.208263957
+   RNASE1      -0.5164358   0.053754105     -0.29429824 0.005042767
+    RPS26      -0.2780001   0.072213358      0.02726979 0.706703587
+     SCG3      -0.3141893   0.071627487      0.19504783 0.048445613
+ SERPINA3       1.2370913   0.005777089              NA          NA
+  SLC44A1      -0.4411043   0.062941337      0.04975774 0.757651989
+  TNFSF10      -0.5731178   0.062941337     -0.07896855 0.468698011
+    XRRA1      -0.3825239   0.001330035     -0.10486397 0.097269082
+ model_fdr_SCZ recovered_FDR010 direction_match
+     0.8673373            FALSE            TRUE
+     0.7525065            FALSE            TRUE
+     0.8908927            FALSE            TRUE
+     0.8238685            FALSE            TRUE
+     0.3569327            FALSE            TRUE
+     0.8373062            FALSE           FALSE
+     0.7265825            FALSE            TRUE
+     0.7672229            FALSE            TRUE
+     0.7557843            FALSE            TRUE
+     0.4745329            FALSE            TRUE
+     0.4156554            FALSE            TRUE
+     0.5709260            FALSE            TRUE
+     0.1746602            FALSE            TRUE
+     0.8908927            FALSE           FALSE
+     0.3569327            FALSE           FALSE
+            NA            FALSE           FALSE
+     0.9111920            FALSE           FALSE
+     0.7617784            FALSE            TRUE
+     0.4526963            FALSE            TRUE
+
+STATUS: TransImp PASS
+
+==============================================================================================================
+MODEL: Tangram
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/Tangram/Tangram_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/Tangram/Tangram_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+Tangram FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before filter: 300 
+Genes retained     : 300 
+Genes dropped      : 0 
+
+==============================================================================================================
+Tangram LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================
+
+Design matrix:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd06"           "predictions_smoothspd02"          
+ [5] "predictions_smoothspd05"           "predictions_smoothspd03"          
+ [7] "predictions_smoothspd01"           "predictions_smoothspd04"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Block correlation: 0.3668721 
+
+DE result columns:
+ [1] "t_stat_NTC"  "t_stat_SCZ"  "p_value_NTC" "p_value_SCZ" "fdr_NTC"    
+ [6] "fdr_SCZ"     "logFC_NTC"   "logFC_SCZ"   "ensembl"     "gene"       
+
+==============================================================================================================
+Tangram REPORTED 19-GENE RECOVERY
+==============================================================================================================
+
+Tangram summary:
+   model input_donors NTC_donors SCZ_donors spatial_domains pseudobulks
+ Tangram           24         12         12               7         168
+ input_genes genes_after_filter block_correlation nominal_p05 FDR_lt_010
+         300                300         0.3668721          43         11
+ FDR_lt_005 up_FDR010 down_FDR010 reported_genes reported19_nominal_p05
+          0         0          11             19                      2
+ reported19_recovered_FDR010 reported19_direction_match
+                           0                         11
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   0                        0
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                       0.3174606                        0.3701754
+
+Reported 19 recovery:
+     gene paper_logFC_SCZ paper_fdr_SCZ model_logFC_SCZ model_p_SCZ
+    ABCG2      -0.4628641   0.062941337    -0.017863481 0.613440638
+     ANLN      -0.5204533   0.062941337    -0.032000329 0.209739751
+   CHI3L1       0.7302000   0.062941337     0.005523794 0.789668697
+    ENPP2      -0.5276257   0.062941337    -0.079442529 0.004999517
+    EVI2A      -0.5177114   0.062941337    -0.029382220 0.174007328
+    FKBP5       0.5868846   0.006334398     0.020925532 0.333327482
+    GSTM5       0.6197601   0.044308464     0.017392589 0.648110981
+    HIF3A       0.3931411   0.063397302     0.037823238 0.509143174
+   IFITM3      -0.5891149   0.063397302     0.015261097 0.577536431
+     KLF2      -0.4536007   0.062941337     0.027854539 0.432785276
+      MBP       0.4133964   0.081793346    -0.017327746 0.240112564
+    NPTX2      -0.5149058   0.062941337     0.040203989 0.129019145
+   RNASE1      -0.5164358   0.053754105    -0.057493768 0.008300685
+    RPS26      -0.2780001   0.072213358    -0.001077576 0.897168074
+     SCG3      -0.3141893   0.071627487     0.019219941 0.074920354
+ SERPINA3       1.2370913   0.005777089     0.019196695 0.568761846
+  SLC44A1      -0.4411043   0.062941337     0.005063959 0.631695563
+  TNFSF10      -0.5731178   0.062941337     0.018687755 0.629173172
+    XRRA1      -0.3825239   0.001330035     0.016676310 0.168542200
+ model_fdr_SCZ recovered_FDR010 direction_match
+     0.8107145            FALSE            TRUE
+     0.5208591            FALSE            TRUE
+     0.8804335            FALSE            TRUE
+     0.1010008            FALSE            TRUE
+     0.5019442            FALSE            TRUE
+     0.6369315            FALSE            TRUE
+     0.8273757            FALSE            TRUE
+     0.7584739            FALSE            TRUE
+     0.8026096            FALSE           FALSE
+     0.7133823            FALSE           FALSE
+     0.5492704            FALSE           FALSE
+     0.4440738            FALSE           FALSE
+     0.1310634            FALSE            TRUE
+     0.9249615            FALSE            TRUE
+     0.3511892            FALSE           FALSE
+     0.8026096            FALSE            TRUE
+     0.8203838            FALSE           FALSE
+     0.8203838            FALSE           FALSE
+     0.4957124            FALSE           FALSE
+
+STATUS: Tangram PASS
+
+==============================================================================================================
+MODEL: SpaGE
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/SpaGE/SpaGE_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/SpaGE/SpaGE_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+SpaGE FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before filter: 300 
+Genes retained     : 278 
+Genes dropped      : 22 
+
+==============================================================================================================
+SpaGE LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================
+
+Design matrix:
+ [1] "DxNTC"                             "DxSCZ"                            
+ [3] "predictions_smoothspd06"           "predictions_smoothspd02"          
+ [5] "predictions_smoothspd05"           "predictions_smoothspd03"          
+ [7] "predictions_smoothspd01"           "predictions_smoothspd04"          
+ [9] "Age"                               "SexM"                             
+[11] "slide_idoutput-XETG00133__0021218" "slide_idoutput-XETG00133__0033839"
+[13] "slide_idoutput-XETG00133__0033841" "slide_idoutput-XETG00133__0033849"
+[15] "slide_idoutput-XETG00133__0033862" "slide_idoutput-XETG00133__0034238"
+[17] "slide_idoutput-XETG00133__0034252"
+
+Block correlation: 0.267704 
+
+DE result columns:
+ [1] "t_stat_NTC"  "t_stat_SCZ"  "p_value_NTC" "p_value_SCZ" "fdr_NTC"    
+ [6] "fdr_SCZ"     "logFC_NTC"   "logFC_SCZ"   "ensembl"     "gene"       
+
+==============================================================================================================
+SpaGE REPORTED 19-GENE RECOVERY
+==============================================================================================================
+
+NOTE: SpaGE reported gene(s) removed by filterByExpr(): CHI3L1, SERPINA3 
+These genes will be counted as NOT RECOVERED, not treated as an error.
+
+SpaGE summary:
+ model input_donors NTC_donors SCZ_donors spatial_domains pseudobulks
+ SpaGE           24         12         12               7         168
+ input_genes genes_after_filter block_correlation nominal_p05 FDR_lt_010
+         300                278          0.267704          45         35
+ FDR_lt_005 up_FDR010 down_FDR010 reported_genes reported19_nominal_p05
+         29        10          25             19                      5
+ reported19_recovered_FDR010 reported19_direction_match
+                           3                         14
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   3                0.1578947
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                       0.5783929                        0.7205882
+
+Reported 19 recovery:
+     gene paper_logFC_SCZ paper_fdr_SCZ model_logFC_SCZ  model_p_SCZ
+    ABCG2      -0.4628641   0.062941337    -0.155542177 0.1481387868
+     ANLN      -0.5204533   0.062941337    -0.414948357 0.0032897623
+   CHI3L1       0.7302000   0.062941337              NA           NA
+    ENPP2      -0.5276257   0.062941337    -0.519845082 0.0001552032
+    EVI2A      -0.5177114   0.062941337    -0.259155590 0.0240706305
+    FKBP5       0.5868846   0.006334398     0.045798896 0.5821042589
+    GSTM5       0.6197601   0.044308464     0.138228921 0.2317938189
+    HIF3A       0.3931411   0.063397302     0.054267301 0.6954593694
+   IFITM3      -0.5891149   0.063397302    -0.114965956 0.3588895292
+     KLF2      -0.4536007   0.062941337    -0.009227942 0.9371654802
+      MBP       0.4133964   0.081793346    -0.012496978 0.9209418603
+    NPTX2      -0.5149058   0.062941337     0.028596027 0.6878665190
+   RNASE1      -0.5164358   0.053754105    -0.227718900 0.0142024061
+    RPS26      -0.2780001   0.072213358     0.020858899 0.6491598064
+     SCG3      -0.3141893   0.071627487    -0.012403353 0.8419228476
+ SERPINA3       1.2370913   0.005777089              NA           NA
+  SLC44A1      -0.4411043   0.062941337    -0.344629442 0.0023934640
+  TNFSF10      -0.5731178   0.062941337    -0.048733547 0.6625548342
+    XRRA1      -0.3825239   0.001330035    -0.029431388 0.5940123188
+ model_fdr_SCZ recovered_FDR010 direction_match
+   0.612253220            FALSE            TRUE
+   0.032662640             TRUE            TRUE
+            NA            FALSE           FALSE
+   0.007201853             TRUE            TRUE
+   0.167290882            FALSE            TRUE
+   0.959294861            FALSE            TRUE
+   0.749286996            FALSE            TRUE
+   0.963103146            FALSE            TRUE
+   0.866448839            FALSE            TRUE
+   0.972134341            FALSE            TRUE
+   0.963103146            FALSE           FALSE
+   0.963103146            FALSE           FALSE
+   0.106709970            FALSE            TRUE
+   0.963103146            FALSE           FALSE
+   0.963103146            FALSE            TRUE
+            NA            FALSE           FALSE
+   0.026615319             TRUE            TRUE
+   0.963103146            FALSE            TRUE
+   0.963103146            FALSE            TRUE
+
+STATUS: SpaGE PASS
+
+==============================================================================================================
+ALL SIX MODELS — TASK 2.3 SUMMARY
+==============================================================================================================
+    model genes_after_filter block_correlation FDR_lt_010
+    VISTA                300         0.3540741         38
+    gimVI                300         0.3642462          0
+     ENVI                300         0.3611171          0
+ TransImp                296         0.4438961          5
+  Tangram                300         0.3668721         11
+    SpaGE                278         0.2677040         35
+ reported19_nominal_p05 reported19_recovered_FDR010 reported19_direction_match
+                      3                           2                         10
+                      5                           0                         10
+                      2                           0                         12
+                      3                           0                         14
+                      2                           0                         11
+                      5                           3                         14
+ reported19_recovered_same_direction reported19_recovery_rate
+                                   2                0.1052632
+                                   0                0.0000000
+                                   0                0.0000000
+                                   0                0.0000000
+                                   0                0.0000000
+                                   3                0.1578947
+ paper_vs_model_logFC_Pearson_19 paper_vs_model_logFC_Spearman_19
+                      0.17370505                      0.124561404
+                      0.04929422                      0.005263158
+                      0.56158495                      0.452631579
+                      0.57997863                      0.659442724
+                      0.31746065                      0.370175439
+                      0.57839290                      0.720588235
+
+==============================================================================================================
+FINAL STATUS
+==============================================================================================================
+Models completed: 6 / 6
+Donors/model   : 24 (12 NTC + 12 SCZ)
+Domains/model  : 7
+Pseudobulks    : 168 / model
+OOF genes      : 300 / model before paper-style expression filtering
+Reported genes : 19
+
+Combined summary:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/layer_adjusted_de/all_models_reported19_recovery_summary.csv
+
+Combined 19-gene table:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/layer_adjusted_de/all_models_reported19_gene_recovery.csv
+
+FINAL STATUS: PASS — ALL SIX NTC-TRAINED OOF MODELS COMPLETE
+
+================================================================================
+SLURM STATUS: PASS
+Finished: Thu Sep 10 12:16:17 EDT 2026
+================================================================================

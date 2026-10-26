@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/DE/task2_3_ntc_dysregulation/01_build_model_oof_layer_pseudobulk.py", line 298, in <module>
+    raise RuntimeError(
+RuntimeError: ENVI Br2039: OOF Dx={'unknown'}, metadata Dx=SCZ

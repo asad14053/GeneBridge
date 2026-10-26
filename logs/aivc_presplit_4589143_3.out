@@ -1,0 +1,31 @@
+======================================================================
+AIVC PRE-SPLIT DONOR AUDIT
+Array job : 4589143
+Task      : 3
+Donor     : Br5400
+File      : data/processed/imputation_full/ex1_ntc/envi/Br5400/spatial_data_xenium_Br5400_ENVI_full_transcriptome.h5ad
+Host      : node05.hgcc.emory.edu
+CPUs      : 16
+Started   : Mon Sep 28 12:07:31 EDT 2026
+======================================================================
+====================================================================================================
+AIVC PRE-SPLIT AUDIT — ONE DONOR
+====================================================================================================
+Donor: Br5400
+ENVI : data/processed/imputation_full/ex1_ntc/envi/Br5400/spatial_data_xenium_Br5400_ENVI_full_transcriptome.h5ad
+
+Loading ENVI...
+ENVI shape: (44283, 34987)
+File donor: Br5400  Dx: NTC
+
+Loading annotated Xenium metadata...
+Annotation join: 44283/44283 (100.0000%)
+
+Checking snRNA donor overlap...
+
+DONE: Br5400
+======================================================================
+DONE
+Donor   : Br5400
+Finished: Mon Sep 28 12:09:53 EDT 2026
+======================================================================

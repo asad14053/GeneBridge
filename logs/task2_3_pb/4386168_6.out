@@ -1,0 +1,295 @@
+================================================================================
+TASK 2.3 — OOF DONOR-DOMAIN PSEUDOBULK
+================================================================================
+Task ID : 6
+Model   : SpaGE
+Python  : /beegfs/labs/hulab/projects/mjabin/conda_envs/genebridge_scanpy/bin/python
+Started : Thu Sep 10 00:49:32 EDT 2026
+
+
+==============================================================================================================
+LOAD METADATA — SpaGE
+==============================================================================================================
+Donors: 24
+Dx: {'SCZ': 12, 'NTC': 12}
+
+==============================================================================================================
+BUILD SpaGE NTC-TRAINED OOF DONOR × SPATIAL-DOMAIN PSEUDOBULK
+==============================================================================================================
+
+[01/24] SpaGE    | Br2039 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  3775 | library=1446409.763
+    spd06 | L2/3 | cells=  3531 | library=2412323.935
+    spd02 | L3/4 | cells=  1892 | library=1090579.607
+    spd05 | L5   | cells=  5271 | library=3460801.197
+    spd03 | L6   | cells=  5448 | library=3113333.958
+    spd01 | WMtz | cells=  1337 | library=671084.325
+    spd04 | WM   | cells= 19846 | library=4601712.278
+
+[02/24] SpaGE    | Br2719 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  5498 | library=2307874.154
+    spd06 | L2/3 | cells= 10982 | library=9727440.550
+    spd02 | L3/4 | cells=  4260 | library=3061073.869
+    spd05 | L5   | cells= 18576 | library=15896327.190
+    spd03 | L6   | cells=  5112 | library=3914576.181
+    spd01 | WMtz | cells=  1418 | library=1112837.237
+    spd04 | WM   | cells= 12087 | library=5888514.978
+
+[03/24] SpaGE    | Br6432 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6067 | library=2342827.146
+    spd06 | L2/3 | cells= 10999 | library=8656709.702
+    spd02 | L3/4 | cells=  1110 | library=570223.706
+    spd05 | L5   | cells=  9915 | library=7589932.067
+    spd03 | L6   | cells=  3704 | library=2570152.288
+    spd01 | WMtz | cells=   610 | library=403965.177
+    spd04 | WM   | cells=  6104 | library=2740091.615
+
+[04/24] SpaGE    | Br1113 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4992 | library=2270158.532
+    spd06 | L2/3 | cells= 15228 | library=14611494.571
+    spd02 | L3/4 | cells=  3282 | library=2562140.322
+    spd05 | L5   | cells= 18879 | library=17265038.100
+    spd03 | L6   | cells=  4371 | library=3479093.066
+    spd01 | WMtz | cells=  1309 | library=931100.145
+    spd04 | WM   | cells=  6524 | library=3223162.408
+
+[05/24] SpaGE    | Br5373 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells= 10479 | library=3802636.642
+    spd06 | L2/3 | cells= 12467 | library=14261027.523
+    spd02 | L3/4 | cells=  1346 | library=1057722.525
+    spd05 | L5   | cells= 22257 | library=22954626.637
+    spd03 | L6   | cells=  4213 | library=3789112.718
+    spd01 | WMtz | cells=   979 | library=800114.737
+    spd04 | WM   | cells= 11608 | library=3670976.891
+
+[06/24] SpaGE    | Br5590 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  9106 | library=3018148.413
+    spd06 | L2/3 | cells= 10515 | library=10376398.303
+    spd02 | L3/4 | cells=  2873 | library=1999259.329
+    spd05 | L5   | cells= 14586 | library=13317146.526
+    spd03 | L6   | cells=  3630 | library=2702360.283
+    spd01 | WMtz | cells=   799 | library=432839.359
+    spd04 | WM   | cells= 12067 | library=3389679.945
+
+[07/24] SpaGE    | Br5400 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4239 | library=1966275.910
+    spd06 | L2/3 | cells= 12006 | library=11766476.764
+    spd02 | L3/4 | cells=  1937 | library=1449742.466
+    spd05 | L5   | cells= 18063 | library=17260601.023
+    spd03 | L6   | cells=  5621 | library=4950280.172
+    spd01 | WMtz | cells=   931 | library=841355.143
+    spd04 | WM   | cells=  1486 | library=1222175.583
+
+[08/24] SpaGE    | Br5622 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6461 | library=2589948.340
+    spd06 | L2/3 | cells= 26781 | library=26719657.571
+    spd02 | L3/4 | cells=  2214 | library=1657122.971
+    spd05 | L5   | cells= 18704 | library=17180885.215
+    spd03 | L6   | cells=  7349 | library=6255277.390
+    spd01 | WMtz | cells=  1074 | library=787596.455
+    spd04 | WM   | cells=  5637 | library=2493101.525
+
+[09/24] SpaGE    | Br6437 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  6308 | library=2226176.966
+    spd06 | L2/3 | cells= 11082 | library=7933394.026
+    spd02 | L3/4 | cells=  3018 | library=1660042.903
+    spd05 | L5   | cells= 15957 | library=11446787.102
+    spd03 | L6   | cells=  5504 | library=3577666.629
+    spd01 | WMtz | cells=  1538 | library=1060262.199
+    spd04 | WM   | cells= 12363 | library=5705255.342
+
+[10/24] SpaGE    | Br5314 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  6646 | library=2018214.837
+    spd06 | L2/3 | cells=  7505 | library=6269678.634
+    spd02 | L3/4 | cells=  1437 | library=952855.307
+    spd05 | L5   | cells= 13600 | library=11106490.128
+    spd03 | L6   | cells=  2590 | library=1901943.599
+    spd01 | WMtz | cells=  1112 | library=722120.193
+    spd04 | WM   | cells= 12693 | library=5454736.300
+
+[11/24] SpaGE    | Br5588 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  9352 | library=4669581.130
+    spd06 | L2/3 | cells= 14489 | library=15528653.189
+    spd02 | L3/4 | cells=  1279 | library=859831.538
+    spd05 | L5   | cells= 20893 | library=20513194.615
+    spd03 | L6   | cells=  6271 | library=5123613.506
+    spd01 | WMtz | cells=  1602 | library=1225756.728
+    spd04 | WM   | cells=  5808 | library=2919670.070
+
+[12/24] SpaGE    | Br5746 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  4508 | library=1555512.003
+    spd06 | L2/3 | cells=  5408 | library=4122001.839
+    spd02 | L3/4 | cells=   810 | library=361796.964
+    spd05 | L5   | cells= 14655 | library=10814993.629
+    spd03 | L6   | cells=  5001 | library=3162286.966
+    spd01 | WMtz | cells=  1237 | library=556711.439
+    spd04 | WM   | cells= 11402 | library=4314738.335
+
+[13/24] SpaGE    | Br5639 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  9694 | library=3627518.998
+    spd06 | L2/3 | cells= 13251 | library=13480364.295
+    spd02 | L3/4 | cells=  2831 | library=1812282.231
+    spd05 | L5   | cells= 17359 | library=15748797.558
+    spd03 | L6   | cells=  4369 | library=3362701.466
+    spd01 | WMtz | cells=  2254 | library=1787017.459
+    spd04 | WM   | cells=  9213 | library=3620367.752
+
+[14/24] SpaGE    | Br8433 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells= 11346 | library=5027827.496
+    spd06 | L2/3 | cells= 15619 | library=16632553.099
+    spd02 | L3/4 | cells=   971 | library=779617.584
+    spd05 | L5   | cells= 15418 | library=15579708.638
+    spd03 | L6   | cells=  5303 | library=4854494.498
+    spd01 | WMtz | cells=   739 | library=525645.967
+    spd04 | WM   | cells=  8635 | library=3019152.107
+
+[15/24] SpaGE    | Br8772 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  8837 | library=3242724.418
+    spd06 | L2/3 | cells= 10179 | library=11244370.690
+    spd02 | L3/4 | cells=  1727 | library=1498463.360
+    spd05 | L5   | cells= 19850 | library=20217966.823
+    spd03 | L6   | cells=  5084 | library=4650767.347
+    spd01 | WMtz | cells=  1349 | library=983699.605
+    spd04 | WM   | cells=  7428 | library=3443882.212
+
+[16/24] SpaGE    | Br1139 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  8949 | library=3046437.393
+    spd06 | L2/3 | cells= 13384 | library=13223475.136
+    spd02 | L3/4 | cells=  3434 | library=2388716.880
+    spd05 | L5   | cells= 15040 | library=13894459.249
+    spd03 | L6   | cells=  3971 | library=3134961.058
+    spd01 | WMtz | cells=  1186 | library=795416.334
+    spd04 | WM   | cells= 10653 | library=2725678.738
+
+[17/24] SpaGE    | Br5973 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  5433 | library=1711090.432
+    spd06 | L2/3 | cells=  8671 | library=6192698.447
+    spd02 | L3/4 | cells=  1706 | library=957146.449
+    spd05 | L5   | cells= 12481 | library=8997846.610
+    spd03 | L6   | cells=  3091 | library=1931844.361
+    spd01 | WMtz | cells=  1287 | library=828635.531
+    spd04 | WM   | cells=  9224 | library=3372771.513
+
+[18/24] SpaGE    | Br8667 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  7177 | library=3172407.747
+    spd06 | L2/3 | cells= 16405 | library=19620954.386
+    spd02 | L3/4 | cells=  2276 | library=2172051.839
+    spd05 | L5   | cells= 20279 | library=22269506.672
+    spd03 | L6   | cells=  5948 | library=5779141.163
+    spd01 | WMtz | cells=  1775 | library=1618340.824
+    spd04 | WM   | cells= 12288 | library=5747474.845
+
+[19/24] SpaGE    | Br5436 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  5121 | library=2445541.965
+    spd06 | L2/3 | cells= 13077 | library=16073568.109
+    spd02 | L3/4 | cells=  2558 | library=2614814.519
+    spd05 | L5   | cells= 14407 | library=17453853.898
+    spd03 | L6   | cells=  3775 | library=4183346.580
+    spd01 | WMtz | cells=  1912 | library=2061564.784
+    spd04 | WM   | cells=  3580 | library=2610105.705
+
+[20/24] SpaGE    | Br5931 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  4888 | library=1923410.331
+    spd06 | L2/3 | cells= 11677 | library=12341808.327
+    spd02 | L3/4 | cells=  2342 | library=1963112.956
+    spd05 | L5   | cells= 14897 | library=15311473.297
+    spd03 | L6   | cells=  4717 | library=4221299.244
+    spd01 | WMtz | cells=  1008 | library=818866.406
+    spd04 | WM   | cells=  3992 | library=2137508.636
+
+[21/24] SpaGE    | Br6496 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  3571 | library=1543002.086
+    spd06 | L2/3 | cells= 15353 | library=11914524.282
+    spd02 | L3/4 | cells=  1455 | library=830149.496
+    spd05 | L5   | cells= 14847 | library=12126564.572
+    spd03 | L6   | cells=  4459 | library=3389790.792
+    spd01 | WMtz | cells=   979 | library=698811.796
+    spd04 | WM   | cells= 15545 | library=6073604.663
+
+[22/24] SpaGE    | Br2421 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells= 10984 | library=3503825.065
+    spd06 | L2/3 | cells= 14564 | library=13378427.243
+    spd02 | L3/4 | cells=  1959 | library=1318972.441
+    spd05 | L5   | cells= 14758 | library=12858914.548
+    spd03 | L6   | cells=  6342 | library=4845825.984
+    spd01 | WMtz | cells=  1460 | library=1018409.655
+    spd04 | WM   | cells= 12004 | library=5079638.462
+
+[23/24] SpaGE    | Br6032 | SCZ
+  OOF Dx={'unknown'}; using canonical metadata Dx=SCZ
+    spd07 | L1/M | cells=  1839 | library=888648.139
+    spd06 | L2/3 | cells=  9401 | library=9203776.238
+    spd02 | L3/4 | cells=  2161 | library=1665527.879
+    spd05 | L5   | cells= 20410 | library=20276581.942
+    spd03 | L6   | cells=  8411 | library=7621384.191
+    spd01 | WMtz | cells=   993 | library=829352.059
+    spd04 | WM   | cells=  1454 | library=1129767.542
+
+[24/24] SpaGE    | Br6389 | NTC
+  OOF Dx={'unknown'}; using canonical metadata Dx=NTC
+    spd07 | L1/M | cells=  7338 | library=2452727.105
+    spd06 | L2/3 | cells= 12092 | library=10872534.982
+    spd02 | L3/4 | cells=  1535 | library=1050511.895
+    spd05 | L5   | cells= 13386 | library=12369085.027
+    spd03 | L6   | cells=  3120 | library=2596861.205
+    spd01 | WMtz | cells=  1492 | library=1126171.023
+    spd04 | WM   | cells= 10577 | library=4199920.232
+
+==============================================================================================================
+ASSEMBLE — SpaGE
+==============================================================================================================
+Matrix  : (168, 300)
+Metadata: (168, 15)
+
+==============================================================================================================
+SAVE — SpaGE
+==============================================================================================================
+
+==============================================================================================================
+FINAL SUMMARY — SpaGE
+==============================================================================================================
+Model              : SpaGE
+Donors             : 24
+NTC donors         : 12
+SCZ donors         : 12
+Spatial domains    : 7
+Pseudobulk samples : 168
+Genes              : 300
+Minimum cells / PB : 610
+Maximum cells / PB : 26781
+All donor layer sums match: True
+
+Output:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/SpaGE/SpaGE_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/SpaGE/SpaGE_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/SpaGE/SpaGE_NTCtrained_OOF_donor_domain_validation.csv
+
+FINAL STATUS: PASS — SpaGE NTC-trained OOF 24-donor × 7-domain pseudobulk created.
+
+================================================================================
+MODEL: SpaGE
+SLURM STATUS: PASS
+Finished: Thu Sep 10 00:50:45 EDT 2026
+================================================================================

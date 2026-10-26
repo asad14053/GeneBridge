@@ -1,0 +1,65 @@
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+[rank: 0] Global seed set to 0
+[rank: 0] Global seed set to 8669
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/abc.py:119: FutureWarning: SparseDataset is deprecated and will be removed in late 2024. It has been replaced by the public classes CSRDataset and CSCDataset.
+
+For instance checks, use `isinstance(X, (anndata.experimental.CSRDataset, anndata.experimental.CSCDataset))` instead.
+
+For creation, use `anndata.experimental.sparse_dataset(X)` instead.
+
+  return _abc_instancecheck(cls, instance)
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/abc.py:119: FutureWarning: SparseDataset is deprecated and will be removed in late 2024. It has been replaced by the public classes CSRDataset and CSCDataset.
+
+For instance checks, use `isinstance(X, (anndata.experimental.CSRDataset, anndata.experimental.CSCDataset))` instead.
+
+For creation, use `anndata.experimental.sparse_dataset(X)` instead.
+
+  return _abc_instancecheck(cls, instance)
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/lightning_fabric/plugins/environments/slurm.py:165: PossibleUserWarning: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/im ...
+  rank_zero_warn(
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/lightning_fabric/plugins/environments/slurm.py:165: PossibleUserWarning: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /beegfs/labs/hulab/projects/mjabin/GeneBridge/src/im ...
+  rank_zero_warn(
+`Trainer.fit` stopped: `max_epochs=200` reached.
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/gimVI/run_gimvi_fold.py", line 1684, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/gimVI/run_gimvi_fold.py", line 1157, in main
+    predict_selected_spatial_genes(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/gimVI/run_gimvi_fold.py", line 511, in predict_selected_spatial_genes
+    model.module.sample_rate(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/external/gimvi/_module.py", line 335, in sample_rate
+    gen_out = self._run_forward(
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/external/gimvi/_module.py", line 290, in _run_forward
+    inference_out = self.inference(x, mode)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/module/base/_decorators.py", line 41, in auto_transfer_args
+    return fn(self, *args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/external/gimvi/_module.py", line 390, in inference
+    qz, z = self.z_encoder(x_, mode)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/nn/_base_components.py", line 592, in forward
+    q = self.encoders[head_id](x, *cat_list)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/scvi/nn/_base_components.py", line 175, in forward
+    x = layer(x)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/batchnorm.py", line 138, in forward
+    self._check_input_dim(input)
+  File "/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/torch/nn/modules/batchnorm.py", line 304, in _check_input_dim
+    raise ValueError(
+ValueError: expected 2D or 3D input (got 1D input)

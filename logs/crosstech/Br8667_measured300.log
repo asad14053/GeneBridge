@@ -1,0 +1,95 @@
+================================================================================
+STALIGN
+================================================================================
+aligned cells : 68974
+Visium spots  : 4800
+
+================================================================================
+XENIUM SOURCE SELECTION
+================================================================================
+Br8667.h5ad                                             obs_names          -> cell_id     : 0
+Br8667.h5ad                                             obs_names          -> lieber_key  : 68974
+Br8667.h5ad                                             cell_id            -> cell_id     : 68974
+Br8667.h5ad                                             cell_id            -> lieber_key  : 0
+Br8667.h5ad                                             original_cell_id   -> cell_id     : 68974
+Br8667.h5ad                                             original_cell_id   -> lieber_key  : 0
+Br8667.h5ad                                             donor_cell_id      -> cell_id     : 0
+Br8667.h5ad                                             donor_cell_id      -> lieber_key  : 68974
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 obs_names          -> cell_id     : 0
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 obs_names          -> lieber_key  : 66164
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 cell_id            -> cell_id     : 66164
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 cell_id            -> lieber_key  : 0
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 original_cell_id   -> cell_id     : 66164
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 original_cell_id   -> lieber_key  : 0
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 donor_cell_id      -> cell_id     : 0
+spatial_data_xenium_Br8667_ex1_ntc.h5ad                 donor_cell_id      -> lieber_key  : 66164
+
+SELECTED XENIUM:
+ file       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8667.h5ad
+ shape      : (68976, 541)
+ ID source  : obs_names
+ align col  : lieber_key
+ overlap    : 68974
+STalign cells with expression: 68974 / 68974
+Xenium count source: layers['counts']
+
+================================================================================
+VISIUM — EXACT STALIGN TARGET
+================================================================================
+raw MTX shape       : (36601, 4992)
+raw barcodes        : 4992
+raw features        : 36601
+STalign target spots: 4800
+barcode overlap     : 4800 / 4800
+paired capture       : GSM9223455_Br8667-V13M06-342_D1
+usable target spots  : 4800
+Visium count source  : raw 10x matrix
+
+================================================================================
+SHARED GENES
+================================================================================
+shared genes: 300
+
+================================================================================
+PSEUDOSPOTS
+================================================================================
+cells with expression       : 68974
+matched > 0.85          : 44328
+matched + inside spot       : 15990
+occupied pseudospots        : 4391 / 4800 (91.5%)
+cells/pseudospot median    : 3
+cells/pseudospot IQR       : 2–5
+assigned distance max (um) : 32.54
+
+genes retained: 299 / 300
+
+================================================================================
+VISIUM SPATIAL PATTERNING
+================================================================================
+mean neighbours/spot: 5.54
+spatially patterned: 181 / 299
+
+patterned median cosine     : 0.409
+non-patterned median cosine : 0.157
+patterned median Spearman   : 0.065
+Wilcoxon patterned > non    : 1.19e-18
+
+================================================================================
+DISPLAY GENES
+================================================================================
+depth requirement: Visium detected >= 20% and max count >= 10
+eligible patterned: 59
+eligible non-patterned: 3
+patterned, highest cosine    CAMK2N1      Moran=0.379 q=0 cos=0.967 rho=+0.286
+patterned, median cosine     OGA          Moran=0.053 q=7.77e-09 cos=0.687 rho=+0.051
+patterned, lowest cosine     GAD1         Moran=0.027 q=0.00228 cos=0.369 rho=+0.032
+not patterned (control)      GJA1         Moran=0.007 q=0.29 cos=0.597 rho=+0.005
+
+================================================================================
+DONE
+================================================================================
+figure PNG : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8667/fig_crosstech_Br8667.png
+figure PDF : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8667/fig_crosstech_Br8667.pdf
+gene table : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8667/Br8667_measured300_gene_metrics.csv
+selection  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8667/Br8667_selected_display_genes.csv
+summary    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br8667/Br8667_crosstech_summary.csv

@@ -1,0 +1,44 @@
+========================================
+BR=Br5400
+Measured-300 Moran positive control
+========================================
+==========================================================================================
+MEASURED-300 MORAN POSITIVE CONTROL: Br5400
+==========================================================================================
+ENVI shape: (44283, 34987)
+measured Xenium genes in ENVI: 300
+cells inside physical Visium spots: 13198
+occupied spots: 3393 / 4625
+Moran kNN: 6
+
+==========================================================================================
+GENE UNIVERSE
+==========================================================================================
+all ENVI genes shared with Visium: 34978
+measured genes total: 300
+measured genes shared with Visium: 300
+
+Loading assigned-cell count_scale matrix...
+matrix: (13198, 34987)
+memory: 1.72 GB
+
+Computing full-shared-transcriptome library sizes...
+
+==========================================================================================
+MEASURED-300 POSITIVE CONTROL RESULT
+==========================================================================================
+Measured shared       : 300
+Valid Moran both      : 299
+Spearman Moran        : 0.7472
+Pearson Moran         : 0.7202
+Median Visium I       : 0.0445
+Median measured X I   : 0.1200
+Median delta I        : +0.0407
+Regression slope      : 0.9878
+
+Gene table : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/measured300_moran_visium_vs_xenium/Br5400/Br5400_measured300_Visium_vs_Xenium_MoranI.csv
+Summary    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/measured300_moran_visium_vs_xenium/Br5400/Br5400_measured300_MoranI_summary.csv
+PNG        : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/measured300_moran_visium_vs_xenium/Br5400/fig_Br5400_measured300_Visium_vs_Xenium_MoranI.png
+PDF        : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/measured300_moran_visium_vs_xenium/Br5400/fig_Br5400_measured300_Visium_vs_Xenium_MoranI.pdf
+
+Br5400 PASS

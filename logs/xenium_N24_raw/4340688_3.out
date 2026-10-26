@@ -1,0 +1,49 @@
+====================================================================================================
+XENIUM DONOR RAW BUILD
+====================================================================================================
+Job ID       : 4340692
+Array task   : 3
+Donor        : Br2039
+Node         : node12.hgcc.emory.edu
+CPUs         : 16
+Started      : Wed Sep  2 17:20:23 EDT 2026
+====================================================================================================
+
+====================================================================================================
+BUILD SINGLE XENIUM DONOR: Br2039
+====================================================================================================
+
+==========================================================================================
+Loading Br2039
+==========================================================================================
+Matrix: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cell_feature_matrix.h5
+Cells:  /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br2039/GSM9223468_Br2039-cells.parquet.gz
+Cells in H5 matrix:      45898
+Cells in cells metadata: 45898
+Matched cell IDs:        45898
+AnnData object with n_obs × n_vars = 45898 × 541
+    obs: 'cell_id', 'x_centroid', 'y_centroid', 'transcript_counts', 'control_probe_counts', 'genomic_control_counts', 'control_codeword_counts', 'unassigned_codeword_counts', 'deprecated_codeword_counts', 'total_counts', 'cell_area', 'nucleus_area', 'nucleus_count', 'segmentation_method', 'r_cell_index', 'donor_cell_id', 'original_cell_id', 'BrNum', 'sample_id', 'technology', 'Dx', 'CaptureArea', 'PNN', 'tear', 'Age', 'Sex', 'raw_matrix_path', 'raw_cells_path'
+    var: 'gene_ids', 'feature_types', 'genome', 'Symbol', 'ID', 'Type', 'is_gene_expression'
+    obsm: 'spatial'
+    layers: 'counts'
+
+====================================================================================================
+SAVE DONOR
+====================================================================================================
+Output:   /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2039.h5ad
+Cells:    45898
+Features: 541
+
+====================================================================================================
+PASS
+====================================================================================================
+Donor:    Br2039
+Cells:    45898
+Features: 541
+H5AD:     /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2039.h5ad
+
+====================================================================================================
+PASS
+Donor     : Br2039
+Completed : Wed Sep  2 17:22:44 EDT 2026
+====================================================================================================

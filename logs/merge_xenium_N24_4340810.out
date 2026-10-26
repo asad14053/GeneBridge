@@ -1,0 +1,160 @@
+
+====================================================================================================
+VERIFY 24 DONOR FILES
+====================================================================================================
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br1113.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br1139.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2039.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2421.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2719.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5314.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5373.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5400.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5436.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5588.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5590.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5622.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5639.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5746.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5931.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5973.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6032.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6389.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6432.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6437.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6496.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8433.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8667.h5ad
+FOUND: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8772.h5ad
+
+====================================================================================================
+LOAD DONORS
+====================================================================================================
+
+Loading Br1113
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br1113.h5ad
+  cells=57,508; features=541
+
+Loading Br1139
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br1139.h5ad
+  cells=59,962; features=541
+
+Loading Br2039
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2039.h5ad
+  cells=45,898; features=541
+
+Loading Br2421
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2421.h5ad
+  cells=67,472; features=541
+
+Loading Br2719
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br2719.h5ad
+  cells=61,222; features=541
+
+Loading Br5314
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5314.h5ad
+  cells=48,542; features=541
+
+Loading Br5373
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5373.h5ad
+  cells=66,560; features=541
+
+Loading Br5400
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5400.h5ad
+  cells=46,917; features=541
+
+Loading Br5436
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5436.h5ad
+  cells=46,286; features=541
+
+Loading Br5588
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5588.h5ad
+  cells=62,396; features=541
+
+Loading Br5590
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5590.h5ad
+  cells=56,715; features=541
+
+Loading Br5622
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5622.h5ad
+  cells=71,389; features=541
+
+Loading Br5639
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5639.h5ad
+  cells=63,221; features=541
+
+Loading Br5746
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5746.h5ad
+  cells=45,675; features=541
+
+Loading Br5931
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5931.h5ad
+  cells=45,793; features=541
+
+Loading Br5973
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br5973.h5ad
+  cells=44,655; features=541
+
+Loading Br6032
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6032.h5ad
+  cells=47,384; features=541
+
+Loading Br6389
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6389.h5ad
+  cells=53,201; features=541
+
+Loading Br6432
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6432.h5ad
+  cells=41,266; features=541
+
+Loading Br6437
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6437.h5ad
+  cells=59,787; features=541
+
+Loading Br6496
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br6496.h5ad
+  cells=59,438; features=541
+
+Loading Br8433
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8433.h5ad
+  cells=61,932; features=541
+
+Loading Br8667
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8667.h5ad
+  cells=68,976; features=541
+
+Loading Br8772
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br8772.h5ad
+  cells=56,956; features=541
+
+====================================================================================================
+CONCATENATE 24 DONORS
+====================================================================================================
+Expected cells from donor sum: 1,339,151
+
+====================================================================================================
+VALIDATE MERGED OBJECT
+====================================================================================================
+Cells:    1,339,151
+Features: 541
+Donors:   24
+
+====================================================================================================
+SAVE FINAL N24
+====================================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_raw.h5ad
+
+==========================================================================================
+Saving diagnostic plots
+==========================================================================================
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/figures/xenium_N24_cells_per_sample.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/figures/xenium_N24_features_per_sample.png
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/xenium_branch/01_build_datastructure/figures/xenium_N24_raw_spatial_locations.png
+
+====================================================================================================
+DONE
+====================================================================================================
+Final h5ad: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/xenium_N24_raw.h5ad
+Cells:      1,339,151
+Features:   541
+Donors:     24

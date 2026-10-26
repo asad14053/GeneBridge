@@ -1,0 +1,65 @@
+====================================================================================================
+VISTA OOF 300-GENE STITCH
+====================================================================================================
+Job        : 4370780_26
+Donor      : Br8667
+Experiment : ex5
+Node       : node09.hgcc.emory.edu
+Started    : Wed Sep  9 02:59:37 EDT 2026
+====================================================================================================
+==============================================================================================================
+STITCH VISTA 3-FOLD OOF PREDICTIONS
+==============================================================================================================
+Donor      : Br8667
+Experiment : ex5
+Fold root  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667
+VISTA root  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista
+Output     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista/oof_300/oof_predicted_300genes.h5ad
+==============================================================================================================
+
+==============================================================================================================
+FOLD 1
+==============================================================================================================
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista/fold_1/predicted_heldout_genes.h5ad
+Truth     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_1_heldout_genes.h5ad
+Prediction shape: (66148, 100)
+Truth shape     : (66148, 100)
+Fold 1: PASS
+
+==============================================================================================================
+FOLD 2
+==============================================================================================================
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista/fold_2/predicted_heldout_genes.h5ad
+Truth     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_2_heldout_genes.h5ad
+Prediction shape: (66148, 100)
+Truth shape     : (66148, 100)
+Fold 2: PASS
+
+==============================================================================================================
+FOLD 3
+==============================================================================================================
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista/fold_3/predicted_heldout_genes.h5ad
+Truth     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_3_heldout_genes.h5ad
+Prediction shape: (66148, 100)
+Truth shape     : (66148, 100)
+Fold 3: PASS
+
+==============================================================================================================
+WRITING
+==============================================================================================================
+Shape                    : (66148, 300)
+Primary X                : VISTA count_scale
+Prediction layers        : ['count_scale', 'log1p', 'native']
+Truth layers             : ['ground_truth_counts', 'ground_truth_log1p_norm']
+Fold counts              : {1: 100, 2: 100, 3: 100}
+Output                   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista/oof_300/oof_predicted_300genes.h5ad
+Summary                  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br8667/ex5/vista/oof_300/oof_stitch_summary.json
+
+FINAL STATUS: PASS
+
+====================================================================================================
+SLURM STATUS: PASS
+Donor      : Br8667
+Experiment : ex5
+Completed  : Wed Sep  9 03:00:08 EDT 2026
+====================================================================================================

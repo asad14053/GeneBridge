@@ -1,0 +1,17 @@
+============================================================
+BR8667 THREE-SOURCE PI FIGURES
+============================================================
+A = Visium
+B = Measured Xenium
+C = ENVI OOF
+
+Template:
+a = source 1 map
+b = source 2 map
+c = expression correspondence
+d = Moran's I correspondence
+e = patterned raw-cosine distribution
+f = non-patterned raw-cosine distribution
+============================================================
+
+>>> GENERATING A vs B AND A vs C...

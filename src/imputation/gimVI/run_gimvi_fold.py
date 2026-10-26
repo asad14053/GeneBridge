@@ -421,18 +421,54 @@ def predict_selected_spatial_genes(
             f"{missing[:20]}"
         )
 
-    (
-        sequencing_loader,
-        spatial_loader,
-    ) = model._make_scvi_dls(
-        [
-            seq_adata,
-            spatial_adata,
-        ],
-        batch_size=batch_size,
+    # ------------------------------------------------------------------
+    # Safe inference batching
+    #
+    # Training still uses the canonical batch size (128).
+    # During prediction only, avoid a terminal minibatch containing
+    # exactly one spatial cell because gimVI/scvi BatchNorm can receive
+    # a 1D tensor and fail.
+    # ------------------------------------------------------------------
+
+    prediction_batch_size = int(batch_size)
+
+    remainder = (
+        spatial_adata.n_obs
+        % prediction_batch_size
     )
 
-    del sequencing_loader
+    if remainder == 1:
+        prediction_batch_size = 96
+
+        print(
+            "Singleton inference batch detected:",
+            f"{spatial_adata.n_obs} % {batch_size} = 1",
+        )
+
+        print(
+            "Using prediction batch size:",
+            prediction_batch_size,
+        )
+
+    # scvi-tools 0.20.x GIMVI._make_scvi_dls() accepts a
+    # batch_size argument but does not actually forward it to the
+    # underlying AnnDataLoader. Therefore construct the spatial
+    # prediction loader directly so our safe inference batch size
+    # is genuinely used.
+
+    spatial_loader = model._make_data_loader(
+        spatial_adata,
+        batch_size=prediction_batch_size,
+        shuffle=False,
+    )
+
+    # Spatial modality is mode 1 in gimVI.
+    spatial_loader.mode = 1
+
+    print(
+        "Actual gimVI spatial prediction batch size:",
+        prediction_batch_size,
+    )
 
     model.module.eval()
 
@@ -465,6 +501,14 @@ def predict_selected_spatial_genes(
         ) = _unpack_tensors(
             tensors
         )
+
+        if sample_batch.ndim != 2:
+            raise ValueError(
+                "gimVI prediction received an invalid "
+                f"{sample_batch.ndim}D minibatch with shape "
+                f"{tuple(sample_batch.shape)}. "
+                "A singleton terminal batch likely occurred."
+            )
 
         if normalized:
             full_prediction = (
@@ -972,13 +1016,30 @@ def main() -> None:
         "spatial"
     ] = coordinates.copy()
 
-    if (
-        "batch"
-        not in spatial_model.obs.columns
-    ):
-        spatial_model.obs[
-            "batch"
-        ] = "Br8667_Xenium"
+    # Every benchmark run contains exactly one Xenium donor.
+    # Define the spatial batch from that donor rather than hard-coding Br8667.
+    if "BrNum" not in spatial_model.obs.columns:
+        raise KeyError(
+            "Observed Xenium input lacks BrNum; "
+            "cannot define donor-specific gimVI batch."
+        )
+
+    donor_values = (
+        spatial_model.obs["BrNum"]
+        .astype(str)
+        .unique()
+        .tolist()
+    )
+
+    if len(donor_values) != 1:
+        raise ValueError(
+            f"Expected exactly one Xenium donor per run; "
+            f"found {donor_values}"
+        )
+
+    spatial_model.obs["batch"] = (
+        donor_values[0] + "_Xenium"
+    )
 
     spatial_model.obs[
         "batch"

@@ -1,0 +1,241 @@
+====================================================================================================
+ENVI N24 — DONOR-PARALLEL / FOLD-SEQUENTIAL
+====================================================================================================
+Job ID          : 4346634
+Array task      : 2
+Node            : node10.hgcc.emory.edu
+Started         : Thu Sep  3 20:27:03 EDT 2026
+
+Target donor    : Br8667
+Experiment      : ex5_3
+Experiment label: Experiment 5.3
+
+Reference:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+
+Fold directory:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667
+
+Output root:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667
+
+Python          : /beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/bin/python
+
+Training steps  : 16000
+Batch size      : 128
+num_HVG         : 2048
+num_cov_genes   : 64
+k_nearest       : 8
+covet_batch_size: 256
+spatial_dist    : pois
+sc_dist         : nb
+stable_eps      : 1e-6
+
+CPUs            : 16
+Memory          : 200G
+
+Execution policy:
+  donors = parallel SLURM array
+  folds  = sequential 1 -> 2 -> 3
+====================================================================================================
+
+
+####################################################################################################
+# Br8667 | ex5_3 | FOLD 1
+####################################################################################################
+Started fold      : Thu Sep  3 20:27:03 EDT 2026
+Observed target   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_1_observed_genes.h5ad
+Held-out truth    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_1_heldout_genes.h5ad
+Reference         : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+scenvi: version-not-exposed
+JAX: 0.4.30
+JAX backend: cpu
+JAX devices: [CpuDevice(id=0)]
+====================================================================================================
+STANDARD ENVI 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5_3
+Experiment label: Experiment 5.3
+Fold: 1
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+Reference raw shape: (67707, 36601)
+ENVI reference model input: (67707, 2348)
+ENVI spatial model input: (66148, 200)
+Held-out truth: (66148, 100)
+Training steps: 16000
+Batch size: 128
+num_HVG: 2048
+num_cov_genes: 64
+k_nearest: 8
+covet_batch_size: 256
+spatial_dist: pois
+sc_dist: nb
+stable_eps: 1e-06
+Seed: 8668
+Dropped optional kwargs: ['covet_batch_size']
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1
+====================================================================================================
+DEBUG
+Computing Niche Covariance Matrices
+Initializing CVAE
+Finished Initializing ENVI
+Finished imputing missing gene for spatial data! See 'imputation' in obsm of ENVI.spatial_data
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['ALDH1A1', 'NORAD', 'APOLD1', 'SOX2-OT', 'MYL9', 'CARTPT', 'FGFR3', 'PLEC', 'NDUFB2', 'ACY3']
+====================================================================================================
+SUCCESS
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1/fold_level_metrics.csv
+Initialization minutes: 0.47
+Training minutes: 34.73
+Imputation minutes: 0.36
+Scale factor min/median/max: 0.193298 4.06236 57.8441
+complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1/complete.flag
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_1/run_complete.flag
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+FOLD STATUS: PASS
+Donor     : Br8667
+Experiment: ex5_3
+Fold      : 1
+Completed : Thu Sep  3 21:05:38 EDT 2026
+----------------------------------------------------------------------------------------------------
+
+
+####################################################################################################
+# Br8667 | ex5_3 | FOLD 2
+####################################################################################################
+Started fold      : Thu Sep  3 21:05:38 EDT 2026
+Observed target   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_2_observed_genes.h5ad
+Held-out truth    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_2_heldout_genes.h5ad
+Reference         : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+scenvi: version-not-exposed
+JAX: 0.4.30
+JAX backend: cpu
+JAX devices: [CpuDevice(id=0)]
+====================================================================================================
+STANDARD ENVI 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5_3
+Experiment label: Experiment 5.3
+Fold: 2
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+Reference raw shape: (67707, 36601)
+ENVI reference model input: (67707, 2348)
+ENVI spatial model input: (66148, 200)
+Held-out truth: (66148, 100)
+Training steps: 16000
+Batch size: 128
+num_HVG: 2048
+num_cov_genes: 64
+k_nearest: 8
+covet_batch_size: 256
+spatial_dist: pois
+sc_dist: nb
+stable_eps: 1e-06
+Seed: 8669
+Dropped optional kwargs: ['covet_batch_size']
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2
+====================================================================================================
+DEBUG
+Computing Niche Covariance Matrices
+Initializing CVAE
+Finished Initializing ENVI
+Finished imputing missing gene for spatial data! See 'imputation' in obsm of ENVI.spatial_data
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['ITGB4', 'KCNK1', 'DDIT4', 'ENPP2', 'TNK2', 'AQP1', 'SYK', 'GPX3', 'ALCAM', 'YWHAH']
+====================================================================================================
+SUCCESS
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2/fold_level_metrics.csv
+Initialization minutes: 0.43
+Training minutes: 37.25
+Imputation minutes: 0.38
+Scale factor min/median/max: 0.0191018 2.45235 37.8752
+complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2/complete.flag
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_2/run_complete.flag
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+FOLD STATUS: PASS
+Donor     : Br8667
+Experiment: ex5_3
+Fold      : 2
+Completed : Thu Sep  3 21:46:43 EDT 2026
+----------------------------------------------------------------------------------------------------
+
+
+####################################################################################################
+# Br8667 | ex5_3 | FOLD 3
+####################################################################################################
+Started fold      : Thu Sep  3 21:46:43 EDT 2026
+Observed target   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_3_observed_genes.h5ad
+Held-out truth    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br8667/fold_3_heldout_genes.h5ad
+Reference         : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+scenvi: version-not-exposed
+JAX: 0.4.30
+JAX backend: cpu
+JAX devices: [CpuDevice(id=0)]
+====================================================================================================
+STANDARD ENVI 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5_3
+Experiment label: Experiment 5.3
+Fold: 3
+Reference: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/snrnaseq_target_references/Br8667/seq_data_huuki_snrna_9brains_excluding_Br8667.h5ad
+Reference raw shape: (67707, 36601)
+ENVI reference model input: (67707, 2348)
+ENVI spatial model input: (66148, 200)
+Held-out truth: (66148, 100)
+Training steps: 16000
+Batch size: 128
+num_HVG: 2048
+num_cov_genes: 64
+k_nearest: 8
+covet_batch_size: 256
+spatial_dist: pois
+sc_dist: nb
+stable_eps: 1e-06
+Seed: 8670
+Dropped optional kwargs: ['covet_batch_size']
+Output: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3
+====================================================================================================
+DEBUG
+Computing Niche Covariance Matrices
+Initializing CVAE
+Finished Initializing ENVI
+Finished imputing missing gene for spatial data! See 'imputation' in obsm of ENVI.spatial_data
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['RASGRF2', 'CORT', 'ATP2B4', 'GAD2', 'TYROBP', 'CNDP1', 'MTURN', 'HMGB2', 'ACTA2', 'NRG1']
+====================================================================================================
+SUCCESS
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3/predicted_heldout_genes.h5ad
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3/gene_level_metrics.csv
+Fold metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3/fold_level_metrics.csv
+Initialization minutes: 0.42
+Training minutes: 38.98
+Imputation minutes: 0.44
+Scale factor min/median/max: 0.0589817 3.2719 37.6619
+complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3/complete.flag
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/ENVI_N24/Br8667/ex5_3/envi/fold_3/run_complete.flag
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+FOLD STATUS: PASS
+Donor     : Br8667
+Experiment: ex5_3
+Fold      : 3
+Completed : Thu Sep  3 22:29:36 EDT 2026
+----------------------------------------------------------------------------------------------------
+
+====================================================================================================
+FINAL STATUS: PASS
+====================================================================================================
+Donor      : Br8667
+Experiment : ex5_3
+Folds      : 1, 2, 3
+Completed  : Thu Sep  3 22:29:36 EDT 2026
+====================================================================================================

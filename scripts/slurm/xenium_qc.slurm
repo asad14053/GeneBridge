@@ -3,8 +3,8 @@
 #SBATCH --output=logs/xenium_qc_%j.out
 #SBATCH --error=logs/xenium_qc_%j.err
 #SBATCH --time=24:00:00
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=120G
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=200G
 
 set -euo pipefail
 

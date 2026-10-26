@@ -1,0 +1,63 @@
+================================================================================
+TASK 2.3 — ALL 6 MODELS / N24 OOF / NO EXPRESSION FILTER
+================================================================================
+Started: Thu Sep 10 01:34:18 EDT 2026
+
+
+==============================================================================================================
+LOAD OFFICIAL N24 PAPER DE REFERENCE
+==============================================================================================================
+Paper file     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/reference/paper_xenium/paper_xenium_layer_adjusted_24donor.csv 
+Gene column    : gene 
+FDR column     : fdr_SCZ 
+logFC column   : logFC_SCZ 
+FDR < 0.10 genes: 19 
+
+Reported 19 genes:
+     gene paper_logFC_SCZ paper_fdr_SCZ
+    ABCG2      -0.4628641   0.062941337
+     ANLN      -0.5204533   0.062941337
+   CHI3L1       0.7302000   0.062941337
+    ENPP2      -0.5276257   0.062941337
+    EVI2A      -0.5177114   0.062941337
+    FKBP5       0.5868846   0.006334398
+    GSTM5       0.6197601   0.044308464
+    HIF3A       0.3931411   0.063397302
+   IFITM3      -0.5891149   0.063397302
+     KLF2      -0.4536007   0.062941337
+      MBP       0.4133964   0.081793346
+    NPTX2      -0.5149058   0.062941337
+   RNASE1      -0.5164358   0.053754105
+    RPS26      -0.2780001   0.072213358
+     SCG3      -0.3141893   0.071627487
+ SERPINA3       1.2370913   0.005777089
+  SLC44A1      -0.4411043   0.062941337
+  TNFSF10      -0.5731178   0.062941337
+    XRRA1      -0.3825239   0.001330035
+
+==============================================================================================================
+MODEL: VISTA
+==============================================================================================================
+
+Counts:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_pseudobulk_300genes.csv.gz
+
+Metadata:
+/beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/DE/task2_3_ntc_dysregulation/pseudobulk/VISTA/VISTA_NTCtrained_OOF_donor_domain_pseudobulk_metadata.csv
+
+PB matrix: 168 samples x 300 genes
+Metadata: 168 rows
+Donors : 24 
+NTC    : 12 
+SCZ    : 12 
+SpDs   : 7 
+
+==============================================================================================================
+VISTA NO FILTER + TMM + LOG2 CPM
+==============================================================================================================
+Genes before DE    : 300 
+Genes retained     : 300 / 300 (filterByExpr DISABLED)
+
+==============================================================================================================
+VISTA LAYER-ADJUSTED SCZ vs NTC DE
+==============================================================================================================

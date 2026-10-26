@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-01_build_xenium_N24_raw_h5ad.py
+01_build_xenium_N24_raw.py
 
 Goal
 ----

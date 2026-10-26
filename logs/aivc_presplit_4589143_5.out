@@ -1,0 +1,31 @@
+======================================================================
+AIVC PRE-SPLIT DONOR AUDIT
+Array job : 4589143
+Task      : 5
+Donor     : Br5622
+File      : data/processed/imputation_full/ex1_ntc/envi/Br5622/spatial_data_xenium_Br5622_ENVI_full_transcriptome.h5ad
+Host      : node03.hgcc.emory.edu
+CPUs      : 16
+Started   : Mon Sep 28 12:07:37 EDT 2026
+======================================================================
+====================================================================================================
+AIVC PRE-SPLIT AUDIT — ONE DONOR
+====================================================================================================
+Donor: Br5622
+ENVI : data/processed/imputation_full/ex1_ntc/envi/Br5622/spatial_data_xenium_Br5622_ENVI_full_transcriptome.h5ad
+
+Loading ENVI...
+ENVI shape: (68236, 34987)
+File donor: Br5622  Dx: NTC
+
+Loading annotated Xenium metadata...
+Annotation join: 68236/68236 (100.0000%)
+
+Checking snRNA donor overlap...
+
+DONE: Br5622
+======================================================================
+DONE
+Donor   : Br5622
+Finished: Mon Sep 28 12:09:57 EDT 2026
+======================================================================

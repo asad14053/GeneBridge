@@ -1,0 +1,249 @@
+====================================================================================================
+GENEBRIDGE: 24-DONOR XENIUM + VISIUM DOWNLOAD
+====================================================================================================
+Job ID       : 4340233
+Array task   : 19
+Donor        : Br6432
+Node         : node14.hgcc.emory.edu
+CPUs         : 16
+Memory       : 200G
+Started      : Wed Sep  2 15:17:53 EDT 2026
+====================================================================================================
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Br6432 is marked as previously corrupted.
+FORCING clean redownload.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+====================================================================================================
+GeneBridge GEO downloader
+====================================================================================================
+Project root          : /beegfs/labs/hulab/projects/mjabin/GeneBridge
+Donor                 : Br6432
+Modality              : both
+Include heavy Xenium  : True
+Include Visium images : False
+Force redownload      : True
+Dry run               : False
+Max retries           : 10
+Started               : Wed Sep  2 15:17:53 2026
+
+====================================================================================================
+Reading GEO series file lists
+====================================================================================================
+Parsed Xenium files: 144
+Parsed Visium files: 567
+
+====================================================================================================
+P3 / Br6432
+====================================================================================================
+
+====================================================================================================
+Br6432 | XENIUM | GSM9223470
+====================================================================================================
+Files selected: 6
+Expected total: 6.86 GB
+      10.54 MB  GSM9223470_Br6432-cell_boundaries.csv.gz
+       4.59 MB  GSM9223470_Br6432-cell_feature_matrix.h5
+     877.28 KB  GSM9223470_Br6432-cells.parquet.gz
+       5.58 GB  GSM9223470_Br6432-morphology.ome.tif.gz
+       9.74 MB  GSM9223470_Br6432-nucleus_boundaries.csv.gz
+       1.26 GB  GSM9223470_Br6432-transcripts.zarr.zip
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223470&format=file&file=GSM9223470_Br6432-cell_boundaries.csv.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cell_boundaries.csv.gz
+Expected : 10.54 MB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 11052400 (10.54 MB)
+Expected size  : 11052400 (10.54 MB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223470&format=file&file=GSM9223470_Br6432-cell_feature_matrix.h5
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cell_feature_matrix.h5
+Expected : 4.59 MB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 4815161 (4.59 MB)
+Expected size  : 4815161 (4.59 MB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223470&format=file&file=GSM9223470_Br6432-cells.parquet.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-cells.parquet.gz
+Expected : 877.28 KB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 898331 (877.28 KB)
+Expected size  : 898331 (877.28 KB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223470&format=file&file=GSM9223470_Br6432-morphology.ome.tif.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-morphology.ome.tif.gz
+Expected : 5.58 GB
+Resume   : 0.00 B
+  256.00 MB / 5.58 GB (4.5%)
+  512.00 MB / 5.58 GB (9.0%)
+  768.00 MB / 5.58 GB (13.4%)
+  1.00 GB / 5.58 GB (17.9%)
+  1.25 GB / 5.58 GB (22.4%)
+  1.50 GB / 5.58 GB (26.9%)
+  1.75 GB / 5.58 GB (31.4%)
+  2.00 GB / 5.58 GB (35.8%)
+  2.25 GB / 5.58 GB (40.3%)
+  2.50 GB / 5.58 GB (44.8%)
+  2.75 GB / 5.58 GB (49.3%)
+  3.00 GB / 5.58 GB (53.8%)
+  3.25 GB / 5.58 GB (58.2%)
+  3.50 GB / 5.58 GB (62.7%)
+  3.75 GB / 5.58 GB (67.2%)
+  4.00 GB / 5.58 GB (71.7%)
+  4.25 GB / 5.58 GB (76.1%)
+  4.50 GB / 5.58 GB (80.6%)
+  4.75 GB / 5.58 GB (85.1%)
+  5.00 GB / 5.58 GB (89.6%)
+  5.25 GB / 5.58 GB (94.1%)
+  5.50 GB / 5.58 GB (98.5%)
+
+Download connection closed.
+Downloaded size: 5992718647 (5.58 GB)
+Expected size  : 5992718647 (5.58 GB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223470&format=file&file=GSM9223470_Br6432-nucleus_boundaries.csv.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-nucleus_boundaries.csv.gz
+Expected : 9.74 MB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 10213476 (9.74 MB)
+Expected size  : 10213476 (9.74 MB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223470&format=file&file=GSM9223470_Br6432-transcripts.zarr.zip
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/xenium/Br6432/GSM9223470_Br6432-transcripts.zarr.zip
+Expected : 1.26 GB
+Resume   : 0.00 B
+  256.00 MB / 1.26 GB (19.9%)
+  512.00 MB / 1.26 GB (39.8%)
+  768.00 MB / 1.26 GB (59.7%)
+  1.00 GB / 1.26 GB (79.5%)
+  1.25 GB / 1.26 GB (99.4%)
+
+Download connection closed.
+Downloaded size: 1350050971 (1.26 GB)
+Expected size  : 1350050971 (1.26 GB)
+PASS: exact GEO byte-size match.
+
+====================================================================================================
+Br6432 | VISIUM | GSM9223415
+====================================================================================================
+Files selected: 7
+Expected total: 37.82 MB
+      178.00 B  GSM9223415_Br6432-V12D07-334_D1-scalefactors_json.json.gz
+       3.98 MB  GSM9223415_Br6432-V12D07-334_D1-tissue_hires_image.png.gz
+     422.75 KB  GSM9223415_Br6432-V12D07-334_D1-tissue_lowres_image.png.gz
+      64.70 KB  GSM9223415_Br6432-V12D07-334_D1-tissue_positions.csv.gz
+      28.25 KB  GSM9223415_Br6432-V12D07-334_D1_barcodes.tsv.gz
+     287.58 KB  GSM9223415_Br6432-V12D07-334_D1_features.tsv.gz
+      33.06 MB  GSM9223415_Br6432-V12D07-334_D1_matrix.mtx.gz
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1-scalefactors_json.json.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1-scalefactors_json.json.gz
+Expected : 178.00 B
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 178 (178.00 B)
+Expected size  : 178 (178.00 B)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1-tissue_hires_image.png.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1-tissue_hires_image.png.gz
+Expected : 3.98 MB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 4171039 (3.98 MB)
+Expected size  : 4171039 (3.98 MB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1-tissue_lowres_image.png.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1-tissue_lowres_image.png.gz
+Expected : 422.75 KB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 432899 (422.75 KB)
+Expected size  : 432899 (422.75 KB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1-tissue_positions.csv.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1-tissue_positions.csv.gz
+Expected : 64.70 KB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 66253 (64.70 KB)
+Expected size  : 66253 (64.70 KB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1_barcodes.tsv.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1_barcodes.tsv.gz
+Expected : 28.25 KB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 28924 (28.25 KB)
+Expected size  : 28924 (28.25 KB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1_features.tsv.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1_features.tsv.gz
+Expected : 287.58 KB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 294478 (287.58 KB)
+Expected size  : 294478 (287.58 KB)
+PASS: exact GEO byte-size match.
+
+Download attempt 1/10
+URL      : https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM9223415&format=file&file=GSM9223415_Br6432-V12D07-334_D1_matrix.mtx.gz
+Output   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br6432/GSM9223415_Br6432-V12D07-334_D1_matrix.mtx.gz
+Expected : 33.06 MB
+Resume   : 0.00 B
+
+Download connection closed.
+Downloaded size: 34666366 (33.06 MB)
+Expected size  : 34666366 (33.06 MB)
+PASS: exact GEO byte-size match.
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/download_manifests_24_common/download_manifest_Br6432.csv
+
+====================================================================================================
+DONE
+====================================================================================================
+Finished: Wed Sep  2 15:20:11 2026
+
+====================================================================================================
+FINISHED
+====================================================================================================
+Donor       : Br6432
+Exit status : 0
+Finished    : Wed Sep  2 15:20:11 EDT 2026
+====================================================================================================

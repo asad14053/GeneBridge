@@ -1,0 +1,76 @@
+============================================================
+Job ID : 4346240
+Task   : 4
+Donor  : Br2421
+============================================================
+====================================================================================================
+COMMON NONEMPTY-CELL FILTER
+====================================================================================================
+Donor: Br2421
+Fold directory: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br2421
+
+====================================================================================================
+CREATE / VERIFY BACKUPS
+====================================================================================================
+Creating backup: fold_1_observed_genes.h5ad
+Creating backup: fold_1_heldout_genes.h5ad
+Creating backup: fold_2_observed_genes.h5ad
+Creating backup: fold_2_heldout_genes.h5ad
+Creating backup: fold_3_observed_genes.h5ad
+Creating backup: fold_3_heldout_genes.h5ad
+
+====================================================================================================
+AUDIT ALL THREE FOLDS
+====================================================================================================
+
+Br2421 | Fold 1
+Observed shape: (62073, 200)
+Held-out shape: (62073, 100)
+Blank observed cells: 1
+Library-size percentiles: [0.0, 53.0, 239.0, 411.0, 674.0, 1337.0, 1506.0]
+
+Br2421 | Fold 2
+Observed shape: (62073, 200)
+Held-out shape: (62073, 100)
+Blank observed cells: 1
+Library-size percentiles: [0.0, 49.0, 195.0, 319.0, 515.0, 1058.0, 1270.0]
+
+Br2421 | Fold 3
+Observed shape: (62073, 200)
+Held-out shape: (62073, 100)
+Blank observed cells: 0
+Library-size percentiles: [1.0, 71.0, 283.0, 457.0, 718.0, 1317.0, 1501.0]
+
+====================================================================================================
+COMMON MASK
+====================================================================================================
+Original cells: 62073
+Retained cells: 62071
+Removed cells: 2
+
+====================================================================================================
+REWRITE FILTERED H5AD FILES
+====================================================================================================
+Fold 1: (62071, 200) / (62071, 100)
+Fold 2: (62071, 200) / (62071, 100)
+Fold 3: (62071, 200) / (62071, 100)
+
+====================================================================================================
+FINAL ON-DISK VALIDATION
+====================================================================================================
+Fold 1: observed=(62071, 200), heldout=(62071, 100), blank=0
+Fold 2: observed=(62071, 200), heldout=(62071, 100), blank=0
+Fold 3: observed=(62071, 200), heldout=(62071, 100), blank=0
+
+====================================================================================================
+SUCCESS
+====================================================================================================
+Donor: Br2421
+Common retained cells: 62071
+Removed cells: 2
+Manifest: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br2421/blank_cell_filter_manifest.json
+All three observed folds now contain zero blank cells.
+
+FINAL STATUS: PASS
+
+DONE: Br2421

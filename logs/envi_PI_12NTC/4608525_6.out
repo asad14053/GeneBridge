@@ -1,0 +1,39 @@
+============================================================
+ENVI PI FIGURE
+BR=Br5639
+TASK=6
+============================================================
+================================================================================
+ENVI PI-STYLE FIGURE: Br5639
+================================================================================
+imputed evaluable: 21353
+imputed patterned: 2895
+imputed non-patterned: 18458
+
+DISPLAY GENES
+imputed, patterned, highest cosine       MALAT1          cos=0.994 sp=-0.064 Moran=0.594 q=0
+imputed, patterned, median cosine        NDUFB8          cos=0.778 sp=+0.011 Moran=0.052 q=5e-07
+imputed, patterned, lowest cosine        MYLK            cos=0.453 sp=+0.048 Moran=0.260 q=0
+imputed, not patterned (control)         METTL7A         cos=0.685 sp=+0.010 Moran=0.014 q=0.3
+
+matched ENVI cells: 41213
+inside Visium spots: 14100
+occupied pseudospots: 3902 / 4343
+
+evaluable shared genes used for CPM: 21653
+
+Loading assigned-cell ENVI count_scale...
+assigned ENVI matrix: (14100, 34987) 1.84 GB
+
+Computing ENVI pseudospot library sizes...
+Computing Visium library sizes...
+Loading selected genes for aligned-cell maps...
+
+================================================================================
+OUTPUT
+================================================================================
+PNG      : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5639/fig_ENVI_fulltranscriptome_Br5639_PI_style.png
+PDF      : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5639/fig_ENVI_fulltranscriptome_Br5639_PI_style.pdf
+selection: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br5639/Br5639_ENVI_selected_display_genes.csv
+
+Br5639 PASS

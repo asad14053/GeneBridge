@@ -1,0 +1,91 @@
+Total donors detected: 24
+SLURM task: 2
+Running donor: Br1139
+================================================================================
+STALIGN
+================================================================================
+aligned cells : 59962
+Visium spots  : 4631
+
+================================================================================
+XENIUM SOURCE SELECTION
+================================================================================
+Br1139.h5ad                                             obs_names          -> cell_id     : 0
+Br1139.h5ad                                             obs_names          -> lieber_key  : 59962
+Br1139.h5ad                                             cell_id            -> cell_id     : 59962
+Br1139.h5ad                                             cell_id            -> lieber_key  : 0
+Br1139.h5ad                                             original_cell_id   -> cell_id     : 59962
+Br1139.h5ad                                             original_cell_id   -> lieber_key  : 0
+Br1139.h5ad                                             donor_cell_id      -> cell_id     : 0
+Br1139.h5ad                                             donor_cell_id      -> lieber_key  : 59962
+
+SELECTED XENIUM:
+ file       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/xenium/raw_by_donor/Br1139.h5ad
+ shape      : (59962, 541)
+ ID source  : obs_names
+ align col  : lieber_key
+ overlap    : 59962
+STalign cells with expression: 59962 / 59962
+Xenium count source: layers['counts']
+
+================================================================================
+VISIUM — EXACT STALIGN TARGET
+================================================================================
+raw MTX shape       : (36601, 4992)
+raw barcodes        : 4992
+raw features        : 36601
+STalign target spots: 4631
+barcode overlap     : 4631 / 4631
+Br1139: exact STalign Visium target recovered: 4631 / 4631 spots
+paired capture       : GSM9223444_Br1139-V13F27-296_A1
+usable target spots  : 4631
+Visium count source  : raw 10x matrix
+
+================================================================================
+SHARED GENES
+================================================================================
+shared genes: 300
+
+================================================================================
+PSEUDOSPOTS
+================================================================================
+cells with expression       : 59962
+matched > 0.85          : 33515
+matched + inside spot       : 12606
+occupied pseudospots        : 3571 / 4631 (77.1%)
+cells/pseudospot median    : 3
+cells/pseudospot IQR       : 2–5
+assigned distance max (um) : 32.50
+
+genes retained: 299 / 300
+
+================================================================================
+VISIUM SPATIAL PATTERNING
+================================================================================
+mean neighbours/spot: 5.21
+spatially patterned: 150 / 299
+
+patterned median cosine     : 0.442
+non-patterned median cosine : 0.122
+patterned median Spearman   : 0.057
+Wilcoxon patterned > non    : 5.28e-26
+
+================================================================================
+DISPLAY GENES
+================================================================================
+depth requirement: Visium detected >= 20% and max count >= 10
+eligible patterned: 38
+eligible non-patterned: 1
+patterned, highest cosine    CAMK2N1      Moran=0.349 q=0 cos=0.959 rho=+0.259
+patterned, median cosine     SCG3         Moran=0.030 q=0.00382 cos=0.717 rho=+0.089
+patterned, lowest cosine     PCP4         Moran=0.302 q=0 cos=0.438 rho=+0.165
+not patterned (control)      PPM1K        Moran=0.015 q=0.12 cos=0.578 rho=+0.038
+
+================================================================================
+DONE
+================================================================================
+figure PNG : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br1139/fig_crosstech_Br1139.png
+figure PDF : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br1139/fig_crosstech_Br1139.pdf
+gene table : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br1139/Br1139_measured300_gene_metrics.csv
+selection  : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br1139/Br1139_selected_display_genes.csv
+summary    : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/crosstech_measured300/Br1139/Br1139_crosstech_summary.csv

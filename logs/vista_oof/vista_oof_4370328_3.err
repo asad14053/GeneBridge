@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/VISTA/01_stitch_oof_predictions.py", line 756, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/imputation/VISTA/01_stitch_oof_predictions.py", line 209, in main
+    raise FileNotFoundError(
+FileNotFoundError: Missing required input: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/VISTA_N24/Br2039/ex5_1/vista/fold_1/predicted_heldout_genes.h5ad

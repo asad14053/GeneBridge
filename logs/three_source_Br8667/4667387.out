@@ -1,0 +1,79 @@
+============================================================
+BR8667 THREE-SOURCE VALIDATION FIGURES
+============================================================
+A = Visium
+B = Measured Xenium
+C = ENVI OOF
+
+Generating:
+  A vs B
+  A vs C
+  B vs C
+
+Each:
+  a = source 1 map
+  b = source 2 map
+  c = normalized-expression correspondence
+  d = Moran's-I correspondence
+  e = patterned raw-cosine distribution
+  f = non-patterned raw-cosine distribution
+============================================================
+====================================================================================================
+BR8667 THREE-SOURCE FIGURE GENERATOR
+====================================================================================================
+Genes: 300
+Occupied spots: 4350
+Aligned cells inside physical Visium spots: 15476
+
+====================================================================================================
+A_vs_B : Visium vs Measured Xenium
+====================================================================================================
+patterned, highest raw cosine        MT-ND2          cos=0.999 sp=+0.032
+patterned, median raw cosine         EGR3            cos=0.424 sp=+0.053
+patterned, lowest raw cosine         NXPH4           cos=0.032 sp=+0.007
+not patterned control                ELMSAN1         cos=0.156 sp=+0.003
+Saved PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_A_vs_B_PI_template_raw_cosine.png
+Saved PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_A_vs_B_PI_template_raw_cosine.pdf
+
+====================================================================================================
+A_vs_C : Visium vs ENVI OOF
+====================================================================================================
+patterned, highest raw cosine        MT-ND1          cos=0.996 sp=+0.060
+patterned, median raw cosine         RASGRF2         cos=0.490 sp=+0.127
+patterned, lowest raw cosine         NXPH4           cos=0.086 sp=+0.016
+not patterned control                NPIPA1          cos=0.207 sp=+0.004
+Saved PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_A_vs_C_PI_template_raw_cosine.png
+Saved PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_A_vs_C_PI_template_raw_cosine.pdf
+
+====================================================================================================
+B_vs_C : Measured Xenium vs ENVI OOF
+====================================================================================================
+patterned, highest raw cosine        MT-ND1          cos=0.997 sp=+0.777
+patterned, median raw cosine         VGF             cos=0.883 sp=+0.707
+patterned, lowest raw cosine         KLK6            cos=0.211 sp=+0.165
+not patterned control                MT1E            cos=0.679 sp=+0.305
+Saved PNG: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_B_vs_C_PI_template_raw_cosine.png
+Saved PDF: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_B_vs_C_PI_template_raw_cosine.pdf
+
+====================================================================================================
+ALL THREE BR8667 FIGURES COMPLETE
+====================================================================================================
+fig_Br8667_A_vs_B_PI_template_raw_cosine.png
+fig_Br8667_A_vs_C_PI_template_raw_cosine.png
+fig_Br8667_B_vs_C_PI_template_raw_cosine.png
+
+============================================================
+VERIFY OUTPUTS
+============================================================
+PASS: fig_Br8667_A_vs_B_PI_template_raw_cosine.png
+PASS: fig_Br8667_A_vs_C_PI_template_raw_cosine.png
+PASS: fig_Br8667_B_vs_C_PI_template_raw_cosine.png
+
+PNG files:
+-rw-r----- 1 mjabin hulab 4.8M Oct 16 05:04 /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_A_vs_B_PI_template_raw_cosine.png
+-rw-r----- 1 mjabin hulab 5.7M Oct 16 05:04 /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_A_vs_C_PI_template_raw_cosine.png
+-rw-r----- 1 mjabin hulab 7.3M Oct 16 05:05 /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/three_source_validation/Br8667/PI_style_pairwise_final/fig_Br8667_B_vs_C_PI_template_raw_cosine.png
+
+============================================================
+ALL THREE FIGURES PASS
+============================================================

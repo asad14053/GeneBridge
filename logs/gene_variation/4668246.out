@@ -1,0 +1,225 @@
+====================================================================================================
+BR8667: GENE-WISE VARIATION
+300 OOF vs 34K ENVI imputed-only
+====================================================================================================
+
+Loading OOF...
+OOF: (66148, 300)
+
+Loading full ENVI transcriptome...
+FULL: (66164, 34987)
+
+OOF genes: 300
+Full transcriptome genes: 34987
+Imputed-only genes: 34687
+
+====================================================================================================
+MATCH OOF CELLS TO FULL ENVI
+====================================================================================================
+Using cell ID column: original_cell_id
+Using cell ID column: original_cell_id
+OOF cells with full-ENVI match: 66148/66148
+
+====================================================================================================
+LOAD STALIGN ASSIGNMENTS
+====================================================================================================
+Cells retained: 15476
+Occupied spots: 4350
+Using true Visium coordinates.
+Spatial graph: 6-NN row-standardized
+
+====================================================================================================
+AGGREGATE 300 MEASURED XENIUM GENES
+====================================================================================================
+Measured pseudospot matrix: (4350, 300)
+
+====================================================================================================
+AGGREGATE 300 OOF PREDICTIONS
+====================================================================================================
+OOF pseudospot matrix: (4350, 300)
+
+====================================================================================================
+AGGREGATE FULL-TRANSCRIPTOME IMPUTED-ONLY GENES
+====================================================================================================
+Aggregated 0-512 / 34,687
+Aggregated 512-1,024 / 34,687
+Aggregated 1,024-1,536 / 34,687
+Aggregated 1,536-2,048 / 34,687
+Aggregated 2,048-2,560 / 34,687
+Aggregated 2,560-3,072 / 34,687
+Aggregated 3,072-3,584 / 34,687
+Aggregated 3,584-4,096 / 34,687
+Aggregated 4,096-4,608 / 34,687
+Aggregated 4,608-5,120 / 34,687
+Aggregated 5,120-5,632 / 34,687
+Aggregated 5,632-6,144 / 34,687
+Aggregated 6,144-6,656 / 34,687
+Aggregated 6,656-7,168 / 34,687
+Aggregated 7,168-7,680 / 34,687
+Aggregated 7,680-8,192 / 34,687
+Aggregated 8,192-8,704 / 34,687
+Aggregated 8,704-9,216 / 34,687
+Aggregated 9,216-9,728 / 34,687
+Aggregated 9,728-10,240 / 34,687
+Aggregated 10,240-10,752 / 34,687
+Aggregated 10,752-11,264 / 34,687
+Aggregated 11,264-11,776 / 34,687
+Aggregated 11,776-12,288 / 34,687
+Aggregated 12,288-12,800 / 34,687
+Aggregated 12,800-13,312 / 34,687
+Aggregated 13,312-13,824 / 34,687
+Aggregated 13,824-14,336 / 34,687
+Aggregated 14,336-14,848 / 34,687
+Aggregated 14,848-15,360 / 34,687
+Aggregated 15,360-15,872 / 34,687
+Aggregated 15,872-16,384 / 34,687
+Aggregated 16,384-16,896 / 34,687
+Aggregated 16,896-17,408 / 34,687
+Aggregated 17,408-17,920 / 34,687
+Aggregated 17,920-18,432 / 34,687
+Aggregated 18,432-18,944 / 34,687
+Aggregated 18,944-19,456 / 34,687
+Aggregated 19,456-19,968 / 34,687
+Aggregated 19,968-20,480 / 34,687
+Aggregated 20,480-20,992 / 34,687
+Aggregated 20,992-21,504 / 34,687
+Aggregated 21,504-22,016 / 34,687
+Aggregated 22,016-22,528 / 34,687
+Aggregated 22,528-23,040 / 34,687
+Aggregated 23,040-23,552 / 34,687
+Aggregated 23,552-24,064 / 34,687
+Aggregated 24,064-24,576 / 34,687
+Aggregated 24,576-25,088 / 34,687
+Aggregated 25,088-25,600 / 34,687
+Aggregated 25,600-26,112 / 34,687
+Aggregated 26,112-26,624 / 34,687
+Aggregated 26,624-27,136 / 34,687
+Aggregated 27,136-27,648 / 34,687
+Aggregated 27,648-28,160 / 34,687
+Aggregated 28,160-28,672 / 34,687
+Aggregated 28,672-29,184 / 34,687
+Aggregated 29,184-29,696 / 34,687
+Aggregated 29,696-30,208 / 34,687
+Aggregated 30,208-30,720 / 34,687
+Aggregated 30,720-31,232 / 34,687
+Aggregated 31,232-31,744 / 34,687
+Aggregated 31,744-32,256 / 34,687
+Aggregated 32,256-32,768 / 34,687
+Aggregated 32,768-33,280 / 34,687
+Aggregated 33,280-33,792 / 34,687
+Aggregated 33,792-34,304 / 34,687
+Aggregated 34,304-34,687 / 34,687
+Imputed-only pseudospot matrix: (4350, 34687)
+
+====================================================================================================
+COMMON NORMALIZATION
+====================================================================================================
+Combined predicted transcriptome: 34987 genes
+Library median: 98696.32488972324
+
+====================================================================================================
+CALCULATE 300 MEASURED GENE-WISE VARIATION
+====================================================================================================
+
+====================================================================================================
+CALCULATE 300 OOF GENE-WISE VARIATION
+====================================================================================================
+
+====================================================================================================
+CALCULATE 34K IMPUTED-ONLY GENE-WISE VARIATION
+====================================================================================================
+Metrics 0-512 / 34,687
+Metrics 512-1,024 / 34,687
+Metrics 1,024-1,536 / 34,687
+Metrics 1,536-2,048 / 34,687
+Metrics 2,048-2,560 / 34,687
+Metrics 2,560-3,072 / 34,687
+Metrics 3,072-3,584 / 34,687
+Metrics 3,584-4,096 / 34,687
+Metrics 4,096-4,608 / 34,687
+Metrics 4,608-5,120 / 34,687
+Metrics 5,120-5,632 / 34,687
+Metrics 5,632-6,144 / 34,687
+Metrics 6,144-6,656 / 34,687
+Metrics 6,656-7,168 / 34,687
+Metrics 7,168-7,680 / 34,687
+Metrics 7,680-8,192 / 34,687
+Metrics 8,192-8,704 / 34,687
+Metrics 8,704-9,216 / 34,687
+Metrics 9,216-9,728 / 34,687
+Metrics 9,728-10,240 / 34,687
+Metrics 10,240-10,752 / 34,687
+Metrics 10,752-11,264 / 34,687
+Metrics 11,264-11,776 / 34,687
+Metrics 11,776-12,288 / 34,687
+Metrics 12,288-12,800 / 34,687
+Metrics 12,800-13,312 / 34,687
+Metrics 13,312-13,824 / 34,687
+Metrics 13,824-14,336 / 34,687
+Metrics 14,336-14,848 / 34,687
+Metrics 14,848-15,360 / 34,687
+Metrics 15,360-15,872 / 34,687
+Metrics 15,872-16,384 / 34,687
+Metrics 16,384-16,896 / 34,687
+Metrics 16,896-17,408 / 34,687
+Metrics 17,408-17,920 / 34,687
+Metrics 17,920-18,432 / 34,687
+Metrics 18,432-18,944 / 34,687
+Metrics 18,944-19,456 / 34,687
+Metrics 19,456-19,968 / 34,687
+Metrics 19,968-20,480 / 34,687
+Metrics 20,480-20,992 / 34,687
+Metrics 20,992-21,504 / 34,687
+Metrics 21,504-22,016 / 34,687
+Metrics 22,016-22,528 / 34,687
+Metrics 22,528-23,040 / 34,687
+Metrics 23,040-23,552 / 34,687
+Metrics 23,552-24,064 / 34,687
+Metrics 24,064-24,576 / 34,687
+Metrics 24,576-25,088 / 34,687
+Metrics 25,088-25,600 / 34,687
+Metrics 25,600-26,112 / 34,687
+Metrics 26,112-26,624 / 34,687
+Metrics 26,624-27,136 / 34,687
+Metrics 27,136-27,648 / 34,687
+Metrics 27,648-28,160 / 34,687
+Metrics 28,160-28,672 / 34,687
+Metrics 28,672-29,184 / 34,687
+Metrics 29,184-29,696 / 34,687
+Metrics 29,696-30,208 / 34,687
+Metrics 30,208-30,720 / 34,687
+Metrics 30,720-31,232 / 34,687
+Metrics 31,232-31,744 / 34,687
+Metrics 31,744-32,256 / 34,687
+Metrics 32,256-32,768 / 34,687
+Metrics 32,768-33,280 / 34,687
+Metrics 33,280-33,792 / 34,687
+Metrics 33,792-34,304 / 34,687
+Metrics 34,304-34,687 / 34,687
+Saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/gene_variation/Br8667/Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation.csv
+
+                group  n_genes  median_SD_log1p_CPM  IQR_SD_log1p_CPM  median_dynamic_range_95_5  median_IQR_log1p_CPM  median_CV_CPM  median_Moran_I  fraction_Moran_gt_0_10  fraction_Moran_gt_0_20
+         Measured_300      300             1.498883          0.536552                   4.407873              1.958729       1.682769        0.101741                0.503333                0.306667
+              OOF_300      300             0.985464          0.628087                   3.213227              1.191036       1.234809        0.201730                0.746667                0.503333
+ENVI_imputed_only_34K    34687             0.280974          0.364283                   0.902470              0.333658       0.662428        0.215362                0.844322                0.543950
+
+====================================================================================================
+COMPLETE
+====================================================================================================
+Gene metrics: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/gene_variation/Br8667/Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation.csv
+Summary: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/gene_variation/Br8667/Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation_summary.csv
+Figure: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/gene_variation/Br8667/fig_Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation.png
+
+===== OUTPUTS =====
+total 21M
+-rw-r----- 1 mjabin hulab 7.4K Oct 16 06:43 Br8667_ENVI_imputed_only_34K_top30_variable_genes.csv
+-rw-r----- 1 mjabin hulab 6.2K Oct 16 06:43 Br8667_Measured_300_top30_variable_genes.csv
+-rw-r----- 1 mjabin hulab 8.5M Oct 16 06:02 Br8667_OOF300_vs_imputed34K_gene_variation.csv
+-rw-r----- 1 mjabin hulab  504 Oct 16 06:02 Br8667_OOF300_vs_imputed34K_gene_variation_summary.csv
+-rw-r----- 1 mjabin hulab 6.9K Oct 16 06:43 Br8667_OOF_300_top30_variable_genes.csv
+-rw-r----- 1 mjabin hulab 8.6M Oct 16 06:43 Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation.csv
+-rw-r----- 1 mjabin hulab  665 Oct 16 06:43 Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation_summary.csv
+-rw-r----- 1 mjabin hulab 137K Oct 16 06:02 fig_Br8667_OOF300_vs_imputed34K_gene_variation.pdf
+-rw-r----- 1 mjabin hulab 1.4M Oct 16 06:02 fig_Br8667_OOF300_vs_imputed34K_gene_variation.png
+-rw-r----- 1 mjabin hulab 148K Oct 16 06:43 fig_Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation.pdf
+-rw-r----- 1 mjabin hulab 1.7M Oct 16 06:43 fig_Br8667_measured300_vs_OOF300_vs_imputed34K_gene_variation.png

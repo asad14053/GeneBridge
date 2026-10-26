@@ -1,0 +1,4 @@
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3785: FutureWarning: The behavior of DataFrame.var with axis=None is deprecated, in a future version this will reduce over both axes and return a scalar. To retain the old behavior, pass axis=0 (or do not pass axis)
+  return var(axis=axis, dtype=dtype, out=out, ddof=ddof, **kwargs)
+/beegfs/labs/hulab/projects/mjabin/conda_envs/Imputation/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3785: FutureWarning: The behavior of DataFrame.var with axis=None is deprecated, in a future version this will reduce over both axes and return a scalar. To retain the old behavior, pass axis=0 (or do not pass axis)
+  return var(axis=axis, dtype=dtype, out=out, ddof=ddof, **kwargs)

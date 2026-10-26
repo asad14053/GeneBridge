@@ -1,0 +1,56 @@
+============================================================
+FULL-GENE MORAN ANALYSIS
+BR=Br5400
+TASK=3
+============================================================
+==========================================================================================
+MORAN I CROSS-TECHNOLOGY ANALYSIS: Br5400
+==========================================================================================
+ENVI shape: (44283, 34987)
+matched cells inside physical Visium spots: 13198
+occupied spots: 3393 / 4625
+Moran graph spots: 3393
+kNN: 6
+
+==========================================================================================
+FULL TRANSCRIPTOME GENE UNIVERSE
+==========================================================================================
+ENVI total genes: 34978
+ENVI measured Xenium genes: 300
+ENVI imputed-only genes: 34678
+all ENVI genes shared with Visium: 34978
+imputed-only genes shared with Visium: 34678
+
+Loading assigned-cell ENVI count_scale matrix...
+matrix: (13198, 34987)
+memory: 1.72 GB
+
+Computing matched pseudospot / Visium library sizes...
+
+Computing gene-level Moran's I...
+  512 / 34,678
+  5,120 / 34,678
+  10,240 / 34,678
+  15,360 / 34,678
+  20,480 / 34,678
+  25,088 / 34,678
+  30,208 / 34,678
+  34,678 / 34,678
+
+==========================================================================================
+RESULT
+==========================================================================================
+Genes               : 24,230
+Spearman Moran      : -0.0823
+Pearson Moran       : -0.0579
+Median Visium I     : 0.0032
+Median ENVI I       : 0.1579
+Median delta I      : +0.1374
+Regression slope    : -0.1609
+
+Gene table: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br5400/Br5400_Visium_vs_ENVI_MoranI_imputed_genes.csv.gz
+Summary   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br5400/Br5400_Visium_vs_ENVI_MoranI_summary.csv
+PNG       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br5400/fig_Br5400_Visium_vs_ENVI_MoranI.png
+PDF       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_moran_visium_vs_imputed/Br5400/fig_Br5400_Visium_vs_ENVI_MoranI.pdf
+
+Br5400 PASS

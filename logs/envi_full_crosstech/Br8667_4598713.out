@@ -1,0 +1,20 @@
+================================================================================
+ENVI FULL-TRANSCRIPTOME CROSS-TECH: Br8667
+================================================================================
+ENVI   : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/ex1_ntc/envi/Br8667/spatial_data_xenium_Br8667_ENVI_full_transcriptome.h5ad
+STalign: /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/metadata/stalign_results_update/Br8667_STalign_result
+Visium : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/raw/visium/Br8667/GSM9223455_Br8667-V13M06-342_D1_matrix.mtx.gz
+
+ENVI shape: (66164, 34987)
+STalign cells: 68974
+STalign Visium spots: 4800
+
+Best cell-ID mapping: ENVI obs_names <-> STalign lieber_key
+overlap: 66164 / 66164
+
+ENVI cells passing STalign usable: 42035
+  matched > threshold: 42961
+  usable: 42035
+
+nearest-spot distance: median=37.78 um, p95=52.82 um, max=100.00 um
+occupied pseudospots: 4690 / 4800 (97.7%)

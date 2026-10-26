@@ -1,0 +1,3 @@
+2026-09-10 01:34:42.356374 create model matrix
+Error: The resulting model is not full rank. You might have some 'var_registration' levels that are empty which you can drop with 'droplevels()'. Check the output of 'table(sce_pseudo[[var_registration]])'.
+Execution halted

@@ -1,0 +1,9 @@
+WARNING: expected 87 files, found 54
+Traceback (most recent call last):
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/ling_harmonization/01_build_ling_h5_gene_crosswalk.py", line 1245, in <module>
+    main()
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/ling_harmonization/01_build_ling_h5_gene_crosswalk.py", line 942, in main
+    genes = check_h5_gene_universe(
+  File "/beegfs/labs/hulab/projects/mjabin/GeneBridge/src/analysis/ling_harmonization/01_build_ling_h5_gene_crosswalk.py", line 513, in check_h5_gene_universe
+    raise RuntimeError(
+RuntimeError: Ling H5 files do not all have the same gene universe.

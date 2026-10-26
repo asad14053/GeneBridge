@@ -1,0 +1,38 @@
+============================================================
+CENTERED COSINE PI FIGURE
+BR=Br6389
+============================================================
+================================================================================
+ENVI PI-STYLE FIGURE: Br6389
+================================================================================
+imputed evaluable: 19527
+imputed patterned: 1408
+imputed non-patterned: 18119
+
+DISPLAY GENES
+imputed, patterned, highest centered cosine CRYAB           raw_cos=0.606 centered_cos=+0.332 sp=+0.321 Moran=0.520 q=0
+imputed, patterned, median centered cosine NCDN            raw_cos=0.718 centered_cos=+0.012 sp=+0.020 Moran=0.055 q=2e-05
+imputed, patterned, lowest centered cosine RSF1            raw_cos=0.651 centered_cos=-0.118 sp=-0.086 Moran=0.050 q=0.00011
+imputed, not patterned (centered-cosine control) HDGFL3          raw_cos=0.659 centered_cos=-0.011 sp=+0.008 Moran=0.026 q=0.12
+
+matched ENVI cells: 27561
+inside Visium spots: 10496
+occupied pseudospots: 3099 / 4910
+
+evaluable shared genes used for CPM: 19827
+
+Loading assigned-cell ENVI count_scale...
+assigned ENVI matrix: (10496, 34987) 1.37 GB
+
+Computing ENVI pseudospot library sizes...
+Computing Visium library sizes...
+Loading selected genes for aligned-cell maps...
+
+================================================================================
+OUTPUT
+================================================================================
+PNG      : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br6389/fig_ENVI_fulltranscriptome_Br6389_PI_style_centered_cosine.png
+PDF      : /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br6389/fig_ENVI_fulltranscriptome_Br6389_PI_style_centered_cosine.pdf
+selection: /beegfs/labs/hulab/projects/mjabin/GeneBridge/results/analysis/envi_fulltranscriptome_crosstech/Br6389/Br6389_ENVI_selected_display_genes_centered_cosine.csv
+
+Br6389 FIGURE PASS

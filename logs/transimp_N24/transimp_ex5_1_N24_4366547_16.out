@@ -1,0 +1,80 @@
+====================================================================================================
+TransImpSpa N24 FULLY PARALLEL BENCHMARK
+====================================================================================================
+Job ID          : 4366791
+Array task      : 16
+Node            : node04.hgcc.emory.edu
+
+Experiment      : ex5_1
+Experiment label: Experiment 5.1
+
+Target donor    : Br5314
+Fold            : 1
+
+Reference       : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/snrnaseq/sce_DLPFC_annotated/huuki_snrna_reference_full_allgenes.h5ad
+Observed        : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5314/fold_1_observed_genes.h5ad
+Heldout         : /beegfs/labs/hulab/projects/mjabin/GeneBridge/data/processed/imputation_full/gene_folds_200_100/Br5314/fold_1_heldout_genes.h5ad
+
+Output root     : /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TRANSIMP_N24/Br5314
+
+Mapping mode    : lowrank
+Mapping lowdim  : 256
+Spatial NN      : 6
+Epochs          : 2000
+Learning rate   : 0.01
+Weight decay    : 0.01
+Clip max        : 10
+Spatial weight  : 1.0
+
+CPUs            : 16
+Memory          : 200G
+
+Started         : Tue Sep  8 18:15:07 EDT 2026
+====================================================================================================
+====================================================================================================
+STANDARD TransImpSpa 3-FOLD BENCHMARK
+====================================================================================================
+Experiment: ex5_1
+Fold: 1
+Reference raw shape: (77604, 36601)
+Reference model shape: (77604, 300)
+Removed zero-observed reference cells: 0
+Spatial model shape: (45583, 200)
+Held-out truth: (45583, 100)
+Train genes: 200
+Test genes: 100
+signature_mode: cell
+mapping_mode: lowrank
+mapping_lowdim: 256
+Spatial neighbors: 6
+Adjacency nnz: 327126
+wt_spa: 1.0
+epochs: 2000
+lr: 0.01
+weight_decay: 0.01
+clip_max: 10.0
+Device: cpu
+Seed: 8668
+====================================================================================================
+Highlight-gene plot saved: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TRANSIMP_N24/Br5314/ex5_1/transimpspa/fold_1/figures/ten_gene_observed_vs_prediction.png
+Genes plotted: ['ALDH1A1', 'NORAD', 'APOLD1', 'SOX2-OT', 'MYL9', 'CARTPT', 'FGFR3', 'PLEC', 'NDUFB2', 'ACY3']
+
+====================================================================================================
+SUCCESS
+Model: TransImpSpa
+Experiment: ex5_1
+Fold: 1
+Prediction: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TRANSIMP_N24/Br5314/ex5_1/transimpspa/fold_1/predicted_heldout_genes.h5ad
+Runtime minutes: 18.28
+run_complete.flag: /beegfs/labs/hulab/projects/mjabin/GeneBridge/outputs/imputation_full/TRANSIMP_N24/Br5314/ex5_1/transimpspa/fold_1/run_complete.flag
+====================================================================================================
+
+====================================================================================================
+FOLD STATUS: PASS
+====================================================================================================
+Donor     : Br5314
+Experiment: ex5_1
+Fold      : 1
+Completed : Tue Sep  8 18:34:17 EDT 2026
+
+FINAL STATUS: PASS
